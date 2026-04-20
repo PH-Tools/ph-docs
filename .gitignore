@@ -4,6 +4,9 @@ dist/
 .astro/
 src/content/docs/
 public/llm/
+public/llms.txt
+public/site-index.json
+public/llm-instructions.md
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

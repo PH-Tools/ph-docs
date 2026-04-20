@@ -1,6 +1,6 @@
 # Feature: LLM-Optimized Navigation Layer
 
-**Status**: Proposal  
+**Status**: Items 1–5 complete (2026-04-19). Item 6 (MCP server) deferred.  
 **Date**: 2026-04-19  
 **Context**: The primary consumers of docs.passivehousetools.com are LLM agents (via Claude skills, Claude Code sessions, and WebFetch), not humans browsing in a browser. The site's current build pipeline and URL structure are sound, but everything it serves is HTML — optimized for human rendering, not machine consumption. This feature adds a parallel set of static, machine-readable outputs that make the site trivially navigable by LLMs.
 
@@ -30,46 +30,21 @@ Six additions, all static files generated at build time. No runtime services, no
 
 ---
 
-### 1. `llms.txt` — Site Index for LLMs
+### 1. `llms.txt` — Site Index for LLMs ✅ COMPLETE (2026-04-19)
 
 **What**: A plain-text file at `/llms.txt` following the emerging [llmstxt.org](https://llmstxt.org) convention. Claude's `WebFetch` and other LLM tooling already know to look for this file at a site's root.
 
 **Generated from**: `libraries.yml` + each spoke's `nav.yml`
 
-**Example output**:
+**Implementation**: `scripts/build_llm_nav.py` walks `libraries.yml` + assembled `nav.yml` files and writes `public/llms.txt`. Links point to raw markdown URLs (`/llm/...`) rather than HTML pages. Includes a Navigation section at the top linking to `llm-instructions.md`, `site-index.json`, and the raw markdown root.
 
-```
-# PH-Tools Documentation
-
-> Unified documentation for PH-Tools open-source libraries: Passive House
-> modeling, data exchange, and analysis tools for building energy performance.
-
-## Honeybee-PH
-Grasshopper-native Passive House modeling.
-- [Overview](https://docs.passivehousetools.com/honeybee-ph/)
-
-## PHX
-Passive House Exchange data model & file I/O.
-- [Overview](https://docs.passivehousetools.com/phx/)
-- [Architecture](https://docs.passivehousetools.com/phx/dev/architecture/)
-- [Exporter & Importer Patterns](https://docs.passivehousetools.com/phx/dev/exporter-patterns/)
-- [PHX Model Reference](https://docs.passivehousetools.com/phx/reference/phx-model-reference/)
-- [WUFI XML Schema](https://docs.passivehousetools.com/phx/reference/wufi-xml-schema/)
-
-## Honeybee-REVIVE
-Carbon & energy analysis for building design.
-- [Overview](https://docs.passivehousetools.com/honeybee-revive/)
-```
-
-**Implementation**: Post-build script or Astro endpoint that walks `libraries.yml` + assembled `nav.yml` files and writes `dist/llms.txt`.
-
-**Optional companion**: `/llms-full.txt` — concatenates all raw markdown content into a single file. One fetch = entire corpus in context. Useful for smaller doc sites; may be too large once spoke content grows significantly.
+**Optional companion**: `/llms-full.txt` — concatenates all raw markdown content into a single file. One fetch = entire corpus in context. Deferred until spoke content grows.
 
 ---
 
-### 2. Raw Markdown Routes
+### 2. Raw Markdown Routes ✅ COMPLETE (2026-04-19)
 
-**What**: For every HTML page at `/{lib}/{slug}/`, also emit the raw markdown source at `/{lib}/{slug}.md`.
+**What**: For every HTML page at `/{lib}/{slug}/`, also emit the raw markdown source at `/llm/{lib}/{slug}.md`.
 
 **Why**: When an LLM fetches the HTML version of a reference page, the actual content might be 2,000 tokens but the full HTML response is 10,000-15,000 tokens (header, nav, sidebar, footer, inline styles, scripts). The `.md` route serves just the content — front-matter stripped, pure markdown body.
 
@@ -77,19 +52,25 @@ Carbon & energy analysis for building design.
 
 | HTML route (for humans) | Raw route (for LLMs) |
 |-------------------------|----------------------|
-| `/phx/reference/wufi-xml-schema/` | `/phx/reference/wufi-xml-schema.md` |
-| `/phx/dev/architecture/` | `/phx/dev/architecture.md` |
-| `/honeybee-ph/` | `/honeybee-ph.md` |
+| `/phx/reference/wufi-xml-schema/` | `/llm/phx/reference/wufi-xml-schema.md` |
+| `/phx/dev/architecture/` | `/llm/phx/dev/architecture.md` |
+| `/honeybee-ph/` | `/llm/honeybee-ph/index.md` |
 
-**Implementation**: Astro can generate these as additional static endpoints. For each content page, read the markdown source, strip front-matter, and write it to `dist/` as a `.md` file alongside the HTML directory.
+**Implementation**: `scripts/build_llm_docs.py` runs after `fetch_spokes.py` in the build pipeline. It reads all `.md` files from `src/content/docs/`, strips YAML front-matter and HTML block elements (`<div>` blocks), and writes clean markdown to `public/llm/`. Astro serves `public/` as static files, so these are available at stable URLs after deploy.
 
-**Interaction with `FetchCallout`**: The `FetchCallout` component (already built, Screen 3) should show the `.md` URL by default, since its primary audience is LLM users copying the URL into a skill.
+**Build workflow**: Added as a step in `.github/workflows/build.yml` between `fetch_spokes.py` and `pnpm build`.
+
+**Skill integration**: The `/wufi-xml` and `/phx-model` skills have been updated to `WebFetch` from these cloud URLs instead of reading local `references/` files, making the skills fully shareable without local file dependencies.
+
+**Interaction with `FetchCallout`**: The `FetchCallout` component (already built, Screen 3) should show the `/llm/` URL by default, since its primary audience is LLM users copying the URL into a skill.
 
 ---
 
-### 3. LLM-Oriented Front-Matter in Spoke Content
+### 3. LLM-Oriented Front-Matter in Spoke Content ✅ COMPLETE (2026-04-19)
 
 **What**: Extend the spoke `docs/` front-matter convention with optional fields that help LLMs decide whether a page is relevant to their current task — without fetching and reading the full content.
+
+**Implementation**: Added `llm_purpose`, `llm_use_when`, and `llm_related` front-matter to all 5 PHX spoke doc pages (3 reference, 2 dev). These fields are consumed by `build_llm_nav.py` to populate `site-index.json` and the "Direct access" section of `llm-instructions.md`. Fields are stripped from the clean LLM markdown output by `build_llm_docs.py`.
 
 **New optional fields**:
 
@@ -121,7 +102,7 @@ llm_related:
 
 ---
 
-### 4. `site-index.json` — Structured Page Catalog
+### 4. `site-index.json` — Structured Page Catalog ✅ COMPLETE (2026-04-19)
 
 **What**: A build-time-generated JSON manifest at `/site-index.json` listing every page with structured metadata. This is the machine-readable equivalent of the site's navigation — an LLM agent can fetch this single file and programmatically find the right page for any task.
 
@@ -158,13 +139,13 @@ llm_related:
 }
 ```
 
-**Implementation**: Post-build script that walks each library's `nav.yml` + page front-matter and writes `dist/site-index.json`.
+**Implementation**: `scripts/build_llm_nav.py` walks each library's `nav.yml` + page front-matter and writes `public/site-index.json`. Includes a top-level `llm_nav` object with paths to all LLM navigation files. Raw paths point to `/llm/` URLs. LLM front-matter fields (`llm_purpose`, `llm_use_when`, `llm_related`) are included when present.
 
 **Usage pattern**: An LLM agent fetches `site-index.json`, scans the `llm_purpose` / `llm_use_when` fields to find relevant pages, then fetches just those pages via `raw_path`.
 
 ---
 
-### 5. `/llm-instructions.md` — Agent Onboarding File
+### 5. `/llm-instructions.md` — Agent Onboarding File ✅ COMPLETE (2026-04-19)
 
 **What**: A static markdown file at a stable URL that tells any LLM agent how to navigate and use the site. This is the file that Claude skills point to as their entry point.
 
@@ -195,7 +176,7 @@ All content is sourced from library repos and rebuilt automatically on every pus
 
 **Why a separate file instead of embedding in `llms.txt`**: `llms.txt` is a catalog (what exists). This file is procedural (how to use it). Skills that don't need the full catalog can fetch just the instructions.
 
-**Implementation**: Could be a static file in `public/`, or generated at build time with the "Direct access" section populated from front-matter.
+**Implementation**: Generated at build time by `scripts/build_llm_nav.py`. The "Direct access" section is populated automatically from pages that have `llm_use_when` front-matter — each entry shows the trigger condition and the raw markdown URL. The "Available libraries" section lists all enabled libraries with page counts. Written to `public/llm-instructions.md`.
 
 ---
 
