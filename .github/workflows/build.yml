@@ -29,8 +29,11 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      - name: Fetch spoke docs
+      - name: Fetch spoke docs and source
         run: python scripts/fetch_spokes.py
+
+      - name: Generate API documentation
+        run: python scripts/generate_api_docs.py
 
       - name: Build LLM-ready markdown
         run: python scripts/build_llm_docs.py

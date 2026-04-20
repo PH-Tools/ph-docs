@@ -10,6 +10,30 @@ libraries:
     category:    "Modeling"
     description: "Grasshopper-native Passive House modeling. Build PH-compliant
                   models inside Rhino using familiar Honeybee components."
+    source_paths:
+      - honeybee_ph
+      - honeybee_phhvac
+    autodoc:
+      enabled: true
+      exclude_modules:
+        - "honeybee_ph/cli"
+        - "honeybee_ph/properties"
+        - "honeybee_phhvac/properties"
+      exclude_patterns:
+        - "_*"
+        - "test_*"
+      include_patterns:
+        - "_base.py"
+      skip_methods:
+        - "to_dict"
+        - "from_dict"
+        - "duplicate"
+        - "__copy__"
+        - "__str__"
+        - "__repr__"
+        - "__hash__"
+        - "ToString"
+      output_dir: "api"
 
   - id:          phx
     repo:        PH-Tools/PHX
@@ -22,6 +46,27 @@ libraries:
     category:    "Exchange"
     description: "Passive House Exchange data model & file I/O. Convert between
                   WUFI XML, PHPP Excel, and Phius report formats."
+    source_paths:
+      - PHX
+    autodoc:
+      enabled: true
+      exclude_modules:
+        - "PHX/cli"
+      exclude_patterns:
+        - "_*"
+        - "test_*"
+      include_patterns:
+        - "_base.py"
+      skip_methods:
+        - "to_dict"
+        - "from_dict"
+        - "duplicate"
+        - "__copy__"
+        - "__str__"
+        - "__repr__"
+        - "__hash__"
+        - "ToString"
+      output_dir: "api"
 
   - id:          honeybee-revive
     repo:        PH-Tools/honeybee_revive
@@ -34,3 +79,24 @@ libraries:
     category:    "Analysis"
     description: "Carbon & energy analysis for building design. Resilience &
                   embodied-carbon workflows for Phius REVIVE."
+    source_paths:
+      - honeybee_revive
+    autodoc:
+      enabled: true
+      exclude_modules:
+        - "honeybee_revive/properties"
+      exclude_patterns:
+        - "_*"
+        - "test_*"
+      include_patterns:
+        - "_base.py"
+      skip_methods:
+        - "to_dict"
+        - "from_dict"
+        - "duplicate"
+        - "__copy__"
+        - "__str__"
+        - "__repr__"
+        - "__hash__"
+        - "ToString"
+      output_dir: "api"

@@ -8,6 +8,9 @@ public/llms.txt
 public/site-index.json
 public/llm-instructions.md
 
+# Spoke source cache (for API doc generation)
+.cache/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
