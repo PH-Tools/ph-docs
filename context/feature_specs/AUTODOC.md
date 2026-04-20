@@ -913,14 +913,59 @@ pnpm build && pnpm preview
 
 If you are an agent working on a spoke library (honeybee-ph, PHX, or honeybee-REVIVE), here is what you need to do:
 
-### Your job is to upgrade docstrings. You do NOT need to:
+### You have two jobs:
+
+1. **Upgrade docstrings** in the Python source code (the bulk of the work)
+2. **Add an "API Reference" group to `docs/nav.yml`** so the generated pages appear in navigation
+
+### You do NOT need to:
 - Install any new dependencies
 - Change any CI/CD workflows
-- Modify `nav.yml` (the hub maintainer handles this)
 - Write any build scripts
 - Change any Python syntax (everything stays Python 2.7 compatible)
 
-### Docstring format to follow:
+---
+
+### Job 1: Update `docs/nav.yml`
+
+Add an "API Reference" top-level group to your spoke's `docs/nav.yml`. The entries must match the files that the hub generator will produce. Each entry maps a label to a path under `api/`.
+
+**Important**: If `nav.yml` references a file the generator didn't produce, the Astro build will fail. Only list modules that exist and contain at least one public class. When in doubt, leave an entry out — the page will still be searchable, just not in the sidebar.
+
+#### honeybee-ph `nav.yml` entries
+
+Add this group to `docs/nav.yml` (after existing groups):
+
+```yaml
+  - API Reference:
+    - _base: api/_base.md
+    - bldg_segment: api/bldg_segment.md
+    - foundations: api/foundations.md
+    - phi: api/phi.md
+    - phius: api/phius.md
+    - site: api/site.md
+    - space: api/space.md
+    - team: api/team.md
+    - ducting: api/hvac/ducting.md
+    - heat_pumps: api/hvac/heat_pumps.md
+    - heating: api/hvac/heating.md
+    - hot_water_devices: api/hvac/hot_water_devices.md
+    - hot_water_piping: api/hvac/hot_water_piping.md
+    - hot_water_system: api/hvac/hot_water_system.md
+    - renewable_devices: api/hvac/renewable_devices.md
+    - supportive_device: api/hvac/supportive_device.md
+    - ventilation: api/hvac/ventilation.md
+```
+
+These paths correspond 1:1 to the source modules the generator processes:
+- `api/*.md` → files from `honeybee_ph/` (first `source_path`)
+- `api/hvac/*.md` → files from `honeybee_phhvac/` (second `source_path`, common prefix stripped → `hvac/`)
+
+---
+
+### Job 2: Upgrade Docstrings
+
+#### Docstring format to follow:
 - **Section 7** of this document defines the exact format
 - Use Google-style `Attributes:`, `Arguments:`, `Returns:`, `Values:` sections
 - Keep `# type:` comments — add them where missing
@@ -929,20 +974,20 @@ If you are an agent working on a spoke library (honeybee-ph, PHX, or honeybee-RE
 - Method docstrings should have summary + `Arguments:` + `Returns:`
 - Enum/CustomEnum classes should have a `Values:` section
 
-### What to document:
+#### What to document:
 - All public classes (not prefixed with `_`, except `_Base` classes)
 - All public properties
 - All public methods (not prefixed with `_`)
 - Skip: `to_dict`, `from_dict`, `duplicate`, `__copy__`, `__str__`, `__repr__`, `__hash__`, `ToString`
 
-### Priority order:
+#### Priority order:
 1. Core data model classes (the ones developers instantiate and interact with)
 2. Enum/CustomEnum classes (developers need to know allowed values)
 3. Factory classes
 4. HVAC equipment classes
 5. Utility/helper classes (lowest priority)
 
-### Example transformation:
+#### Example transformation:
 
 **Before:**
 ```python
