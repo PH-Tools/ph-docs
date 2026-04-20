@@ -363,8 +363,15 @@ button { font-family: inherit; }
   border-left: 1px dashed var(--border-strong);
   display: none;
 }
-.nav-tree .group.is-open .children { display: block; }
+.nav-tree .group.is-open > .children { display: block; }
 .nav-tree .children a { padding-left: 14px; font-size: 13px; }
+/* Nested groups: smaller text, no numbering needed (handled in template) */
+.nav-tree .children .group > button { font-size: 13px; padding-left: 14px; }
+/* Depth 2+ progressive indent */
+.nav-tree .children .children a { padding-left: 12px; font-size: 12.5px; }
+.nav-tree .children .children .group > button { padding-left: 12px; font-size: 12.5px; }
+.nav-tree .children .children .children a { padding-left: 10px; font-size: 12px; }
+.nav-tree .children .children .children .group > button { padding-left: 10px; font-size: 12px; }
 
 .nav-tree .num {
   font-family: var(--font-mono);

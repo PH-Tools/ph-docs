@@ -1,5 +1,5 @@
 ---
-import type { NavTree } from "../lib/nav";
+import type { NavTree, NavItem } from "../lib/nav";
 import { isLeaf, isGroup } from "../lib/nav";
 
 interface Props {
@@ -11,12 +11,17 @@ interface Props {
 
 const { libId, libLabel, navTree, currentPath } = Astro.props;
 
-// Assign sequential numbers across all top-level items
+// Sequential numbering for top-level items only
 let counter = 0;
 
 function nextNum(): string {
   counter++;
   return String(counter).padStart(2, "0");
+}
+
+// Escape HTML entities in labels
+function esc(s: string): string {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
 // Determine if a group contains the current path (to auto-expand it)
@@ -28,61 +33,35 @@ function groupContainsPath(children: NavTree, current: string | undefined): bool
   }
   return false;
 }
+
+// Recursively render nav items at any depth
+function renderItems(items: NavTree, depth: number): string {
+  return items.map((item) => {
+    if (isLeaf(item)) {
+      const num = depth === 0 ? `<span class="num">${nextNum()}</span>` : "";
+      const isActive = currentPath === item.path;
+      const href = item.path === "index.md"
+        ? `/${libId}/`
+        : `/${libId}/${item.path.replace(/\.md$/, "/")}`;
+      return `<li><a class="${isActive ? "is-active" : ""}" href="${href}">${num}${esc(item.label)}</a></li>`;
+    }
+    if (isGroup(item)) {
+      const num = depth === 0 ? `<span class="num">${nextNum()}</span>` : "";
+      const isOpen = groupContainsPath(item.children, currentPath);
+      const chevron = `<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg>`;
+      return `<li class="group${isOpen ? " is-open" : ""}">
+        <button aria-expanded="${isOpen}">${num}${esc(item.label)}${chevron}</button>
+        <ul class="children">${renderItems(item.children, depth + 1)}</ul>
+      </li>`;
+    }
+    return "";
+  }).join("");
+}
 ---
 
 <aside class="sidebar">
   <div class="sidebar__label">Library · {libLabel}</div>
-  <ul class="nav-tree">
-    {navTree.map((item) => {
-      if (isLeaf(item)) {
-        const num = nextNum();
-        const isActive = currentPath === item.path;
-        return (
-          <li>
-            <a
-              class={isActive ? "is-active" : ""}
-              href={item.path === "index.md" ? `/${libId}/` : `/${libId}/${item.path.replace(/\.md$/, "/")}`}
-            >
-              <span class="num">{num}</span>
-              {item.label}
-            </a>
-          </li>
-        );
-      }
-      if (isGroup(item)) {
-        const num = nextNum();
-        const isOpen = groupContainsPath(item.children, currentPath);
-        return (
-          <li class={`group${isOpen ? " is-open" : ""}`}>
-            <button aria-expanded={isOpen ? "true" : "false"}>
-              <span class="num">{num}</span>
-              {item.label}
-              <svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4">
-                <path d="m3 2 4 3-4 3" />
-              </svg>
-            </button>
-            <ul class="children">
-              {item.children.map((child) => {
-                if (!isLeaf(child)) return null;
-                const childActive = currentPath === child.path;
-                return (
-                  <li>
-                    <a
-                      class={childActive ? "is-active" : ""}
-                      href={`/${libId}/${child.path.replace(/\.md$/, "/")}`}
-                    >
-                      {child.label}
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-          </li>
-        );
-      }
-      return null;
-    })}
-  </ul>
+  <ul class="nav-tree" set:html={renderItems(navTree, 0)} />
 </aside>
 
 <script>
