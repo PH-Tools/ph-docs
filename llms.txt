@@ -1,0 +1,45 @@
+# PH-Tools Documentation
+
+> Unified documentation for PH-Tools open-source libraries: Passive House
+> modeling, data exchange, and analysis tools for building energy performance.
+
+## Navigation
+- [LLM Instructions](https://docs.passivehousetools.com/llm-instructions.md)
+- [Site Index (JSON)](https://docs.passivehousetools.com/site-index.json)
+- [Raw Markdown Files](https://docs.passivehousetools.com/llm/) (all docs as clean markdown)
+
+## Honeybee-PH
+Grasshopper-native Passive House modeling. Build PH-compliant models inside Rhino using familiar Honeybee components.
+- [Overview](https://docs.passivehousetools.com/llm/honeybee-ph/index.md)
+- [API Reference: base](https://docs.passivehousetools.com/llm/honeybee-ph/api/base.md)
+- [API Reference: space](https://docs.passivehousetools.com/llm/honeybee-ph/api/space.md)
+- [API Reference: foundations](https://docs.passivehousetools.com/llm/honeybee-ph/api/foundations.md)
+- [API Reference: bldg_segment](https://docs.passivehousetools.com/llm/honeybee-ph/api/bldg_segment.md)
+- [API Reference: site](https://docs.passivehousetools.com/llm/honeybee-ph/api/site.md)
+- [API Reference: team](https://docs.passivehousetools.com/llm/honeybee-ph/api/team.md)
+- [API Reference: phi](https://docs.passivehousetools.com/llm/honeybee-ph/api/phi.md)
+- [API Reference: phius](https://docs.passivehousetools.com/llm/honeybee-ph/api/phius.md)
+- [HVAC: base](https://docs.passivehousetools.com/llm/honeybee-ph/api/hvac/base.md)
+- [HVAC: ventilation](https://docs.passivehousetools.com/llm/honeybee-ph/api/hvac/ventilation.md)
+- [HVAC: heating](https://docs.passivehousetools.com/llm/honeybee-ph/api/hvac/heating.md)
+- [HVAC: heat_pumps](https://docs.passivehousetools.com/llm/honeybee-ph/api/hvac/heat_pumps.md)
+- [HVAC: hot_water_devices](https://docs.passivehousetools.com/llm/honeybee-ph/api/hvac/hot_water_devices.md)
+- [HVAC: hot_water_system](https://docs.passivehousetools.com/llm/honeybee-ph/api/hvac/hot_water_system.md)
+- [HVAC: hot_water_piping](https://docs.passivehousetools.com/llm/honeybee-ph/api/hvac/hot_water_piping.md)
+- [HVAC: ducting](https://docs.passivehousetools.com/llm/honeybee-ph/api/hvac/ducting.md)
+- [HVAC: renewable_devices](https://docs.passivehousetools.com/llm/honeybee-ph/api/hvac/renewable_devices.md)
+- [HVAC: supportive_device](https://docs.passivehousetools.com/llm/honeybee-ph/api/hvac/supportive_device.md)
+- [HVAC: fuels](https://docs.passivehousetools.com/llm/honeybee-ph/api/hvac/fuels.md)
+
+## PHX
+Passive House Exchange data model & file I/O. Convert between WUFI XML, PHPP Excel, and Phius report formats.
+- [PHX](https://docs.passivehousetools.com/llm/phx/index.md)
+- [Developer: Architecture](https://docs.passivehousetools.com/llm/phx/dev/architecture.md)
+- [Developer: Export / Import Patterns](https://docs.passivehousetools.com/llm/phx/dev/exporter-patterns.md)
+- [Reference: PHX Model Reference](https://docs.passivehousetools.com/llm/phx/reference/phx-model-reference.md)
+- [Reference: WUFI XML Schema](https://docs.passivehousetools.com/llm/phx/reference/wufi-xml-schema.md)
+- [Reference: PHPP Field Mapping](https://docs.passivehousetools.com/llm/phx/reference/phpp-field-mapping.md)
+
+## Honeybee-REVIVE
+Carbon & energy analysis for building design. Resilience & embodied-carbon workflows for Phius REVIVE.
+- [Overview](https://docs.passivehousetools.com/llm/honeybee-revive/index.md)

@@ -1,0 +1,225 @@
+{
+  "generated": "2026-04-20T18:31:12Z",
+  "base_url": "https://docs.passivehousetools.com",
+  "llm_nav": {
+    "instructions": "/llm-instructions.md",
+    "site_index": "/site-index.json",
+    "llms_txt": "/llms.txt",
+    "raw_markdown_root": "/llm/"
+  },
+  "libraries": [
+    {
+      "id": "honeybee-ph",
+      "label": "Honeybee-PH",
+      "description": "Grasshopper-native Passive House modeling. Build PH-compliant models inside Rhino using familiar Honeybee components.",
+      "pages": [
+        {
+          "title": "Overview",
+          "path": "/honeybee-ph/",
+          "raw_path": "/llm/honeybee-ph/index.md",
+          "section": null
+        },
+        {
+          "title": "base",
+          "path": "/honeybee-ph/api/base/",
+          "raw_path": "/llm/honeybee-ph/api/base.md",
+          "section": "API Reference"
+        },
+        {
+          "title": "space",
+          "path": "/honeybee-ph/api/space/",
+          "raw_path": "/llm/honeybee-ph/api/space.md",
+          "section": "API Reference"
+        },
+        {
+          "title": "foundations",
+          "path": "/honeybee-ph/api/foundations/",
+          "raw_path": "/llm/honeybee-ph/api/foundations.md",
+          "section": "API Reference"
+        },
+        {
+          "title": "bldg_segment",
+          "path": "/honeybee-ph/api/bldg_segment/",
+          "raw_path": "/llm/honeybee-ph/api/bldg_segment.md",
+          "section": "API Reference"
+        },
+        {
+          "title": "site",
+          "path": "/honeybee-ph/api/site/",
+          "raw_path": "/llm/honeybee-ph/api/site.md",
+          "section": "API Reference"
+        },
+        {
+          "title": "team",
+          "path": "/honeybee-ph/api/team/",
+          "raw_path": "/llm/honeybee-ph/api/team.md",
+          "section": "API Reference"
+        },
+        {
+          "title": "phi",
+          "path": "/honeybee-ph/api/phi/",
+          "raw_path": "/llm/honeybee-ph/api/phi.md",
+          "section": "API Reference"
+        },
+        {
+          "title": "phius",
+          "path": "/honeybee-ph/api/phius/",
+          "raw_path": "/llm/honeybee-ph/api/phius.md",
+          "section": "API Reference"
+        },
+        {
+          "title": "base",
+          "path": "/honeybee-ph/api/hvac/base/",
+          "raw_path": "/llm/honeybee-ph/api/hvac/base.md",
+          "section": "HVAC"
+        },
+        {
+          "title": "ventilation",
+          "path": "/honeybee-ph/api/hvac/ventilation/",
+          "raw_path": "/llm/honeybee-ph/api/hvac/ventilation.md",
+          "section": "HVAC"
+        },
+        {
+          "title": "heating",
+          "path": "/honeybee-ph/api/hvac/heating/",
+          "raw_path": "/llm/honeybee-ph/api/hvac/heating.md",
+          "section": "HVAC"
+        },
+        {
+          "title": "heat_pumps",
+          "path": "/honeybee-ph/api/hvac/heat_pumps/",
+          "raw_path": "/llm/honeybee-ph/api/hvac/heat_pumps.md",
+          "section": "HVAC"
+        },
+        {
+          "title": "hot_water_devices",
+          "path": "/honeybee-ph/api/hvac/hot_water_devices/",
+          "raw_path": "/llm/honeybee-ph/api/hvac/hot_water_devices.md",
+          "section": "HVAC"
+        },
+        {
+          "title": "hot_water_system",
+          "path": "/honeybee-ph/api/hvac/hot_water_system/",
+          "raw_path": "/llm/honeybee-ph/api/hvac/hot_water_system.md",
+          "section": "HVAC"
+        },
+        {
+          "title": "hot_water_piping",
+          "path": "/honeybee-ph/api/hvac/hot_water_piping/",
+          "raw_path": "/llm/honeybee-ph/api/hvac/hot_water_piping.md",
+          "section": "HVAC"
+        },
+        {
+          "title": "ducting",
+          "path": "/honeybee-ph/api/hvac/ducting/",
+          "raw_path": "/llm/honeybee-ph/api/hvac/ducting.md",
+          "section": "HVAC"
+        },
+        {
+          "title": "renewable_devices",
+          "path": "/honeybee-ph/api/hvac/renewable_devices/",
+          "raw_path": "/llm/honeybee-ph/api/hvac/renewable_devices.md",
+          "section": "HVAC"
+        },
+        {
+          "title": "supportive_device",
+          "path": "/honeybee-ph/api/hvac/supportive_device/",
+          "raw_path": "/llm/honeybee-ph/api/hvac/supportive_device.md",
+          "section": "HVAC"
+        },
+        {
+          "title": "fuels",
+          "path": "/honeybee-ph/api/hvac/fuels/",
+          "raw_path": "/llm/honeybee-ph/api/hvac/fuels.md",
+          "section": "HVAC"
+        }
+      ]
+    },
+    {
+      "id": "phx",
+      "label": "PHX",
+      "description": "Passive House Exchange data model & file I/O. Convert between WUFI XML, PHPP Excel, and Phius report formats.",
+      "pages": [
+        {
+          "title": "PHX",
+          "path": "/phx/",
+          "raw_path": "/llm/phx/index.md",
+          "section": null
+        },
+        {
+          "title": "Architecture",
+          "path": "/phx/dev/architecture/",
+          "raw_path": "/llm/phx/dev/architecture.md",
+          "section": "Developer",
+          "llm_purpose": "High-level architecture of PHX — module layout, data flow between importers/exporters, and key design decisions",
+          "llm_use_when": "Before making structural changes to PHX, adding a new importer/exporter, or understanding how data flows through the system",
+          "llm_related": [
+            "/llm/phx/reference/phx-model-reference.md",
+            "/llm/phx/dev/exporter-patterns.md"
+          ]
+        },
+        {
+          "title": "Export / Import Patterns",
+          "path": "/phx/dev/exporter-patterns/",
+          "raw_path": "/llm/phx/dev/exporter-patterns.md",
+          "section": "Developer",
+          "llm_purpose": "Patterns and conventions for PHX exporters (to WUFI XML, PHPP, PPP) and importers (from HBJSON, WUFI XML)",
+          "llm_use_when": "Before writing or modifying an exporter/importer, or debugging data conversion between formats",
+          "llm_related": [
+            "/llm/phx/reference/phx-model-reference.md",
+            "/llm/phx/dev/architecture.md"
+          ]
+        },
+        {
+          "title": "PHX Model Reference",
+          "path": "/phx/reference/phx-model-reference/",
+          "raw_path": "/llm/phx/reference/phx-model-reference.md",
+          "section": "Reference",
+          "llm_purpose": "Complete object graph, module map, design patterns, and testing conventions for the PHX in-memory data model",
+          "llm_use_when": "Before navigating, modifying, extending, or testing any PHX model class",
+          "llm_related": [
+            "/llm/phx/reference/wufi-xml-schema.md",
+            "/llm/phx/dev/architecture.md"
+          ]
+        },
+        {
+          "title": "WUFI XML Schema",
+          "path": "/phx/reference/wufi-xml-schema/",
+          "raw_path": "/llm/phx/reference/wufi-xml-schema.md",
+          "section": "Reference",
+          "llm_purpose": "Authoritative field mapping for all WUFI-Passive XML elements — structure map, UI-to-XML dictionary, and SI/IP unit conversions",
+          "llm_use_when": "Before parsing, generating, validating, verifying, or modifying any WUFI-Passive XML file",
+          "llm_related": [
+            "/llm/phx/reference/phx-model-reference.md",
+            "/llm/phx/dev/exporter-patterns.md"
+          ]
+        },
+        {
+          "title": "PHPP Field Mapping",
+          "path": "/phx/reference/phpp-field-mapping/",
+          "raw_path": "/llm/phx/reference/phpp-field-mapping.md",
+          "section": "Reference",
+          "llm_purpose": "Cell-level locator map for reading and writing PHPP 10.6 Excel worksheets via PHX",
+          "llm_use_when": "Before reading, writing, or debugging PHX PHPP export — locating worksheet cells and understanding the locator pattern",
+          "llm_related": [
+            "/llm/phx/reference/phx-model-reference.md",
+            "/llm/phx/dev/exporter-patterns.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "honeybee-revive",
+      "label": "Honeybee-REVIVE",
+      "description": "Carbon & energy analysis for building design. Resilience & embodied-carbon workflows for Phius REVIVE.",
+      "pages": [
+        {
+          "title": "Overview",
+          "path": "/honeybee-revive/",
+          "raw_path": "/llm/honeybee-revive/index.md",
+          "section": null
+        }
+      ]
+    }
+  ]
+}
