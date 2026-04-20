@@ -909,6 +909,17 @@ button { font-family: inherit; }
   font-size: 13.5px;
 }
 
+/* Mermaid diagrams */
+.article .mermaid {
+  margin: 0 0 20px 0;
+  text-align: center;
+  overflow-x: auto;
+}
+.article .mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
 .article blockquote {
   margin: 0 0 16px 0;
   padding: 12px 20px;

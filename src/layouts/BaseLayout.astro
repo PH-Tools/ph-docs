@@ -36,6 +36,20 @@ const { title = "PH-Tools Documentation", activeLib, hideFooter = false } = Astr
     </main>
     {!hideFooter && <Footer />}
     <SearchModal />
+    <script is:inline>
+      // Only load Mermaid if the page has mermaid diagrams
+      (function () {
+        if (!document.querySelector('.mermaid')) return;
+        var theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'neutral';
+        var s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js';
+        s.onload = function () {
+          mermaid.initialize({ startOnLoad: true, theme: theme, securityLevel: 'strict' });
+          mermaid.run();
+        };
+        document.head.appendChild(s);
+      })();
+    </script>
     <script>
       // Theme toggle
       const themeBtn = document.getElementById("themeToggle");
