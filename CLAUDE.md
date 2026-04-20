@@ -16,6 +16,8 @@ Refer to `context/PRD.Dmd` for strategy and design decisions.
 - **Spokes**: Library repos (honeybee_ph, PHX, honeybee_revive) that own their docs in a standard `/docs` folder with `index.md` + `nav.yml`.
 - **Build sequence**: `python scripts/fetch_spokes.py` → `pnpm build` (Astro + Pagefind) → deploy `dist/` to gh-pages.
 
+
+
 ### Key Technical Details
 
 - **Single layout**: `BaseLayout.astro` is the only layout — all pages (hub landing, library landing, content) use it with props (`activeLib`, `hideFooter`).
