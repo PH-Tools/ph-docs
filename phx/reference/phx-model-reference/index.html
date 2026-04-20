@@ -1,0 +1,774 @@
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>PHX Model Reference — PHX — PH-Tools Docs</title><script>
+      // Set theme before first paint to prevent flash
+      (function () {
+        try {
+          var t = localStorage.getItem("ph-docs:theme");
+          if (t) document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/_astro/_slug_.DYCPJwEQ.css"></head> <body> <header class="site-header" id="siteHeader"> <a class="site-header__logo" href="/"> <span class="site-header__logo-mark" aria-hidden="true"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"> <path d="M12 2 L22 8 L12 14 L2 8 Z" fill="var(--accent-light)" stroke="var(--accent)"></path> <path d="M2 8 L2 17 L12 23 L12 14 Z" stroke="var(--accent)"></path> <path d="M22 8 L22 17 L12 23 L12 14 Z" stroke="var(--accent-dark)"></path> </svg> </span> <span>PH-TOOLS<span style="color:var(--fg-faint); margin-left:6px;">/ docs</span></span> </a> <nav class="nav-primary" id="primaryNav"> <a href="/honeybee-ph/" class> Honeybee-PH </a><a href="/phx/" class="is-active"> PHX </a><a href="/honeybee-revive/" class> Honeybee-REVIVE </a> </nav> <div class="nav-tools"> <button class="search-btn" id="openSearch" aria-label="Open search"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <span>Search docs…</span> <span class="kbd">⌘K</span> </button> <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme"> <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"> <circle cx="12" cy="12" r="4"></circle> <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path> </svg> <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" style="display:none;"> <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.8 6.8 0 0 0 9.8 9.8Z"></path> </svg> </button> <a class="icon-btn" href="https://github.com/PH-Tools" aria-label="GitHub" title="GitHub"> <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.56 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"></path></svg> </a> </div> </header> <main>  <div class="with-sidebar"> <aside class="sidebar"> <div class="sidebar__label">Library · PHX</div> <ul class="nav-tree"> <li> <a class href="/phx/"> <span class="num">01</span> Overview </a> </li><li class="group"> <button aria-expanded="false"> <span class="num">02</span> Developer <svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"> <path d="m3 2 4 3-4 3"></path> </svg> </button> <ul class="children"> <li> <a class href="/phx/dev/architecture/"> Architecture </a> </li><li> <a class href="/phx/dev/exporter-patterns/"> Exporter &amp; Importer Patterns </a> </li> </ul> </li><li class="group is-open"> <button aria-expanded="true"> <span class="num">03</span> Reference <svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"> <path d="m3 2 4 3-4 3"></path> </svg> </button> <ul class="children"> <li> <a class="is-active" href="/phx/reference/phx-model-reference/"> PHX Model Reference </a> </li><li> <a class href="/phx/reference/wufi-xml-schema/"> WUFI XML Schema </a> </li><li> <a class href="/phx/reference/phpp-field-mapping/"> PHPP Field Mapping </a> </li> </ul> </li> </ul> </aside> <script type="module">document.querySelectorAll(".nav-tree .group > button").forEach(e=>{e.addEventListener("click",()=>{const t=e.parentElement.classList.toggle("is-open");e.setAttribute("aria-expanded",String(t))})});</script> <div> <header class="content-head"> <div class="content-head__crumb">  <span>Reference</span> <span class="sep">&rsaquo;</span>  <span class="current">PHX Model Reference</span> </div> </header> <article class="article" data-pagefind-body data-pagefind-meta="library:PHX"> <h1 id="phx-model-reference">PHX Model Reference</h1>
+<p>PHX (Passive House Exchange) is an in-memory intermediate representation of Passive House building data. Models are created from source formats (HBJSON, WUFI XML) and consumed by exporters (WUFI XML, PHPP, PPP, METr JSON). PHX models are never serialized directly.</p>
+<hr>
+<h2 id="object-graph">Object Graph</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>PhxProject</span></span>
+<span class="line"><span>├── assembly_types: dict[str, PhxConstructionOpaque]</span></span>
+<span class="line"><span>│   └── layers: list[PhxLayer]</span></span>
+<span class="line"><span>│       ├── material: PhxMaterial</span></span>
+<span class="line"><span>│       └── divisions: PhxLayerDivisionGrid (optional, for composite layers)</span></span>
+<span class="line"><span>│           └── cells: list[PhxLayerDivisionCell]</span></span>
+<span class="line"><span>├── window_types: dict[str, PhxConstructionWindow]</span></span>
+<span class="line"><span>│   ├── frame_top/right/bottom/left: PhxWindowFrameElement</span></span>
+<span class="line"><span>│   └── _id_num_shade → PhxWindowShade</span></span>
+<span class="line"><span>├── shade_types: dict[str, PhxWindowShade]</span></span>
+<span class="line"><span>├── utilization_patterns_ventilation: UtilizationPatternCollection_Ventilation</span></span>
+<span class="line"><span>├── utilization_patterns_occupancy: UtilizationPatternCollection_Occupancy</span></span>
+<span class="line"><span>├── utilization_patterns_lighting: UtilizationPatternCollection_Lighting</span></span>
+<span class="line"><span>├── project_data: PhxProjectData</span></span>
+<span class="line"><span>│   ├── customer: ProjectData_Agent</span></span>
+<span class="line"><span>│   ├── building: ProjectData_Agent</span></span>
+<span class="line"><span>│   ├── owner: ProjectData_Agent</span></span>
+<span class="line"><span>│   ├── designer: ProjectData_Agent</span></span>
+<span class="line"><span>│   └── project_date: PhxProjectDate</span></span>
+<span class="line"><span>└── variants: list[PhxVariant]</span></span>
+<span class="line"><span>    ├── building: PhxBuilding</span></span>
+<span class="line"><span>    │   ├── _components: list[PhxComponentOpaque]</span></span>
+<span class="line"><span>    │   │   ├── assembly → PhxConstructionOpaque (ref by identifier)</span></span>
+<span class="line"><span>    │   │   ├── polygons: list[PhxPolygon]</span></span>
+<span class="line"><span>    │   │   │   └── vertices: list[PhxVertix]</span></span>
+<span class="line"><span>    │   │   └── apertures: list[PhxComponentAperture]</span></span>
+<span class="line"><span>    │   │       ├── window_type → PhxConstructionWindow (ref by identifier)</span></span>
+<span class="line"><span>    │   │       └── elements: list[PhxApertureElement]</span></span>
+<span class="line"><span>    │   │           ├── polygon: PhxPolygonRectangular | PhxPolygon | None</span></span>
+<span class="line"><span>    │   │           └── shading_dimensions: PhxApertureShadingDimensions</span></span>
+<span class="line"><span>    │   └── zones: list[PhxZone]</span></span>
+<span class="line"><span>    │       ├── spaces: list[PhxSpace]</span></span>
+<span class="line"><span>    │       │   ├── ventilation: PhxProgramVentilation (load + schedule)</span></span>
+<span class="line"><span>    │       │   ├── occupancy: PhxProgramOccupancy (load + schedule)</span></span>
+<span class="line"><span>    │       │   └── lighting: PhxProgramLighting (load + schedule)</span></span>
+<span class="line"><span>    │       ├── _thermal_bridges: dict[str, PhxComponentThermalBridge]</span></span>
+<span class="line"><span>    │       ├── elec_equipment_collection: PhxElectricDeviceCollection</span></span>
+<span class="line"><span>    │       │   └── _devices: dict[str, PhxElectricalDevice subclass]</span></span>
+<span class="line"><span>    │       └── exhaust_ventilator_collection: PhxExhaustVentilatorCollection</span></span>
+<span class="line"><span>    ├── site: PhxSite</span></span>
+<span class="line"><span>    │   ├── location: PhxLocation</span></span>
+<span class="line"><span>    │   ├── climate: PhxClimate</span></span>
+<span class="line"><span>    │   │   └── peak_heating/cooling: PhxClimatePeakLoad</span></span>
+<span class="line"><span>    │   ├── ground: PhxGround</span></span>
+<span class="line"><span>    │   ├── phpp_codes: PhxPHPPCodes</span></span>
+<span class="line"><span>    │   └── energy_factors: PhxSiteEnergyFactors</span></span>
+<span class="line"><span>    │       ├── pe_factors: dict[str, PhxPEFactor]</span></span>
+<span class="line"><span>    │       └── co2_factors: dict[str, PhxCO2Factor]</span></span>
+<span class="line"><span>    ├── phius_cert: PhxPhiusCertification</span></span>
+<span class="line"><span>    │   ├── phius_certification_criteria: PhxPhiusCertificationCriteria</span></span>
+<span class="line"><span>    │   ├── phius_certification_settings: PhxPhiusCertificationSettings</span></span>
+<span class="line"><span>    │   └── ph_building_data: PhxPhBuildingData</span></span>
+<span class="line"><span>    │       ├── setpoints: PhxSetpoints</span></span>
+<span class="line"><span>    │       ├── summer_ventilation: PhxSummerVentilation</span></span>
+<span class="line"><span>    │       └── foundations: list[PhxFoundation]</span></span>
+<span class="line"><span>    │           (subtypes: PhxHeatedBasement, PhxUnHeatedBasement,</span></span>
+<span class="line"><span>    │            PhxSlabOnGrade, PhxVentedCrawlspace)</span></span>
+<span class="line"><span>    ├── phi_cert: PhxPhiCertification</span></span>
+<span class="line"><span>    │   └── phi_certification_settings: PhxPhiCertificationSettings</span></span>
+<span class="line"><span>    └── _mech_collections: list[PhxMechanicalSystemCollection]</span></span>
+<span class="line"><span>        ├── _devices: dict[str, AnyMechDevice]</span></span>
+<span class="line"><span>        │   (PhxDeviceVentilator, PhxHeater*, PhxHeatPump*, PhxHotWaterTank)</span></span>
+<span class="line"><span>        ├── _distribution_piping_trunks: dict[str, PhxPipeTrunk]</span></span>
+<span class="line"><span>        │   └── branches: list[PhxPipeBranch]</span></span>
+<span class="line"><span>        │       └── fixtures: list[PhxPipeElement]</span></span>
+<span class="line"><span>        │           └── segments: dict[str, PhxPipeSegment]</span></span>
+<span class="line"><span>        ├── _distribution_piping_recirc: dict[str, PhxPipeElement]</span></span>
+<span class="line"><span>        ├── _distribution_ducting: dict[str, PhxDuctElement]</span></span>
+<span class="line"><span>        │   └── segments: dict[str, PhxDuctSegment]</span></span>
+<span class="line"><span>        ├── supportive_devices: PhxSupportiveDeviceCollection</span></span>
+<span class="line"><span>        │   └── _devices: dict[str, PhxSupportiveDevice]</span></span>
+<span class="line"><span>        └── renewable_devices: PhxRenewableDeviceCollection</span></span>
+<span class="line"><span>            └── _devices: dict[str, PhxDevicePhotovoltaic]</span></span></code></pre>
+<hr>
+<h2 id="quick-lookup">Quick Lookup</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>You want to find…</th><th>Navigate to…</th></tr></thead><tbody><tr><td>Wall/floor/roof surfaces</td><td><code>PhxBuilding._components</code> (list of <code>PhxComponentOpaque</code>)</td></tr><tr><td>Windows in a wall</td><td><code>PhxComponentOpaque.apertures</code> (list of <code>PhxComponentAperture</code>)</td></tr><tr><td>Construction/U-value</td><td><code>PhxComponentOpaque.assembly</code> → <code>PhxConstructionOpaque</code></td></tr><tr><td>Material layers</td><td><code>PhxConstructionOpaque.layers</code> → <code>PhxLayer</code> → <code>PhxMaterial</code></td></tr><tr><td>Mixed-material layers</td><td><code>PhxLayer.divisions</code> → <code>PhxLayerDivisionGrid</code> → <code>PhxLayerDivisionCell</code></td></tr><tr><td>Heat-flow pathways</td><td><code>PhxConstructionOpaque.heat_flow_pathways</code> → <code>list[PhxHeatFlowPathway]</code></td></tr><tr><td>Window properties</td><td><code>PhxComponentAperture.window_type</code> → <code>PhxConstructionWindow</code></td></tr><tr><td>Window frames</td><td><code>PhxConstructionWindow.frame_top/right/bottom/left</code> → <code>PhxWindowFrameElement</code></td></tr><tr><td>Room ventilation rates</td><td><code>PhxSpace.ventilation</code> → <code>PhxProgramVentilation.load</code> → <code>PhxLoadVentilation</code></td></tr><tr><td>Occupancy schedule</td><td><code>PhxSpace.occupancy</code> → <code>PhxProgramOccupancy.schedule</code> → <code>PhxScheduleOccupancy</code></td></tr><tr><td>Thermal bridges</td><td><code>PhxZone.thermal_bridges</code> (returns <code>ValuesView[PhxComponentThermalBridge]</code>)</td></tr><tr><td>HVAC devices</td><td><code>PhxVariant.mech_collections</code> → <code>PhxMechanicalSystemCollection.devices</code></td></tr><tr><td>Hot water piping</td><td><code>PhxMechanicalSystemCollection.dhw_distribution_trunks</code> → <code>PhxPipeTrunk</code> → <code>PhxPipeBranch</code></td></tr><tr><td>Recirculation piping</td><td><code>PhxMechanicalSystemCollection.dhw_recirc_piping</code> → <code>list[PhxPipeElement]</code></td></tr><tr><td>Ventilation ducting</td><td><code>PhxMechanicalSystemCollection.vent_ducting</code> → <code>list[PhxDuctElement]</code></td></tr><tr><td>Electrical equipment</td><td><code>PhxZone.elec_equipment_collection</code> → <code>PhxElectricDeviceCollection</code></td></tr><tr><td>Exhaust ventilators</td><td><code>PhxZone.exhaust_ventilator_collection</code> → <code>PhxExhaustVentilatorCollection</code></td></tr><tr><td>Supportive devices</td><td><code>PhxMechanicalSystemCollection.supportive_devices</code> → <code>PhxSupportiveDeviceCollection</code></td></tr><tr><td>Renewable energy (PV)</td><td><code>PhxMechanicalSystemCollection.renewable_devices</code> → <code>PhxRenewableDeviceCollection</code></td></tr><tr><td>Climate/location</td><td><code>PhxVariant.site</code> → <code>PhxSite</code> → <code>.location</code>, <code>.climate</code></td></tr><tr><td>Certification data</td><td><code>PhxVariant.phius_cert</code> or <code>PhxVariant.phi_cert</code></td></tr><tr><td>Foundation data</td><td><code>PhxVariant.phius_cert.ph_building_data.foundations</code></td></tr><tr><td>All assembly types</td><td><code>PhxProject.assembly_types</code> (dict by identifier)</td></tr><tr><td>All window types</td><td><code>PhxProject.window_types</code> (dict by identifier)</td></tr><tr><td>All shade types</td><td><code>PhxProject.shade_types</code> (dict by identifier)</td></tr></tbody></table>
+<hr>
+<h2 id="module-map">Module Map</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Module</th><th>Key Classes</th><th>Purpose</th></tr></thead><tbody><tr><td><code>model/project.py</code></td><td><code>PhxProject</code>, <code>PhxVariant</code>, <code>PhxProjectData</code>, <code>ProjectData_Agent</code>, <code>PhxProjectDate</code>, <code>WufiPlugin</code></td><td>Top-level containers</td></tr><tr><td><code>model/building.py</code></td><td><code>PhxBuilding</code>, <code>PhxZone</code></td><td>Building geometry container, thermal zones</td></tr><tr><td><code>model/components.py</code></td><td><code>PhxComponentBase</code>, <code>PhxComponentOpaque</code>, <code>PhxComponentAperture</code>, <code>PhxApertureElement</code>, <code>PhxApertureShadingDimensions</code>, <code>PhxComponentThermalBridge</code></td><td>Surfaces, windows, thermal bridges</td></tr><tr><td><code>model/constructions.py</code></td><td><code>PhxConstructionOpaque</code>, <code>PhxConstructionWindow</code>, <code>PhxWindowFrameElement</code>, <code>PhxLayer</code>, <code>PhxLayerDivisionGrid</code>, <code>PhxLayerDivisionCell</code>, <code>PhxMaterial</code>, <code>PhxColor</code></td><td>Assembly/material definitions</td></tr><tr><td><code>model/assembly_pathways.py</code></td><td><code>PhxHeatFlowPathway</code>, <code>identify_heat_flow_pathways()</code>, <code>compute_r_value_from_pathways()</code></td><td>ISO 6946 heat-flow pathway analysis for composite assemblies</td></tr><tr><td><code>model/geometry.py</code></td><td><code>PhxPolygon</code>, <code>PhxPolygonRectangular</code>, <code>PhxVertix</code>, <code>PhxVertix2D</code>, <code>PhxVector</code>, <code>PhxPlane</code>, <code>PhxLineSegment</code>, <code>PhxGraphics3D</code></td><td>3D geometry primitives</td></tr><tr><td><code>model/spaces.py</code></td><td><code>PhxSpace</code></td><td>Individual room/subzone with programs</td></tr><tr><td><code>model/certification.py</code></td><td><code>PhxPhiCertification</code>, <code>PhxPhiCertificationSettings</code>, <code>PhxPhiusCertification</code>, <code>PhxPhiusCertificationCriteria</code>, <code>PhxPhiusCertificationSettings</code>, <code>PhxPhBuildingData</code>, <code>PhxSetpoints</code>, <code>PhxSummerVentilation</code></td><td>Passive house certification data</td></tr><tr><td><code>model/elec_equip.py</code></td><td><code>PhxElectricalDevice</code> (base), <code>PhxElectricDeviceCollection</code>, + device subclasses (see below)</td><td>Household electrical devices</td></tr><tr><td><code>model/ground.py</code></td><td><code>PhxFoundation</code> (base), <code>PhxHeatedBasement</code>, <code>PhxUnHeatedBasement</code>, <code>PhxSlabOnGrade</code>, <code>PhxVentedCrawlspace</code></td><td>Ground/foundation models</td></tr><tr><td><code>model/phx_site.py</code></td><td><code>PhxSite</code>, <code>PhxLocation</code>, <code>PhxClimate</code>, <code>PhxClimatePeakLoad</code>, <code>PhxClimateIterOutput</code>, <code>PhxGround</code>, <code>PhxPEFactor</code>, <code>PhxCO2Factor</code>, <code>PhxSiteEnergyFactors</code>, <code>PhxPHPPCodes</code></td><td>Location and climate data</td></tr><tr><td><code>model/shades.py</code></td><td><code>PhxWindowShade</code></td><td>Window shading devices</td></tr><tr><td><code>model/utilization_patterns.py</code></td><td><code>UtilizationPatternCollection_Ventilation</code>, <code>UtilizationPatternCollection_Occupancy</code>, <code>UtilizationPatternCollection_Lighting</code></td><td>Schedule collections</td></tr><tr><td><code>model/enums/</code></td><td>Various enums</td><td><code>building.py</code>, <code>hvac.py</code>, <code>elec_equip.py</code>, <code>foundations.py</code>, <code>phx_site.py</code>, <code>phi_certification_phpp_9.py</code>, <code>phi_certification_phpp_10.py</code>, <code>phius_certification.py</code></td></tr><tr><td><code>model/schedules/</code></td><td><code>PhxScheduleVentilation</code> (+ <code>Vent_UtilPeriods</code>, <code>Vent_OperatingPeriod</code>), <code>PhxScheduleOccupancy</code>, <code>PhxScheduleLighting</code></td><td>Time-based operating patterns</td></tr><tr><td><code>model/loads/</code></td><td><code>PhxLoadVentilation</code>, <code>PhxLoadOccupancy</code>, <code>PhxLoadLighting</code></td><td>Numeric load definitions</td></tr><tr><td><code>model/programs/</code></td><td><code>PhxProgramVentilation</code>, <code>PhxProgramOccupancy</code>, <code>PhxProgramLighting</code></td><td>Load + Schedule pairs</td></tr></tbody></table>
+<h3 id="electrical-equipment-devices-modelelec_equippy">Electrical Equipment Devices (<code>model/elec_equip.py</code>)</h3>
+<p>All subclass <code>PhxElectricalDevice</code>:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Class</th><th>Device Type</th></tr></thead><tbody><tr><td><code>PhxDeviceDishwasher</code></td><td>Kitchen dishwasher</td></tr><tr><td><code>PhxDeviceClothesWasher</code></td><td>Laundry washer</td></tr><tr><td><code>PhxDeviceClothesDryer</code></td><td>Laundry dryer</td></tr><tr><td><code>PhxDeviceRefrigerator</code></td><td>Refrigerator</td></tr><tr><td><code>PhxDeviceFreezer</code></td><td>Freezer</td></tr><tr><td><code>PhxDeviceFridgeFreezer</code></td><td>Fridge/freezer combo</td></tr><tr><td><code>PhxDeviceCooktop</code></td><td>Kitchen cooking</td></tr><tr><td><code>PhxDeviceMEL</code></td><td>Misc. electric loads</td></tr><tr><td><code>PhxDeviceLightingInterior</code></td><td>Interior lighting</td></tr><tr><td><code>PhxDeviceLightingExterior</code></td><td>Exterior lighting</td></tr><tr><td><code>PhxDeviceLightingGarage</code></td><td>Garage lighting</td></tr><tr><td><code>PhxDeviceCustomElec</code></td><td>User-defined electric</td></tr><tr><td><code>PhxDeviceCustomLighting</code></td><td>User-defined lighting</td></tr><tr><td><code>PhxDeviceCustomMEL</code></td><td>User-defined MEL</td></tr><tr><td><code>PhxElevatorHydraulic</code></td><td>Hydraulic elevator</td></tr><tr><td><code>PhxElevatorGearedTraction</code></td><td>Geared traction elevator</td></tr><tr><td><code>PhxElevatorGearlessTraction</code></td><td>Gearless traction elevator</td></tr></tbody></table>
+<h3 id="hvac-subsystem-modelhvac">HVAC Subsystem (<code>model/hvac/</code>)</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Module</th><th>Key Classes</th></tr></thead><tbody><tr><td><code>_base.py</code></td><td><code>PhxMechanicalDevice</code> (base), <code>PhxMechanicalDeviceParams</code> (base), <code>PhxUsageProfile</code></td></tr><tr><td><code>collection.py</code></td><td><code>PhxMechanicalSystemCollection</code>, <code>PhxExhaustVentilatorCollection</code>, <code>PhxSupportiveDeviceCollection</code>, <code>PhxRenewableDeviceCollection</code>, <code>PhxZoneCoverage</code></td></tr><tr><td><code>ventilation.py</code></td><td><code>PhxDeviceVentilation</code> (base), <code>PhxDeviceVentilator</code>, <code>PhxDeviceVentilatorParams</code>, <code>PhxExhaustVentilatorBase</code>, <code>PhxExhaustVentilatorRangeHood</code>, <code>PhxExhaustVentilatorDryer</code>, <code>PhxExhaustVentilatorUserDefined</code>, <code>PhxExhaustVentilatorParams</code></td></tr><tr><td><code>heating.py</code></td><td><code>PhxHeatingDevice</code> (base), <code>PhxHeaterElectric</code>, <code>PhxHeaterBoilerFossil</code>, <code>PhxHeaterBoilerWood</code>, <code>PhxHeaterDistrictHeat</code>, + corresponding <code>*Params</code> classes</td></tr><tr><td><code>heat_pumps.py</code></td><td><code>PhxHeatPumpDevice</code> (base), <code>PhxHeatPumpAnnual</code>, <code>PhxHeatPumpMonthly</code>, <code>PhxHeatPumpHotWater</code>, <code>PhxHeatPumpCombined</code>, + corresponding <code>*Params</code> classes</td></tr><tr><td><code>water.py</code></td><td><code>PhxHotWaterDevice</code> (base), <code>PhxHotWaterTank</code>, <code>PhxHotWaterTankParams</code></td></tr><tr><td><code>piping.py</code></td><td><code>PhxPipeTrunk</code>, <code>PhxPipeBranch</code>, <code>PhxPipeElement</code>, <code>PhxPipeSegment</code>, <code>PhxRecirculationParameters</code></td></tr><tr><td><code>ducting.py</code></td><td><code>PhxDuctElement</code>, <code>PhxDuctSegment</code></td></tr><tr><td><code>renewable_devices.py</code></td><td><code>PhxDevicePhotovoltaic</code>, <code>PhxDevicePhotovoltaicParams</code></td></tr><tr><td><code>supportive_devices.py</code></td><td><code>PhxSupportiveDevice</code>, <code>PhxSupportiveDeviceParams</code></td></tr><tr><td><code>cooling_params.py</code></td><td><code>PhxCoolingParams</code> (collection), <code>PhxCoolingVentilationParams</code>, <code>PhxCoolingRecirculationParams</code>, <code>PhxCoolingDehumidificationParams</code>, <code>PhxCoolingPanelParams</code></td></tr></tbody></table>
+<hr>
+<h2 id="design-patterns">Design Patterns</h2>
+<h3 id="classvar-counters">ClassVar Counters</h3>
+<p>Every model class has <code>_count: ClassVar[int] = 0</code> auto-incremented in <code>__post_init__</code> or <code>__init__</code>, assigning <code>id_num</code>. Tests must reset these for predictable IDs.</p>
+<h3 id="uuid--id_num-dual-identity">UUID + id_num Dual Identity</h3>
+<p>Constructions and devices carry both a <code>uuid.UUID | str</code> identifier and an integer <code>id_num</code>. The UUID is for lookup/deduplication; <code>id_num</code> is for sequential output numbering.</p>
+<h3 id="__add__-merging"><code>__add__</code> Merging</h3>
+<p>The following model classes support <code>+</code> for consolidation (merging coplanar surfaces, combining spaces by ERV, etc.):</p>
+<ul>
+<li><code>PhxComponentOpaque</code> — merge surfaces with same assembly</li>
+<li><code>PhxComponentAperture</code> — merge windows with same type</li>
+<li><code>PhxComponentThermalBridge</code> — merge TBs with same psi/type (length-weighted psi recalculation)</li>
+<li><code>PhxSpace</code> — merge spaces by ERV assignment</li>
+<li><code>PhxLoadVentilation</code> — combine airflow values</li>
+<li><code>PhxUsageProfile</code> — combine coverage percentages</li>
+<li><code>PhxMechanicalDevice</code> (and subclasses) — merge device quantities/coverage</li>
+<li><code>PhxMechanicalDeviceParams</code> (and subclasses) — merge device parameters</li>
+<li>Various exhaust ventilator types, <code>PhxHotWaterTank</code>, <code>PhxSupportiveDevice</code>, <code>PhxDevicePhotovoltaic</code></li>
+</ul>
+<h3 id="program--load--schedule">Program = Load + Schedule</h3>
+<p>Ventilation, occupancy, and lighting each follow: <code>PhxProgram* = PhxLoad* + PhxSchedule*</code>. The load holds numeric values (airflow, people, watts); the schedule holds operating periods and hours.</p>
+<h3 id="dict-keyed-vs-list-collections">Dict-Keyed vs List Collections</h3>
+<ul>
+<li><strong>Dict-keyed</strong> (by identifier/key): <code>assembly_types</code>, <code>window_types</code>, <code>shade_types</code>, <code>_devices</code>, <code>_thermal_bridges</code> — O(1) lookup</li>
+<li><strong>List-ordered</strong>: <code>variants</code>, <code>zones</code>, <code>spaces</code>, <code>_components</code> — ordered iteration</li>
+</ul>
+<h3 id="component-classes-use-__init__-not-dataclass">Component Classes Use <code>__init__</code> (not dataclass)</h3>
+<p><code>PhxComponentBase</code> subclasses (<code>PhxComponentOpaque</code>, <code>PhxComponentAperture</code>, <code>PhxApertureShadingDimensions</code>, <code>PhxComponentThermalBridge</code>) use plain <code>__init__</code> with a shared <code>_count</code> on <code>PhxComponentBase</code>, unlike most other model classes which use <code>@dataclass</code>.</p>
+<h3 id="library-references">Library References</h3>
+<p>Constructions/windows/shades live in project-level dicts; components reference them by identifier, not by embedding.</p>
+<h3 id="piping-hierarchy">Piping Hierarchy</h3>
+<p>DHW piping uses a three-level hierarchy: <code>PhxPipeTrunk</code> → <code>PhxPipeBranch</code> → <code>PhxPipeElement</code> (fixtures). Each <code>PhxPipeElement</code> contains <code>PhxPipeSegment</code> objects. Recirculation piping is stored separately as flat <code>PhxPipeElement</code> entries.</p>
+<hr>
+<h2 id="honeybee-to-phx-concept-mapping">Honeybee to PHX Concept Mapping</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Honeybee</th><th>PHX</th><th>Notes</th></tr></thead><tbody><tr><td><code>Model</code></td><td><code>PhxProject</code></td><td>Top-level container. One HB Model → one PhxProject.</td></tr><tr><td><code>Room</code></td><td><code>PhxZone</code> (via <code>PhxBuilding</code>)</td><td>HB Rooms grouped by <code>ph_bldg_segment</code> into zones.</td></tr><tr><td><code>Room</code> (sub-space)</td><td><code>PhxSpace</code></td><td>Each HB Room → one or more PhxSpaces within a zone.</td></tr><tr><td><code>Face</code> (Wall/Floor/Roof)</td><td><code>PhxComponentOpaque</code></td><td>Each HB Face → component with geometry + assembly ref.</td></tr><tr><td><code>Aperture</code></td><td><code>PhxComponentAperture</code> / <code>PhxApertureElement</code></td><td>Windows within opaque components.</td></tr><tr><td><code>OpaqueConstruction</code></td><td><code>PhxConstructionOpaque</code></td><td>Reusable assembly in <code>PhxProject.assembly_types</code>.</td></tr><tr><td><code>WindowConstruction</code></td><td><code>PhxConstructionWindow</code></td><td>Reusable window type in <code>PhxProject.window_types</code>.</td></tr><tr><td><code>EnergyMaterial</code></td><td><code>PhxMaterial</code></td><td>Part of construction layers.</td></tr><tr><td><code>IdealAirSystem</code> / HVAC</td><td><code>PhxMechanicalSystemCollection</code></td><td>HB HVAC → PHX device collections.</td></tr><tr><td><code>Schedule</code></td><td><code>PhxSchedule*</code></td><td>Operating patterns with utilization periods.</td></tr><tr><td><code>ph_bldg_segment</code></td><td><code>PhxVariant</code></td><td>Rooms sharing a segment become one variant.</td></tr></tbody></table>
+<h3 id="key-structural-differences">Key Structural Differences</h3>
+<p><strong>Libraries vs inline:</strong> Honeybee stores constructions/schedules inline on rooms and faces. PHX extracts them into project-level libraries and components reference by identifier.</p>
+<p><strong>Room → Zone + Space split:</strong> A single HB Room may become one PhxZone with one PhxSpace, or multiple rooms may be grouped into a single zone with multiple spaces (grouped by <code>ph_bldg_segment</code>).</p>
+<p><strong>Program composition:</strong> HB stores loads and schedules separately. PHX pairs them: <code>PhxProgramVentilation</code> = <code>PhxLoadVentilation</code> + <code>PhxScheduleVentilation</code>.</p>
+<p><strong>HVAC disaggregation:</strong> HB uses high-level <code>IdealAirSystem</code>. PHX disaggregates into specific device types (ventilators, heaters, heat pumps, hot water tanks, piping) with usage profiles specifying coverage percentages.</p>
+<h3 id="conversion-entry-points">Conversion Entry Points</h3>
+<p>The PHX repo’s <code>from_HBJSON/</code> package handles Honeybee → PHX conversion:</p>
+<ul>
+<li><code>create_project.convert_hb_model_to_PhxProject()</code> — main entry point</li>
+<li><code>create_variant.py</code> — build PhxVariant from HB model</li>
+<li><code>create_building.py</code>, <code>create_rooms.py</code>, <code>create_geometry.py</code> — geometry conversion</li>
+<li><code>create_assemblies.py</code> — construction/material conversion</li>
+<li><code>create_hvac.py</code> — HVAC device conversion</li>
+<li><code>create_schedules.py</code> — schedule conversion</li>
+<li><code>create_elec_equip.py</code> — electrical equipment conversion</li>
+<li><code>create_shades.py</code> — shade device conversion</li>
+<li><code>create_shw_devices.py</code> — service hot water device conversion</li>
+<li><code>create_foundations.py</code> — foundation/ground conversion</li>
+<li><code>cleanup.py</code>, <code>cleanup_merge_faces.py</code> — post-conversion cleanup (vertex welding, face merging, component grouping)</li>
+</ul>
+<hr>
+<h2 id="testing-patterns">Testing Patterns</h2>
+<h3 id="class-counter-reset">Class Counter Reset</h3>
+<p>Tests <strong>must</strong> reset <code>_count</code> ClassVars for predictable IDs:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#B392F0">@pytest.fixture</span></span>
+<span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> reset_class_counters</span><span style="color:#E1E4E8">():</span></span>
+<span class="line"><span style="color:#E1E4E8">    _reset_phx_class_counters()</span></span>
+<span class="line"><span style="color:#F97583">    try</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#F97583">        yield</span></span>
+<span class="line"><span style="color:#F97583">    finally</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">        _reset_phx_class_counters()</span></span></code></pre>
+<p>When adding a new model class with <code>_count</code>, add it to <code>_reset_phx_class_counters()</code> in <code>conftest.py</code>.</p>
+<h3 id="test-organization">Test Organization</h3>
+<p>Tests mirror the source structure under <code>tests/</code>:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Directory</th><th>Coverage</th></tr></thead><tbody><tr><td><code>test_model/</code></td><td>Unit tests for model classes (building, components, constructions, geometry, hvac, spaces, etc.)</td></tr><tr><td><code>test_from_HBJSON/</code></td><td>HBJSON → PHX conversion tests</td></tr><tr><td><code>test_to_WUFI_xml/</code></td><td>PHX → XML export tests (includes end-to-end reference cases)</td></tr><tr><td><code>test_from_WUFI/</code></td><td>XML → PHX reverse conversion tests</td></tr><tr><td><code>test_PHPP/</code></td><td>PHPP Excel export tests</td></tr><tr><td><code>test_to_PPP/</code></td><td>PPP export tests</td></tr></tbody></table>
+<h3 id="writing-new-tests">Writing New Tests</h3>
+<ol>
+<li>Place tests in the directory that mirrors the source module path</li>
+<li>Use <code>reset_class_counters</code> fixture for any test that creates model objects</li>
+<li>Test <code>__str__</code>/<code>__repr__</code> to catch serialization issues early</li>
+<li>Test <code>__add__</code> if the class supports merging</li>
+<li>Test <code>unique_key</code> if the class supports grouping</li>
+<li>For new HVAC device types, test both standalone creation and addition to <code>PhxMechanicalSystemCollection</code></li>
+</ol> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
+(function () {
+  // ---------- Modal open / close ----------
+  var scrim = document.getElementById("searchScrim");
+  var input = document.getElementById("searchInput");
+  var resultsEl = document.getElementById("searchResults");
+  var footerEl = document.getElementById("searchFooter");
+  var metaEl = document.getElementById("searchMeta");
+  if (!scrim || !input || !resultsEl || !footerEl || !metaEl) return;
+
+  var focusedIdx = -1;
+
+  function openSearch() {
+    scrim.classList.add("is-open");
+    scrim.setAttribute("aria-hidden", "false");
+    setTimeout(function () { input.focus(); }, 40);
+  }
+  function closeSearch() {
+    scrim.classList.remove("is-open");
+    scrim.setAttribute("aria-hidden", "true");
+    input.value = "";
+    resultsEl.innerHTML = "";
+    footerEl.style.display = "none";
+    focusedIdx = -1;
+  }
+
+  var openBtn = document.getElementById("openSearch");
+  if (openBtn) openBtn.addEventListener("click", openSearch);
+  document.getElementById("closeSearch").addEventListener("click", closeSearch);
+  scrim.addEventListener("click", function (e) {
+    if (e.target === scrim) closeSearch();
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if ((e.key === "k" || e.key === "K") && (e.metaKey || e.ctrlKey)) {
+      e.preventDefault();
+      scrim.classList.contains("is-open") ? closeSearch() : openSearch();
+    }
+    if (e.key === "Escape" && scrim.classList.contains("is-open")) closeSearch();
+  });
+
+  // ---------- Pagefind integration ----------
+  var pagefind = null;
+
+  function loadPagefind() {
+    if (pagefind) return Promise.resolve(pagefind);
+    return import("/pagefind/pagefind.js")
+      .then(function (pf) {
+        pagefind = pf;
+        return pf.init();
+      })
+      .then(function () { return pagefind; })
+      .catch(function () { pagefind = null; return null; });
+  }
+
+  // Debounced search
+  var timer;
+  input.addEventListener("input", function () {
+    clearTimeout(timer);
+    timer = setTimeout(function () { doSearch(input.value.trim()); }, 150);
+  });
+
+  function doSearch(query) {
+    if (!query) {
+      resultsEl.innerHTML = "";
+      footerEl.style.display = "none";
+      return;
+    }
+
+    loadPagefind().then(function (pf) {
+      if (!pf) {
+        resultsEl.innerHTML = '<div style="padding:24px;color:var(--fg-muted);font-size:14px;">Search index not available. Run <code>pnpm build</code> first.</div>';
+        return;
+      }
+      return pf.search(query).then(function (search) {
+        return Promise.all(
+          search.results.slice(0, 20).map(function (r) { return r.data(); })
+        ).then(function (results) {
+          renderResults(results, search.results.length);
+        });
+      });
+    });
+  }
+
+  function renderResults(results, totalCount) {
+    // Group by library
+    var groups = {};
+    var order = [];
+    results.forEach(function (r) {
+      var lib = (r.meta && r.meta.library) || "Other";
+      if (!groups[lib]) { groups[lib] = []; order.push(lib); }
+      groups[lib].push(r);
+    });
+
+    var html = "";
+    var globalIdx = 0;
+    order.forEach(function (lib) {
+      var items = groups[lib];
+      html += '<div class="search-group">';
+      html += '<div class="search-group__head">';
+      html += '<div class="search-group__title"><span class="dot"></span>' + lib + '</div>';
+      html += '<div class="search-group__count">' + items.length + ' result' + (items.length === 1 ? '' : 's') + '</div>';
+      html += '</div>';
+      items.forEach(function (item) {
+        html += '<a class="search-result" href="' + item.url + '" data-idx="' + globalIdx + '">';
+        html += '<div>';
+        html += '<div class="search-result__crumb">' + buildCrumb(item.url) + '</div>';
+        html += '<div class="search-result__title">' + ((item.meta && item.meta.title) || '') + '</div>';
+        html += '<div class="search-result__excerpt">' + (item.excerpt || '') + '</div>';
+        html += '</div>';
+        html += '<div class="search-result__side">';
+        html += '<span class="search-badge">' + abbreviate(lib) + '</span>';
+        html += '<span class="search-result__enter">↵ Open</span>';
+        html += '</div>';
+        html += '</a>';
+        globalIdx++;
+      });
+      html += '</div>';
+    });
+
+    resultsEl.innerHTML = html;
+    focusedIdx = -1;
+
+    metaEl.textContent = totalCount + ' result' + (totalCount === 1 ? '' : 's') + ' across ' + order.length + ' ' + (order.length === 1 ? 'library' : 'libraries');
+    footerEl.style.display = totalCount > 0 ? "" : "none";
+  }
+
+  function buildCrumb(url) {
+    var parts = url.replace(/^\/|\/$/g, "").split("/");
+    return parts.map(function (p, i) {
+      return '<span>' + (i === 0 ? p.toUpperCase() : p) + '</span>';
+    }).join('<span class="tri">›</span>');
+  }
+
+  function abbreviate(lib) {
+    if (lib.length <= 4) return lib.toUpperCase();
+    return lib.split(/[\s-]+/).map(function (w) { return w[0]; }).join("").toUpperCase();
+  }
+
+  // ---------- Keyboard navigation ----------
+  document.addEventListener("keydown", function (e) {
+    if (!scrim.classList.contains("is-open")) return;
+    var items = resultsEl.querySelectorAll(".search-result");
+    if (!items.length) return;
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      focusedIdx = Math.min(focusedIdx + 1, items.length - 1);
+      updateFocus(items);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      focusedIdx = Math.max(focusedIdx - 1, 0);
+      updateFocus(items);
+    } else if (e.key === "Enter" && focusedIdx >= 0) {
+      e.preventDefault();
+      items[focusedIdx].click();
+    }
+  });
+
+  function updateFocus(items) {
+    for (var i = 0; i < items.length; i++) {
+      if (i === focusedIdx) items[i].classList.add("is-focused");
+      else items[i].classList.remove("is-focused");
+    }
+    if (items[focusedIdx]) items[focusedIdx].scrollIntoView({ block: "nearest" });
+  }
+})();
+</script> <script type="module">const o=document.getElementById("themeToggle"),t=o?.querySelector(".icon-sun"),n=o?.querySelector(".icon-moon");function c(e){document.documentElement.setAttribute("data-theme",e);try{localStorage.setItem("ph-docs:theme",e)}catch{}t&&n&&(e==="dark"?(t.style.display="none",n.style.display=""):(t.style.display="",n.style.display="none"))}const d=document.documentElement.getAttribute("data-theme")||"light";c(d);o?.addEventListener("click",()=>{const e=document.documentElement.getAttribute("data-theme");c(e==="dark"?"light":"dark")});</script> </body> </html>
