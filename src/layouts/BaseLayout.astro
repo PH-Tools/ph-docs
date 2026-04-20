@@ -5,9 +5,11 @@ import "../styles/global.css";
 
 interface Props {
   title?: string;
+  activeLib?: string;
+  hideFooter?: boolean;
 }
 
-const { title = "PH-Tools Documentation" } = Astro.props;
+const { title = "PH-Tools Documentation", activeLib, hideFooter = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -27,11 +29,11 @@ const { title = "PH-Tools Documentation" } = Astro.props;
     </script>
   </head>
   <body>
-    <Header />
+    <Header activeLib={activeLib} />
     <main>
       <slot />
     </main>
-    <Footer />
+    {!hideFooter && <Footer />}
     <script>
       // Theme toggle
       const themeBtn = document.getElementById("themeToggle");

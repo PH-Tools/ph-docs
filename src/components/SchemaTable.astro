@@ -1,0 +1,48 @@
+---
+interface Field {
+  name: string;
+  type: string;
+  description: string;
+  required?: boolean;
+}
+
+interface Props {
+  sectionIndex?: string;
+  sectionLabel: string;
+  heading?: string;
+  intro?: string;
+  fields: Field[];
+}
+
+const { sectionIndex, sectionLabel, heading, intro, fields } = Astro.props;
+---
+
+<section class="schema-section">
+  <div class="section-label">
+    {sectionIndex && <>{sectionIndex} &middot; </>}{sectionLabel}
+  </div>
+  {heading && <h3>{heading}</h3>}
+  {intro && <p class="section-intro">{intro}</p>}
+
+  <table class="schema-table">
+    <thead>
+      <tr>
+        <th style="width:28%;">Field</th>
+        <th style="width:18%;">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {fields.map((f) => (
+        <tr>
+          <td class="field">
+            {f.name}
+            {f.required && <span class="req">REQ</span>}
+          </td>
+          <td class="type">{f.type}</td>
+          <td>{f.description}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</section>

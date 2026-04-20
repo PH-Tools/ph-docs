@@ -1,5 +1,12 @@
 ---
-// Sticky header: logo · primary nav · search button · theme toggle · GitHub
+import { getLibraries } from "../lib/libraries";
+
+interface Props {
+  activeLib?: string;
+}
+
+const { activeLib } = Astro.props;
+const libraries = getLibraries();
 ---
 
 <header class="site-header" id="siteHeader">
@@ -15,9 +22,14 @@
   </a>
 
   <nav class="nav-primary" id="primaryNav">
-    <a href="/honeybee-ph/">Honeybee-PH</a>
-    <a href="/phx/">PHX</a>
-    <a href="/honeybee-revive/">Honeybee-REVIVE</a>
+    {libraries.map((lib) => (
+      <a
+        href={`/${lib.id}/`}
+        class={activeLib === lib.id ? "is-active" : ""}
+      >
+        {lib.label}
+      </a>
+    ))}
   </nav>
 
   <div class="nav-tools">

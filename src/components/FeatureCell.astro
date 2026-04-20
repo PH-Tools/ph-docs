@@ -1,0 +1,17 @@
+---
+interface Props {
+  index: string;
+  title: string;
+  description?: string;
+  href: string;
+}
+
+const { index, title, description, href } = Astro.props;
+---
+
+<div class="f-cell">
+  <span class="f-cell__idx">{index}</span>
+  <h3 class="f-cell__title">{title}</h3>
+  {description && <p class="f-cell__desc">{description}</p>}
+  <a class="f-cell__link" href={href}>View section →</a>
+</div>

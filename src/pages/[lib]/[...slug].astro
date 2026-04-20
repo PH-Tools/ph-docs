@@ -1,0 +1,97 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Sidebar from "../../components/Sidebar.astro";
+import { getLibraries, type LibraryMeta } from "../../lib/libraries";
+import { getNavTree, getAllLeafPaths, findParentGroupLabel } from "../../lib/nav";
+import { getEntry, render } from "astro:content";
+
+export function getStaticPaths() {
+  const libraries = getLibraries();
+  const paths: {
+    params: { lib: string; slug: string };
+    props: { lib: LibraryMeta; leafPath: string; leafLabel: string };
+  }[] = [];
+
+  for (const lib of libraries) {
+    const navTree = getNavTree(lib.id);
+    const leaves = getAllLeafPaths(navTree);
+
+    for (const leaf of leaves) {
+      // index.md is handled by [lib]/index.astro
+      if (leaf.path === "index.md") continue;
+
+      paths.push({
+        params: { lib: lib.id, slug: leaf.path.replace(/\.md$/, "") },
+        props: { lib, leafPath: leaf.path, leafLabel: leaf.label },
+      });
+    }
+  }
+
+  return paths;
+}
+
+interface Props {
+  lib: LibraryMeta;
+  leafPath: string;
+  leafLabel: string;
+}
+
+const { lib, leafPath, leafLabel } = Astro.props;
+const { slug } = Astro.params;
+const navTree = getNavTree(lib.id);
+const groupLabel = findParentGroupLabel(navTree, leafPath);
+
+// Render markdown via content collection
+const entry = await getEntry("docs", `${lib.id}/${slug}`);
+const rendered = entry ? await render(entry) : null;
+const Content = rendered?.Content;
+const pageTitle =
+  (entry?.data as Record<string, unknown>)?.title as string | undefined ??
+  leafLabel;
+---
+
+<BaseLayout
+  title={`${pageTitle} — ${lib.label} — PH-Tools Docs`}
+  activeLib={lib.id}
+  hideFooter
+>
+  <div class="with-sidebar">
+    <Sidebar
+      libId={lib.id}
+      libLabel={lib.label}
+      navTree={navTree}
+      currentPath={leafPath}
+    />
+
+    <div>
+      <header class="content-head">
+        <div class="content-head__crumb">
+          {groupLabel && (
+            <>
+              <span>{groupLabel}</span>
+              <span class="sep">&rsaquo;</span>
+            </>
+          )}
+          <span class="current">{leafLabel}</span>
+        </div>
+      </header>
+
+      <article class="article">
+        {Content ? <Content /> : <p>Content not found.</p>}
+      </article>
+
+      <footer class="site-footer">
+        <div class="site-footer__left">
+          <span>PH-TOOLS</span>
+          <span>&middot;</span>
+          <a href={`https://github.com/${lib.repo}`}>GitHub</a>
+          <span>&middot;</span>
+          <a href={`https://github.com/${lib.repo}/issues`}>Issues</a>
+        </div>
+        <div class="site-footer__right">
+          <span>docs.passivehousetools.com</span>
+        </div>
+      </footer>
+    </div>
+  </div>
+</BaseLayout>

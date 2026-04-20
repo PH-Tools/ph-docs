@@ -1,0 +1,42 @@
+---
+interface Props {
+  url: string;
+  description?: string;
+}
+
+const { url, description = "This page is mirrored at a stable URL for programmatic retrieval. Point your LLM tool at the URL below and it will always receive the current canonical schema in plain Markdown." } = Astro.props;
+---
+
+<div class="fetch-callout">
+  <div class="fetch-callout__inner">
+    <div>
+      <div class="fetch-callout__head">
+        <span class="bullet"></span>
+        LLM-ready &middot; Fetch this doc
+      </div>
+      <p class="fetch-callout__body">{description}</p>
+      <div class="fetch-callout__url">
+        <span class="method">GET</span>
+        <span class="fetch-url-text">{url}</span>
+      </div>
+    </div>
+    <button class="copy-btn" data-copy-url={url}>
+      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <rect x="9" y="9" width="11" height="11" rx="1.5"/><path d="M5 15V5a1 1 0 0 1 1-1h10"/>
+      </svg>
+      Copy URL
+    </button>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>(".copy-btn[data-copy-url]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const url = btn.dataset.copyUrl;
+      if (url && navigator.clipboard) navigator.clipboard.writeText(url);
+      const orig = btn.innerHTML;
+      btn.innerHTML = '<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-11"/></svg> Copied';
+      setTimeout(() => { btn.innerHTML = orig; }, 1500);
+    });
+  });
+</script>

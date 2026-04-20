@@ -1,0 +1,117 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Sidebar from "../../components/Sidebar.astro";
+import FeatureCell from "../../components/FeatureCell.astro";
+import { getLibraries, type LibraryMeta } from "../../lib/libraries";
+import { getNavTree, getFirstFilePerGroup, isLeaf } from "../../lib/nav";
+import {
+  getLibraryIndexFrontmatter,
+  getSectionCardFrontmatter,
+} from "../../lib/frontmatter";
+
+export function getStaticPaths() {
+  return getLibraries().map((lib) => ({
+    params: { lib: lib.id },
+    props: { lib },
+  }));
+}
+
+interface Props {
+  lib: LibraryMeta;
+}
+
+const { lib } = Astro.props;
+const navTree = getNavTree(lib.id);
+const indexFm = getLibraryIndexFrontmatter(lib.id);
+
+// Build feature grid from first file of each top-level nav group
+const groupFiles = getFirstFilePerGroup(navTree);
+const featureCells = groupFiles.map((g, i) => {
+  const fm = getSectionCardFrontmatter(lib.id, g.filePath);
+  return {
+    index: fm.card_index ?? String(i + 1).padStart(2, "0"),
+    title: fm.card_title ?? g.groupLabel,
+    description: fm.card_description,
+    href: `/${lib.id}/${g.filePath.replace(/\.md$/, "/")}`
+  };
+});
+
+// Quick links: one per top-level nav group + GitHub
+const quickLinks = groupFiles.map((g) => ({
+  label: g.groupLabel,
+  href: `/${lib.id}/${g.filePath.replace(/\.md$/, "/")}`
+}));
+
+// Use front-matter if available, otherwise fall back to libraries.yml
+const title = indexFm.title ?? lib.label;
+const subtitle = indexFm.subtitle;
+const pills = indexFm.pills ?? [];
+---
+
+<BaseLayout title={`${title} — PH-Tools Docs`} activeLib={lib.id} hideFooter>
+  <div class="with-sidebar">
+    <Sidebar
+      libId={lib.id}
+      libLabel={lib.label}
+      navTree={navTree}
+      currentPath="index.md"
+    />
+
+    <div>
+      <header class="lib-head">
+        <div class="lib-head__tag">
+          <span class="idx">{lib.index}</span>
+          <span class="sep">·</span>
+          <span>{lib.label}</span>
+          <span class="sep">·</span>
+          <span>Overview</span>
+        </div>
+        <h1 class="lib-head__title">{title}</h1>
+        {subtitle && <p class="lib-head__sub">{subtitle}</p>}
+        {pills.length > 0 && (
+          <div class="lib-head__chips">
+            {pills.map((pill, i) => (
+              <span class={`pill${i === 0 ? " pill--accent" : ""}`}>{pill}</span>
+            ))}
+          </div>
+        )}
+      </header>
+
+      {quickLinks.length > 0 && (
+        <section class="quick-links">
+          <div class="quick-links__label">— Quick links</div>
+          <div class="quick-links__row">
+            {quickLinks.map((ql) => (
+              <a class="pill" href={ql.href}>{ql.label}</a>
+            ))}
+            <a class="pill" href={`https://github.com/${lib.repo}`}>↗ GitHub</a>
+          </div>
+        </section>
+      )}
+
+      {featureCells.length > 0 && (
+        <section class="feature-grid">
+          <div class="feature-grid__label">What's in this library</div>
+          <div class="f-grid">
+            {featureCells.map((cell) => (
+              <FeatureCell {...cell} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <footer class="site-footer">
+        <div class="site-footer__left">
+          <span>PH-TOOLS</span>
+          <span>·</span>
+          <a href={`https://github.com/${lib.repo}`}>GitHub</a>
+          <span>·</span>
+          <a href={`https://github.com/${lib.repo}/issues`}>Issues</a>
+        </div>
+        <div class="site-footer__right">
+          <span>docs.passivehousetools.com</span>
+        </div>
+      </footer>
+    </div>
+  </div>
+</BaseLayout>

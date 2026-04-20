@@ -1,0 +1,97 @@
+---
+import type { NavTree } from "../lib/nav";
+import { isLeaf, isGroup } from "../lib/nav";
+
+interface Props {
+  libId: string;
+  libLabel: string;
+  navTree: NavTree;
+  currentPath?: string;
+}
+
+const { libId, libLabel, navTree, currentPath } = Astro.props;
+
+// Assign sequential numbers across all top-level items
+let counter = 0;
+
+function nextNum(): string {
+  counter++;
+  return String(counter).padStart(2, "0");
+}
+
+// Determine if a group contains the current path (to auto-expand it)
+function groupContainsPath(children: NavTree, current: string | undefined): boolean {
+  if (!current) return false;
+  for (const item of children) {
+    if (isLeaf(item) && item.path === current) return true;
+    if (isGroup(item) && groupContainsPath(item.children, current)) return true;
+  }
+  return false;
+}
+---
+
+<aside class="sidebar">
+  <div class="sidebar__label">Library · {libLabel}</div>
+  <ul class="nav-tree">
+    {navTree.map((item) => {
+      if (isLeaf(item)) {
+        const num = nextNum();
+        const isActive = currentPath === item.path;
+        return (
+          <li>
+            <a
+              class={isActive ? "is-active" : ""}
+              href={item.path === "index.md" ? `/${libId}/` : `/${libId}/${item.path.replace(/\.md$/, "/")}`}
+            >
+              <span class="num">{num}</span>
+              {item.label}
+            </a>
+          </li>
+        );
+      }
+      if (isGroup(item)) {
+        const num = nextNum();
+        const isOpen = groupContainsPath(item.children, currentPath);
+        return (
+          <li class={`group${isOpen ? " is-open" : ""}`}>
+            <button aria-expanded={isOpen ? "true" : "false"}>
+              <span class="num">{num}</span>
+              {item.label}
+              <svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4">
+                <path d="m3 2 4 3-4 3" />
+              </svg>
+            </button>
+            <ul class="children">
+              {item.children.map((child) => {
+                if (!isLeaf(child)) return null;
+                const childActive = currentPath === child.path;
+                return (
+                  <li>
+                    <a
+                      class={childActive ? "is-active" : ""}
+                      href={`/${libId}/${child.path.replace(/\.md$/, "/")}`}
+                    >
+                      {child.label}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </li>
+        );
+      }
+      return null;
+    })}
+  </ul>
+</aside>
+
+<script>
+  // Wire sidebar group collapsing
+  document.querySelectorAll(".nav-tree .group > button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const group = btn.parentElement!;
+      const isOpen = group.classList.toggle("is-open");
+      btn.setAttribute("aria-expanded", String(isOpen));
+    });
+  });
+</script>

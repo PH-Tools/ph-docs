@@ -399,30 +399,34 @@ Phases are sequential. Each phase produces something verifiable before the next 
 4. ✅ Card `href` attributes point to `/{lib-id}/` routes
 5. ✅ **Verify**: Hub landing shows 3 real library cards with correct metadata, build passes
 
-### Phase 4 — Library Landing Page (Screen 2)
+### Phase 4 — Library Landing Page (Screen 2) ✅ COMPLETE (2026-04-19)
 **Goal**: `/{lib-id}/` routes render the library landing with sidebar, header, and feature grid.
 
-1. Implement `src/pages/[lib]/index.astro` with `getStaticPaths()` over enabled libraries
-2. Read `docs/index.md` front-matter per library → populate title, subtitle, version, pills
-3. Parse `nav.yml` → pass `NavTree` to `Sidebar.astro`
-4. Implement `Sidebar.astro` — collapsible nav tree, numbered items, accent-bar active state
-5. Implement `LibraryLayout.astro` — sidebar + content area shell
-6. For each top-level nav group: read first-file front-matter → `FeatureCell.astro` cards
-7. Implement `FeatureCell.astro` — feature grid card (pixel-matched to mockup)
-8. Quick links row (pills)
-9. **Verify**: `/phx/` renders with correct sidebar (Overview, Developer, Reference), feature grid with 2 cards, correct header; `/honeybee-ph/` renders with sidebar only (no feature grid, no nav groups yet)
+1. ✅ Implement `src/pages/[lib]/index.astro` with `getStaticPaths()` over enabled libraries
+2. ✅ Read `docs/index.md` front-matter per library → title, subtitle, version, pills (with fallback to `libraries.yml` label when front-matter absent)
+3. ✅ Parse `nav.yml` → pass `NavTree` to `Sidebar.astro`
+4. ✅ Implement `Sidebar.astro` — collapsible nav tree, numbered items, accent-bar active state, auto-expand group containing current page
+5. ✅ Sidebar + content area via `with-sidebar` grid (used `BaseLayout` with `hideFooter` prop instead of separate `LibraryLayout`)
+6. ✅ For each top-level nav group: read first-file front-matter → `FeatureCell.astro` cards (falls back to nav group label when card front-matter absent)
+7. ✅ Implement `FeatureCell.astro` — feature grid card
+8. ✅ Quick links row (pills per nav group + GitHub)
+9. ✅ **Verify**: `/phx/` renders with sidebar (Overview, Developer, Reference), feature grid with 2 cards, quick links, correct header highlight; `/honeybee-ph/` renders with sidebar only (no feature grid, no quick links — correct for no nav groups)
 
-### Phase 5 — Content Pages
+**Notes**: Updated `Header.astro` to accept `activeLib` prop and render nav links from `getLibraries()` with active state. `BaseLayout` extended with `activeLib` and `hideFooter` props. Library landing renders its own footer inside the sidebar layout.
+
+### Phase 5 — Content Pages ✅ COMPLETE (2026-04-19)
 **Goal**: `/{lib-id}/{slug}` routes render markdown content inside the library layout.
 
-1. Implement `src/pages/[lib]/[...slug].astro` with `getStaticPaths()` reading nav.yml leaves
-2. Implement `ContentLayout.astro` — sidebar (same as library landing, current page highlighted) + article area
-3. Render markdown body via Astro's `render()` function
-4. Style article typography (headings, code blocks, tables) to match mockup's content area
-5. Implement `FetchCallout.astro` (MDX component for LLM-ready URL callout — Screen 3)
-6. Implement `SchemaTable.astro` (MDX component for field/type/description tables — Screen 3)
-7. Wire up sidebar active state: highlight current page, expand current group
-8. **Verify**: `/phx/dev/architecture/` renders the architecture.md content with correct sidebar state
+1. ✅ Implement `src/pages/[lib]/[...slug].astro` with `getStaticPaths()` reading nav.yml leaves (skips `index.md` — handled by library landing)
+2. ✅ Content layout reuses `with-sidebar` grid + `Sidebar` component (no separate `ContentLayout.astro` needed — same pattern as library landing)
+3. ✅ Render markdown via Astro content collections: `src/content.config.ts` defines `docs` collection with glob loader over `src/content/docs/**/*.md`; pages use `getEntry()` + `render()` → `<Content />` component
+4. ✅ Article typography styles added to `global.css`: headings (h1–h4), paragraphs, lists, code blocks (Shiki syntax highlighting via Astro default), blockquotes, tables, horizontal rules, images
+5. ✅ Implement `FetchCallout.astro` — LLM-ready URL callout with copy-to-clipboard, ported from Screen 3 mockup. Available for future MDX use.
+6. ✅ Implement `SchemaTable.astro` — field/type/description table with REQ badges, ported from Screen 3 mockup. Available for future MDX use.
+7. ✅ Sidebar active state works: current page highlighted with `is-active`, parent group auto-expanded with `is-open`; breadcrumb shows group label + page label
+8. ✅ **Verify**: 9 pages built — `/phx/dev/architecture/` renders with correct sidebar state, breadcrumb, and full markdown content with syntax-highlighted code blocks
+
+**Notes**: Fixed `import.meta.dirname` path resolution bug — during Astro's build phase, `import.meta.dirname` resolves to `dist/chunks/` instead of `src/lib/`. All path resolution in `nav.ts`, `frontmatter.ts`, and `libraries.ts` switched to `process.cwd()`. This bug was latent in Phases 1-4 (frontmatter functions silently returned empty fallback objects) but became blocking in Phase 5 since `getStaticPaths()` depends on `getNavTree()` to discover content pages. `FetchCallout` and `SchemaTable` components are created but not currently used in any pages — all spoke content is plain `.md` without front-matter. They will be used when spokes adopt MDX or when `ph-reference-docs` is created.
 
 ### Phase 6 — Search (Screen 4)
 **Goal**: `⌘K` opens search modal, search returns grouped results across all libraries.
