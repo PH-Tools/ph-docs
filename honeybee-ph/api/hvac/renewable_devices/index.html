@@ -17,7 +17,7 @@
 <p><strong>Source</strong>: <code>honeybee_phhvac/renewable_devices.py</code></p>
 <hr>
 <h2 id="unknownphrenewableenergytypeerror">UnknownPhRenewableEnergyTypeError</h2>
-<p>No description available.</p>
+<p>Raised when an unrecognized renewable energy device type is encountered.</p>
 <p><strong>Inherits from</strong>: <code>Exception</code></p>
 <h3 id="attributes">Attributes</h3>
 
@@ -35,7 +35,7 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>msg</code></td><td><code>format</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>msg</code></td><td><code>format</code></td><td>Formatted error message describing the unknown type and valid options.</td></tr></tbody></table>
 <hr>
 <h2 id="phrenewableenergydevice">PhRenewableEnergyDevice</h2>
 <p>Base class for all HBPH Renewable Energy Systems (PV, etc).</p>
@@ -61,7 +61,7 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>device_typename</code></td><td>—</td><td>—</td></tr><tr><td><code>percent_coverage</code></td><td><code>float</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>device_typename</code></td><td>—</td><td>Class name string identifying the device type for serialization.</td></tr><tr><td><code>percent_coverage</code></td><td><code>float</code></td><td>Fraction of energy demand covered by this device (0.0-1.0).</td></tr></tbody></table>
 <h3 id="methods">Methods</h3>
 <h4 id="base_attrs_from_dict_input_dict">base_attrs_from_dict(_input_dict)</h4>
 
@@ -98,7 +98,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_input_dict</code></td><td><code>dict</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_input_dict</code></td><td><code>dict</code></td><td>The dictionary to validate.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>None</code></p>
 <h4 id="movemoving_vec3d">move(moving_vec3D)</h4>
 <p>Move the device’s elements along a vector.</p>
@@ -117,9 +117,9 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td>—</td><td>A Vector3D with the direction and distance to move the ray.</td></tr></tbody></table>
 <h4 id="rotateaxis_vec3d-angle_degrees-origin_pt3d">rotate(axis_vec3D, angle_degrees, origin_pt3D)</h4>
-<p>Rotate the device’s elements by a certain angle around an axis_vec3D and origin_pt3D.</p>
+<p>Rotate the device’s elements by a certain angle around an axis and origin point.</p>
 
 
 
@@ -145,7 +145,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_vec3D</code></td><td>—</td><td>—</td></tr><tr><td><code>angle_degrees</code></td><td>—</td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_vec3D</code></td><td>—</td><td>A Vector3D representing the axis of rotation.</td></tr><tr><td><code>angle_degrees</code></td><td>—</td><td>An angle for rotation in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>A Point3D for the origin around which the object will be rotated.</td></tr></tbody></table>
 <h4 id="rotate_xyangle_degrees-origin_pt3d">rotate_xy(angle_degrees, origin_pt3D)</h4>
 <p>Rotate the device’s elements counterclockwise in the XY plane by a certain angle.</p>
 
@@ -168,9 +168,9 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td>—</td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td>—</td><td>An angle in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>A Point3D for the origin around which the object will be rotated.</td></tr></tbody></table>
 <h4 id="reflectnormal_vec3d-origin_pt3d">reflect(normal_vec3D, origin_pt3D)</h4>
-<p>Reflected the device’s elements across a plane with the input normal vector and origin_pt3D.</p>
+<p>Reflect the device’s elements across a plane with the input normal vector and origin.</p>
 
 
 
@@ -191,9 +191,9 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td>—</td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td>—</td><td>A normalized Vector3D representing the normal vector for the plane across which the element will be reflected.</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>A Point3D representing the origin from which to reflect.</td></tr></tbody></table>
 <h4 id="scalescale_factor-origin_pt3d">scale(scale_factor, origin_pt3D)</h4>
-<p>Scale the device’s elements by a factor from an origin_pt3D point.</p>
+<p>Scale the device’s elements by a factor from an origin point.</p>
 
 
 
@@ -214,10 +214,10 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>scale_factor</code></td><td>—</td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>scale_factor</code></td><td>—</td><td>A number representing how much the element should be scaled.</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>A Point3D representing the origin from which to scale. If None, it will be scaled from the World origin (0, 0, 0).</td></tr></tbody></table>
 <hr>
 <h2 id="phphotovoltaicdevice">PhPhotovoltaicDevice</h2>
-<p>PV System.</p>
+<p>Photovoltaic (PV) renewable energy device.</p>
 <p><strong>Inherits from</strong>: <code>PhRenewableEnergyDevice</code></p>
 <h3 id="attributes-2">Attributes</h3>
 
@@ -245,7 +245,7 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>photovoltaic_renewable_energy</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>array_size</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>utilization_factor</code></td><td><code>float</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>photovoltaic_renewable_energy</code></td><td><code>float</code></td><td>Annual PV renewable energy production (kWh/yr).</td></tr><tr><td><code>array_size</code></td><td><code>float</code></td><td>Total PV array area (m2).</td></tr><tr><td><code>utilization_factor</code></td><td><code>float</code></td><td>Fraction of generated energy that is utilized (0.0-1.0).</td></tr></tbody></table>
 <hr>
 <h2 id="phrenewableenergydevicebuilder">PhRenewableEnergyDeviceBuilder</h2>
 <p>Constructor class for PH-Renewable-Energy-System objects.</p>

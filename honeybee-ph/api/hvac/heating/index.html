@@ -17,7 +17,7 @@
 <p><strong>Source</strong>: <code>honeybee_phhvac/heating.py</code></p>
 <hr>
 <h2 id="unknownphheatingtypeerror">UnknownPhHeatingTypeError</h2>
-<p>No description available.</p>
+<p>Raised when an unrecognized PH heating system type is encountered.</p>
 <p><strong>Inherits from</strong>: <code>Exception</code></p>
 <h3 id="attributes">Attributes</h3>
 
@@ -35,10 +35,10 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>msg</code></td><td><code>format</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>msg</code></td><td><code>format</code></td><td>Human-readable error message describing the invalid type.</td></tr></tbody></table>
 <hr>
 <h2 id="phheatingsystem">PhHeatingSystem</h2>
-<p>Base class for all PH-Heating Systems (elec, boiler, etc…)</p>
+<p>Base class for all PH-Heating Systems (elec, boiler, etc…).</p>
 <p><strong>Inherits from</strong>: <code>_base._PhHVACBase</code></p>
 <h3 id="attributes-1">Attributes</h3>
 
@@ -61,7 +61,7 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>heating_type</code></td><td>—</td><td>—</td></tr><tr><td><code>percent_coverage</code></td><td><code>float</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>heating_type</code></td><td>—</td><td>The class name of the heating system type.</td></tr><tr><td><code>percent_coverage</code></td><td><code>float</code></td><td>Fraction of total heating load covered by this system (0.0-1.0).</td></tr></tbody></table>
 <h3 id="methods">Methods</h3>
 <h4 id="base_attrs_from_dict_input_dict">base_attrs_from_dict(_input_dict)</h4>
 
@@ -98,7 +98,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_input_dict</code></td><td><code>dict</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_input_dict</code></td><td><code>dict</code></td><td>Serialized heating system dictionary with a ‘heating_type’ key.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>None</code></p>
 <h4 id="movemoving_vec3d">move(moving_vec3D)</h4>
 <p>Move the System’s elements along a vector.</p>
@@ -117,7 +117,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td>—</td><td>A Vector3D with the direction and distance to move the ray.</td></tr></tbody></table>
 <h4 id="rotateaxis_vec3d-angle_degree-origin_pt3d">rotate(axis_vec3D, angle_degree, origin_pt3D)</h4>
 <p>Rotate the System’s elements by a certain angle around an axis and origin.</p>
 
@@ -145,7 +145,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_vec3D</code></td><td>—</td><td>—</td></tr><tr><td><code>angle_degree</code></td><td>—</td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_vec3D</code></td><td>—</td><td>A Vector3D axis representing the axis of rotation.</td></tr><tr><td><code>angle_degree</code></td><td>—</td><td>An angle for rotation in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>A Point3D for the origin around which the object will be rotated.</td></tr></tbody></table>
 <h4 id="rotate_xyangle_degree-origin_pt3d">rotate_xy(angle_degree, origin_pt3D)</h4>
 <p>Rotate the System’s elements counterclockwise in the XY plane by a certain angle.</p>
 
@@ -168,9 +168,9 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degree</code></td><td>—</td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degree</code></td><td>—</td><td>An angle in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>A Point3D for the origin around which the object will be rotated.</td></tr></tbody></table>
 <h4 id="reflectnormal_vec3d-origin_pt3d">reflect(normal_vec3D, origin_pt3D)</h4>
-<p>Reflected the System’s elements across a plane with the input normal vector and origin.</p>
+<p>Reflect the System’s elements across a plane with the input normal vector and origin.</p>
 
 
 
@@ -191,7 +191,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td>—</td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td>—</td><td>A Vector3D representing the normal vector for the plane across which the line segment will be reflected. THIS VECTOR MUST BE NORMALIZED.</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>A Point3D representing the origin from which to reflect.</td></tr></tbody></table>
 <h4 id="scalescale_factor-origin">scale(scale_factor, origin)</h4>
 <p>Scale the System’s elements by a factor from an origin point.</p>
 
@@ -214,14 +214,14 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>scale_factor</code></td><td>—</td><td>—</td></tr><tr><td><code>origin</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>scale_factor</code></td><td>—</td><td>A number representing how much the line segment should be scaled.</td></tr><tr><td><code>origin</code></td><td>—</td><td>A Point3D representing the origin from which to scale. If None, it will be scaled from the World origin (0, 0, 0).</td></tr></tbody></table>
 <hr>
 <h2 id="phheatingdirectelectric">PhHeatingDirectElectric</h2>
 <p>Heating via direct-electric (resistance heating).</p>
 <p><strong>Inherits from</strong>: <code>PhHeatingSystem</code></p>
 <hr>
 <h2 id="phheatingfossilboiler">PhHeatingFossilBoiler</h2>
-<p>Heating via boiler using fossil-fuel (gas, oil)</p>
+<p>Heating via boiler using fossil-fuel (gas, oil).</p>
 <p><strong>Inherits from</strong>: <code>PhHeatingSystem</code></p>
 <h3 id="attributes-2">Attributes</h3>
 
@@ -279,7 +279,7 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>fuel</code></td><td>—</td><td>—</td></tr><tr><td><code>condensing</code></td><td><code>bool</code></td><td>—</td></tr><tr><td><code>in_conditioned_space</code></td><td><code>bool</code></td><td>—</td></tr><tr><td><code>effic_at_30_percent_load</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>effic_at_nominal_load</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>avg_rtrn_temp_at_30_percent_load</code></td><td><code>int</code></td><td>—</td></tr><tr><td><code>avg_temp_at_70C_55C</code></td><td><code>int</code></td><td>—</td></tr><tr><td><code>avg_temp_at_55C_45C</code></td><td><code>int</code></td><td>—</td></tr><tr><td><code>avg_temp_at_32C_28C</code></td><td><code>int</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>fuel</code></td><td>—</td><td>Fuel type constant from the fuels module.</td></tr><tr><td><code>condensing</code></td><td><code>bool</code></td><td>True if the boiler is a condensing type.</td></tr><tr><td><code>in_conditioned_space</code></td><td><code>bool</code></td><td>True if the boiler is located within conditioned space.</td></tr><tr><td><code>effic_at_30_percent_load</code></td><td><code>float</code></td><td>Boiler efficiency at 30 percent part-load.</td></tr><tr><td><code>effic_at_nominal_load</code></td><td><code>float</code></td><td>Boiler efficiency at nominal (full) load.</td></tr><tr><td><code>avg_rtrn_temp_at_30_percent_load</code></td><td><code>int</code></td><td>Average return temperature at 30 percent load (deg C).</td></tr><tr><td><code>avg_temp_at_70C_55C</code></td><td><code>int</code></td><td>Average boiler temperature at 70C/55C flow/return (deg C).</td></tr><tr><td><code>avg_temp_at_55C_45C</code></td><td><code>int</code></td><td>Average boiler temperature at 55C/45C flow/return (deg C).</td></tr><tr><td><code>avg_temp_at_32C_28C</code></td><td><code>int</code></td><td>Average boiler temperature at 32C/28C flow/return (deg C).</td></tr></tbody></table>
 <hr>
 <h2 id="phheatingwoodboiler">PhHeatingWoodBoiler</h2>
 <p>Heating via boiler using wood (log, pellet).</p>
@@ -360,7 +360,7 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>fuel</code></td><td>—</td><td>—</td></tr><tr><td><code>in_conditioned_space</code></td><td><code>bool</code></td><td>—</td></tr><tr><td><code>effic_in_basic_cycle</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>effic_in_const_operation</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>avg_frac_heat_output</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>temp_diff_on_off</code></td><td><code>int</code></td><td>—</td></tr><tr><td><code>rated_capacity</code></td><td><code>int</code></td><td>—</td></tr><tr><td><code>demand_basic_cycle</code></td><td><code>int</code></td><td>—</td></tr><tr><td><code>power_stationary_run</code></td><td><code>int</code></td><td>—</td></tr><tr><td><code>power_standard_run</code></td><td><code>Optional[float]</code></td><td>—</td></tr><tr><td><code>no_transport_pellets</code></td><td><code>Optional[bool]</code></td><td>—</td></tr><tr><td><code>only_control</code></td><td><code>Optional[bool]</code></td><td>—</td></tr><tr><td><code>area_mech_room</code></td><td><code>Optional[float]</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>fuel</code></td><td>—</td><td>Fuel type constant from the fuels module.</td></tr><tr><td><code>in_conditioned_space</code></td><td><code>bool</code></td><td>True if the boiler is located within conditioned space.</td></tr><tr><td><code>effic_in_basic_cycle</code></td><td><code>float</code></td><td>Efficiency during the basic heating cycle.</td></tr><tr><td><code>effic_in_const_operation</code></td><td><code>float</code></td><td>Efficiency during constant operation.</td></tr><tr><td><code>avg_frac_heat_output</code></td><td><code>float</code></td><td>Average fraction of rated heat output.</td></tr><tr><td><code>temp_diff_on_off</code></td><td><code>int</code></td><td>Temperature difference between on and off cycles (deg C).</td></tr><tr><td><code>rated_capacity</code></td><td><code>int</code></td><td>Rated heating capacity in kW.</td></tr><tr><td><code>demand_basic_cycle</code></td><td><code>int</code></td><td>Energy demand per basic cycle in kWh.</td></tr><tr><td><code>power_stationary_run</code></td><td><code>int</code></td><td>Electrical power during stationary run in W.</td></tr><tr><td><code>power_standard_run</code></td><td><code>Optional[float]</code></td><td>Electrical power during standard run in W.</td></tr><tr><td><code>no_transport_pellets</code></td><td><code>Optional[bool]</code></td><td>True if no pellet transport mechanism is used.</td></tr><tr><td><code>only_control</code></td><td><code>Optional[bool]</code></td><td>True if only control power is consumed.</td></tr><tr><td><code>area_mech_room</code></td><td><code>Optional[float]</code></td><td>Mechanical room area in m2.</td></tr></tbody></table>
 <h3 id="properties">Properties</h3>
 
 
@@ -382,7 +382,7 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>useful_heat_output</code></td><td>—</td><td>—</td></tr><tr><td><code>avg_power_output</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>useful_heat_output</code></td><td><code>float</code></td><td>Useful heat output (90 percent of rated capacity) in kWh.</td></tr><tr><td><code>avg_power_output</code></td><td><code>float</code></td><td>Average power output (50 percent of rated capacity) in kW.</td></tr></tbody></table>
 <hr>
 <h2 id="phheatingdistrict">PhHeatingDistrict</h2>
 <p>Heating via district-heat.</p>
@@ -408,10 +408,10 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>fuel</code></td><td>—</td><td>—</td></tr><tr><td><code>util_factor_of_heat_transfer_station</code></td><td><code>float</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>fuel</code></td><td>—</td><td>District energy carrier constant from the fuels module.</td></tr><tr><td><code>util_factor_of_heat_transfer_station</code></td><td><code>float</code></td><td>Utilization factor of the heat transfer station.</td></tr></tbody></table>
 <hr>
 <h2 id="phheatingsystembuilder">PhHeatingSystemBuilder</h2>
-<p>Constructor class for PH-HeatingSystems</p>
+<p>Constructor class for PH-HeatingSystems.</p>
 <hr> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/honeybee_ph">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/honeybee_ph/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
 (function () {
   // ---------- Modal open / close ----------

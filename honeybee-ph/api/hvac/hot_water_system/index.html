@@ -38,7 +38,7 @@
 <table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>msg</code></td><td><code>format</code></td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phhotwatersystem">PhHotWaterSystem</h2>
-<p>PH-HVAC: Hot Water System.</p>
+<p>A Passive House hot water system with tanks, heaters, distribution and recirculation piping.</p>
 <h3 id="attributes-1">Attributes</h3>
 
 
@@ -85,7 +85,7 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>identifier</code></td><td><code>str</code></td><td>—</td></tr><tr><td><code>id_num</code></td><td><code>int</code></td><td>—</td></tr><tr><td><code>display_name</code></td><td><code>str</code></td><td>—</td></tr><tr><td><code>tank_1</code></td><td><code>Optional[hwd.PhHvacHotWaterTank]</code></td><td>—</td></tr><tr><td><code>tank_2</code></td><td><code>Optional[hwd.PhHvacHotWaterTank]</code></td><td>—</td></tr><tr><td><code>tank_buffer</code></td><td><code>Optional[hwd.PhHvacHotWaterTank]</code></td><td>—</td></tr><tr><td><code>tank_solar</code></td><td><code>Optional[hwd.PhHvacHotWaterTank]</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>identifier</code></td><td><code>str</code></td><td>Unique identifier for the system.</td></tr><tr><td><code>id_num</code></td><td><code>int</code></td><td>Numeric identifier for the system.</td></tr><tr><td><code>display_name</code></td><td><code>str</code></td><td>User-facing display name for the system.</td></tr><tr><td><code>tank_1</code></td><td><code>Optional[hwd.PhHvacHotWaterTank]</code></td><td>Primary hot water tank.</td></tr><tr><td><code>tank_2</code></td><td><code>Optional[hwd.PhHvacHotWaterTank]</code></td><td>Secondary hot water tank.</td></tr><tr><td><code>tank_buffer</code></td><td><code>Optional[hwd.PhHvacHotWaterTank]</code></td><td>Buffer tank.</td></tr><tr><td><code>tank_solar</code></td><td><code>Optional[hwd.PhHvacHotWaterTank]</code></td><td>Solar tank.</td></tr></tbody></table>
 <h3 id="properties">Properties</h3>
 
 
@@ -150,8 +150,9 @@
 <table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>total_distribution_pipe_length</code></td><td><code>float</code></td><td>Returns the total length of all trunk, branch, and fixture piping.</td></tr><tr><td><code>total_home_run_fixture_pipe_length</code></td><td><code>float</code></td><td>Returns the total length of all fixture piping from end to end.</td></tr><tr><td><code>total_recirc_pipe_length</code></td><td><code>float</code></td><td>Returns the total length of all recirculation piping.</td></tr><tr><td><code>recirc_temp</code></td><td><code>float</code></td><td>Return the length weighted average of recirculation piping temperatures</td></tr><tr><td><code>recirc_hours</code></td><td><code>int</code></td><td>Return the length-weighted average of recirculation piping hours.</td></tr><tr><td><code>number_tap_points</code></td><td><code>int</code></td><td>Unless set explicitly by the user, will return the number of Branch Pipe Elements.</td></tr><tr><td><code>heaters</code></td><td><code>ValuesView[hwd.PhHvacHotWaterHeater]</code></td><td>Returns a list of all the heaters on the system.</td></tr><tr><td><code>distribution_piping</code></td><td><code>ValuesView[hwp.PhHvacPipeTrunk]</code></td><td>Returns a list of all the distribution-piping (Trunks) in the system.</td></tr><tr><td><code>recirc_piping</code></td><td><code>ValuesView[hwp.PhHvacPipeElement]</code></td><td>Returns a list of all the recirculation-piping objects in the system.</td></tr><tr><td><code>tanks</code></td><td>`list[hwd.PhHvacHotWaterTank</td><td>None]`</td></tr></tbody></table>
 <h3 id="methods">Methods</h3>
 <h4 id="clear_heaters">clear_heaters()</h4>
+<p>Remove all heaters from the system.</p>
 <h4 id="add_heater_heater">add_heater(_heater)</h4>
-<p>Adds a new hot-water heater to the system.</p>
+<p>Add a new hot-water heater to the system.</p>
 
 
 
@@ -167,7 +168,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_heater</code></td><td><code>Optional[hwd.PhHvacHotWaterHeater]</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_heater</code></td><td><code>Optional[hwd.PhHvacHotWaterHeater]</code></td><td>The heater to add. If None, no action is taken.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>None</code></p>
 <h4 id="add_distribution_piping_distribution_piping-_key">add_distribution_piping(_distribution_piping, _key)</h4>
 <p>Add a new distribution (branch, trunk, fixture) to the system.</p>
@@ -191,11 +192,12 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_distribution_piping</code></td><td><code>Union[hwp.PhHvacPipeTrunk</code></td><td>—</td></tr><tr><td><code>_key</code></td><td><code>hwp.PhHvacPipeBranch</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_distribution_piping</code></td><td><code>Union[hwp.PhHvacPipeTrunk</code></td><td>The piping to add.</td></tr><tr><td><code>_key</code></td><td><code>hwp.PhHvacPipeBranch</code></td><td>An optional key to use for storing the trunk.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>None</code></p>
 <h4 id="clear_distribution_piping">clear_distribution_piping()</h4>
 <p>Clear all distribution piping (Trunks) from the system.</p>
 <h4 id="add_recirc_piping_recirc_piping-_key">add_recirc_piping(_recirc_piping, _key)</h4>
+<p>Add a new recirculation pipe element to the system.</p>
 
 
 
@@ -216,9 +218,10 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_recirc_piping</code></td><td><code>hwp.PhHvacPipeElement</code></td><td>—</td></tr><tr><td><code>_key</code></td><td><code>Optional[str]</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_recirc_piping</code></td><td><code>hwp.PhHvacPipeElement</code></td><td>The recirculation pipe element to add.</td></tr><tr><td><code>_key</code></td><td><code>Optional[str]</code></td><td>An optional key to use for storing the pipe element.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>None</code></p>
 <h4 id="clear_recirc_piping">clear_recirc_piping()</h4>
+<p>Remove all recirculation piping from the system.</p>
 <h4 id="apply_properties_from_dictabridged_data">apply_properties_from_dict(abridged_data)</h4>
 
 
@@ -253,7 +256,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td><code>Point3D</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td><code>Point3D</code></td><td>A vector with the direction and distance to move.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhHotWaterSystem</code></p>
 <h4 id="rotateaxis_vec3d-angle_degrees-origin_pt3d">rotate(axis_vec3D, angle_degrees, origin_pt3D)</h4>
 <p>Rotate the System’s piping by a certain angle around an axis and origin.</p>
@@ -282,7 +285,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_vec3D</code></td><td><code>Point3D</code></td><td>—</td></tr><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_vec3D</code></td><td><code>Point3D</code></td><td>A vector representing the axis of rotation.</td></tr><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>An angle for rotation in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>The origin around which the object will be rotated.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhHotWaterSystem</code></p>
 <h4 id="rotate_xyangle_degrees-origin_pt3d">rotate_xy(angle_degrees, origin_pt3D)</h4>
 <p>Rotate the System’s piping counterclockwise in the XY plane by a certain angle.</p>
@@ -306,10 +309,10 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>An angle in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>The origin around which the object will be rotated.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhHotWaterSystem</code></p>
 <h4 id="reflectnormal_vec3d-origin_pt3d">reflect(normal_vec3D, origin_pt3D)</h4>
-<p>Reflected the System’s piping across a plane with the input normal vector and origin.</p>
+<p>Reflect the System’s piping across a plane with the input normal vector and origin.</p>
 
 
 
@@ -330,7 +333,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td><code>Vector3D</code></td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td><code>Vector3D</code></td><td>The normal vector for the reflection plane. THIS VECTOR MUST BE NORMALIZED.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>The origin from which to reflect.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhHotWaterSystem</code></p>
 <h4 id="scalescale_factor-origin_pt3d">scale(scale_factor, origin_pt3D)</h4>
 <p>Scale the System’s piping by a factor from an origin point.</p>
@@ -354,7 +357,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>scale_factor</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Optional[Point3D]</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>scale_factor</code></td><td><code>float</code></td><td>How much the piping should be scaled.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Optional[Point3D]</code></td><td>The origin from which to scale. If None, it will be scaled from the World origin (0, 0, 0).</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhHotWaterSystem</code></p>
 <hr> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/honeybee_ph">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/honeybee_ph/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
 (function () {

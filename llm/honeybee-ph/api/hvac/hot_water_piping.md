@@ -8,7 +8,7 @@ Honeybee-PH-HVAC: Hot Water Piping.
 
 ## PhHvacPipeMaterial
 
-No description available.
+Enumeration of allowable pipe material types.
 
 **Inherits from**: `enumerables.CustomEnum`
 
@@ -16,20 +16,20 @@ No description available.
 
 | Value | Meaning |
 |-------|---------|
-| `"1-COPPER_M"` | — |
-| `"2-COPPER_L"` | — |
-| `"3-COPPER_K"` | — |
-| `"4-CPVC_CTS_SDR"` | — |
-| `"5-CPVC_SCH_40"` | — |
-| `"6-PEX"` | — |
-| `"7-PE"` | — |
-| `"8-PEX_CTS_SDR"` | — |
+| `"1-COPPER_M"` | Copper type M. |
+| `"2-COPPER_L"` | Copper type L (default). |
+| `"3-COPPER_K"` | Copper type K. |
+| `"4-CPVC_CTS_SDR"` | CPVC CTS SDR. |
+| `"5-CPVC_SCH_40"` | CPVC Schedule 40. |
+| `"6-PEX"` | PEX tubing. |
+| `"7-PE"` | Polyethylene tubing. |
+| `"8-PEX_CTS_SDR"` | PEX CTS SDR. |
 
 ---
 
 ## PhHvacPipeSegment
 
-A single pipe segment (linear) with geometry and a diameter
+A single pipe segment (linear) with geometry and a diameter.
 
 **Inherits from**: `_base._PhHVACBase`
 
@@ -37,15 +37,15 @@ A single pipe segment (linear) with geometry and a diameter
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `geometry` | — | — |
-| `diameter_mm` | — | — |
-| `insulation_thickness_mm` | — | — |
-| `insulation_conductivity` | — | — |
-| `insulation_reflective` | — | — |
-| `insulation_quality` | — | — |
-| `daily_period` | — | — |
-| `water_temp_c` | — | — |
-| `material` | `PhHvacPipeMaterial` | — |
+| `geometry` | — | The 3D line segment geometry of the pipe. |
+| `diameter_mm` | — | The pipe diameter in millimeters. |
+| `insulation_thickness_mm` | — | The insulation thickness in millimeters. |
+| `insulation_conductivity` | — | The insulation thermal conductivity (W/m-K). |
+| `insulation_reflective` | — | True if the insulation has a reflective surface. |
+| `insulation_quality` | — | Reserved for future use. |
+| `daily_period` | — | Hours per day the pipe is in use. |
+| `water_temp_c` | — | The water temperature in degrees Celsius. |
+| `material` | `PhHvacPipeMaterial` | The pipe material type. |
 
 ### Properties
 
@@ -63,52 +63,52 @@ Move the pipe's geometry along a vector.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `moving_vec3D` | `Vector3D` | — |
+| `moving_vec3D` | `Vector3D` | A vector with the direction and distance to move. |
 
 **Returns**: `PhHvacPipeSegment`
 
 #### rotate(axis_3D, angle_degrees, origin_pt3D)
 
-Rotate the pipe's geometry by a certain angle_degrees around an axis_3D and origin_pt3D.
+Rotate the pipe's geometry by a certain angle around an axis and origin.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `axis_3D` | `Vector3D` | — |
-| `angle_degrees` | `float` | — |
-| `origin_pt3D` | `Point3D` | — |
+| `axis_3D` | `Vector3D` | A vector representing the axis of rotation. |
+| `angle_degrees` | `float` | An angle for rotation in degrees. |
+| `origin_pt3D` | `Point3D` | The origin around which the object will be rotated. |
 
 **Returns**: `PhHvacPipeSegment`
 
 #### rotate_xy(angle_degrees, origin_pt3D)
 
-Rotate the pipe's geometry counterclockwise in the XY plane by a certain angle_degrees.
+Rotate the pipe's geometry counterclockwise in the XY plane by a certain angle.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `angle_degrees` | `float` | — |
-| `origin_pt3D` | `Point3D` | — |
+| `angle_degrees` | `float` | An angle in degrees. |
+| `origin_pt3D` | `Point3D` | The origin around which the object will be rotated. |
 
 **Returns**: `PhHvacPipeSegment`
 
 #### reflect(normal_vec3D, origin_pt3D)
 
-Reflected the pipe's geometry across a plane with the input normal vector and origin_pt3D.
+Reflect the pipe's geometry across a plane with the input normal vector and origin.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `normal_vec3D` | `Vector3D` | — |
-| `origin_pt3D` | `Point3D` | — |
+| `normal_vec3D` | `Vector3D` | The normal vector for the reflection plane. THIS VECTOR MUST BE NORMALIZED. |
+| `origin_pt3D` | `Point3D` | The origin from which to reflect. |
 
 **Returns**: `PhHvacPipeSegment`
 
 #### scale(scale_factor, origin_pt3D)
 
-Scale the pipe's geometry by a factor from an origin_pt3D point.
+Scale the pipe's geometry by a factor from an origin point.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `scale_factor` | `float` | — |
-| `origin_pt3D` | `Union[None` | — |
+| `scale_factor` | `float` | How much the line segment should be scaled. |
+| `origin_pt3D` | `Union[None` | The origin from which to scale. If None, it will be scaled from the World origin (0, 0, 0). |
 
 **Returns**: `PhHvacPipeSegment`
 
@@ -124,7 +124,7 @@ A Pipe Element (Fixture) made up of one or more individual Pipe Segments.
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `segments` | `List[PhHvacPipeSegment]` | Return a list of a;; the Pipe-Segments in the Pipe-Element. |
+| `segments` | `List[PhHvacPipeSegment]` | Return a list of all the Pipe-Segments in the Pipe-Element. |
 | `length` | `float` | Return the total length of the pipe element in model-units. |
 | `diameter_mm` | `float` | Return the length-weighted average diameter of all the pipe segments |
 | `water_temp_c` | `float` | Return the length-weighted average water temperature of all the pipe segments |
@@ -140,7 +140,7 @@ Add a new Pipe Segment to the Pipe Element.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `_segment` | `PhHvacPipeSegment` | — |
+| `_segment` | `PhHvacPipeSegment` | The pipe segment to add. |
 
 **Returns**: `None`
 
@@ -156,52 +156,52 @@ Move the pipe's segments along a vector.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `moving_vec3D` | `Vector3D` | — |
+| `moving_vec3D` | `Vector3D` | A vector with the direction and distance to move. |
 
 **Returns**: `PhHvacPipeElement`
 
 #### rotate(axis_3D, angle_degrees, origin_pt3D)
 
-Rotate the pipe's segments by a certain angle_degrees around an axis_3D and origin_pt3D.
+Rotate the pipe's segments by a certain angle around an axis and origin.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `axis_3D` | `Vector3D` | — |
-| `angle_degrees` | `float` | — |
-| `origin_pt3D` | `Point3D` | — |
+| `axis_3D` | `Vector3D` | A vector representing the axis of rotation. |
+| `angle_degrees` | `float` | An angle for rotation in degrees. |
+| `origin_pt3D` | `Point3D` | The origin around which the object will be rotated. |
 
 **Returns**: `PhHvacPipeElement`
 
 #### rotate_xy(angle_degrees, origin_pt3D)
 
-Rotate the pipe's segments counterclockwise in the XY plane by a certain angle_degrees.
+Rotate the pipe's segments counterclockwise in the XY plane by a certain angle.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `angle_degrees` | `float` | — |
-| `origin_pt3D` | `Point3D` | — |
+| `angle_degrees` | `float` | An angle in degrees. |
+| `origin_pt3D` | `Point3D` | The origin around which the object will be rotated. |
 
 **Returns**: `PhHvacPipeElement`
 
 #### reflect(normal_vec3D, origin_pt3D)
 
-Reflected the pipe's segments across a plane with the input normal_vec3D vector and origin_pt3D.
+Reflect the pipe's segments across a plane with the input normal vector and origin.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `normal_vec3D` | `Vector3D` | — |
-| `origin_pt3D` | `Point3D` | — |
+| `normal_vec3D` | `Vector3D` | The normal vector for the reflection plane. THIS VECTOR MUST BE NORMALIZED. |
+| `origin_pt3D` | `Point3D` | The origin from which to reflect. |
 
 **Returns**: `PhHvacPipeElement`
 
 #### scale(factor, origin_pt3D)
 
-Scale the pipe's segments by a factor from an origin_pt3D point.
+Scale the pipe's segments by a factor from an origin point.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `factor` | `float` | — |
-| `origin_pt3D` | `Optional[Point3D]` | — |
+| `factor` | `float` | How much the segments should be scaled. |
+| `origin_pt3D` | `Optional[Point3D]` | The origin from which to scale. If None, it will be scaled from the World origin (0, 0, 0). |
 
 **Returns**: `PhHvacPipeElement`
 
@@ -217,8 +217,8 @@ A 'Branch' Pipe which has geometry, and serves one or more 'Fixture' (Twig) pipe
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `pipe_element` | `PhHvacPipeElement` | — |
-| `fixtures` | `(List[PhHvacPipeElement])` | — |
+| `pipe_element` | `PhHvacPipeElement` | The pipe element representing the branch geometry. |
+| `fixtures` | `(List[PhHvacPipeElement])` | The fixture (twig) pipe elements connected to this branch. |
 
 ### Properties
 
@@ -239,11 +239,11 @@ A 'Branch' Pipe which has geometry, and serves one or more 'Fixture' (Twig) pipe
 
 #### add_fixture(_fixture)
 
-Add a new HBPH Fixture (twig) PhPipeBranch to the Trunk.
+Add a new fixture (twig) pipe element to the branch.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `_fixture` | `PhHvacPipeElement` | — |
+| `_fixture` | `PhHvacPipeElement` | The fixture pipe element to add. |
 
 **Returns**: `None`
 
@@ -253,52 +253,52 @@ Move the pipe's elements along a vector.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `moving_vec3D` | `Vector3D` | — |
+| `moving_vec3D` | `Vector3D` | A vector with the direction and distance to move. |
 
 **Returns**: `PhHvacPipeBranch`
 
 #### rotate(axis_3D, angle_degrees, origin_pt3D)
 
-Rotate the pipe's elements by a certain angle_degrees around an axis_3D and origin_pt3D.
+Rotate the pipe's elements by a certain angle around an axis and origin.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `axis_3D` | `Vector3D` | — |
-| `angle_degrees` | `float` | — |
-| `origin_pt3D` | `Point3D` | — |
+| `axis_3D` | `Vector3D` | A vector representing the axis of rotation. |
+| `angle_degrees` | `float` | An angle for rotation in degrees. |
+| `origin_pt3D` | `Point3D` | The origin around which the object will be rotated. |
 
 **Returns**: `PhHvacPipeBranch`
 
 #### rotate_xy(angle_degrees, origin_pt3D)
 
-Rotate the pipe's elements counterclockwise in the XY plane by a certain angle_degrees.
+Rotate the pipe's elements counterclockwise in the XY plane by a certain angle.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `angle_degrees` | `float` | — |
-| `origin_pt3D` | `Point3D` | — |
+| `angle_degrees` | `float` | An angle in degrees. |
+| `origin_pt3D` | `Point3D` | The origin around which the object will be rotated. |
 
 **Returns**: `PhHvacPipeBranch`
 
 #### reflect(normal_vec3D, origin_pt3D)
 
-Reflected the pipe's elements across a plane with the input normal_vec3D vector and origin_pt3D.
+Reflect the pipe's elements across a plane with the input normal vector and origin.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `normal_vec3D` | `Vector3D` | — |
-| `origin_pt3D` | `Point3D` | — |
+| `normal_vec3D` | `Vector3D` | The normal vector for the reflection plane. THIS VECTOR MUST BE NORMALIZED. |
+| `origin_pt3D` | `Point3D` | The origin from which to reflect. |
 
 **Returns**: `PhHvacPipeBranch`
 
 #### scale(factor, origin_pt3D)
 
-Scale the pipe's elements by a factor from an origin_pt3D point.
+Scale the pipe's elements by a factor from an origin point.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `factor` | `float` | — |
-| `origin_pt3D` | `Optional[Point3D]` | — |
+| `factor` | `float` | How much the elements should be scaled. |
+| `origin_pt3D` | `Optional[Point3D]` | The origin from which to scale. If None, it will be scaled from the World origin (0, 0, 0). |
 
 **Returns**: `PhHvacPipeBranch`
 
@@ -314,10 +314,10 @@ A 'Trunk' Pipe which has geometry, and serves one or more 'Branches'.
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `pipe_element` | `PhHvacPipeElement` | — |
-| `multiplier` | `int` | — |
-| `branches` | `(List[PhHvacPipeBranch])` | — |
-| `demand_recirculation` | `bool` | — |
+| `pipe_element` | `PhHvacPipeElement` | The pipe element representing the trunk geometry. |
+| `multiplier` | `int` | A multiplier applied to the trunk for identical risers. |
+| `branches` | `(List[PhHvacPipeBranch])` | The branch pipes connected to this trunk. |
+| `demand_recirculation` | `bool` | True if the trunk uses demand recirculation. |
 
 ### Properties
 
@@ -337,11 +337,11 @@ A 'Trunk' Pipe which has geometry, and serves one or more 'Branches'.
 
 #### add_branch(_branch)
 
-Add a new HBPH PhPipeBranch to the Trunk.
+Add a new branch pipe to the trunk.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `_branch` | `PhHvacPipeBranch` | — |
+| `_branch` | `PhHvacPipeBranch` | The branch pipe to add. |
 
 **Returns**: `None`
 
@@ -351,50 +351,50 @@ Move the pipe's elements along a vector.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `moving_vec3D` | `Vector3D` | — |
+| `moving_vec3D` | `Vector3D` | A vector with the direction and distance to move. |
 
 **Returns**: `PhHvacPipeTrunk`
 
 #### rotate(axis_3D, angle_degrees, origin_pt3D)
 
-Rotate the pipe's elements by a certain angle_degrees around an axis_3D and origin_pt3D.
+Rotate the pipe's elements by a certain angle around an axis and origin.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `axis_3D` | `Vector3D` | — |
-| `angle_degrees` | `float` | — |
-| `origin_pt3D` | `Point3D` | — |
+| `axis_3D` | `Vector3D` | A vector representing the axis of rotation. |
+| `angle_degrees` | `float` | An angle for rotation in degrees. |
+| `origin_pt3D` | `Point3D` | The origin around which the object will be rotated. |
 
 **Returns**: `PhHvacPipeTrunk`
 
 #### rotate_xy(angle_degrees, origin_pt3D)
 
-Rotate the pipe's elements counterclockwise in the XY plane by a certain angle_degrees.
+Rotate the pipe's elements counterclockwise in the XY plane by a certain angle.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `angle_degrees` | `float` | — |
-| `origin_pt3D` | `Point3D` | — |
+| `angle_degrees` | `float` | An angle in degrees. |
+| `origin_pt3D` | `Point3D` | The origin around which the object will be rotated. |
 
 **Returns**: `PhHvacPipeTrunk`
 
 #### reflect(normal_vec3D, origin_pt3D)
 
-Reflected the pipe's elements across a plane with the input normal_vec3D vector and origin_pt3D.
+Reflect the pipe's elements across a plane with the input normal vector and origin.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `normal_vec3D` | — | — |
-| `origin_pt3D` | — | — |
+| `normal_vec3D` | — | The normal vector for the reflection plane. THIS VECTOR MUST BE NORMALIZED. |
+| `origin_pt3D` | — | The origin from which to reflect. |
 
 #### scale(factor, origin_pt3D)
 
-Scale the pipe's elements by a factor from an origin_pt3D point.
+Scale the pipe's elements by a factor from an origin point.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `factor` | `float` | — |
-| `origin_pt3D` | `Optional[Point3D]` | — |
+| `factor` | `float` | How much the elements should be scaled. |
+| `origin_pt3D` | `Optional[Point3D]` | The origin from which to scale. If None, it will be scaled from the World origin (0, 0, 0). |
 
 **Returns**: `PhHvacPipeTrunk`
 

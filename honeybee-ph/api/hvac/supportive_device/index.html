@@ -17,7 +17,7 @@
 <p><strong>Source</strong>: <code>honeybee_phhvac/supportive_device.py</code></p>
 <hr>
 <h2 id="phsupportivedevice">PhSupportiveDevice</h2>
-<p>No description available.</p>
+<p>Auxiliary energy supportive device for Passive House HVAC systems.</p>
 <p><strong>Inherits from</strong>: <code>_base._PhHVACBase</code></p>
 <h3 id="attributes">Attributes</h3>
 
@@ -65,7 +65,7 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td><code>str</code></td><td>—</td></tr><tr><td><code>device_type</code></td><td><code>int</code></td><td>—</td></tr><tr><td><code>quantity</code></td><td><code>int</code></td><td>—</td></tr><tr><td><code>in_conditioned_space</code></td><td><code>bool</code></td><td>—</td></tr><tr><td><code>norm_energy_demand_W</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>annual_period_operation_khrs</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>ihg_utilization_factor</code></td><td><code>float</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td><code>str</code></td><td>Human-readable name for the device.</td></tr><tr><td><code>device_type</code></td><td><code>int</code></td><td>Numeric code identifying the device type.</td></tr><tr><td><code>quantity</code></td><td><code>int</code></td><td>Number of identical devices.</td></tr><tr><td><code>in_conditioned_space</code></td><td><code>bool</code></td><td>Whether the device is located inside the thermal envelope.</td></tr><tr><td><code>norm_energy_demand_W</code></td><td><code>float</code></td><td>Normalized energy demand in Watts.</td></tr><tr><td><code>annual_period_operation_khrs</code></td><td><code>float</code></td><td>Annual operating period in thousands of hours.</td></tr><tr><td><code>ihg_utilization_factor</code></td><td><code>float</code></td><td>Fraction of energy that becomes internal heat gain inside the envelope (0.0-1.0).</td></tr></tbody></table>
 <h3 id="methods">Methods</h3>
 <h4 id="base_attrs_from_dict_input_dict">base_attrs_from_dict(_input_dict)</h4>
 
@@ -102,7 +102,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_input_dict</code></td><td><code>Dict[str</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_input_dict</code></td><td><code>Dict[str</code></td><td>The dictionary to validate.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>None</code></p>
 <h4 id="movemoving_vec3d">move(moving_vec3D)</h4>
 <p>Move the device’s elements along a vector.</p>
@@ -121,9 +121,9 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td>—</td><td>A Vector3D with the direction and distance to move the ray.</td></tr></tbody></table>
 <h4 id="rotateaxis_vec3d-angle_degrees-origin_pt3d">rotate(axis_vec3D, angle_degrees, origin_pt3D)</h4>
-<p>Rotate the device’s elements by a certain angle around an axis_vec3D and origin_pt3D.</p>
+<p>Rotate the device’s elements by a certain angle around an axis and origin point.</p>
 
 
 
@@ -149,7 +149,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_vec3D</code></td><td>—</td><td>—</td></tr><tr><td><code>angle_degrees</code></td><td>—</td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_vec3D</code></td><td>—</td><td>A Vector3D representing the axis of rotation.</td></tr><tr><td><code>angle_degrees</code></td><td>—</td><td>An angle for rotation in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>A Point3D for the origin around which the object will be rotated.</td></tr></tbody></table>
 <h4 id="rotate_xyangle_degrees-origin_pt3d">rotate_xy(angle_degrees, origin_pt3D)</h4>
 <p>Rotate the device’s elements counterclockwise in the XY plane by a certain angle.</p>
 
@@ -172,9 +172,9 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td>—</td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td>—</td><td>An angle in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>A Point3D for the origin around which the object will be rotated.</td></tr></tbody></table>
 <h4 id="reflectnormal_vec3d-origin_pt3d">reflect(normal_vec3D, origin_pt3D)</h4>
-<p>Reflected the device’s elements across a plane with the input normal vector and origin_pt3D.</p>
+<p>Reflect the device’s elements across a plane with the input normal vector and origin.</p>
 
 
 
@@ -195,9 +195,9 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td>—</td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td>—</td><td>A normalized Vector3D representing the normal vector for the plane across which the element will be reflected.</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>A Point3D representing the origin from which to reflect.</td></tr></tbody></table>
 <h4 id="scalescale_factor-origin_pt3d">scale(scale_factor, origin_pt3D)</h4>
-<p>Scale the device’s elements by a factor from an origin_pt3D point.</p>
+<p>Scale the device’s elements by a factor from an origin point.</p>
 
 
 
@@ -218,7 +218,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>scale_factor</code></td><td>—</td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>scale_factor</code></td><td>—</td><td>A number representing how much the element should be scaled.</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>A Point3D representing the origin from which to scale. If None, it will be scaled from the World origin (0, 0, 0).</td></tr></tbody></table>
 <hr> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/honeybee_ph">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/honeybee_ph/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
 (function () {
   // ---------- Modal open / close ----------

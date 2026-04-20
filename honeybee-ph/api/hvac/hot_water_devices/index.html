@@ -38,7 +38,7 @@
 <table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>msg</code></td><td><code>format</code></td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phhvachotwatertanktype">PhHvacHotWaterTankType</h2>
-<p>No description available.</p>
+<p>Enumeration of hot water storage tank types.</p>
 <p><strong>Inherits from</strong>: <code>enumerables.CustomEnum</code></p>
 <h3 id="values">Values</h3>
 
@@ -65,7 +65,7 @@
 <table><thead><tr><th>Value</th><th>Meaning</th></tr></thead><tbody><tr><td><code>"0-No storage tank"</code></td><td>—</td></tr><tr><td><code>"1-DHW and heating"</code></td><td>—</td></tr><tr><td><code>"2-DHW only"</code></td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phhvachotwatertank">PhHvacHotWaterTank</h2>
-<p>No description available.</p>
+<p>A Passive House hot water storage tank.</p>
 <p><strong>Inherits from</strong>: <code>_base._PhHVACBase</code></p>
 <h3 id="attributes-1">Attributes</h3>
 
@@ -133,7 +133,7 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td><code>str</code></td><td>—</td></tr><tr><td><code>quantity</code></td><td><code>int</code></td><td>—</td></tr><tr><td><code>in_conditioned_space</code></td><td><code>bool</code></td><td>—</td></tr><tr><td><code>solar_connection</code></td><td><code>bool</code></td><td>—</td></tr><tr><td><code>solar_losses</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>storage_loss_rate</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>storage_capacity</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>standby_losses</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>standby_fraction</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>room_temp</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>water_temp</code></td><td><code>float</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td><code>str</code></td><td>User-facing name for the tank.</td></tr><tr><td><code>quantity</code></td><td><code>int</code></td><td>Number of identical tanks.</td></tr><tr><td><code>in_conditioned_space</code></td><td><code>bool</code></td><td>True if the tank is inside conditioned space.</td></tr><tr><td><code>solar_connection</code></td><td><code>bool</code></td><td>True if the tank has a solar thermal connection.</td></tr><tr><td><code>solar_losses</code></td><td><code>float</code></td><td>Solar thermal losses (W).</td></tr><tr><td><code>storage_loss_rate</code></td><td><code>float</code></td><td>Storage heat loss rate (W/K).</td></tr><tr><td><code>storage_capacity</code></td><td><code>float</code></td><td>Tank volume in liters.</td></tr><tr><td><code>standby_losses</code></td><td><code>float</code></td><td>Standby heat losses (W/K).</td></tr><tr><td><code>standby_fraction</code></td><td><code>float</code></td><td>Fraction of standby losses contributing to heating.</td></tr><tr><td><code>room_temp</code></td><td><code>float</code></td><td>Ambient room temperature surrounding the tank (deg-C).</td></tr><tr><td><code>water_temp</code></td><td><code>float</code></td><td>Hot water storage temperature (deg-C).</td></tr></tbody></table>
 <h3 id="properties">Properties</h3>
 
 
@@ -150,10 +150,10 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>tank_type</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>tank_type</code></td><td><code>str</code></td><td>The active tank type value string.</td></tr></tbody></table>
 <hr>
 <h2 id="phhvachotwaterheater">PhHvacHotWaterHeater</h2>
-<p>Base class for all PH Hot-Water Heaters.</p>
+<p>Base class for all PH hot water heater devices.</p>
 <p><strong>Inherits from</strong>: <code>_base._PhHVACBase</code></p>
 <h3 id="attributes-2">Attributes</h3>
 
@@ -176,14 +176,14 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>percent_coverage</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>in_conditioned_space</code></td><td><code>bool</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>percent_coverage</code></td><td><code>float</code></td><td>Fraction of hot water demand covered by this heater (0.0-1.0).</td></tr><tr><td><code>in_conditioned_space</code></td><td><code>bool</code></td><td>True if the heater is located inside conditioned space.</td></tr></tbody></table>
 <hr>
 <h2 id="phhvachotwaterheaterelectric">PhHvacHotWaterHeaterElectric</h2>
-<p>No description available.</p>
+<p>An electric resistance hot water heater.</p>
 <p><strong>Inherits from</strong>: <code>PhHvacHotWaterHeater</code></p>
 <hr>
 <h2 id="phhvachotwaterheaterboiler">PhHvacHotWaterHeaterBoiler</h2>
-<p>No description available.</p>
+<p>A fossil-fuel (gas/oil) boiler hot water heater.</p>
 <p><strong>Inherits from</strong>: <code>PhHvacHotWaterHeater</code></p>
 <h3 id="attributes-3">Attributes</h3>
 
@@ -236,10 +236,10 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>fuel</code></td><td><code>int</code></td><td>—</td></tr><tr><td><code>condensing</code></td><td><code>bool</code></td><td>—</td></tr><tr><td><code>effic_at_30_perc_load</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>effic_at_nominal_load</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>avg_return_temp_at_30_perc_load</code></td><td><code>int</code></td><td>—</td></tr><tr><td><code>avg_boiler_temp_at_70_55</code></td><td><code>int</code></td><td>—</td></tr><tr><td><code>avg_boiler_temp_at_55_45</code></td><td><code>int</code></td><td>—</td></tr><tr><td><code>avg_boiler_temp_at_35_28</code></td><td><code>int</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>fuel</code></td><td><code>int</code></td><td>Fuel type identifier (1=Gas, 2=Oil).</td></tr><tr><td><code>condensing</code></td><td><code>bool</code></td><td>True if the boiler is a condensing type.</td></tr><tr><td><code>effic_at_30_perc_load</code></td><td><code>float</code></td><td>Efficiency at 30-percent part-load.</td></tr><tr><td><code>effic_at_nominal_load</code></td><td><code>float</code></td><td>Efficiency at nominal (full) load.</td></tr><tr><td><code>avg_return_temp_at_30_perc_load</code></td><td><code>int</code></td><td>Average return temperature at 30-percent load (deg-C).</td></tr><tr><td><code>avg_boiler_temp_at_70_55</code></td><td><code>int</code></td><td>Average boiler temperature at 70/55 supply/return (deg-C).</td></tr><tr><td><code>avg_boiler_temp_at_55_45</code></td><td><code>int</code></td><td>Average boiler temperature at 55/45 supply/return (deg-C).</td></tr><tr><td><code>avg_boiler_temp_at_35_28</code></td><td><code>int</code></td><td>Average boiler temperature at 35/28 supply/return (deg-C).</td></tr></tbody></table>
 <hr>
 <h2 id="phhvachotwaterheaterboilerwood">PhHvacHotWaterHeaterBoilerWood</h2>
-<p>No description available.</p>
+<p>A wood-fuel (pellet/log) boiler hot water heater.</p>
 <p><strong>Inherits from</strong>: <code>PhHvacHotWaterHeater</code></p>
 <h3 id="attributes-4">Attributes</h3>
 
@@ -277,10 +277,10 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>fuel</code></td><td><code>int</code></td><td>—</td></tr><tr><td><code>effic_in_basic_cycle</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>effic_in_const_operation</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>avg_frac_heat_released</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>on_off_temp_diff</code></td><td><code>int</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>fuel</code></td><td><code>int</code></td><td>Fuel type identifier (1=Pellet, 2=Log).</td></tr><tr><td><code>effic_in_basic_cycle</code></td><td><code>float</code></td><td>Efficiency during the basic heating cycle.</td></tr><tr><td><code>effic_in_const_operation</code></td><td><code>float</code></td><td>Efficiency during constant operation.</td></tr><tr><td><code>avg_frac_heat_released</code></td><td><code>float</code></td><td>Average fraction of heat released to the space.</td></tr><tr><td><code>on_off_temp_diff</code></td><td><code>int</code></td><td>Temperature differential for on/off cycling (deg-C).</td></tr></tbody></table>
 <hr>
 <h2 id="phhvachotwaterheaterdistrict">PhHvacHotWaterHeaterDistrict</h2>
-<p>No description available.</p>
+<p>A district heating hot water heater connection.</p>
 <p><strong>Inherits from</strong>: <code>PhHvacHotWaterHeater</code></p>
 <h3 id="attributes-5">Attributes</h3>
 
@@ -308,10 +308,10 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>energy_carrier</code></td><td><code>int</code></td><td>—</td></tr><tr><td><code>solar_fraction</code></td><td><code>int</code></td><td>—</td></tr><tr><td><code>util_fact_heat_transfer</code></td><td><code>int</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>energy_carrier</code></td><td><code>int</code></td><td>Energy carrier type identifier.</td></tr><tr><td><code>solar_fraction</code></td><td><code>int</code></td><td>Fraction of energy supplied by solar thermal.</td></tr><tr><td><code>util_fact_heat_transfer</code></td><td><code>int</code></td><td>Utilization factor for heat transfer.</td></tr></tbody></table>
 <hr>
 <h2 id="phhvachotwaterheaterheatpump_monthly">PhHvacHotWaterHeaterHeatPump_Monthly</h2>
-<p>No description available.</p>
+<p>A heat pump hot water heater using monthly COP values at two test points.</p>
 <p><strong>Inherits from</strong>: <code>PhHvacHotWaterHeater</code></p>
 <h3 id="attributes-6">Attributes</h3>
 
@@ -344,10 +344,10 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>COP_1</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>ambient_temp_1</code></td><td>—</td><td>—</td></tr><tr><td><code>COP_2</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>ambient_temp_2</code></td><td><code>float</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>COP_1</code></td><td><code>float</code></td><td>Coefficient of performance at test condition 1.</td></tr><tr><td><code>ambient_temp_1</code></td><td>—</td><td>Ambient temperature for test condition 1 (deg-C).</td></tr><tr><td><code>COP_2</code></td><td><code>float</code></td><td>Coefficient of performance at test condition 2.</td></tr><tr><td><code>ambient_temp_2</code></td><td><code>float</code></td><td>Ambient temperature for test condition 2 (deg-C).</td></tr></tbody></table>
 <hr>
 <h2 id="phhvachotwaterheaterheatpump_annual">PhHvacHotWaterHeaterHeatPump_Annual</h2>
-<p>No description available.</p>
+<p>A heat pump hot water heater using a single annual COP value.</p>
 <p><strong>Inherits from</strong>: <code>PhHvacHotWaterHeater</code></p>
 <h3 id="attributes-7">Attributes</h3>
 
@@ -373,7 +373,7 @@
 <table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>annual_COP</code></td><td>`(float</td><td>None)`</td></tr><tr><td><code>total_system_perf_ratio</code></td><td>`(float</td><td>None)`</td></tr></tbody></table>
 <hr>
 <h2 id="phhvachotwaterheaterheatpump_inside">PhHvacHotWaterHeaterHeatPump_Inside</h2>
-<p>No description available.</p>
+<p>A heat pump hot water heater located inside conditioned space, rated by annual energy factor.</p>
 <p><strong>Inherits from</strong>: <code>PhHvacHotWaterHeater</code></p>
 <h3 id="attributes-8">Attributes</h3>
 
@@ -404,7 +404,7 @@
 <table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>annual_COP</code></td><td>`(float</td><td>None)`</td></tr><tr><td><code>total_system_perf_ratio</code></td><td>`(float</td><td>None)`</td></tr><tr><td><code>annual_energy_factor</code></td><td>`(float</td><td>None)`</td></tr></tbody></table>
 <hr>
 <h2 id="phhvachotwaterheaterbuilder">PhHvacHotWaterHeaterBuilder</h2>
-<p>Constructor class for Hot-Water-Heater objects</p>
+<p>Factory class for constructing PhHvacHotWaterHeater objects from dictionaries.</p>
 <hr> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/honeybee_ph">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/honeybee_ph/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
 (function () {
   // ---------- Modal open / close ----------

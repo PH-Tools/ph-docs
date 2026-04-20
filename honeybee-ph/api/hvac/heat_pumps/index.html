@@ -17,7 +17,7 @@
 <p><strong>Source</strong>: <code>honeybee_phhvac/heat_pumps.py</code></p>
 <hr>
 <h2 id="unknownphheatpumptypeerror">UnknownPhHeatPumpTypeError</h2>
-<p>No description available.</p>
+<p>Error raised when an unrecognized heat-pump type name is encountered.</p>
 <p><strong>Inherits from</strong>: <code>Exception</code></p>
 <h3 id="attributes">Attributes</h3>
 
@@ -35,10 +35,10 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>msg</code></td><td><code>format</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>msg</code></td><td><code>format</code></td><td>Formatted error message including the received type and valid options.</td></tr></tbody></table>
 <hr>
 <h2 id="phheatpumpsystem">PhHeatPumpSystem</h2>
-<p>Base class for all HBPH-Cooling-Systems.</p>
+<p>Base class for all HBPH heat-pump systems.</p>
 <p><strong>Inherits from</strong>: <code>_base._PhHVACBase</code></p>
 <h3 id="attributes-1">Attributes</h3>
 
@@ -66,7 +66,7 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>heat_pump_class_name</code></td><td>—</td><td>—</td></tr><tr><td><code>percent_coverage</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>cooling_params</code></td><td><code>PhHeatPumpCoolingParams</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>heat_pump_class_name</code></td><td>—</td><td>The class name of the heat-pump type.</td></tr><tr><td><code>percent_coverage</code></td><td><code>float</code></td><td>Fractional coverage of the heating load (0.0-1.0).</td></tr><tr><td><code>cooling_params</code></td><td><code>PhHeatPumpCoolingParams</code></td><td>Cooling parameter collection for this heat pump.</td></tr></tbody></table>
 <h3 id="methods">Methods</h3>
 <h4 id="base_attrs_from_dict_input_dict">base_attrs_from_dict(_input_dict)</h4>
 
@@ -103,7 +103,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_input_dict</code></td><td><code>Dict[str</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_input_dict</code></td><td><code>Dict[str</code></td><td>The dictionary to validate.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>None</code></p>
 <h4 id="movemoving_vec3d">move(moving_vec3D)</h4>
 <p>Move the System’s elements along a vector.</p>
@@ -122,9 +122,9 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td>—</td><td>A Vector3D with the direction and distance to move the ray.</td></tr></tbody></table>
 <h4 id="rotateaxis_vec3d-angle_degrees-origin_pt3d">rotate(axis_vec3D, angle_degrees, origin_pt3D)</h4>
-<p>Rotate the System’s elements by a certain angle around an axis_vec3D and origin_pt3D.</p>
+<p>Rotate the System’s elements by a certain angle around an axis and origin.</p>
 
 
 
@@ -150,7 +150,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_vec3D</code></td><td>—</td><td>—</td></tr><tr><td><code>angle_degrees</code></td><td>—</td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_vec3D</code></td><td>—</td><td>A Vector3D representing the axis of rotation.</td></tr><tr><td><code>angle_degrees</code></td><td>—</td><td>An angle for rotation in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>A Point3D for the origin around which the object will be rotated.</td></tr></tbody></table>
 <h4 id="rotate_xyangle_degrees-origin_pt3d">rotate_xy(angle_degrees, origin_pt3D)</h4>
 <p>Rotate the System’s elements counterclockwise in the XY plane by a certain angle.</p>
 
@@ -173,9 +173,9 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td>—</td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td>—</td><td>An angle in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>A Point3D for the origin around which the object will be rotated.</td></tr></tbody></table>
 <h4 id="reflectnormal_vec3d-origin_pt3d">reflect(normal_vec3D, origin_pt3D)</h4>
-<p>Reflected the System’s elements across a plane with the input normal vector and origin_pt3D.</p>
+<p>Reflect the System’s elements across a plane with the input normal vector and origin.</p>
 
 
 
@@ -196,9 +196,9 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td>—</td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td>—</td><td>A normalized Vector3D representing the normal for the plane across which elements will be reflected.</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>A Point3D representing the origin from which to reflect.</td></tr></tbody></table>
 <h4 id="scalescale_factor-origin_pt3d">scale(scale_factor, origin_pt3D)</h4>
-<p>Scale the System’s elements by a factor from an origin_pt3D point.</p>
+<p>Scale the System’s elements by a factor from an origin point.</p>
 
 
 
@@ -219,10 +219,10 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>scale_factor</code></td><td>—</td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>scale_factor</code></td><td>—</td><td>A number representing how much the elements should be scaled.</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>A Point3D representing the origin from which to scale. If None, it will be scaled from the World origin (0, 0, 0).</td></tr></tbody></table>
 <hr>
 <h2 id="phheatpumpcoolingparams_base">PhHeatPumpCoolingParams_Base</h2>
-<p>Base class for all HBPH-Cooling-Parameters.</p>
+<p>Base class for all HBPH cooling parameters.</p>
 <p><strong>Inherits from</strong>: <code>_base._PhHVACBase</code></p>
 <h3 id="attributes-2">Attributes</h3>
 
@@ -240,7 +240,7 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>used</code></td><td><code>bool</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>used</code></td><td><code>bool</code></td><td>Whether this cooling mode is active.</td></tr></tbody></table>
 <h3 id="methods-1">Methods</h3>
 <h4 id="base_attrs_from_dict_input_dict-1">base_attrs_from_dict(_input_dict)</h4>
 
@@ -262,7 +262,7 @@
 <p><strong>Returns</strong>: <code>PhHeatPumpCoolingParams_Base</code></p>
 <hr>
 <h2 id="phheatpumpcoolingparams_ventilation">PhHeatPumpCoolingParams_Ventilation</h2>
-<p>Cooling via the Fresh-Air Ventilation System (ERV).</p>
+<p>Cooling via the fresh-air ventilation system (ERV).</p>
 <p><strong>Inherits from</strong>: <code>PhHeatPumpCoolingParams_Base</code></p>
 <h3 id="attributes-3">Attributes</h3>
 
@@ -295,10 +295,10 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>single_speed</code></td><td><code>bool</code></td><td>—</td></tr><tr><td><code>min_coil_temp</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>capacity</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>annual_COP</code></td><td><code>float</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>single_speed</code></td><td><code>bool</code></td><td>Whether the system operates at a single speed only.</td></tr><tr><td><code>min_coil_temp</code></td><td><code>float</code></td><td>Minimum coil temperature in degrees Celsius.</td></tr><tr><td><code>capacity</code></td><td><code>float</code></td><td>Cooling capacity in kW.</td></tr><tr><td><code>annual_COP</code></td><td><code>float</code></td><td>Annual coefficient of performance.</td></tr></tbody></table>
 <hr>
 <h2 id="phheatpumpcoolingparams_recirculation">PhHeatPumpCoolingParams_Recirculation</h2>
-<p>Cooling via a ‘recirculation’ system (typical AC).</p>
+<p>Cooling via a recirculation system (typical AC).</p>
 <p><strong>Inherits from</strong>: <code>PhHeatPumpCoolingParams_Base</code></p>
 <h3 id="attributes-4">Attributes</h3>
 
@@ -341,10 +341,10 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>single_speed</code></td><td><code>bool</code></td><td>—</td></tr><tr><td><code>min_coil_temp</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>flow_rate_m3_hr</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>flow_rate_variable</code></td><td><code>bool</code></td><td>—</td></tr><tr><td><code>capacity</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>annual_COP</code></td><td><code>float</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>single_speed</code></td><td><code>bool</code></td><td>Whether the system operates at a single speed only.</td></tr><tr><td><code>min_coil_temp</code></td><td><code>float</code></td><td>Minimum coil temperature in degrees Celsius.</td></tr><tr><td><code>flow_rate_m3_hr</code></td><td><code>float</code></td><td>Airflow rate in cubic meters per hour.</td></tr><tr><td><code>flow_rate_variable</code></td><td><code>bool</code></td><td>Whether the flow rate is variable.</td></tr><tr><td><code>capacity</code></td><td><code>float</code></td><td>Cooling capacity in kW.</td></tr><tr><td><code>annual_COP</code></td><td><code>float</code></td><td>Annual coefficient of performance.</td></tr></tbody></table>
 <hr>
 <h2 id="phheatpumpcoolingparams_dehumidification">PhHeatPumpCoolingParams_Dehumidification</h2>
-<p>Cooling via dedicated dehumidification system.</p>
+<p>Cooling via a dedicated dehumidification system.</p>
 <p><strong>Inherits from</strong>: <code>PhHeatPumpCoolingParams_Base</code></p>
 <h3 id="attributes-5">Attributes</h3>
 
@@ -367,7 +367,7 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>useful_heat_loss</code></td><td><code>bool</code></td><td>—</td></tr><tr><td><code>annual_COP</code></td><td><code>float</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>useful_heat_loss</code></td><td><code>bool</code></td><td>Whether heat loss from dehumidification is considered useful.</td></tr><tr><td><code>annual_COP</code></td><td><code>float</code></td><td>Annual coefficient of performance.</td></tr></tbody></table>
 <hr>
 <h2 id="phheatpumpcoolingparams_panel">PhHeatPumpCoolingParams_Panel</h2>
 <p>Cooling via radiant panels.</p>
@@ -388,10 +388,10 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>annual_COP</code></td><td><code>float</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>annual_COP</code></td><td><code>float</code></td><td>Annual coefficient of performance.</td></tr></tbody></table>
 <hr>
 <h2 id="phheatpumpcoolingparams">PhHeatPumpCoolingParams</h2>
-<p>A Collection of Cooling Parameters for various types of systems.</p>
+<p>A collection of cooling parameters for various types of cooling systems.</p>
 <h3 id="attributes-7">Attributes</h3>
 
 
@@ -428,10 +428,10 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>percent_coverage</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>ventilation</code></td><td><code>PhHeatPumpCoolingParams_Ventilation</code></td><td>—</td></tr><tr><td><code>recirculation</code></td><td><code>PhHeatPumpCoolingParams_Recirculation</code></td><td>—</td></tr><tr><td><code>dehumidification</code></td><td><code>PhHeatPumpCoolingParams_Dehumidification</code></td><td>—</td></tr><tr><td><code>panel</code></td><td><code>PhHeatPumpCoolingParams_Panel</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>percent_coverage</code></td><td><code>float</code></td><td>Fractional coverage of the cooling load (0.0-1.0).</td></tr><tr><td><code>ventilation</code></td><td><code>PhHeatPumpCoolingParams_Ventilation</code></td><td>Ventilation-based cooling parameters.</td></tr><tr><td><code>recirculation</code></td><td><code>PhHeatPumpCoolingParams_Recirculation</code></td><td>Recirculation-based cooling parameters.</td></tr><tr><td><code>dehumidification</code></td><td><code>PhHeatPumpCoolingParams_Dehumidification</code></td><td>Dehumidification-based cooling parameters.</td></tr><tr><td><code>panel</code></td><td><code>PhHeatPumpCoolingParams_Panel</code></td><td>Radiant-panel-based cooling parameters.</td></tr></tbody></table>
 <hr>
 <h2 id="phheatpumpannual">PhHeatPumpAnnual</h2>
-<p>Electric heat-pump with only Annual performance values.</p>
+<p>Electric heat pump with only annual performance values.</p>
 <p><strong>Inherits from</strong>: <code>PhHeatPumpSystem</code></p>
 <h3 id="attributes-8">Attributes</h3>
 
@@ -454,10 +454,10 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>annual_COP</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>total_system_perf_ratio</code></td><td><code>float</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>annual_COP</code></td><td><code>float</code></td><td>Annual coefficient of performance.</td></tr><tr><td><code>total_system_perf_ratio</code></td><td><code>float</code></td><td>Total system performance ratio.</td></tr></tbody></table>
 <hr>
 <h2 id="phheatpumpratedmonthly">PhHeatPumpRatedMonthly</h2>
-<p>Electric heat-pump with 2 separate monthly performance values.</p>
+<p>Electric heat pump with two separate monthly rated performance values.</p>
 <p><strong>Inherits from</strong>: <code>PhHeatPumpSystem</code></p>
 <h3 id="attributes-9">Attributes</h3>
 
@@ -490,7 +490,7 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>COP_1</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>ambient_temp_1</code></td><td>—</td><td>—</td></tr><tr><td><code>COP_2</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>ambient_temp_2</code></td><td><code>float</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>COP_1</code></td><td><code>float</code></td><td>Coefficient of performance at the first rating point.</td></tr><tr><td><code>ambient_temp_1</code></td><td>—</td><td>Ambient temperature for the first rating point in degrees Celsius.</td></tr><tr><td><code>COP_2</code></td><td><code>float</code></td><td>Coefficient of performance at the second rating point.</td></tr><tr><td><code>ambient_temp_2</code></td><td><code>float</code></td><td>Ambient temperature for the second rating point in degrees Celsius.</td></tr></tbody></table>
 <h3 id="properties">Properties</h3>
 
 
@@ -512,14 +512,14 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>monthly_COPS</code></td><td>—</td><td>—</td></tr><tr><td><code>monthly_temps</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>monthly_COPS</code></td><td><code>List[float]</code></td><td>The two monthly COP rating values.</td></tr><tr><td><code>monthly_temps</code></td><td><code>List[float]</code></td><td>The two monthly ambient temperature rating values in degrees Celsius.</td></tr></tbody></table>
 <hr>
 <h2 id="phheatpumpcombined">PhHeatPumpCombined</h2>
-<p>No description available.</p>
+<p>Combined heat pump system (not yet implemented).</p>
 <p><strong>Inherits from</strong>: <code>PhHeatPumpSystem</code></p>
 <hr>
 <h2 id="phheatpumpsystembuilder">PhHeatPumpSystemBuilder</h2>
-<p>Constructor class for HBPH-CoolingSystems</p>
+<p>Factory class for constructing the correct PhHeatPumpSystem subclass from a dictionary.</p>
 <hr> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/honeybee_ph">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/honeybee_ph/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
 (function () {
   // ---------- Modal open / close ----------

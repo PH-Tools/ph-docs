@@ -8,7 +8,7 @@ Honeybee-PH-HVAC-Equipment: Heat-Pump Devices.
 
 ## UnknownPhHeatPumpTypeError
 
-No description available.
+Error raised when an unrecognized heat-pump type name is encountered.
 
 **Inherits from**: `Exception`
 
@@ -16,13 +16,13 @@ No description available.
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `msg` | `format` | — |
+| `msg` | `format` | Formatted error message including the received type and valid options. |
 
 ---
 
 ## PhHeatPumpSystem
 
-Base class for all HBPH-Cooling-Systems.
+Base class for all HBPH heat-pump systems.
 
 **Inherits from**: `_base._PhHVACBase`
 
@@ -30,9 +30,9 @@ Base class for all HBPH-Cooling-Systems.
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `heat_pump_class_name` | — | — |
-| `percent_coverage` | `float` | — |
-| `cooling_params` | `PhHeatPumpCoolingParams` | — |
+| `heat_pump_class_name` | — | The class name of the heat-pump type. |
+| `percent_coverage` | `float` | Fractional coverage of the heating load (0.0-1.0). |
+| `cooling_params` | `PhHeatPumpCoolingParams` | Cooling parameter collection for this heat pump. |
 
 ### Methods
 
@@ -50,7 +50,7 @@ Check that the input dict type is correct for the Heat Pump System being constru
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `_input_dict` | `Dict[str` | — |
+| `_input_dict` | `Dict[str` | The dictionary to validate. |
 
 **Returns**: `None`
 
@@ -60,17 +60,17 @@ Move the System's elements along a vector.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `moving_vec3D` | — | — |
+| `moving_vec3D` | — | A Vector3D with the direction and distance to move the ray. |
 
 #### rotate(axis_vec3D, angle_degrees, origin_pt3D)
 
-Rotate the System's elements by a certain angle around an axis_vec3D and origin_pt3D.
+Rotate the System's elements by a certain angle around an axis and origin.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `axis_vec3D` | — | — |
-| `angle_degrees` | — | — |
-| `origin_pt3D` | — | — |
+| `axis_vec3D` | — | A Vector3D representing the axis of rotation. |
+| `angle_degrees` | — | An angle for rotation in degrees. |
+| `origin_pt3D` | — | A Point3D for the origin around which the object will be rotated. |
 
 #### rotate_xy(angle_degrees, origin_pt3D)
 
@@ -78,32 +78,32 @@ Rotate the System's elements counterclockwise in the XY plane by a certain angle
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `angle_degrees` | — | — |
-| `origin_pt3D` | — | — |
+| `angle_degrees` | — | An angle in degrees. |
+| `origin_pt3D` | — | A Point3D for the origin around which the object will be rotated. |
 
 #### reflect(normal_vec3D, origin_pt3D)
 
-Reflected the System's elements across a plane with the input normal vector and origin_pt3D.
+Reflect the System's elements across a plane with the input normal vector and origin.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `normal_vec3D` | — | — |
-| `origin_pt3D` | — | — |
+| `normal_vec3D` | — | A normalized Vector3D representing the normal for the plane across which elements will be reflected. |
+| `origin_pt3D` | — | A Point3D representing the origin from which to reflect. |
 
 #### scale(scale_factor, origin_pt3D)
 
-Scale the System's elements by a factor from an origin_pt3D point.
+Scale the System's elements by a factor from an origin point.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `scale_factor` | — | — |
-| `origin_pt3D` | — | — |
+| `scale_factor` | — | A number representing how much the elements should be scaled. |
+| `origin_pt3D` | — | A Point3D representing the origin from which to scale. If None, it will be scaled from the World origin (0, 0, 0). |
 
 ---
 
 ## PhHeatPumpCoolingParams_Base
 
-Base class for all HBPH-Cooling-Parameters.
+Base class for all HBPH cooling parameters.
 
 **Inherits from**: `_base._PhHVACBase`
 
@@ -111,7 +111,7 @@ Base class for all HBPH-Cooling-Parameters.
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `used` | `bool` | — |
+| `used` | `bool` | Whether this cooling mode is active. |
 
 ### Methods
 
@@ -127,7 +127,7 @@ Base class for all HBPH-Cooling-Parameters.
 
 ## PhHeatPumpCoolingParams_Ventilation
 
-Cooling via the Fresh-Air Ventilation System (ERV).
+Cooling via the fresh-air ventilation system (ERV).
 
 **Inherits from**: `PhHeatPumpCoolingParams_Base`
 
@@ -135,16 +135,16 @@ Cooling via the Fresh-Air Ventilation System (ERV).
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `single_speed` | `bool` | — |
-| `min_coil_temp` | `float` | — |
-| `capacity` | `float` | — |
-| `annual_COP` | `float` | — |
+| `single_speed` | `bool` | Whether the system operates at a single speed only. |
+| `min_coil_temp` | `float` | Minimum coil temperature in degrees Celsius. |
+| `capacity` | `float` | Cooling capacity in kW. |
+| `annual_COP` | `float` | Annual coefficient of performance. |
 
 ---
 
 ## PhHeatPumpCoolingParams_Recirculation
 
-Cooling via a 'recirculation' system (typical AC).
+Cooling via a recirculation system (typical AC).
 
 **Inherits from**: `PhHeatPumpCoolingParams_Base`
 
@@ -152,18 +152,18 @@ Cooling via a 'recirculation' system (typical AC).
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `single_speed` | `bool` | — |
-| `min_coil_temp` | `float` | — |
-| `flow_rate_m3_hr` | `float` | — |
-| `flow_rate_variable` | `bool` | — |
-| `capacity` | `float` | — |
-| `annual_COP` | `float` | — |
+| `single_speed` | `bool` | Whether the system operates at a single speed only. |
+| `min_coil_temp` | `float` | Minimum coil temperature in degrees Celsius. |
+| `flow_rate_m3_hr` | `float` | Airflow rate in cubic meters per hour. |
+| `flow_rate_variable` | `bool` | Whether the flow rate is variable. |
+| `capacity` | `float` | Cooling capacity in kW. |
+| `annual_COP` | `float` | Annual coefficient of performance. |
 
 ---
 
 ## PhHeatPumpCoolingParams_Dehumidification
 
-Cooling via dedicated dehumidification system.
+Cooling via a dedicated dehumidification system.
 
 **Inherits from**: `PhHeatPumpCoolingParams_Base`
 
@@ -171,8 +171,8 @@ Cooling via dedicated dehumidification system.
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `useful_heat_loss` | `bool` | — |
-| `annual_COP` | `float` | — |
+| `useful_heat_loss` | `bool` | Whether heat loss from dehumidification is considered useful. |
+| `annual_COP` | `float` | Annual coefficient of performance. |
 
 ---
 
@@ -186,29 +186,29 @@ Cooling via radiant panels.
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `annual_COP` | `float` | — |
+| `annual_COP` | `float` | Annual coefficient of performance. |
 
 ---
 
 ## PhHeatPumpCoolingParams
 
-A Collection of Cooling Parameters for various types of systems.
+A collection of cooling parameters for various types of cooling systems.
 
 ### Attributes
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `percent_coverage` | `float` | — |
-| `ventilation` | `PhHeatPumpCoolingParams_Ventilation` | — |
-| `recirculation` | `PhHeatPumpCoolingParams_Recirculation` | — |
-| `dehumidification` | `PhHeatPumpCoolingParams_Dehumidification` | — |
-| `panel` | `PhHeatPumpCoolingParams_Panel` | — |
+| `percent_coverage` | `float` | Fractional coverage of the cooling load (0.0-1.0). |
+| `ventilation` | `PhHeatPumpCoolingParams_Ventilation` | Ventilation-based cooling parameters. |
+| `recirculation` | `PhHeatPumpCoolingParams_Recirculation` | Recirculation-based cooling parameters. |
+| `dehumidification` | `PhHeatPumpCoolingParams_Dehumidification` | Dehumidification-based cooling parameters. |
+| `panel` | `PhHeatPumpCoolingParams_Panel` | Radiant-panel-based cooling parameters. |
 
 ---
 
 ## PhHeatPumpAnnual
 
-Electric heat-pump with only Annual performance values.
+Electric heat pump with only annual performance values.
 
 **Inherits from**: `PhHeatPumpSystem`
 
@@ -216,14 +216,14 @@ Electric heat-pump with only Annual performance values.
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `annual_COP` | `float` | — |
-| `total_system_perf_ratio` | `float` | — |
+| `annual_COP` | `float` | Annual coefficient of performance. |
+| `total_system_perf_ratio` | `float` | Total system performance ratio. |
 
 ---
 
 ## PhHeatPumpRatedMonthly
 
-Electric heat-pump with 2 separate monthly performance values.
+Electric heat pump with two separate monthly rated performance values.
 
 **Inherits from**: `PhHeatPumpSystem`
 
@@ -231,23 +231,23 @@ Electric heat-pump with 2 separate monthly performance values.
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `COP_1` | `float` | — |
-| `ambient_temp_1` | — | — |
-| `COP_2` | `float` | — |
-| `ambient_temp_2` | `float` | — |
+| `COP_1` | `float` | Coefficient of performance at the first rating point. |
+| `ambient_temp_1` | — | Ambient temperature for the first rating point in degrees Celsius. |
+| `COP_2` | `float` | Coefficient of performance at the second rating point. |
+| `ambient_temp_2` | `float` | Ambient temperature for the second rating point in degrees Celsius. |
 
 ### Properties
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `monthly_COPS` | — | — |
-| `monthly_temps` | — | — |
+| `monthly_COPS` | `List[float]` | The two monthly COP rating values. |
+| `monthly_temps` | `List[float]` | The two monthly ambient temperature rating values in degrees Celsius. |
 
 ---
 
 ## PhHeatPumpCombined
 
-No description available.
+Combined heat pump system (not yet implemented).
 
 **Inherits from**: `PhHeatPumpSystem`
 
@@ -255,6 +255,6 @@ No description available.
 
 ## PhHeatPumpSystemBuilder
 
-Constructor class for HBPH-CoolingSystems
+Factory class for constructing the correct PhHeatPumpSystem subclass from a dictionary.
 
 ---

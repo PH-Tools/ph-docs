@@ -17,7 +17,7 @@
 <p><strong>Source</strong>: <code>honeybee_phhvac/hot_water_piping.py</code></p>
 <hr>
 <h2 id="phhvacpipematerial">PhHvacPipeMaterial</h2>
-<p>No description available.</p>
+<p>Enumeration of allowable pipe material types.</p>
 <p><strong>Inherits from</strong>: <code>enumerables.CustomEnum</code></p>
 <h3 id="values">Values</h3>
 
@@ -61,10 +61,10 @@
 
 
 
-<table><thead><tr><th>Value</th><th>Meaning</th></tr></thead><tbody><tr><td><code>"1-COPPER_M"</code></td><td>—</td></tr><tr><td><code>"2-COPPER_L"</code></td><td>—</td></tr><tr><td><code>"3-COPPER_K"</code></td><td>—</td></tr><tr><td><code>"4-CPVC_CTS_SDR"</code></td><td>—</td></tr><tr><td><code>"5-CPVC_SCH_40"</code></td><td>—</td></tr><tr><td><code>"6-PEX"</code></td><td>—</td></tr><tr><td><code>"7-PE"</code></td><td>—</td></tr><tr><td><code>"8-PEX_CTS_SDR"</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Value</th><th>Meaning</th></tr></thead><tbody><tr><td><code>"1-COPPER_M"</code></td><td>Copper type M.</td></tr><tr><td><code>"2-COPPER_L"</code></td><td>Copper type L (default).</td></tr><tr><td><code>"3-COPPER_K"</code></td><td>Copper type K.</td></tr><tr><td><code>"4-CPVC_CTS_SDR"</code></td><td>CPVC CTS SDR.</td></tr><tr><td><code>"5-CPVC_SCH_40"</code></td><td>CPVC Schedule 40.</td></tr><tr><td><code>"6-PEX"</code></td><td>PEX tubing.</td></tr><tr><td><code>"7-PE"</code></td><td>Polyethylene tubing.</td></tr><tr><td><code>"8-PEX_CTS_SDR"</code></td><td>PEX CTS SDR.</td></tr></tbody></table>
 <hr>
 <h2 id="phhvacpipesegment">PhHvacPipeSegment</h2>
-<p>A single pipe segment (linear) with geometry and a diameter</p>
+<p>A single pipe segment (linear) with geometry and a diameter.</p>
 <p><strong>Inherits from</strong>: <code>_base._PhHVACBase</code></p>
 <h3 id="attributes">Attributes</h3>
 
@@ -122,7 +122,7 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>geometry</code></td><td>—</td><td>—</td></tr><tr><td><code>diameter_mm</code></td><td>—</td><td>—</td></tr><tr><td><code>insulation_thickness_mm</code></td><td>—</td><td>—</td></tr><tr><td><code>insulation_conductivity</code></td><td>—</td><td>—</td></tr><tr><td><code>insulation_reflective</code></td><td>—</td><td>—</td></tr><tr><td><code>insulation_quality</code></td><td>—</td><td>—</td></tr><tr><td><code>daily_period</code></td><td>—</td><td>—</td></tr><tr><td><code>water_temp_c</code></td><td>—</td><td>—</td></tr><tr><td><code>material</code></td><td><code>PhHvacPipeMaterial</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>geometry</code></td><td>—</td><td>The 3D line segment geometry of the pipe.</td></tr><tr><td><code>diameter_mm</code></td><td>—</td><td>The pipe diameter in millimeters.</td></tr><tr><td><code>insulation_thickness_mm</code></td><td>—</td><td>The insulation thickness in millimeters.</td></tr><tr><td><code>insulation_conductivity</code></td><td>—</td><td>The insulation thermal conductivity (W/m-K).</td></tr><tr><td><code>insulation_reflective</code></td><td>—</td><td>True if the insulation has a reflective surface.</td></tr><tr><td><code>insulation_quality</code></td><td>—</td><td>Reserved for future use.</td></tr><tr><td><code>daily_period</code></td><td>—</td><td>Hours per day the pipe is in use.</td></tr><tr><td><code>water_temp_c</code></td><td>—</td><td>The water temperature in degrees Celsius.</td></tr><tr><td><code>material</code></td><td><code>PhHvacPipeMaterial</code></td><td>The pipe material type.</td></tr></tbody></table>
 <h3 id="properties">Properties</h3>
 
 
@@ -168,10 +168,10 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td><code>Vector3D</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td><code>Vector3D</code></td><td>A vector with the direction and distance to move.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhHvacPipeSegment</code></p>
 <h4 id="rotateaxis_3d-angle_degrees-origin_pt3d">rotate(axis_3D, angle_degrees, origin_pt3D)</h4>
-<p>Rotate the pipe’s geometry by a certain angle_degrees around an axis_3D and origin_pt3D.</p>
+<p>Rotate the pipe’s geometry by a certain angle around an axis and origin.</p>
 
 
 
@@ -197,10 +197,10 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_3D</code></td><td><code>Vector3D</code></td><td>—</td></tr><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_3D</code></td><td><code>Vector3D</code></td><td>A vector representing the axis of rotation.</td></tr><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>An angle for rotation in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>The origin around which the object will be rotated.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhHvacPipeSegment</code></p>
 <h4 id="rotate_xyangle_degrees-origin_pt3d">rotate_xy(angle_degrees, origin_pt3D)</h4>
-<p>Rotate the pipe’s geometry counterclockwise in the XY plane by a certain angle_degrees.</p>
+<p>Rotate the pipe’s geometry counterclockwise in the XY plane by a certain angle.</p>
 
 
 
@@ -221,10 +221,10 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>An angle in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>The origin around which the object will be rotated.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhHvacPipeSegment</code></p>
 <h4 id="reflectnormal_vec3d-origin_pt3d">reflect(normal_vec3D, origin_pt3D)</h4>
-<p>Reflected the pipe’s geometry across a plane with the input normal vector and origin_pt3D.</p>
+<p>Reflect the pipe’s geometry across a plane with the input normal vector and origin.</p>
 
 
 
@@ -245,10 +245,10 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td><code>Vector3D</code></td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td><code>Vector3D</code></td><td>The normal vector for the reflection plane. THIS VECTOR MUST BE NORMALIZED.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>The origin from which to reflect.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhHvacPipeSegment</code></p>
 <h4 id="scalescale_factor-origin_pt3d">scale(scale_factor, origin_pt3D)</h4>
-<p>Scale the pipe’s geometry by a factor from an origin_pt3D point.</p>
+<p>Scale the pipe’s geometry by a factor from an origin point.</p>
 
 
 
@@ -269,7 +269,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>scale_factor</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Union[None</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>scale_factor</code></td><td><code>float</code></td><td>How much the line segment should be scaled.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Union[None</code></td><td>The origin from which to scale. If None, it will be scaled from the World origin (0, 0, 0).</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhHvacPipeSegment</code></p>
 <hr>
 <h2 id="phhvacpipeelement">PhHvacPipeElement</h2>
@@ -321,7 +321,7 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>segments</code></td><td><code>List[PhHvacPipeSegment]</code></td><td>Return a list of a;; the Pipe-Segments in the Pipe-Element.</td></tr><tr><td><code>length</code></td><td><code>float</code></td><td>Return the total length of the pipe element in model-units.</td></tr><tr><td><code>diameter_mm</code></td><td><code>float</code></td><td>Return the length-weighted average diameter of all the pipe segments</td></tr><tr><td><code>water_temp_c</code></td><td><code>float</code></td><td>Return the length-weighted average water temperature of all the pipe segments</td></tr><tr><td><code>daily_period</code></td><td><code>float</code></td><td>Return the length-weighted average daily period of all the pipe segments</td></tr><tr><td><code>segment_names</code></td><td><code>List[str]</code></td><td>Return a list of the names of all the PipeSegments in the PipeElement.</td></tr><tr><td><code>material_name</code></td><td><code>str</code></td><td>Return the material name of the pipe element.</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>segments</code></td><td><code>List[PhHvacPipeSegment]</code></td><td>Return a list of all the Pipe-Segments in the Pipe-Element.</td></tr><tr><td><code>length</code></td><td><code>float</code></td><td>Return the total length of the pipe element in model-units.</td></tr><tr><td><code>diameter_mm</code></td><td><code>float</code></td><td>Return the length-weighted average diameter of all the pipe segments</td></tr><tr><td><code>water_temp_c</code></td><td><code>float</code></td><td>Return the length-weighted average water temperature of all the pipe segments</td></tr><tr><td><code>daily_period</code></td><td><code>float</code></td><td>Return the length-weighted average daily period of all the pipe segments</td></tr><tr><td><code>segment_names</code></td><td><code>List[str]</code></td><td>Return a list of the names of all the PipeSegments in the PipeElement.</td></tr><tr><td><code>material_name</code></td><td><code>str</code></td><td>Return the material name of the pipe element.</td></tr></tbody></table>
 <h3 id="methods-1">Methods</h3>
 <h4 id="add_segment_segment">add_segment(_segment)</h4>
 <p>Add a new Pipe Segment to the Pipe Element.</p>
@@ -340,7 +340,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_segment</code></td><td><code>PhHvacPipeSegment</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_segment</code></td><td><code>PhHvacPipeSegment</code></td><td>The pipe segment to add.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>None</code></p>
 <h4 id="clear_segments">clear_segments()</h4>
 <p>Clear all the segments from the pipe element.</p>
@@ -362,10 +362,10 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td><code>Vector3D</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td><code>Vector3D</code></td><td>A vector with the direction and distance to move.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhHvacPipeElement</code></p>
 <h4 id="rotateaxis_3d-angle_degrees-origin_pt3d-1">rotate(axis_3D, angle_degrees, origin_pt3D)</h4>
-<p>Rotate the pipe’s segments by a certain angle_degrees around an axis_3D and origin_pt3D.</p>
+<p>Rotate the pipe’s segments by a certain angle around an axis and origin.</p>
 
 
 
@@ -391,10 +391,10 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_3D</code></td><td><code>Vector3D</code></td><td>—</td></tr><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_3D</code></td><td><code>Vector3D</code></td><td>A vector representing the axis of rotation.</td></tr><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>An angle for rotation in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>The origin around which the object will be rotated.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhHvacPipeElement</code></p>
 <h4 id="rotate_xyangle_degrees-origin_pt3d-1">rotate_xy(angle_degrees, origin_pt3D)</h4>
-<p>Rotate the pipe’s segments counterclockwise in the XY plane by a certain angle_degrees.</p>
+<p>Rotate the pipe’s segments counterclockwise in the XY plane by a certain angle.</p>
 
 
 
@@ -415,10 +415,10 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>An angle in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>The origin around which the object will be rotated.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhHvacPipeElement</code></p>
 <h4 id="reflectnormal_vec3d-origin_pt3d-1">reflect(normal_vec3D, origin_pt3D)</h4>
-<p>Reflected the pipe’s segments across a plane with the input normal_vec3D vector and origin_pt3D.</p>
+<p>Reflect the pipe’s segments across a plane with the input normal vector and origin.</p>
 
 
 
@@ -439,10 +439,10 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td><code>Vector3D</code></td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td><code>Vector3D</code></td><td>The normal vector for the reflection plane. THIS VECTOR MUST BE NORMALIZED.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>The origin from which to reflect.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhHvacPipeElement</code></p>
 <h4 id="scalefactor-origin_pt3d">scale(factor, origin_pt3D)</h4>
-<p>Scale the pipe’s segments by a factor from an origin_pt3D point.</p>
+<p>Scale the pipe’s segments by a factor from an origin point.</p>
 
 
 
@@ -463,7 +463,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>factor</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Optional[Point3D]</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>factor</code></td><td><code>float</code></td><td>How much the segments should be scaled.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Optional[Point3D]</code></td><td>The origin from which to scale. If None, it will be scaled from the World origin (0, 0, 0).</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhHvacPipeElement</code></p>
 <hr>
 <h2 id="phhvacpipebranch">PhHvacPipeBranch</h2>
@@ -490,7 +490,7 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>pipe_element</code></td><td><code>PhHvacPipeElement</code></td><td>—</td></tr><tr><td><code>fixtures</code></td><td><code>(List[PhHvacPipeElement])</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>pipe_element</code></td><td><code>PhHvacPipeElement</code></td><td>The pipe element representing the branch geometry.</td></tr><tr><td><code>fixtures</code></td><td><code>(List[PhHvacPipeElement])</code></td><td>The fixture (twig) pipe elements connected to this branch.</td></tr></tbody></table>
 <h3 id="properties-2">Properties</h3>
 
 
@@ -555,7 +555,7 @@
 <table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>material_name</code></td><td><code>str</code></td><td>Return the material name of the pipe element.</td></tr><tr><td><code>diameter_mm</code></td><td><code>float</code></td><td>Return the length-weighted diameter (MM) of the pipe element.</td></tr><tr><td><code>twigs</code></td><td>—</td><td>Alias for the ‘fixtures’ to better match Phius terminology.</td></tr><tr><td><code>segments</code></td><td>—</td><td>Return a list of all the Pipe-Segments in the Branch.</td></tr><tr><td><code>length</code></td><td><code>float</code></td><td>Return the total length of the branch itself in model-units.</td></tr><tr><td><code>water_temp_c</code></td><td><code>float</code></td><td>Return the length-weighted average water temperature of all the pipe segments.</td></tr><tr><td><code>daily_period</code></td><td><code>float</code></td><td>Return the length-weighted average daily period of all the pipe segments.</td></tr><tr><td><code>num_fixtures</code></td><td><code>int</code></td><td>Return the number of fixtures connected to the branch.</td></tr><tr><td><code>total_length</code></td><td><code>float</code></td><td>Return the total length of the branch PLUS all fixture pipes in model-units.</td></tr><tr><td><code>total_home_run_fixture_length</code></td><td><code>float</code></td><td>Return the total length (in model-units) of all fixture pipes as measured from end to end.</td></tr></tbody></table>
 <h3 id="methods-2">Methods</h3>
 <h4 id="add_fixture_fixture">add_fixture(_fixture)</h4>
-<p>Add a new HBPH Fixture (twig) PhPipeBranch to the Trunk.</p>
+<p>Add a new fixture (twig) pipe element to the branch.</p>
 
 
 
@@ -571,7 +571,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_fixture</code></td><td><code>PhHvacPipeElement</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_fixture</code></td><td><code>PhHvacPipeElement</code></td><td>The fixture pipe element to add.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>None</code></p>
 <h4 id="movemoving_vec3d-2">move(moving_vec3D)</h4>
 <p>Move the pipe’s elements along a vector.</p>
@@ -590,10 +590,10 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td><code>Vector3D</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td><code>Vector3D</code></td><td>A vector with the direction and distance to move.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhHvacPipeBranch</code></p>
 <h4 id="rotateaxis_3d-angle_degrees-origin_pt3d-2">rotate(axis_3D, angle_degrees, origin_pt3D)</h4>
-<p>Rotate the pipe’s elements by a certain angle_degrees around an axis_3D and origin_pt3D.</p>
+<p>Rotate the pipe’s elements by a certain angle around an axis and origin.</p>
 
 
 
@@ -619,10 +619,10 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_3D</code></td><td><code>Vector3D</code></td><td>—</td></tr><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_3D</code></td><td><code>Vector3D</code></td><td>A vector representing the axis of rotation.</td></tr><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>An angle for rotation in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>The origin around which the object will be rotated.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhHvacPipeBranch</code></p>
 <h4 id="rotate_xyangle_degrees-origin_pt3d-2">rotate_xy(angle_degrees, origin_pt3D)</h4>
-<p>Rotate the pipe’s elements counterclockwise in the XY plane by a certain angle_degrees.</p>
+<p>Rotate the pipe’s elements counterclockwise in the XY plane by a certain angle.</p>
 
 
 
@@ -643,10 +643,10 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>An angle in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>The origin around which the object will be rotated.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhHvacPipeBranch</code></p>
 <h4 id="reflectnormal_vec3d-origin_pt3d-2">reflect(normal_vec3D, origin_pt3D)</h4>
-<p>Reflected the pipe’s elements across a plane with the input normal_vec3D vector and origin_pt3D.</p>
+<p>Reflect the pipe’s elements across a plane with the input normal vector and origin.</p>
 
 
 
@@ -667,10 +667,10 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td><code>Vector3D</code></td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td><code>Vector3D</code></td><td>The normal vector for the reflection plane. THIS VECTOR MUST BE NORMALIZED.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>The origin from which to reflect.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhHvacPipeBranch</code></p>
 <h4 id="scalefactor-origin_pt3d-1">scale(factor, origin_pt3D)</h4>
-<p>Scale the pipe’s elements by a factor from an origin_pt3D point.</p>
+<p>Scale the pipe’s elements by a factor from an origin point.</p>
 
 
 
@@ -691,7 +691,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>factor</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Optional[Point3D]</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>factor</code></td><td><code>float</code></td><td>How much the elements should be scaled.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Optional[Point3D]</code></td><td>The origin from which to scale. If None, it will be scaled from the World origin (0, 0, 0).</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhHvacPipeBranch</code></p>
 <hr>
 <h2 id="phhvacpipetrunk">PhHvacPipeTrunk</h2>
@@ -728,7 +728,7 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>pipe_element</code></td><td><code>PhHvacPipeElement</code></td><td>—</td></tr><tr><td><code>multiplier</code></td><td><code>int</code></td><td>—</td></tr><tr><td><code>branches</code></td><td><code>(List[PhHvacPipeBranch])</code></td><td>—</td></tr><tr><td><code>demand_recirculation</code></td><td><code>bool</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>pipe_element</code></td><td><code>PhHvacPipeElement</code></td><td>The pipe element representing the trunk geometry.</td></tr><tr><td><code>multiplier</code></td><td><code>int</code></td><td>A multiplier applied to the trunk for identical risers.</td></tr><tr><td><code>branches</code></td><td><code>(List[PhHvacPipeBranch])</code></td><td>The branch pipes connected to this trunk.</td></tr><tr><td><code>demand_recirculation</code></td><td><code>bool</code></td><td>True if the trunk uses demand recirculation.</td></tr></tbody></table>
 <h3 id="properties-3">Properties</h3>
 
 
@@ -788,7 +788,7 @@
 <table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>material_name</code></td><td><code>str</code></td><td>Return the material name of the pipe element.</td></tr><tr><td><code>diameter_mm</code></td><td><code>float</code></td><td>Return the length-weighted diameter (MM) name of the pipe element.</td></tr><tr><td><code>segments</code></td><td>—</td><td>Return a list of all the Pipe-Segments in the Trunk.</td></tr><tr><td><code>length</code></td><td><code>float</code></td><td>Return the total length of the trunk itself in model-units.</td></tr><tr><td><code>water_temp_c</code></td><td><code>float</code></td><td>Return the length-weighted average water temperature (deg-C) of all the pipe segments.</td></tr><tr><td><code>daily_period</code></td><td><code>float</code></td><td>Return the length-weighted average daily period of all the pipe segments.</td></tr><tr><td><code>num_fixtures</code></td><td><code>int</code></td><td>Return the number of fixtures connected to the trunk.</td></tr><tr><td><code>total_length</code></td><td><code>float</code></td><td>Return the total length (in model-units) of the trunk PLUS all branches and fixture pipes in model-units.</td></tr><tr><td><code>total_home_run_fixture_length</code></td><td><code>float</code></td><td>Return the total length (in model-units) of all fixture pipes as measured from end to end.</td></tr></tbody></table>
 <h3 id="methods-3">Methods</h3>
 <h4 id="add_branch_branch">add_branch(_branch)</h4>
-<p>Add a new HBPH PhPipeBranch to the Trunk.</p>
+<p>Add a new branch pipe to the trunk.</p>
 
 
 
@@ -804,7 +804,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_branch</code></td><td><code>PhHvacPipeBranch</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_branch</code></td><td><code>PhHvacPipeBranch</code></td><td>The branch pipe to add.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>None</code></p>
 <h4 id="movemoving_vec3d-3">move(moving_vec3D)</h4>
 <p>Move the pipe’s elements along a vector.</p>
@@ -823,10 +823,10 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td><code>Vector3D</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td><code>Vector3D</code></td><td>A vector with the direction and distance to move.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhHvacPipeTrunk</code></p>
 <h4 id="rotateaxis_3d-angle_degrees-origin_pt3d-3">rotate(axis_3D, angle_degrees, origin_pt3D)</h4>
-<p>Rotate the pipe’s elements by a certain angle_degrees around an axis_3D and origin_pt3D.</p>
+<p>Rotate the pipe’s elements by a certain angle around an axis and origin.</p>
 
 
 
@@ -852,10 +852,10 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_3D</code></td><td><code>Vector3D</code></td><td>—</td></tr><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_3D</code></td><td><code>Vector3D</code></td><td>A vector representing the axis of rotation.</td></tr><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>An angle for rotation in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>The origin around which the object will be rotated.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhHvacPipeTrunk</code></p>
 <h4 id="rotate_xyangle_degrees-origin_pt3d-3">rotate_xy(angle_degrees, origin_pt3D)</h4>
-<p>Rotate the pipe’s elements counterclockwise in the XY plane by a certain angle_degrees.</p>
+<p>Rotate the pipe’s elements counterclockwise in the XY plane by a certain angle.</p>
 
 
 
@@ -876,10 +876,10 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>An angle in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>The origin around which the object will be rotated.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhHvacPipeTrunk</code></p>
 <h4 id="reflectnormal_vec3d-origin_pt3d-3">reflect(normal_vec3D, origin_pt3D)</h4>
-<p>Reflected the pipe’s elements across a plane with the input normal_vec3D vector and origin_pt3D.</p>
+<p>Reflect the pipe’s elements across a plane with the input normal vector and origin.</p>
 
 
 
@@ -900,9 +900,9 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td>—</td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td>—</td><td>The normal vector for the reflection plane. THIS VECTOR MUST BE NORMALIZED.</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>The origin from which to reflect.</td></tr></tbody></table>
 <h4 id="scalefactor-origin_pt3d-2">scale(factor, origin_pt3D)</h4>
-<p>Scale the pipe’s elements by a factor from an origin_pt3D point.</p>
+<p>Scale the pipe’s elements by a factor from an origin point.</p>
 
 
 
@@ -923,7 +923,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>factor</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Optional[Point3D]</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>factor</code></td><td><code>float</code></td><td>How much the elements should be scaled.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Optional[Point3D]</code></td><td>The origin from which to scale. If None, it will be scaled from the World origin (0, 0, 0).</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhHvacPipeTrunk</code></p>
 <hr> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/honeybee_ph">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/honeybee_ph/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
 (function () {

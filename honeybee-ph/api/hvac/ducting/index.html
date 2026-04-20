@@ -17,7 +17,7 @@
 <p><strong>Source</strong>: <code>honeybee_phhvac/ducting.py</code></p>
 <hr>
 <h2 id="phductsegment">PhDuctSegment</h2>
-<p>A single duct segment (linear) with geometry and a attributes.</p>
+<p>A single duct segment (linear) with geometry and attributes.</p>
 <p><strong>Inherits from</strong>: <code>_base._PhHVACBase</code></p>
 <h3 id="attributes">Attributes</h3>
 
@@ -65,7 +65,7 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>geometry</code></td><td>—</td><td>—</td></tr><tr><td><code>insulation_thickness</code></td><td>—</td><td>—</td></tr><tr><td><code>insulation_conductivity</code></td><td>—</td><td>—</td></tr><tr><td><code>insulation_reflective</code></td><td>—</td><td>—</td></tr><tr><td><code>diameter</code></td><td>—</td><td>—</td></tr><tr><td><code>height</code></td><td>—</td><td>—</td></tr><tr><td><code>width</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>geometry</code></td><td>—</td><td>The 3D line segment representing the duct centerline.</td></tr><tr><td><code>insulation_thickness</code></td><td>—</td><td>Insulation thickness in model-units (default 0.0254 m).</td></tr><tr><td><code>insulation_conductivity</code></td><td>—</td><td>Insulation thermal conductivity in W/(m-K) (default 0.04).</td></tr><tr><td><code>insulation_reflective</code></td><td>—</td><td>True if insulation has a reflective facing.</td></tr><tr><td><code>diameter</code></td><td>—</td><td>Duct diameter in model-units (default 0.160 m), used for round ducts.</td></tr><tr><td><code>height</code></td><td>—</td><td>Rectangular duct height in model-units, or None for round.</td></tr><tr><td><code>width</code></td><td>—</td><td>Rectangular duct width in model-units, or None for round.</td></tr></tbody></table>
 <h3 id="properties">Properties</h3>
 
 
@@ -97,10 +97,10 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>length</code></td><td><code>float</code></td><td>Return the length of the duct segment in model-units.</td></tr><tr><td><code>shape_type</code></td><td><code>int</code></td><td>—</td></tr><tr><td><code>is_round_duct</code></td><td><code>bool</code></td><td>—</td></tr><tr><td><code>shape_type_description</code></td><td><code>str</code></td><td>Return a string description of the shape of the duct segment.</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>length</code></td><td><code>float</code></td><td>Return the length of the duct segment in model-units.</td></tr><tr><td><code>shape_type</code></td><td><code>int</code></td><td>Return the shape type integer (1=round, 2=rectangular).</td></tr><tr><td><code>is_round_duct</code></td><td><code>bool</code></td><td>Return True if the duct segment is round.</td></tr><tr><td><code>shape_type_description</code></td><td><code>str</code></td><td>Return a string description of the shape of the duct segment.</td></tr></tbody></table>
 <h3 id="methods">Methods</h3>
 <h4 id="classmethod-default"><em>classmethod</em> default()</h4>
-<p>Return a default Duct segment with a length of 1.0</p>
+<p>Return a default PhDuctSegment with a length of 1.0 along the X-axis.</p>
 <p><strong>Returns</strong>: <code>PhDuctSegment</code></p>
 <h4 id="movemoving_vec3d">move(moving_vec3D)</h4>
 <p>Move the duct segment along a vector.</p>
@@ -119,7 +119,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td><code>Point3D</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td><code>Point3D</code></td><td>A Vector3D with the direction and distance to move the ray.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhDuctSegment</code></p>
 <h4 id="rotateaxis_vec3d-angle_degrees-origin_pt3d">rotate(axis_vec3D, angle_degrees, origin_pt3D)</h4>
 <p>Rotate the duct segment by a certain angle around an axis and origin.</p>
@@ -148,7 +148,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_vec3D</code></td><td><code>Point3D</code></td><td>—</td></tr><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_vec3D</code></td><td><code>Point3D</code></td><td>A Vector3D axis representing the axis of rotation.</td></tr><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>An angle for rotation in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>A Point3D for the origin around which the object will be rotated.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhDuctSegment</code></p>
 <h4 id="rotate_xyangle_degrees-origin_pt3d">rotate_xy(angle_degrees, origin_pt3D)</h4>
 <p>Rotate the duct segment counterclockwise in the XY plane by a certain angle.</p>
@@ -172,10 +172,10 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>An angle in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>A Point3D for the origin around which the object will be rotated.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhDuctSegment</code></p>
 <h4 id="reflectnormal_vec3d-origin_pt3d">reflect(normal_vec3D, origin_pt3D)</h4>
-<p>Reflected the duct segment across a plane with the input normal vector and origin.</p>
+<p>Reflect the duct segment across a plane with the input normal vector and origin.</p>
 
 
 
@@ -196,7 +196,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td><code>Point3D</code></td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td><code>Point3D</code></td><td>A Vector3D representing the normal vector for the plane across which the line segment will be reflected. THIS VECTOR MUST BE NORMALIZED.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>A Point3D representing the origin from which to reflect.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhDuctSegment</code></p>
 <h4 id="scalescale_factor-origin_pt3d">scale(scale_factor, origin_pt3D)</h4>
 <p>Scale the duct segment by a factor from an origin point.</p>
@@ -220,7 +220,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>scale_factor</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Optional[Point3D]</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>scale_factor</code></td><td><code>float</code></td><td>A number representing how much the line segment should be scaled.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Optional[Point3D]</code></td><td>A Point3D representing the origin from which to scale. If None, it will be scaled from the World origin (0, 0, 0).</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhDuctSegment</code></p>
 <hr>
 <h2 id="phductelement">PhDuctElement</h2>
@@ -247,7 +247,7 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td>—</td><td>—</td></tr><tr><td><code>duct_type</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td>—</td><td>User-facing name for this duct element.</td></tr><tr><td><code>duct_type</code></td><td>—</td><td>Duct type integer (1=supply, 2=exhaust).</td></tr></tbody></table>
 <h3 id="properties-1">Properties</h3>
 
 
@@ -284,10 +284,10 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>segments</code></td><td><code>List[PhDuctSegment]</code></td><td>Return a list of all the PhDuctSegments that make up the PhDuctElement.</td></tr><tr><td><code>length</code></td><td><code>float</code></td><td>Return the total duct length of all the PhDuctSegments in model-units.</td></tr><tr><td><code>is_round_duct</code></td><td><code>bool</code></td><td>—</td></tr><tr><td><code>shape_type</code></td><td><code>Optional[int]</code></td><td>—</td></tr><tr><td><code>shape_type_description</code></td><td><code>Optional[str]</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>segments</code></td><td><code>List[PhDuctSegment]</code></td><td>Return a list of all the PhDuctSegments that make up the PhDuctElement.</td></tr><tr><td><code>length</code></td><td><code>float</code></td><td>Return the total duct length of all the PhDuctSegments in model-units.</td></tr><tr><td><code>is_round_duct</code></td><td><code>bool</code></td><td>Return True if the duct element contains round segments.</td></tr><tr><td><code>shape_type</code></td><td><code>Optional[int]</code></td><td>Return the shape type integer (1=round, 2=rectangular) or None if no segments.</td></tr><tr><td><code>shape_type_description</code></td><td><code>Optional[str]</code></td><td>Return a string describing the duct dimensions, or None if no segments.</td></tr></tbody></table>
 <h3 id="methods-1">Methods</h3>
 <h4 id="classmethod-default_supply_ductargs-kwargs"><em>classmethod</em> default_supply_duct(*args, **kwargs)</h4>
-<p>Returns a default PhDuctElement with a single segment and a length of 1.0</p>
+<p>Return a default supply PhDuctElement with a single segment and a length of 1.0.</p>
 
 
 
@@ -311,7 +311,7 @@
 <table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>*args</code></td><td><code>*Any</code></td><td>—</td></tr><tr><td><code>**kwargs</code></td><td><code>**Any</code></td><td>—</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhDuctElement</code></p>
 <h4 id="classmethod-default_exhaust_ductargs-kwargs"><em>classmethod</em> default_exhaust_duct(*args, **kwargs)</h4>
-<p>Returns a default PhDuctElement with a single segment and a length of 1.0</p>
+<p>Return a default exhaust PhDuctElement with a single segment and a length of 1.0.</p>
 
 
 
@@ -351,13 +351,13 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_segment</code></td><td><code>PhDuctSegment</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_segment</code></td><td><code>PhDuctSegment</code></td><td>The duct segment to add. Must match the existing shape type (round or rectangular) if segments already exist.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>None</code></p>
 <h4 id="clear_segments">clear_segments()</h4>
 <p>Clear all the segments from the duct element.</p>
 <p><strong>Returns</strong>: <code>None</code></p>
 <h4 id="movemoving_vec3d-1">move(moving_vec3D)</h4>
-<p>Move the duct element’s segment along a vector.</p>
+<p>Move the duct element’s segments along a vector.</p>
 
 
 
@@ -373,9 +373,9 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td>—</td><td>A Vector3D with the direction and distance to move the ray.</td></tr></tbody></table>
 <h4 id="rotateaxis_vec3d-angle_degrees-origin_pt3d-1">rotate(axis_vec3D, angle_degrees, origin_pt3D)</h4>
-<p>Rotate the duct element’s segment by a certain angle around an axis and origin.</p>
+<p>Rotate the duct element’s segments by a certain angle around an axis and origin.</p>
 
 
 
@@ -401,9 +401,9 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_vec3D</code></td><td>—</td><td>—</td></tr><tr><td><code>angle_degrees</code></td><td>—</td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_vec3D</code></td><td>—</td><td>A Vector3D axis representing the axis of rotation.</td></tr><tr><td><code>angle_degrees</code></td><td>—</td><td>An angle for rotation in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>A Point3D for the origin around which the object will be rotated.</td></tr></tbody></table>
 <h4 id="rotate_xyangle_degrees-origin_pt3d-1">rotate_xy(angle_degrees, origin_pt3D)</h4>
-<p>Rotate the duct element’s segment counterclockwise in the XY plane by a certain angle.</p>
+<p>Rotate the duct element’s segments counterclockwise in the XY plane by a certain angle.</p>
 
 
 
@@ -424,9 +424,9 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td>—</td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td>—</td><td>An angle in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>A Point3D for the origin around which the object will be rotated.</td></tr></tbody></table>
 <h4 id="reflectnormal_vec3d-origin_pt3d-1">reflect(normal_vec3D, origin_pt3D)</h4>
-<p>Reflected the duct element’s segment across a plane with the input normal vector and origin.</p>
+<p>Reflect the duct element’s segments across a plane with the input normal vector and origin.</p>
 
 
 
@@ -447,7 +447,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td>—</td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td>—</td><td>A Vector3D representing the normal vector for the plane across which the line segment will be reflected. THIS VECTOR MUST BE NORMALIZED.</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>A Point3D representing the origin from which to reflect.</td></tr></tbody></table>
 <h4 id="scalescale_factor-origin_pt3d-1">scale(scale_factor, origin_pt3D)</h4>
 <p>Scale the duct element’s segments by a factor from an origin point.</p>
 
@@ -470,7 +470,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>scale_factor</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Optional[Point3D]</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>scale_factor</code></td><td><code>float</code></td><td>A number representing how much the line segment should be scaled.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Optional[Point3D]</code></td><td>A Point3D representing the origin from which to scale. If None, it will be scaled from the World origin (0, 0, 0).</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhDuctElement</code></p>
 <hr> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/honeybee_ph">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/honeybee_ph/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
 (function () {

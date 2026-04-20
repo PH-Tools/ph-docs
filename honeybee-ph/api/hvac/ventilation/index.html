@@ -17,7 +17,7 @@
 <p><strong>Source</strong>: <code>honeybee_phhvac/ventilation.py</code></p>
 <hr>
 <h2 id="unknownphexhaustventtypeerror">UnknownPhExhaustVentTypeError</h2>
-<p>No description available.</p>
+<p>Raised when an unrecognized exhaust ventilation device type is encountered.</p>
 <p><strong>Inherits from</strong>: <code>Exception</code></p>
 <h3 id="attributes">Attributes</h3>
 
@@ -38,7 +38,7 @@
 <table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>msg</code></td><td><code>format</code></td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="ventilator">Ventilator</h2>
-<p>No description available.</p>
+<p>A Passive House ventilation heat-recovery unit (ERV/HRV).</p>
 <p><strong>Inherits from</strong>: <code>_base._PhHVACBase</code></p>
 <h3 id="attributes-1">Attributes</h3>
 
@@ -96,7 +96,7 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td><code>str</code></td><td>—</td></tr><tr><td><code>id_num</code></td><td><code>int</code></td><td>—</td></tr><tr><td><code>quantity</code></td><td><code>int</code></td><td>—</td></tr><tr><td><code>sensible_heat_recovery</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>latent_heat_recovery</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>electric_efficiency</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>frost_protection_reqd</code></td><td><code>bool</code></td><td>—</td></tr><tr><td><code>temperature_below_defrost_used</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>in_conditioned_space</code></td><td><code>bool</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td><code>str</code></td><td>User-facing name for the ventilator.</td></tr><tr><td><code>id_num</code></td><td><code>int</code></td><td>Numeric identifier for the ventilator.</td></tr><tr><td><code>quantity</code></td><td><code>int</code></td><td>Number of identical units.</td></tr><tr><td><code>sensible_heat_recovery</code></td><td><code>float</code></td><td>Sensible heat recovery efficiency (0-1).</td></tr><tr><td><code>latent_heat_recovery</code></td><td><code>float</code></td><td>Latent heat recovery efficiency (0-1).</td></tr><tr><td><code>electric_efficiency</code></td><td><code>float</code></td><td>Specific electric power in Wh/m3.</td></tr><tr><td><code>frost_protection_reqd</code></td><td><code>bool</code></td><td>Whether frost protection is required.</td></tr><tr><td><code>temperature_below_defrost_used</code></td><td><code>float</code></td><td>Temperature threshold for defrost activation (C).</td></tr><tr><td><code>in_conditioned_space</code></td><td><code>bool</code></td><td>Whether the unit is located in conditioned space.</td></tr></tbody></table>
 <hr>
 <h2 id="phventilationsystem">PhVentilationSystem</h2>
 <p>Passive House Fresh-Air Ventilation System.</p>
@@ -137,7 +137,7 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td><code>str</code></td><td>—</td></tr><tr><td><code>sys_type</code></td><td><code>int</code></td><td>—</td></tr><tr><td><code>supply_ducting</code></td><td><code>List[ducting.PhDuctElement]</code></td><td>—</td></tr><tr><td><code>exhaust_ducting</code></td><td><code>List[ducting.PhDuctElement]</code></td><td>—</td></tr><tr><td><code>id_num</code></td><td><code>int</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td><code>str</code></td><td>User-facing name for the ventilation system.</td></tr><tr><td><code>sys_type</code></td><td><code>int</code></td><td>System type identifier (1 = Balanced PH ventilation with HR).</td></tr><tr><td><code>supply_ducting</code></td><td><code>List[ducting.PhDuctElement]</code></td><td>Supply-air duct elements.</td></tr><tr><td><code>exhaust_ducting</code></td><td><code>List[ducting.PhDuctElement]</code></td><td>Exhaust-air duct elements.</td></tr><tr><td><code>id_num</code></td><td><code>int</code></td><td>Numeric identifier for the system.</td></tr></tbody></table>
 <h3 id="properties">Properties</h3>
 
 
@@ -174,7 +174,7 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>ventilation_unit</code></td><td><code>Optional[Ventilator]</code></td><td>—</td></tr><tr><td><code>supply_ducting_total_length</code></td><td><code>float</code></td><td>Return the total length of all supply-air ducting in model-units.</td></tr><tr><td><code>exhaust_ducting_total_length</code></td><td><code>float</code></td><td>Return the total length of all exhaust-air ducting in model-units.</td></tr><tr><td><code>supply_ducting_size_description</code></td><td><code>Optional[str]</code></td><td>Return the size of the supply-air ducting.</td></tr><tr><td><code>exhaust_ducting_size_description</code></td><td><code>Optional[str]</code></td><td>Return the size of the exhaust-air ducting.</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>ventilation_unit</code></td><td><code>Optional[Ventilator]</code></td><td>Return the Ventilator (ERV/HRV) assigned to this system.</td></tr><tr><td><code>supply_ducting_total_length</code></td><td><code>float</code></td><td>Return the total length of all supply-air ducting in model-units.</td></tr><tr><td><code>exhaust_ducting_total_length</code></td><td><code>float</code></td><td>Return the total length of all exhaust-air ducting in model-units.</td></tr><tr><td><code>supply_ducting_size_description</code></td><td><code>Optional[str]</code></td><td>Return the size of the supply-air ducting.</td></tr><tr><td><code>exhaust_ducting_size_description</code></td><td><code>Optional[str]</code></td><td>Return the size of the exhaust-air ducting.</td></tr></tbody></table>
 <h3 id="methods">Methods</h3>
 <h4 id="add_supply_duct_element_duct_element">add_supply_duct_element(_duct_element)</h4>
 <p>Add a supply-air duct element to the ventilation system.</p>
@@ -193,7 +193,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_duct_element</code></td><td><code>ducting.PhDuctElement</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_duct_element</code></td><td><code>ducting.PhDuctElement</code></td><td>The duct element to add.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>None</code></p>
 <h4 id="add_exhaust_duct_element_duct_element">add_exhaust_duct_element(_duct_element)</h4>
 <p>Add an exhaust-air duct element to the ventilation system.</p>
@@ -212,7 +212,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_duct_element</code></td><td><code>ducting.PhDuctElement</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_duct_element</code></td><td><code>ducting.PhDuctElement</code></td><td>The duct element to add.</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>None</code></p>
 <h4 id="movemoving_vec3d">move(moving_vec3D)</h4>
 <p>Move the System’s ducts along a vector.</p>
@@ -231,7 +231,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td>—</td><td>A Vector3D with the direction and distance to move the ray.</td></tr></tbody></table>
 <h4 id="rotateaxis_vec3d-angle_degrees-origin_pt3d">rotate(axis_vec3D, angle_degrees, origin_pt3D)</h4>
 <p>Rotate the System’s ducts by a certain angle around an axis and origin.</p>
 
@@ -259,7 +259,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_vec3D</code></td><td>—</td><td>—</td></tr><tr><td><code>angle_degrees</code></td><td>—</td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_vec3D</code></td><td>—</td><td>A Vector3D axis representing the axis of rotation.</td></tr><tr><td><code>angle_degrees</code></td><td>—</td><td>An angle for rotation in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>A Point3D for the origin around which the object will be rotated.</td></tr></tbody></table>
 <h4 id="rotate_xyangle_degrees-origin_pt3d">rotate_xy(angle_degrees, origin_pt3D)</h4>
 <p>Rotate the System’s ducts counterclockwise in the XY plane by a certain angle.</p>
 
@@ -282,9 +282,9 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td>—</td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td>—</td><td>An angle in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>A Point3D for the origin around which the object will be rotated.</td></tr></tbody></table>
 <h4 id="reflectnormal_vec3d-origin_pt3d">reflect(normal_vec3D, origin_pt3D)</h4>
-<p>Reflected the System’s ducts across a plane with the input normal vector and origin.</p>
+<p>Reflect the System’s ducts across a plane with the input normal vector and origin.</p>
 
 
 
@@ -305,7 +305,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td>—</td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td>—</td><td>A normalized Vector3D representing the plane normal.</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>A Point3D representing the origin from which to reflect.</td></tr></tbody></table>
 <h4 id="scalescale_factor-origin_pt3d">scale(scale_factor, origin_pt3D)</h4>
 <p>Scale the System’s ducts by a factor from an origin point.</p>
 
@@ -328,11 +328,11 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>scale_factor</code></td><td><code>float</code></td><td>—</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Optional[Point3D]</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>scale_factor</code></td><td><code>float</code></td><td>A number representing how much the ducts should be scaled.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Optional[Point3D]</code></td><td>A Point3D representing the origin from which to scale. If None, it will be scaled from the World origin (0, 0, 0).</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>PhVentilationSystem</code></p>
 <hr>
 <h2 id="exhaustventdryer">ExhaustVentDryer</h2>
-<p>No description available.</p>
+<p>Exhaust ventilation device representing a clothes dryer.</p>
 <p><strong>Inherits from</strong>: <code>_ExhaustVentilatorBase</code></p>
 <h3 id="attributes-3">Attributes</h3>
 
@@ -353,7 +353,7 @@
 <table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td><code>str</code></td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="exhaustventkitchenhood">ExhaustVentKitchenHood</h2>
-<p>No description available.</p>
+<p>Exhaust ventilation device representing a kitchen range hood.</p>
 <p><strong>Inherits from</strong>: <code>_ExhaustVentilatorBase</code></p>
 <h3 id="attributes-4">Attributes</h3>
 
@@ -374,7 +374,7 @@
 <table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td><code>str</code></td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="exhaustventuserdefined">ExhaustVentUserDefined</h2>
-<p>No description available.</p>
+<p>Exhaust ventilation device with user-defined parameters.</p>
 <p><strong>Inherits from</strong>: <code>_ExhaustVentilatorBase</code></p>
 <h3 id="attributes-5">Attributes</h3>
 

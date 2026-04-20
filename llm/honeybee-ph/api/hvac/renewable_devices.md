@@ -8,7 +8,7 @@ Honeybee-PH-HVAC-Equipment: Renewable Energy Devices.
 
 ## UnknownPhRenewableEnergyTypeError
 
-No description available.
+Raised when an unrecognized renewable energy device type is encountered.
 
 **Inherits from**: `Exception`
 
@@ -16,7 +16,7 @@ No description available.
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `msg` | `format` | — |
+| `msg` | `format` | Formatted error message describing the unknown type and valid options. |
 
 ---
 
@@ -30,8 +30,8 @@ Base class for all HBPH Renewable Energy Systems (PV, etc).
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `device_typename` | — | — |
-| `percent_coverage` | `float` | — |
+| `device_typename` | — | Class name string identifying the device type for serialization. |
+| `percent_coverage` | `float` | Fraction of energy demand covered by this device (0.0-1.0). |
 
 ### Methods
 
@@ -49,7 +49,7 @@ Check that the input dict type is correct for the Heating System being construct
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `_input_dict` | `dict` | — |
+| `_input_dict` | `dict` | The dictionary to validate. |
 
 **Returns**: `None`
 
@@ -59,17 +59,17 @@ Move the device's elements along a vector.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `moving_vec3D` | — | — |
+| `moving_vec3D` | — | A Vector3D with the direction and distance to move the ray. |
 
 #### rotate(axis_vec3D, angle_degrees, origin_pt3D)
 
-Rotate the device's elements by a certain angle around an axis_vec3D and origin_pt3D.
+Rotate the device's elements by a certain angle around an axis and origin point.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `axis_vec3D` | — | — |
-| `angle_degrees` | — | — |
-| `origin_pt3D` | — | — |
+| `axis_vec3D` | — | A Vector3D representing the axis of rotation. |
+| `angle_degrees` | — | An angle for rotation in degrees. |
+| `origin_pt3D` | — | A Point3D for the origin around which the object will be rotated. |
 
 #### rotate_xy(angle_degrees, origin_pt3D)
 
@@ -77,32 +77,32 @@ Rotate the device's elements counterclockwise in the XY plane by a certain angle
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `angle_degrees` | — | — |
-| `origin_pt3D` | — | — |
+| `angle_degrees` | — | An angle in degrees. |
+| `origin_pt3D` | — | A Point3D for the origin around which the object will be rotated. |
 
 #### reflect(normal_vec3D, origin_pt3D)
 
-Reflected the device's elements across a plane with the input normal vector and origin_pt3D.
+Reflect the device's elements across a plane with the input normal vector and origin.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `normal_vec3D` | — | — |
-| `origin_pt3D` | — | — |
+| `normal_vec3D` | — | A normalized Vector3D representing the normal vector for the plane across which the element will be reflected. |
+| `origin_pt3D` | — | A Point3D representing the origin from which to reflect. |
 
 #### scale(scale_factor, origin_pt3D)
 
-Scale the device's elements by a factor from an origin_pt3D point.
+Scale the device's elements by a factor from an origin point.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `scale_factor` | — | — |
-| `origin_pt3D` | — | — |
+| `scale_factor` | — | A number representing how much the element should be scaled. |
+| `origin_pt3D` | — | A Point3D representing the origin from which to scale. If None, it will be scaled from the World origin (0, 0, 0). |
 
 ---
 
 ## PhPhotovoltaicDevice
 
-PV System.
+Photovoltaic (PV) renewable energy device.
 
 **Inherits from**: `PhRenewableEnergyDevice`
 
@@ -110,9 +110,9 @@ PV System.
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `photovoltaic_renewable_energy` | `float` | — |
-| `array_size` | `float` | — |
-| `utilization_factor` | `float` | — |
+| `photovoltaic_renewable_energy` | `float` | Annual PV renewable energy production (kWh/yr). |
+| `array_size` | `float` | Total PV array area (m2). |
+| `utilization_factor` | `float` | Fraction of generated energy that is utilized (0.0-1.0). |
 
 ---
 
