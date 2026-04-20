@@ -1253,6 +1253,8 @@ button { font-family: inherit; }
   cursor: pointer;
   transition: background .12s var(--ease);
   align-items: center;
+  text-decoration: none;
+  color: inherit;
 }
 .search-result:last-child { border-bottom: 0; }
 .search-result:hover, .search-result.is-focused {

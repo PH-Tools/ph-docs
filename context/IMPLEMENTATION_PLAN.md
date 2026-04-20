@@ -428,14 +428,18 @@ Phases are sequential. Each phase produces something verifiable before the next 
 
 **Notes**: Fixed `import.meta.dirname` path resolution bug — during Astro's build phase, `import.meta.dirname` resolves to `dist/chunks/` instead of `src/lib/`. All path resolution in `nav.ts`, `frontmatter.ts`, and `libraries.ts` switched to `process.cwd()`. This bug was latent in Phases 1-4 (frontmatter functions silently returned empty fallback objects) but became blocking in Phase 5 since `getStaticPaths()` depends on `getNavTree()` to discover content pages. `FetchCallout` and `SchemaTable` components are created but not currently used in any pages — all spoke content is plain `.md` without front-matter. They will be used when spokes adopt MDX or when `ph-reference-docs` is created.
 
-### Phase 6 — Search (Screen 4)
+### Phase 6 — Search (Screen 4) ✅ COMPLETE (2026-04-19)
 **Goal**: `⌘K` opens search modal, search returns grouped results across all libraries.
 
-1. Configure Pagefind in `astro.config.ts` — add `data-pagefind-section` attributes to library wrappers for grouping
-2. Implement `SearchModal.astro` — port search modal HTML/CSS from mockup exactly
-3. Wire Pagefind's JS API to the search input → render results in grouped format
-4. Preserve `⌘K` / `Escape` keyboard handlers from mockup's `app.js`
-5. **Verify**: Build (`pnpm build`), open `dist/` locally, confirm search returns results grouped by library
+1. ✅ Install `pagefind` dev dependency; update build script to `astro build && pagefind --site dist`
+2. ✅ Add `data-pagefind-body` and `data-pagefind-meta="library:${lib.label}"` to content areas in `[...slug].astro` and `[lib]/index.astro` — hub landing excluded (navigation-only page)
+3. ✅ Implement `SearchModal.astro` — modal scrim + search input + grouped results area + keyboard hint footer, ported from Screen 4 mockup
+4. ✅ Wire Pagefind JS API via `is:inline` script (Vite cannot resolve Pagefind's post-build JS): lazy-loads `/pagefind/pagefind.js`, debounced search (150ms), results grouped by `library` meta field, rendered with per-library headers and result counts
+5. ✅ Keyboard handlers: `⌘K`/`Ctrl+K` toggles modal, `Escape` closes, `↑↓` navigate results with `is-focused` class, `Enter` opens focused result; click-outside-to-close on scrim
+6. ✅ `SearchModal` included in `BaseLayout.astro` — available on all pages
+7. ✅ **Verify**: `pnpm build` succeeds (9 pages + Pagefind index); Pagefind indexed 8 pages / 2500 words across all libraries
+
+**Notes**: Pagefind's JS is only available after build, so the search script uses `is:inline` to bypass Vite's module resolution. Search results use `<a>` tags (not `<div>`) for native link behavior — added `text-decoration:none; color:inherit` to `.search-result` CSS. The `abbreviate()` function generates short library badges from display names (e.g., "Honeybee-PH" → "HP"). Search does not work in `pnpm dev` mode — only after `pnpm build` + `pnpm preview`.
 
 ### Phase 7 — GitHub Actions + Deployment
 **Goal**: Pushes to spoke `/docs` auto-rebuild the live site at `docs.passivehousetools.com`.

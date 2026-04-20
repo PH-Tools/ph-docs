@@ -1,0 +1,201 @@
+---
+// Search modal overlay — Pagefind-powered, grouped by library
+// Markup ported from Screen 4 mockup (search.js)
+---
+
+<div class="modal-scrim" id="searchScrim" aria-hidden="true">
+  <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal">
+    <div class="search-input-wrap">
+      <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+      </svg>
+      <input
+        class="search-input"
+        id="searchInput"
+        type="text"
+        placeholder="Search all PH-Tools docs..."
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button class="esc" id="closeSearch">ESC</button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+    <div class="search-footer" id="searchFooter" style="display:none;">
+      <div class="search-footer__kbds">
+        <span><span class="k">&uarr;&darr;</span> Navigate</span>
+        <span><span class="k">&crarr;</span> Open</span>
+        <span><span class="k">&#x2318;K</span> Toggle</span>
+      </div>
+      <div id="searchMeta"></div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+(function () {
+  // ---------- Modal open / close ----------
+  var scrim = document.getElementById("searchScrim");
+  var input = document.getElementById("searchInput");
+  var resultsEl = document.getElementById("searchResults");
+  var footerEl = document.getElementById("searchFooter");
+  var metaEl = document.getElementById("searchMeta");
+  if (!scrim || !input || !resultsEl || !footerEl || !metaEl) return;
+
+  var focusedIdx = -1;
+
+  function openSearch() {
+    scrim.classList.add("is-open");
+    scrim.setAttribute("aria-hidden", "false");
+    setTimeout(function () { input.focus(); }, 40);
+  }
+  function closeSearch() {
+    scrim.classList.remove("is-open");
+    scrim.setAttribute("aria-hidden", "true");
+    input.value = "";
+    resultsEl.innerHTML = "";
+    footerEl.style.display = "none";
+    focusedIdx = -1;
+  }
+
+  var openBtn = document.getElementById("openSearch");
+  if (openBtn) openBtn.addEventListener("click", openSearch);
+  document.getElementById("closeSearch").addEventListener("click", closeSearch);
+  scrim.addEventListener("click", function (e) {
+    if (e.target === scrim) closeSearch();
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if ((e.key === "k" || e.key === "K") && (e.metaKey || e.ctrlKey)) {
+      e.preventDefault();
+      scrim.classList.contains("is-open") ? closeSearch() : openSearch();
+    }
+    if (e.key === "Escape" && scrim.classList.contains("is-open")) closeSearch();
+  });
+
+  // ---------- Pagefind integration ----------
+  var pagefind = null;
+
+  function loadPagefind() {
+    if (pagefind) return Promise.resolve(pagefind);
+    return import("/pagefind/pagefind.js")
+      .then(function (pf) {
+        pagefind = pf;
+        return pf.init();
+      })
+      .then(function () { return pagefind; })
+      .catch(function () { pagefind = null; return null; });
+  }
+
+  // Debounced search
+  var timer;
+  input.addEventListener("input", function () {
+    clearTimeout(timer);
+    timer = setTimeout(function () { doSearch(input.value.trim()); }, 150);
+  });
+
+  function doSearch(query) {
+    if (!query) {
+      resultsEl.innerHTML = "";
+      footerEl.style.display = "none";
+      return;
+    }
+
+    loadPagefind().then(function (pf) {
+      if (!pf) {
+        resultsEl.innerHTML = '<div style="padding:24px;color:var(--fg-muted);font-size:14px;">Search index not available. Run <code>pnpm build</code> first.</div>';
+        return;
+      }
+      return pf.search(query).then(function (search) {
+        return Promise.all(
+          search.results.slice(0, 20).map(function (r) { return r.data(); })
+        ).then(function (results) {
+          renderResults(results, search.results.length);
+        });
+      });
+    });
+  }
+
+  function renderResults(results, totalCount) {
+    // Group by library
+    var groups = {};
+    var order = [];
+    results.forEach(function (r) {
+      var lib = (r.meta && r.meta.library) || "Other";
+      if (!groups[lib]) { groups[lib] = []; order.push(lib); }
+      groups[lib].push(r);
+    });
+
+    var html = "";
+    var globalIdx = 0;
+    order.forEach(function (lib) {
+      var items = groups[lib];
+      html += '<div class="search-group">';
+      html += '<div class="search-group__head">';
+      html += '<div class="search-group__title"><span class="dot"></span>' + lib + '</div>';
+      html += '<div class="search-group__count">' + items.length + ' result' + (items.length === 1 ? '' : 's') + '</div>';
+      html += '</div>';
+      items.forEach(function (item) {
+        html += '<a class="search-result" href="' + item.url + '" data-idx="' + globalIdx + '">';
+        html += '<div>';
+        html += '<div class="search-result__crumb">' + buildCrumb(item.url) + '</div>';
+        html += '<div class="search-result__title">' + ((item.meta && item.meta.title) || '') + '</div>';
+        html += '<div class="search-result__excerpt">' + (item.excerpt || '') + '</div>';
+        html += '</div>';
+        html += '<div class="search-result__side">';
+        html += '<span class="search-badge">' + abbreviate(lib) + '</span>';
+        html += '<span class="search-result__enter">↵ Open</span>';
+        html += '</div>';
+        html += '</a>';
+        globalIdx++;
+      });
+      html += '</div>';
+    });
+
+    resultsEl.innerHTML = html;
+    focusedIdx = -1;
+
+    metaEl.textContent = totalCount + ' result' + (totalCount === 1 ? '' : 's') + ' across ' + order.length + ' ' + (order.length === 1 ? 'library' : 'libraries');
+    footerEl.style.display = totalCount > 0 ? "" : "none";
+  }
+
+  function buildCrumb(url) {
+    var parts = url.replace(/^\/|\/$/g, "").split("/");
+    return parts.map(function (p, i) {
+      return '<span>' + (i === 0 ? p.toUpperCase() : p) + '</span>';
+    }).join('<span class="tri">›</span>');
+  }
+
+  function abbreviate(lib) {
+    if (lib.length <= 4) return lib.toUpperCase();
+    return lib.split(/[\s-]+/).map(function (w) { return w[0]; }).join("").toUpperCase();
+  }
+
+  // ---------- Keyboard navigation ----------
+  document.addEventListener("keydown", function (e) {
+    if (!scrim.classList.contains("is-open")) return;
+    var items = resultsEl.querySelectorAll(".search-result");
+    if (!items.length) return;
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      focusedIdx = Math.min(focusedIdx + 1, items.length - 1);
+      updateFocus(items);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      focusedIdx = Math.max(focusedIdx - 1, 0);
+      updateFocus(items);
+    } else if (e.key === "Enter" && focusedIdx >= 0) {
+      e.preventDefault();
+      items[focusedIdx].click();
+    }
+  });
+
+  function updateFocus(items) {
+    for (var i = 0; i < items.length; i++) {
+      if (i === focusedIdx) items[i].classList.add("is-focused");
+      else items[i].classList.remove("is-focused");
+    }
+    if (items[focusedIdx]) items[focusedIdx].scrollIntoView({ block: "nearest" });
+  }
+})();
+</script>
