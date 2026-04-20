@@ -7,9 +7,8 @@
 
 ## Architecture
 
-Refer to `context/architecture.md` for the full build pipeline reference.  
-Refer to `context/PH-Tools_Doc_Strategy_v1.0.md` for strategy and design decisions.  
-Refer to `context/IMPLEMENTATION_PLAN.md` for the phased implementation spec (all phases ✅).
+Refer to `context/ARCHITECTURE.md` for the full build pipeline reference.  
+Refer to `context/PRD.Dmd` for strategy and design decisions.  
 
 ### Hub-and-Spoke Model
 
