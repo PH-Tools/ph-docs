@@ -21,7 +21,7 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
+# lib/        ← removed: conflicts with src/lib/ (Astro TypeScript modules)
 lib64/
 parts/
 sdist/
