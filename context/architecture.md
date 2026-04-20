@@ -21,7 +21,8 @@ The key benefit: a developer working on PHX writes docs in `PHX/docs/` and never
 - The Astro project (`astro.config.ts`, `src/`)
   - Pages: hub landing, library landing, content pages
   - Components: Header, Sidebar, LibraryCard, FeatureCell, SearchModal, etc.
-  - Layouts: HubLayout, LibraryLayout, ContentLayout
+  - Layout: `BaseLayout.astro` (shared HTML shell — all pages use this single layout)
+  - Content config: `src/content.config.ts` (Astro content collection with glob loader for markdown rendering)
   - Utilities: `src/lib/nav.ts`, `src/lib/libraries.ts`, `src/lib/frontmatter.ts`
   - Design system: `src/styles/global.css`
 - The GitHub Actions workflows (`.github/workflows/`)
@@ -122,7 +123,7 @@ PH-Tools/PHX  /docs/  ──────────────→  src/content
             src/pages/[lib]/[...slug].astro →  /phx/dev/architecture/ (content page)
 
                         ↓  Pagefind
-            dist/_pagefind/   (search index, grouped by library)
+            dist/pagefind/    (search index, grouped by library)
 ```
 
 ---
@@ -135,7 +136,7 @@ When a developer pushes changes to `/docs/**` on main in a spoke repo, a small G
 Spoke repo push to /docs  →  notify-hub.yml  →  POST repository_dispatch to ph-docs  →  build.yml runs
 ```
 
-The dispatch workflow (`notify-hub.yml`) uses the `ph-docs-hub-dispatch` org-level secret to call the GitHub API. The hub's `build.yml` workflow listens for `repository_dispatch` events with type `docs-updated`.
+The dispatch workflow (`notify-hub.yml`) uses the `HUB_DISPATCH_TOKEN` org-level secret (a fine-grained PAT with `contents: read+write` on `ph-docs`) to call the GitHub API. The hub's `build.yml` workflow listens for `repository_dispatch` events with type `docs-updated`.
 
 Spoke doc changes appear on the live site within a few minutes of merging to main, with no manual intervention.
 
@@ -225,37 +226,38 @@ Parsed by `src/lib/nav.ts` into a typed `NavTree` at build time. Two item types:
 
 ```
 src/
+├── content.config.ts       # Astro content collection: glob loader for src/content/docs/**/*.md
 ├── content/docs/           # Git-ignored — populated by fetch_spokes.py
 │
 ├── layouts/
-│   ├── HubLayout.astro     # Hub landing (Screen 1) — no sidebar
-│   ├── LibraryLayout.astro # Library landing (Screen 2) — sidebar + feature grid
-│   └── ContentLayout.astro # Article page — sidebar + markdown body
+│   └── BaseLayout.astro    # Shared HTML shell: <head> (theme flash prevention) + Header + <slot> + Footer + SearchModal
 │
 ├── components/
-│   ├── Header.astro        # Sticky: logo · primary nav · ⌘K search · theme toggle
+│   ├── Header.astro        # Sticky: logo · primary nav · ⌘K search · theme toggle · GitHub
 │   ├── Footer.astro        # Shared footer
-│   ├── Sidebar.astro       # Collapsible nav tree built from NavTree
-│   ├── SearchModal.astro   # ⌘K overlay powered by Pagefind
+│   ├── Sidebar.astro       # Collapsible nav tree built from NavTree (numbered, auto-expand)
+│   ├── SearchModal.astro   # ⌘K overlay powered by Pagefind (is:inline script)
 │   ├── LibraryCard.astro   # Hub landing grid card (2-column)
 │   ├── FeatureCell.astro   # Library landing section card (2-column grid)
-│   ├── FetchCallout.astro  # LLM-ready URL callout (MDX component)
-│   └── SchemaTable.astro   # Field/type/description table (MDX component)
+│   ├── FetchCallout.astro  # LLM-ready URL callout (Astro component, for future MDX use)
+│   └── SchemaTable.astro   # Field/type/description table (Astro component, for future MDX use)
 │
 ├── pages/
 │   ├── index.astro                 # /           → hub landing
 │   ├── [lib]/
 │   │   ├── index.astro             # /{lib}/     → library landing
-│   │   └── [...slug].astro         # /{lib}/...  → content page
+│   │   └── [...slug].astro         # /{lib}/...  → content page (markdown via content collection)
 │
 ├── lib/
-│   ├── nav.ts              # Parses nav.yml → NavTree; finds first-file per group
-│   ├── libraries.ts        # Parses libraries.yml → LibraryMeta[]
-│   └── frontmatter.ts      # Reads front-matter from assembled MD files
+│   ├── nav.ts              # Parses nav.yml → NavTree; helpers: getAllLeafPaths, findParentGroupLabel
+│   ├── libraries.ts        # Parses libraries.yml → LibraryMeta[] (cached)
+│   └── frontmatter.ts      # Reads front-matter from assembled MD files (gray-matter)
 │
 └── styles/
-    └── global.css          # Full design system (bldgtyp tokens CDN + mockup styles)
+    └── global.css          # Full design system (bldgtyp tokens CDN + all 4 screens)
 ```
+
+**Path resolution note**: All `src/lib/*.ts` modules use `process.cwd()` for file path resolution, not `import.meta.dirname`. During Astro's build phase, `import.meta.dirname` resolves to `dist/chunks/` which breaks `fs.readFileSync` calls. `process.cwd()` always returns the project root.
 
 ---
 
@@ -284,12 +286,14 @@ Theme switching uses `data-theme="light" | "dark"` on `<html>`. Dark values are 
 
 ## GitHub Actions
 
-### Secrets (already configured in PH-Tools org)
+### Secrets
 
-| Secret | Scope | Used By |
-|---|---|---|
-| `ph-docs-hub-dispatch` | `workflow` on PH-Tools/ph-docs | Spoke `notify-hub.yml` — triggers hub rebuild |
-| `ph-docs-pages-deploy` | `contents: write` on PH-Tools/ph-docs | Hub `build.yml` — pushes to gh-pages branch |
+| Secret | Type | Scope | Used By |
+|---|---|---|---|
+| `HUB_DISPATCH_TOKEN` | Fine-grained PAT (org secret) | `contents: read+write` on `ph-docs` only | Spoke `notify-hub.yml` — triggers hub rebuild via `repository_dispatch` |
+| `GITHUB_TOKEN` | Built-in (automatic) | `contents: write` (set in workflow `permissions`) | Hub `build.yml` — pushes `dist/` to `gh-pages` branch |
+
+The `HUB_DISPATCH_TOKEN` org secret is shared with the spoke repos (honeybee_ph, PHX, honeybee_revive) via repository access settings. No PAT is needed for deployment — the built-in `GITHUB_TOKEN` handles it since `build.yml` deploys to the same repo.
 
 ### `build.yml` — Main workflow
 
@@ -297,12 +301,11 @@ Triggers: `schedule` (nightly 02:00 UTC) · `repository_dispatch` (from spokes) 
 
 ```
 1. Checkout ph-docs main
-2. Python 3.11 → pip install pyyaml requests
+2. Python 3.11 → pip install pyyaml
 3. python scripts/fetch_spokes.py    ← lands content in src/content/docs/
-4. Node 20 + pnpm → pnpm install
-5. pnpm build                        ← astro build + pagefind index → dist/
-6. Deploy dist/ → gh-pages branch    ← using ph-docs-pages-deploy token
-7. Log build summary
+4. Node 20 + pnpm → pnpm install --frozen-lockfile
+5. pnpm build                        ← astro build + pagefind --site dist → dist/
+6. Deploy dist/ → gh-pages branch    ← peaceiris/actions-gh-pages with GITHUB_TOKEN
 ```
 
 ### `validate.yml` — PR check

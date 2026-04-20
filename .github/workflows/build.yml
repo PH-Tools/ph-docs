@@ -32,6 +32,9 @@ jobs:
       - name: Fetch spoke docs
         run: python scripts/fetch_spokes.py
 
+      - name: Build LLM-ready markdown
+        run: python scripts/build_llm_docs.py
+
       - name: Log build manifest
         run: cat src/content/docs/build_manifest.json
 

@@ -122,7 +122,7 @@ ph-docs/
 ├── astro.config.ts             # Astro config: static output, Pagefind integration
 ├── tsconfig.json
 ├── package.json
-├── requirements.txt            # Python deps: pyyaml, requests
+├── requirements.txt            # Python deps: pyyaml
 ├── libraries.yml               # Registry of all spoke repos
 ├── public/
 │   └── CNAME                   # docs.passivehousetools.com
@@ -133,7 +133,7 @@ ph-docs/
 │   └── fetch_spokes.py         # Core fetch + assemble logic
 └── src/
     ├── content/docs/           # Git-ignored. Populated at build time.
-    ├── layouts/                # HubLayout, LibraryLayout, ContentLayout
+    ├── layouts/                # BaseLayout (single shared layout)
     ├── components/             # Header, Sidebar, LibraryCard, FeatureCell, etc.
     ├── pages/                  # index.astro, [lib]/index.astro, [lib]/[...slug].astro
     ├── lib/                    # nav.ts, libraries.ts, frontmatter.ts
@@ -252,16 +252,15 @@ nav:
 **Steps — in order:**
 
 1. Checkout hub repo (main branch)
-2. Set up Python 3.11 and install `requirements.txt` (pyyaml, requests)
+2. Set up Python 3.11 and install `requirements.txt` (pyyaml)
 3. Run `fetch_spokes.py` — sparse-clone each spoke's `/docs` into `src/content/docs/`
-4. Set up Node 20 + pnpm; run `pnpm install`
+4. Set up Node 20 + pnpm; run `pnpm install --frozen-lockfile`
 5. Run `pnpm build` — Astro builds static site into `dist/`, Pagefind indexes it
-6. Deploy `dist/` to gh-pages branch using `peaceiris/actions-gh-pages` with `ph-docs-pages-deploy` token
-7. Post build summary: which spokes succeeded, which were skipped, and why
+6. Deploy `dist/` to gh-pages branch using `peaceiris/actions-gh-pages` with built-in `GITHUB_TOKEN`
 
-**Secrets required (already configured at org level):**
-- `ph-docs-hub-dispatch` — PAT with `workflow` scope on PH-Tools/ph-docs. Used by spoke `notify-hub.yml` to trigger hub rebuilds.
-- `ph-docs-pages-deploy` — PAT with `contents: write` on PH-Tools/ph-docs. Used by hub `build.yml` to push to gh-pages.
+**Secrets required (configured at org level):**
+- `HUB_DISPATCH_TOKEN` — Fine-grained PAT with `contents: read+write` on PH-Tools/ph-docs. Stored as org secret, shared with spoke repos. Used by spoke `notify-hub.yml` to trigger hub rebuilds via `repository_dispatch`.
+- `GITHUB_TOKEN` — Built-in (no setup needed). Workflow sets `permissions: contents: write`. Used by hub `build.yml` to push to gh-pages.
 
 ### 5.2 `fetch_spokes.py` — Logic Specification
 
@@ -304,7 +303,7 @@ git sparse-checkout set {docs_path}
 
 ### 5.3 Spoke-Side Trigger Workflow
 
-Already deployed in all spoke repos as `.github/workflows/notify-hub.yml`. Fires a `repository_dispatch` to the hub when `/docs/**` changes on main. Uses `ph-docs-hub-dispatch` org-level secret.
+Already deployed in all spoke repos as `.github/workflows/notify-hub.yml`. Fires a `repository_dispatch` to the hub when `/docs/**` changes on main. Uses `HUB_DISPATCH_TOKEN` org-level secret.
 
 ---
 
@@ -362,7 +361,7 @@ Pagefind is used for site-wide search. It runs at build time (`pnpm build`), cra
 
 Key properties:
 - **Zero runtime dependency** — no external search service, no API keys
-- **Grouped results** — Pagefind supports filtering by section/library via `data-pagefind-section` attributes on page wrappers, matching the mockup's grouped search UI
+- **Grouped results** — pages are tagged with `data-pagefind-meta="library:..."` attributes; the search script groups results by this metadata, matching the mockup's grouped search UI
 - **Keyboard-driven** — `⌘K` / `Ctrl+K` to open, `↑↓` to navigate, `↵` to open, `Esc` to close
 - **Markdown-indexed** — all rendered HTML in `dist/` is indexed, including API docs and reference pages
 
@@ -390,17 +389,17 @@ Key properties:
 
 See `context/IMPLEMENTATION_PLAN.md` for the full phase-by-phase implementation spec with verification criteria.
 
-Summary:
+All phases are complete. See `context/IMPLEMENTATION_PLAN.md` for detailed per-phase notes.
 
-| Phase | Goal | Verify |
+| Phase | Goal | Status |
 |-------|------|--------|
-| 1 | Astro scaffold + design system | Hub landing matches mockup in light + dark |
-| 2 | `libraries.yml` + fetch pipeline | `fetch_spokes.py` populates `src/content/docs/` |
-| 3 | Hub landing with real data | 3 library cards rendered from `libraries.yml` |
-| 4 | Library landing page | `/phx/` renders sidebar + feature grid |
-| 5 | Content pages | `/phx/dev/architecture/` renders markdown |
-| 6 | Search | ⌘K returns grouped results across libraries |
-| 7 | GitHub Actions + deploy | `docs.passivehousetools.com` live; spoke push triggers rebuild |
+| 1 | Astro scaffold + design system | ✅ Complete |
+| 2 | `libraries.yml` + fetch pipeline | ✅ Complete |
+| 3 | Hub landing with real data | ✅ Complete |
+| 4 | Library landing page | ✅ Complete |
+| 5 | Content pages | ✅ Complete |
+| 6 | Search | ✅ Complete |
+| 7 | GitHub Actions + deploy | ✅ Complete |
 
 ---
 
@@ -438,5 +437,22 @@ The hub makes this possible by providing **stable, publicly accessible URLs** fo
 
 ---
 
-*End of v1.0*
+## Appendix: As-Built Deviations from v1.0 Plan
+
+The following deviations from the original plan were made during implementation (April 2026). Sections above have been updated inline where possible; this appendix captures the broader architectural changes.
+
+| Planned | As-Built | Why |
+|---------|----------|-----|
+| Three layouts: `HubLayout`, `LibraryLayout`, `ContentLayout` | Single `BaseLayout.astro` with `activeLib` and `hideFooter` props | All pages share the same HTML shell (head, Header, slot, Footer). Sidebar is placed inside page templates via the `with-sidebar` CSS grid, not in a separate layout. |
+| Markdown rendered via Astro's built-in pipeline | Content collections with glob loader (`src/content.config.ts`) + `getEntry()` / `render()` | Content collections give typed access to front-matter and native Shiki syntax highlighting. The glob loader pattern `**/*.md` over `src/content/docs/` cleanly maps to the fetched spoke content. |
+| `import.meta.dirname` for path resolution in `src/lib/` | `process.cwd()` for all file reads | During Astro's build phase, compiled modules run from `dist/chunks/`, causing `import.meta.dirname` to resolve to the wrong directory. `process.cwd()` always returns the project root. |
+| Two PATs: `ph-docs-hub-dispatch` + `ph-docs-pages-deploy` | One PAT (`HUB_DISPATCH_TOKEN`) + built-in `GITHUB_TOKEN` | The deploy step runs in the same repo it pushes to, so the built-in token works. Only the cross-repo dispatch needs a PAT. |
+| `requirements.txt`: pyyaml + requests | `requirements.txt`: pyyaml only | `fetch_spokes.py` uses `subprocess` for git operations, not the GitHub API via requests. |
+| `FetchCallout` and `SchemaTable` as MDX components | Created as Astro components, not yet used | All spoke content is plain `.md` without front-matter-driven fetch URLs. Components are ready for future MDX adoption or `ph-reference-docs` spoke. |
+| Pagefind grouping via `data-pagefind-section` | Grouping via `data-pagefind-meta="library:..."` | `data-pagefind-meta` attaches metadata to each result, allowing client-side grouping in the search script. Simpler than section-based filtering. |
+| Search script as Vite-processed `<script>` | `<script is:inline>` bypassing Vite | Pagefind's JS bundle (`/pagefind/pagefind.js`) only exists after build. Vite rejects the import during compilation. `is:inline` lets the browser handle the dynamic import at runtime. |
+
+---
+
+*End of v1.0 (updated with as-built deviations, April 2026)*
 *bldgtyp, LLC · Supersedes PH-Tools_Doc_Strategy_v0.3.md*
