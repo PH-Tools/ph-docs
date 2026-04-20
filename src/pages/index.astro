@@ -1,36 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import LibraryCard from "../components/LibraryCard.astro";
+import { getLibraries } from "../lib/libraries";
 
-const libraries = [
-  {
-    id: "honeybee-ph",
-    index: "01",
-    tagLine: "GRASSHOPPER · PYTHON",
-    category: "Modeling",
-    label: "Honeybee-PH",
-    description:
-      "Grasshopper-native Passive House modeling. Build PH-compliant models inside Rhino using familiar Honeybee components.",
-  },
-  {
-    id: "phx",
-    index: "02",
-    tagLine: "PYTHON · DATA MODEL",
-    category: "Exchange",
-    label: "PHX",
-    description:
-      "Passive House Exchange data model & file I/O. Convert between WUFI XML, PHPP Excel, and Phius report formats.",
-  },
-  {
-    id: "honeybee-revive",
-    index: "03",
-    tagLine: "GRASSHOPPER · ANALYSIS",
-    category: "Analysis",
-    label: "Honeybee-REVIVE",
-    description:
-      "Carbon & energy analysis for building design. Resilience & embodied-carbon workflows for Phius REVIVE.",
-  },
-];
+const libraries = getLibraries();
 ---
 
 <BaseLayout title="PH-Tools Documentation Hub">

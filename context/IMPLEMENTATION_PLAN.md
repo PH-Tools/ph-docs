@@ -390,14 +390,14 @@ Phases are sequential. Each phase produces something verifiable before the next 
 
 **Notes**: Created `requirements.txt` (pyyaml) and `.venv` for the Python fetch script. `nav.ts` includes `getFirstFilePerGroup()` and `getAllLeafPaths()` helpers for Phases 4-5.
 
-### Phase 3 — Hub Landing with Real Data (Screen 1)
+### Phase 3 — Hub Landing with Real Data (Screen 1) ✅ COMPLETE (2026-04-19)
 **Goal**: Hub landing page renders real library data from `libraries.yml`.
 
-1. Update `src/pages/index.astro` to read `LibraryMeta[]` from `libraries.yml`
-2. Implement `LibraryCard.astro` component (pixel-matched to mockup card design)
-3. Render library grid from real data
-4. Wire up card `href` attributes to `/{lib-id}/` routes
-5. **Verify**: Hub landing shows 3 real library cards with correct metadata
+1. ✅ Update `src/pages/index.astro` to read `LibraryMeta[]` via `getLibraries()`
+2. ✅ `LibraryCard.astro` updated to use `LibraryMeta` type directly (created in Phase 1, retyped here)
+3. ✅ Library grid renders from real `libraries.yml` data
+4. ✅ Card `href` attributes point to `/{lib-id}/` routes
+5. ✅ **Verify**: Hub landing shows 3 real library cards with correct metadata, build passes
 
 ### Phase 4 — Library Landing Page (Screen 2)
 **Goal**: `/{lib-id}/` routes render the library landing with sidebar, header, and feature grid.
