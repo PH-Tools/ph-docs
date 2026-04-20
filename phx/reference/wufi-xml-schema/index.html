@@ -38,7 +38,7 @@
       </p>
       <div class="ph-fetch-callout__url">
         <span class="ph-method">GET</span>
-        <span>https://docs.passivehousetools.com/reference/wufi-xml-schema</span>
+        <span>https://docs.passivehousetools.com/llm/phx/reference/wufi-xml-schema.md</span>
       </div>
     </div>
   </div>
@@ -233,6 +233,15 @@
 
 
 <table><thead><tr><th>Section</th><th>Typical line range</th><th>Typical size</th></tr></thead><tbody><tr><td>Zone Components (geometry)</td><td>1,000–55,000</td><td>50,000+ lines</td></tr><tr><td>Zone Rooms (ventilation spaces)</td><td>55,000–58,000</td><td>2,000–5,000 lines</td></tr><tr><td>Thermal Bridges</td><td>72,000–73,000</td><td>~200 lines</td></tr><tr><td>PassivehouseData</td><td>73,000–73,130</td><td>~130 lines</td></tr><tr><td>HVAC Devices</td><td>73,130–73,950</td><td>~800 lines</td></tr><tr><td>DHW Piping</td><td>73,950–74,450</td><td>~500 lines</td></tr><tr><td>Ducts</td><td>74,450–75,300</td><td>~900 lines</td></tr><tr><td>Assemblies</td><td>75,600–76,400</td><td>~800 lines</td></tr><tr><td>WindowTypes</td><td>76,400–78,200</td><td>~1,800 lines</td></tr></tbody></table>
+<h3 id="navigating-efficiently">Navigating Efficiently</h3>
+<p>For files over 50,000 lines:</p>
+<ol>
+<li><strong>grep first</strong> — <code>grep -n "SearchTerm" model.xml</code> to find line numbers</li>
+<li><strong>Read targeted ranges</strong> — once you know a device is at line 73200, read lines 73190–73260 to get the full element</li>
+<li><strong>Use XML element names</strong> — searching for <code>&#x3C;HeatRecovery></code> or <code>&#x3C;InsulationThickness></code> is often faster than searching for device names</li>
+<li><strong>Assemblies and WindowTypes are near the end</strong> — typically the last 2,000–3,000 lines of the file</li>
+<li><strong>Devices are clustered</strong> — all devices for a system are sequential, so once you find one, the others are nearby</li>
+</ol>
 <hr>
 <h2 id="quick-lookup-table">Quick Lookup Table</h2>
 
@@ -845,6 +854,7 @@ WUFI applies shading from reveal geometry, overhang, solar protection, and the D
 
 
 <table><thead><tr><th>From (IP)</th><th>To (SI/XML)</th><th>Factor</th><th>Notes</th></tr></thead><tbody><tr><td>CFM</td><td>m³/h</td><td>× 1.69901</td><td><code>CFM × 1.69901 = m³/h</code></td></tr><tr><td>W/cfm</td><td>Wh/m³</td><td>÷ 1.69901</td><td><code>(W/cfm) / 1.69901 = Wh/m³</code></td></tr></tbody></table>
+<p>The factor 1.69901 appears in both airflow and electric efficiency conversions because both involve cubic feet per minute to cubic meters per hour. To verify a W/cfm value, multiply the XML Wh/m³ value by 1.69901 and see if you recover the expected W/cfm.</p>
 <h3 id="thermal-performance">Thermal Performance</h3>
 
 
@@ -909,6 +919,7 @@ WUFI applies shading from reveal geometry, overhang, solar protection, and the D
 
 
 <table><thead><tr><th>From (IP)</th><th>To (SI/XML)</th><th>Factor</th></tr></thead><tbody><tr><td>kBtu/ft²·yr</td><td>kWh/m²·yr</td><td>× 3.1546</td></tr><tr><td>kWh/m²·yr</td><td>kBtu/ft²·yr</td><td>× 0.31700</td></tr><tr><td>Btu/hr·ft²</td><td>W/m²</td><td>× 3.1546</td></tr><tr><td>W/m²</td><td>Btu/hr·ft²</td><td>× 0.31700</td></tr></tbody></table>
+<p>The demand (kBtu/ft²·yr → kWh/m²·yr) and load (Btu/hr·ft² → W/m²) conversions use the same factor because they are dimensionally equivalent for the area-normalized quantities WUFI uses.</p>
 <h3 id="length--thickness">Length / Thickness</h3>
 
 
@@ -959,6 +970,7 @@ WUFI applies shading from reveal geometry, overhang, solar protection, and the D
 
 
 <table><thead><tr><th>From (IP)</th><th>To (SI/XML)</th><th>Formula</th></tr></thead><tbody><tr><td>R/inch (hr-ft²-F/Btu-in)</td><td>W/mK</td><td><code>k = 0.14423 / (R_per_inch)</code></td></tr><tr><td>W/mK</td><td>R/inch</td><td><code>R_per_inch = 0.14423 / k</code></td></tr></tbody></table>
+<p>Example: Composite duct insulation at R-6.5/inch → k = 0.14423 / 6.5 = 0.02219 W/mK.</p>
 <h3 id="temperature">Temperature</h3>
 
 
@@ -1004,13 +1016,23 @@ WUFI applies shading from reveal geometry, overhang, solar protection, and the D
 
 <table><thead><tr><th>From (IP)</th><th>To (SI/XML)</th><th>Factor</th></tr></thead><tbody><tr><td>ft²</td><td>m²</td><td>× 0.09290</td></tr><tr><td>ft³</td><td>m³</td><td>× 0.02832</td></tr></tbody></table>
 <h3 id="common-verification-patterns">Common Verification Patterns</h3>
-<ul>
-<li><strong>ERV heat recovery</strong>: <code>&#x3C;HeatRecovery>0.857&#x3C;/HeatRecovery></code> — dimensionless fraction. Compare directly against datasheet SRE/ATRE.</li>
-<li><strong>ERV electric efficiency</strong>: <code>&#x3C;ElectricEfficiency>0.3337&#x3C;/ElectricEfficiency></code> (Wh/m³) → <code>0.3337 × 1.69901 = 0.567 W/cfm</code></li>
-<li><strong>Duct insulation</strong>: <code>&#x3C;InsulationThickness>47.625&#x3C;/InsulationThickness></code> (mm) = 1.875”. <code>&#x3C;ThermalConductivity>0.02219&#x3C;/ThermalConductivity></code> → R/inch = 0.14423/0.02219 = 6.5</li>
-<li><strong>Certification target</strong>: <code>&#x3C;AnnualHeatingDemand>11.357&#x3C;/AnnualHeatingDemand></code> (kWh/m²) → <code>11.357 × 0.31700 = 3.60 kBtu/ft²</code></li>
-<li><strong>Thermal bridge psi</strong>: <code>&#x3C;PsiValue>0.4344&#x3C;/PsiValue></code> (W/mK) → <code>0.4344 / 1.7307 = 0.251 Btu/hr-ft-F</code></li>
-</ul>
+<p><strong>ERV/HRV heat recovery:</strong>
+XML: <code>&#x3C;HeatRecovery>0.857&#x3C;/HeatRecovery></code> — dimensionless fraction (0–1). No conversion needed. Compare directly against datasheet SRE/ATRE values.</p>
+<p><strong>ERV/HRV electric efficiency:</strong>
+XML: <code>&#x3C;ElectricEfficiency>0.333723600693&#x3C;/ElectricEfficiency></code> (Wh/m³).
+To verify against a W/cfm spec: <code>0.3337 × 1.69901 = 0.567 W/cfm</code>.</p>
+<p><strong>Duct insulation:</strong>
+XML: <code>&#x3C;InsulationThickness>47.625&#x3C;/InsulationThickness></code> (mm) and <code>&#x3C;ThermalConductivity>0.02219&#x3C;/ThermalConductivity></code> (W/mK).
+To verify: 47.625 mm = 1.875 inches. k = 0.02219 → R/inch = 0.14423 / 0.02219 = 6.5.</p>
+<p><strong>Certification target:</strong>
+XML: <code>&#x3C;AnnualHeatingDemand>11.357&#x3C;/AnnualHeatingDemand></code> (kWh/m²).
+To verify against kBtu/ft²: <code>11.357 × 0.31700 = 3.60 kBtu/ft²</code>.</p>
+<p><strong>Thermal bridge psi:</strong>
+XML: <code>&#x3C;PsiValue>0.4344&#x3C;/PsiValue></code> (W/mK).
+To verify against Btu/hr-ft-F: <code>0.4344 / 1.7307 = 0.251 Btu/hr-ft-F</code>.</p>
+<p><strong>Window reveal depth:</strong>
+XML: <code>&#x3C;DepthWindowReveal>0.15875&#x3C;/DepthWindowReveal></code> (m).
+To verify: <code>0.15875 / 0.0254 = 6.25 inches</code>.</p>
 <hr>
 <h2 id="key-gotchas">Key Gotchas</h2>
 <p><strong>FrameFactor vs DefaultCorrectionShadingMonth.</strong> <code>FrameFactor</code> on the WindowType is the glass-to-total area ratio for thermal calculation. <code>DefaultCorrectionShadingMonth</code> on the aperture Component (Type=2) is a separate solar correction factor. Don’t confuse them. On some projects, WindowType may have FrameFactor ≈ 1.0 with near-zero frame widths because the U-value was pre-calculated externally.</p>

@@ -460,6 +460,10 @@
 <p>Constructions/windows/shades live in project-level dicts; components reference them by identifier, not by embedding.</p>
 <h3 id="piping-hierarchy">Piping Hierarchy</h3>
 <p>DHW piping uses a three-level hierarchy: <code>PhxPipeTrunk</code> → <code>PhxPipeBranch</code> → <code>PhxPipeElement</code> (fixtures). Each <code>PhxPipeElement</code> contains <code>PhxPipeSegment</code> objects. Recirculation piping is stored separately as flat <code>PhxPipeElement</code> entries.</p>
+<h3 id="unique_key-property"><code>unique_key</code> Property</h3>
+<p>Classes that may be grouped by construction or type expose a <code>unique_key</code> property. Components with the same <code>unique_key</code> can be merged via <code>__add__</code>. For example, <code>PhxComponentOpaque</code> instances sharing the same assembly identifier have the same <code>unique_key</code> and can be combined into a single component.</p>
+<h3 id="enum-runtime-extension">Enum Runtime Extension</h3>
+<p>Some enums use <code>_missing_()</code> to handle unknown values at runtime rather than raising. For example, <code>ComponentExposureExterior</code> returns a fallback member for unrecognized integer values from WUFI XML imports. This prevents deserialization failures on non-standard model files.</p>
 <hr>
 <h2 id="honeybee-to-phx-concept-mapping">Honeybee to PHX Concept Mapping</h2>
 
@@ -560,6 +564,12 @@
 <span class="line"><span style="color:#F97583">    finally</span><span style="color:#E1E4E8">:</span></span>
 <span class="line"><span style="color:#E1E4E8">        _reset_phx_class_counters()</span></span></code></pre>
 <p>When adding a new model class with <code>_count</code>, add it to <code>_reset_phx_class_counters()</code> in <code>conftest.py</code>.</p>
+<h3 id="module-reload-end-to-end-tests">Module Reload (End-to-End Tests)</h3>
+<p>For reference-case tests that compare full XML output, modules must be reloaded (not just counters reset) to guarantee clean state:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E1E4E8">importlib.reload(building)</span></span>
+<span class="line"><span style="color:#E1E4E8">importlib.reload(components)</span></span>
+<span class="line"><span style="color:#6A737D"># ... all model modules</span></span></code></pre>
+<p>Add new modules to <code>_reload_phx_classes()</code> in <code>conftest.py</code> if needed for reference-case tests.</p>
 <h3 id="test-organization">Test Organization</h3>
 <p>Tests mirror the source structure under <code>tests/</code>:</p>
 
@@ -604,7 +614,46 @@
 <li>Test <code>__add__</code> if the class supports merging</li>
 <li>Test <code>unique_key</code> if the class supports grouping</li>
 <li>For new HVAC device types, test both standalone creation and addition to <code>PhxMechanicalSystemCollection</code></li>
-</ol> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
+</ol>
+<h3 id="common-test-patterns">Common Test Patterns</h3>
+<p><strong>Unit test (model class):</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> test_blank_project</span><span style="color:#E1E4E8">(reset_class_counters):</span></span>
+<span class="line"><span style="color:#E1E4E8">    proj </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> project.PhxProject()</span></span>
+<span class="line"><span style="color:#F97583">    assert</span><span style="color:#79B8FF"> str</span><span style="color:#E1E4E8">(proj)</span></span>
+<span class="line"><span style="color:#F97583">    assert</span><span style="color:#F97583"> not</span><span style="color:#E1E4E8"> proj.assembly_types</span></span>
+<span class="line"><span style="color:#F97583">    assert</span><span style="color:#F97583"> not</span><span style="color:#E1E4E8"> proj.variants</span></span></code></pre>
+<p><strong>Property / behavior test:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> test_component_face_type</span><span style="color:#E1E4E8">(reset_class_counters):</span></span>
+<span class="line"><span style="color:#E1E4E8">    comp </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> PhxComponentOpaque()</span></span>
+<span class="line"><span style="color:#E1E4E8">    comp.face_type </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> ComponentFaceType.</span><span style="color:#79B8FF">WALL</span></span>
+<span class="line"><span style="color:#E1E4E8">    comp.exposure_exterior </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> ComponentExposureExterior.</span><span style="color:#79B8FF">EXTERIOR</span></span>
+<span class="line"><span style="color:#F97583">    assert</span><span style="color:#E1E4E8"> comp.is_above_grade_wall </span><span style="color:#F97583">is</span><span style="color:#79B8FF"> True</span></span></code></pre>
+<p><strong>Merge / addition test:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> test_space_addition</span><span style="color:#E1E4E8">(reset_class_counters):</span></span>
+<span class="line"><span style="color:#E1E4E8">    space_a </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> PhxSpace()</span></span>
+<span class="line"><span style="color:#E1E4E8">    space_a.floor_area </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 100.0</span></span>
+<span class="line"><span style="color:#E1E4E8">    space_b </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> PhxSpace()</span></span>
+<span class="line"><span style="color:#E1E4E8">    space_b.floor_area </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 50.0</span></span>
+<span class="line"><span style="color:#E1E4E8">    merged </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> space_a </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> space_b</span></span>
+<span class="line"><span style="color:#F97583">    assert</span><span style="color:#E1E4E8"> merged.floor_area </span><span style="color:#F97583">==</span><span style="color:#79B8FF"> 150.0</span></span></code></pre>
+<p><strong>End-to-end reference case:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> test_xml_output</span><span style="color:#E1E4E8">(to_xml_reference_cases):</span></span>
+<span class="line"><span style="color:#E1E4E8">    hbjson_file, xml_file </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> to_xml_reference_cases</span></span>
+<span class="line"><span style="color:#E1E4E8">    hb_json_dict </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> read_HBJSON_file.read_hb_json_from_file(hbjson_file)</span></span>
+<span class="line"><span style="color:#E1E4E8">    hb_model </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> read_HBJSON_file.convert_hbjson_dict_to_hb_model(hb_json_dict)</span></span>
+<span class="line"><span style="color:#E1E4E8">    phx_project </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> create_project.convert_hb_model_to_PhxProject(hb_model)</span></span>
+<span class="line"><span style="color:#E1E4E8">    xml_txt </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> xml_builder.generate_WUFI_XML_from_object(phx_project)</span></span>
+<span class="line"><span style="color:#E1E4E8">    expected </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> read_WUFI_XML_file.get_WUFI_xml_file_as_str(xml_file)</span></span>
+<span class="line"><span style="color:#F97583">    assert</span><span style="color:#E1E4E8"> xml_txt </span><span style="color:#F97583">==</span><span style="color:#E1E4E8"> expected</span></span></code></pre>
+<p><strong>Geometry fixture:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#B392F0">@pytest.fixture</span></span>
+<span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> polygon_1x1x0</span><span style="color:#E1E4E8">():  </span><span style="color:#6A737D"># 1m x 1m square at z=0</span></span>
+<span class="line"><span style="color:#E1E4E8">    p </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> PhxPolygon(</span><span style="color:#9ECBFF">"no_name"</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">100.0</span><span style="color:#E1E4E8">, PhxVertix(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">), PhxVector(</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">), plane)</span></span>
+<span class="line"><span style="color:#E1E4E8">    p.add_vertix(PhxVertix(</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">))</span></span>
+<span class="line"><span style="color:#E1E4E8">    p.add_vertix(PhxVertix(</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">))</span></span>
+<span class="line"><span style="color:#E1E4E8">    p.add_vertix(PhxVertix(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">))</span></span>
+<span class="line"><span style="color:#E1E4E8">    p.add_vertix(PhxVertix(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">))</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> p</span></span></code></pre> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
 (function () {
   // ---------- Modal open / close ----------
   var scrim = document.getElementById("searchScrim");
