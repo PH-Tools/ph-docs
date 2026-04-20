@@ -1,0 +1,70 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+}
+
+const { title = "PH-Tools Documentation" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <script is:inline>
+      // Set theme before first paint to prevent flash
+      (function () {
+        try {
+          var t = localStorage.getItem("ph-docs:theme");
+          if (t) document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      // Theme toggle
+      const themeBtn = document.getElementById("themeToggle");
+      const iconSun = themeBtn?.querySelector(".icon-sun") as HTMLElement | null;
+      const iconMoon = themeBtn?.querySelector(
+        ".icon-moon",
+      ) as HTMLElement | null;
+
+      function setTheme(t: string) {
+        document.documentElement.setAttribute("data-theme", t);
+        try {
+          localStorage.setItem("ph-docs:theme", t);
+        } catch (e) {}
+        if (iconSun && iconMoon) {
+          if (t === "dark") {
+            iconSun.style.display = "none";
+            iconMoon.style.display = "";
+          } else {
+            iconSun.style.display = "";
+            iconMoon.style.display = "none";
+          }
+        }
+      }
+
+      // Sync icon state on load
+      const current =
+        document.documentElement.getAttribute("data-theme") || "light";
+      setTheme(current);
+
+      themeBtn?.addEventListener("click", () => {
+        const cur = document.documentElement.getAttribute("data-theme");
+        setTheme(cur === "dark" ? "light" : "dark");
+      });
+    </script>
+  </body>
+</html>

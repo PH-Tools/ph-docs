@@ -1,0 +1,26 @@
+---
+interface Props {
+  id: string;
+  index: string;
+  tagLine: string;
+  category: string;
+  label: string;
+  description: string;
+}
+
+const { id, index, tagLine, category, label, description } = Astro.props;
+---
+
+<a class="lib-card graph-paper-subtle" href={`/${id}/`}>
+  <div class="lib-card__idx">
+    <span class="lib-card__idx-num">{index}</span>
+    <span class="lib-card__idx-dash"></span>
+    <span>{tagLine}</span>
+  </div>
+  <div class="lib-card__tag">{category}</div>
+  <h3 class="lib-card__name">{label}</h3>
+  <p class="lib-card__desc">{description}</p>
+  <div class="lib-card__footer">
+    <span class="lib-card__cta">→ View Docs <span class="arr">↗</span></span>
+  </div>
+</a>
