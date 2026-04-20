@@ -441,17 +441,19 @@ Phases are sequential. Each phase produces something verifiable before the next 
 
 **Notes**: Pagefind's JS is only available after build, so the search script uses `is:inline` to bypass Vite's module resolution. Search results use `<a>` tags (not `<div>`) for native link behavior — added `text-decoration:none; color:inherit` to `.search-result` CSS. The `abbreviate()` function generates short library badges from display names (e.g., "Honeybee-PH" → "HP"). Search does not work in `pnpm dev` mode — only after `pnpm build` + `pnpm preview`.
 
-### Phase 7 — GitHub Actions + Deployment
+### Phase 7 — GitHub Actions + Deployment ✅ FILES COMPLETE (2026-04-19)
 **Goal**: Pushes to spoke `/docs` auto-rebuild the live site at `docs.passivehousetools.com`.
 
-1. Write `public/CNAME` containing `docs.passivehousetools.com`
-2. Write `.github/workflows/build.yml` — triggers: schedule + `repository_dispatch` + `workflow_dispatch`
-3. Write `.github/workflows/validate.yml` — PR check
-4. Push to `PH-Tools/ph-docs` main branch
-5. Enable GitHub Pages on the `gh-pages` branch in repo settings
-6. Set custom domain to `docs.passivehousetools.com` in GitHub Pages settings (HTTPS enforce)
-7. Manually trigger `workflow_dispatch` run → confirm site builds and deploys
-8. **Verify**: `docs.passivehousetools.com` serves the hub landing; push a change to PHX `/docs` → hub rebuilds within ~5 minutes
+1. ✅ Write `public/CNAME` containing `docs.passivehousetools.com` — Astro copies to `dist/` at build time
+2. ✅ Write `.github/workflows/build.yml` — triggers: schedule (02:00 UTC nightly) + `repository_dispatch` (`docs-updated`) + `workflow_dispatch`; steps: checkout → Python 3.11 + fetch_spokes.py → Node 20 + pnpm install + pnpm build → deploy to gh-pages via `peaceiris/actions-gh-pages@v4` with `PH_DOCS_PAGES_DEPLOY` secret
+3. ✅ Write `.github/workflows/validate.yml` — PR check: same fetch + build steps, no deploy
+4. ⬜ Push to `PH-Tools/ph-docs` main branch
+5. ⬜ Enable GitHub Pages on the `gh-pages` branch in repo settings
+6. ⬜ Set custom domain to `docs.passivehousetools.com` in GitHub Pages settings (HTTPS enforce)
+7. ⬜ Manually trigger `workflow_dispatch` run → confirm site builds and deploys
+8. ⬜ **Verify**: `docs.passivehousetools.com` serves the hub landing; push a change to PHX `/docs` → hub rebuilds within ~5 minutes
+
+**Notes**: Steps 1-3 (file creation) are complete. Steps 4-8 require manual action: pushing to the remote, configuring GitHub Pages settings, and verifying live deployment. The `PH_DOCS_PAGES_DEPLOY` secret name matches the strategy doc's `ph-docs-pages-deploy` PAT (already configured at org level). The `build.yml` uses `pnpm install --frozen-lockfile` to ensure reproducible builds. The `cname` option in peaceiris/actions-gh-pages ensures the CNAME file persists on the gh-pages branch.
 
 ---
 

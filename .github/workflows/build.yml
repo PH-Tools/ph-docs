@@ -1,0 +1,61 @@
+name: Build & Deploy Docs
+
+on:
+  # Nightly safety-net rebuild
+  schedule:
+    - cron: "0 2 * * *"
+  # Fired by spoke repos when /docs/** changes on main
+  repository_dispatch:
+    types: [docs-updated]
+  # Manual trigger for testing / emergency rebuilds
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout hub repo
+        uses: actions/checkout@v4
+
+      # ---------- Fetch spoke docs ----------
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch spoke docs
+        run: python scripts/fetch_spokes.py
+
+      - name: Log build manifest
+        run: cat src/content/docs/build_manifest.json
+
+      # ---------- Build site ----------
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install Node dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build (Astro + Pagefind)
+        run: pnpm build
+
+      # ---------- Deploy ----------
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          personal_token: ${{ secrets.PH_DOCS_PAGES_DEPLOY }}
+          publish_dir: ./dist
+          cname: docs.passivehousetools.com
