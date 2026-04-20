@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build-and-deploy:
@@ -56,6 +56,6 @@ jobs:
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          personal_token: ${{ secrets.PH_DOCS_PAGES_DEPLOY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           cname: docs.passivehousetools.com
