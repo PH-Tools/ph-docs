@@ -8,7 +8,7 @@ PH Foundation Objects.
 
 ## PhFoundationType
 
-No description available.
+Classification of foundation types for PH certification.
 
 **Inherits from**: `enumerables.CustomEnum`
 
@@ -16,17 +16,17 @@ No description available.
 
 | Value | Meaning |
 |-------|---------|
-| `"1-HEATED_BASEMENT"` | — |
-| `"2-UNHEATED_BASEMENT"` | — |
-| `"3-SLAB_ON_GRADE"` | — |
-| `"4-VENTED_CRAWLSPACE"` | — |
-| `"5-NONE"` | — |
+| `"1-HEATED_BASEMENT"` | Fully conditioned basement. |
+| `"2-UNHEATED_BASEMENT"` | Unconditioned basement below thermal envelope. |
+| `"3-SLAB_ON_GRADE"` | Foundation slab directly on soil. |
+| `"4-VENTED_CRAWLSPACE"` | Ventilated crawlspace below floor. |
+| `"5-NONE"` | No foundation modeled. |
 
 ---
 
 ## PhSlabEdgeInsulationPosition
 
-No description available.
+Position of perimeter slab edge insulation.
 
 **Inherits from**: `enumerables.CustomEnum`
 
@@ -34,15 +34,15 @@ No description available.
 
 | Value | Meaning |
 |-------|---------|
-| `"1-UNDEFINED"` | — |
-| `"2-HORIZONTAL"` | — |
-| `"3-VERTICAL"` | — |
+| `"1-UNDEFINED"` | Undefined or not specified. |
+| `"2-HORIZONTAL"` | Horizontal insulation extending outward from slab edge. |
+| `"3-VERTICAL"` | Vertical insulation extending downward from slab edge. |
 
 ---
 
 ## PhFoundation
 
-No description available.
+Base class for all PH foundation types.
 
 **Inherits from**: `_base._Base`
 
@@ -50,7 +50,7 @@ No description available.
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `foundation_type` | `PhFoundationType` | — |
+| `foundation_type` | `PhFoundationType` | The foundation classification. Default: "5-NONE". |
 
 ### Methods
 
@@ -69,7 +69,7 @@ Set the base object attributes from a dictionary
 
 ## PhHeatedBasement
 
-No description available.
+Heated (conditioned) basement foundation.
 
 **Inherits from**: `PhFoundation`
 
@@ -78,17 +78,17 @@ No description available.
 | Attribute | Type | Description |
 |-----------|------|-------------|
 | `foundation_type` | `PhFoundationType` | — |
-| `floor_slab_area_m2` | `float` | — |
-| `floor_slab_u_value` | `float` | — |
-| `floor_slab_exposed_perimeter_m` | `float` | — |
-| `slab_depth_below_grade_m` | `float` | — |
-| `basement_wall_u_value` | `float` | — |
+| `floor_slab_area_m2` | `float` | Floor slab area in square meters. |
+| `floor_slab_u_value` | `float` | Floor slab U-value in W/(m2K). Default: 1.0. |
+| `floor_slab_exposed_perimeter_m` | `float` | Exposed perimeter length in meters. |
+| `slab_depth_below_grade_m` | `float` | Depth of slab below grade in meters. Default: 2.5. |
+| `basement_wall_u_value` | `float` | Basement wall U-value in W/(m2K). Default: 1.0. |
 
 ---
 
 ## PhUnheatedBasement
 
-No description available.
+Unheated (unconditioned) basement foundation.
 
 **Inherits from**: `PhFoundation`
 
@@ -97,22 +97,22 @@ No description available.
 | Attribute | Type | Description |
 |-----------|------|-------------|
 | `foundation_type` | `PhFoundationType` | — |
-| `floor_ceiling_area_m2` | `float` | — |
-| `ceiling_u_value` | `float` | — |
-| `floor_slab_exposed_perimeter_m` | `float` | — |
-| `slab_depth_below_grade_m` | `float` | — |
-| `basement_wall_height_above_grade_m` | `float` | — |
-| `basement_wall_uValue_below_grade` | `float` | — |
-| `basement_wall_uValue_above_grade` | `float` | — |
-| `floor_slab_u_value` | `float` | — |
-| `basement_volume_m3` | `float` | — |
-| `basement_ventilation_ach` | `float` | — |
+| `floor_ceiling_area_m2` | `float` | Area of ceiling above the basement in m2. |
+| `ceiling_u_value` | `float` | Ceiling U-value in W/(m2K). Default: 1.0. |
+| `floor_slab_exposed_perimeter_m` | `float` | Exposed perimeter length in meters. |
+| `slab_depth_below_grade_m` | `float` | Depth of slab below grade in meters. |
+| `basement_wall_height_above_grade_m` | `float` | Wall height above grade in meters. |
+| `basement_wall_uValue_below_grade` | `float` | Below-grade wall U-value in W/(m2K). Default: 1.0. |
+| `basement_wall_uValue_above_grade` | `float` | Above-grade wall U-value in W/(m2K). Default: 1.0. |
+| `floor_slab_u_value` | `float` | Floor slab U-value in W/(m2K). Default: 1.0. |
+| `basement_volume_m3` | `float` | Basement air volume in cubic meters. |
+| `basement_ventilation_ach` | `float` | Basement ventilation rate in ACH. |
 
 ---
 
 ## PhSlabOnGrade
 
-No description available.
+Slab-on-grade foundation.
 
 **Inherits from**: `PhFoundation`
 
@@ -121,24 +121,24 @@ No description available.
 | Attribute | Type | Description |
 |-----------|------|-------------|
 | `foundation_type` | `PhFoundationType` | — |
-| `floor_slab_area_m2` | `float` | — |
-| `floor_slab_u_value` | `Union[float, None]` | — |
-| `floor_slab_exposed_perimeter_m` | `float` | — |
-| `perim_insulation_width_or_depth_m` | `float` | — |
-| `perim_insulation_thickness_m` | `float` | — |
-| `perim_insulation_conductivity` | `float` | — |
+| `floor_slab_area_m2` | `float` | Floor slab area in square meters. |
+| `floor_slab_u_value` | `Union[float, None]` | Floor slab U-value in W/(m2K). None if not set. |
+| `floor_slab_exposed_perimeter_m` | `float` | Exposed perimeter length in meters. |
+| `perim_insulation_width_or_depth_m` | `float` | Insulation width or depth in meters. Default: 0.300. |
+| `perim_insulation_thickness_m` | `float` | Insulation thickness in meters. Default: 0.050. |
+| `perim_insulation_conductivity` | `float` | Insulation thermal conductivity in W/(mK). Default: 0.04. |
 
 ### Properties
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `perim_insulation_position` | — | — |
+| `perim_insulation_position` | `PhSlabEdgeInsulationPosition` | The perimeter insulation position (horizontal or vertical). |
 
 ---
 
 ## PhVentedCrawlspace
 
-No description available.
+Ventilated crawlspace foundation.
 
 **Inherits from**: `PhFoundation`
 
@@ -147,18 +147,18 @@ No description available.
 | Attribute | Type | Description |
 |-----------|------|-------------|
 | `foundation_type` | `PhFoundationType` | — |
-| `crawlspace_floor_slab_area_m2` | `float` | — |
-| `ceiling_above_crawlspace_u_value` | `float` | — |
-| `crawlspace_floor_exposed_perimeter_m` | `float` | — |
-| `crawlspace_wall_height_above_grade_m` | `float` | — |
-| `crawlspace_floor_u_value` | `float` | — |
-| `crawlspace_vent_opening_are_m2` | `float` | — |
-| `crawlspace_wall_u_value` | `float` | — |
+| `crawlspace_floor_slab_area_m2` | `float` | Crawlspace floor slab area in m2. |
+| `ceiling_above_crawlspace_u_value` | `float` | Ceiling U-value above crawlspace in W/(m2K). Default: 1.0. |
+| `crawlspace_floor_exposed_perimeter_m` | `float` | Exposed perimeter in meters. Default: 2.5. |
+| `crawlspace_wall_height_above_grade_m` | `float` | Crawlspace wall height above grade in meters. |
+| `crawlspace_floor_u_value` | `float` | Crawlspace floor U-value in W/(m2K). Default: 1.0. |
+| `crawlspace_vent_opening_are_m2` | `float` | Ventilation opening area in m2. |
+| `crawlspace_wall_u_value` | `float` | Crawlspace wall U-value in W/(m2K). Default: 1.0. |
 
 ---
 
 ## PhFoundationFactory
 
-Factory class to build any PhFoundation from an input dictionary.
+Factory class to build PhFoundation objects from dictionaries.
 
 ---
