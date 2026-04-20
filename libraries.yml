@@ -1,0 +1,36 @@
+libraries:
+  - id:          honeybee-ph
+    repo:        PH-Tools/honeybee_ph
+    label:       Honeybee-PH
+    docs_path:   docs/
+    branch:      main
+    enabled:     true
+    index:       "01"
+    tag_line:    "GRASSHOPPER · PYTHON"
+    category:    "Modeling"
+    description: "Grasshopper-native Passive House modeling. Build PH-compliant
+                  models inside Rhino using familiar Honeybee components."
+
+  - id:          phx
+    repo:        PH-Tools/PHX
+    label:       PHX
+    docs_path:   docs/
+    branch:      main
+    enabled:     true
+    index:       "02"
+    tag_line:    "PYTHON · DATA MODEL"
+    category:    "Exchange"
+    description: "Passive House Exchange data model & file I/O. Convert between
+                  WUFI XML, PHPP Excel, and Phius report formats."
+
+  - id:          honeybee-revive
+    repo:        PH-Tools/honeybee_revive
+    label:       Honeybee-REVIVE
+    docs_path:   docs/
+    branch:      main
+    enabled:     true
+    index:       "03"
+    tag_line:    "GRASSHOPPER · ANALYSIS"
+    category:    "Analysis"
+    description: "Carbon & energy analysis for building design. Resilience &
+                  embodied-carbon workflows for Phius REVIVE."

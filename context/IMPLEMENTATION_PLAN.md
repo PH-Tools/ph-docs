@@ -363,28 +363,32 @@ Runs on PRs to main. Runs `fetch_spokes.py` + `astro build` (no deploy). Confirm
 
 Phases are sequential. Each phase produces something verifiable before the next begins.
 
-### Phase 1 — Astro Scaffold + Design System
+### Phase 1 — Astro Scaffold + Design System ✅ COMPLETE (2026-04-19)
 **Goal**: Working Astro project that renders the hub landing page with correct design, no real content.
 
-1. `pnpm create astro@latest ph-docs` — minimal template, TypeScript strict
-2. Install dependencies: `pagefind`, `astro-pagefind`, `js-yaml`, `gray-matter`
-3. Port `styles.css` + `screens.css` from mockup → `src/styles/global.css`
-4. Implement `Header.astro` (logo, nav links, search button, theme toggle) — pixel-matched to mockup
-5. Implement `Footer.astro`
-6. Implement hub landing `src/pages/index.astro` with static placeholder library cards
-7. Implement theme toggle (localStorage + `data-theme` on `<html>`)
-8. **Verify**: `pnpm dev` renders hub landing matching mockup in light + dark mode
+1. ✅ Scaffolded Astro manually in existing repo (package.json, astro.config.ts, tsconfig.json)
+2. ✅ Install dependencies: js-yaml, gray-matter (pagefind/astro-pagefind deferred to Phase 6)
+3. ✅ Port `styles.css` + `screens.css` from mockup → `src/styles/global.css` (all screens ported)
+4. ✅ Implement `Header.astro` (logo, 3 library nav links, search button, theme toggle, GitHub)
+5. ✅ Implement `Footer.astro`
+6. ✅ Implement hub landing `src/pages/index.astro` with 3 static library cards (Reference Docs deferred)
+7. ✅ Implement theme toggle (localStorage + `data-theme` on `<html>`, inline script prevents flash)
+8. ✅ **Verify**: `pnpm dev` + `pnpm build` both succeed; light + dark mode match mockup
 
-### Phase 2 — `libraries.yml` + Content Pipeline
+**Notes**: Created `BaseLayout.astro` as shared HTML shell (not in original plan). `LibraryCard.astro` extracted as typed component in this phase (plan had it in Phase 3). `.gitignore` updated for Astro/Node.
+
+### Phase 2 — `libraries.yml` + Content Pipeline ✅ COMPLETE (2026-04-19)
 **Goal**: `fetch_spokes.py` runs, spoke docs land in `src/content/docs/`, manifest is written.
 
-1. Write `libraries.yml` with all three spokes + extended card metadata fields
-2. Write `scripts/fetch_spokes.py` (sparse-clone each spoke's `/docs` → `src/content/docs/<id>/`)
-3. Add `src/content/docs/` to `.gitignore`
-4. Write `src/lib/libraries.ts` — parses `libraries.yml`, exports `LibraryMeta[]`
-5. Write `src/lib/nav.ts` — parses `nav.yml`, exports `NavTree` type + parser
-6. Write `src/lib/frontmatter.ts` — reads front-matter from MD files using `gray-matter`
-7. **Verify**: `python scripts/fetch_spokes.py` populates `src/content/docs/` correctly; manifest shows 3 succeeded
+1. ✅ Write `libraries.yml` with all three spokes + extended card metadata fields
+2. ✅ Write `scripts/fetch_spokes.py` (sparse-clone each spoke's `/docs` → `src/content/docs/<id>/`)
+3. ✅ Add `src/content/docs/` to `.gitignore` (done in Phase 1)
+4. ✅ Write `src/lib/libraries.ts` — parses `libraries.yml`, exports `LibraryMeta[]`
+5. ✅ Write `src/lib/nav.ts` — parses `nav.yml`, exports `NavTree` type + parser + helpers
+6. ✅ Write `src/lib/frontmatter.ts` — reads front-matter from MD files using `gray-matter`
+7. ✅ **Verify**: `fetch_spokes.py` populates `src/content/docs/` with all 3 spokes; manifest shows 3 succeeded, 0 skipped; `pnpm build` passes
+
+**Notes**: Created `requirements.txt` (pyyaml) and `.venv` for the Python fetch script. `nav.ts` includes `getFirstFilePerGroup()` and `getAllLeafPaths()` helpers for Phases 4-5.
 
 ### Phase 3 — Hub Landing with Real Data (Screen 1)
 **Goal**: Hub landing page renders real library data from `libraries.yml`.
