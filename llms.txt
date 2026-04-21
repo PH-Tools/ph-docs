@@ -172,3 +172,10 @@ Passive House Exchange data model & file I/O. Convert between WUFI XML, PHPP Exc
 ## Honeybee-REVIVE
 Carbon & energy analysis for building design. Resilience & embodied-carbon workflows for Phius REVIVE.
 - [Overview](https://docs.passivehousetools.com/llm/honeybee-revive/index.md)
+- [API Reference: CO2_measures](https://docs.passivehousetools.com/llm/honeybee-revive/api/CO2_measures.md)
+- [API Reference: fuels](https://docs.passivehousetools.com/llm/honeybee-revive/api/fuels.md)
+- [API Reference: grid_region](https://docs.passivehousetools.com/llm/honeybee-revive/api/grid_region.md)
+- [API Reference: national_emissions](https://docs.passivehousetools.com/llm/honeybee-revive/api/national_emissions.md)
+- [HVAC: equipment](https://docs.passivehousetools.com/llm/honeybee-revive/api/hvac/equipment.md)
+- [Weather: adjustment_factors](https://docs.passivehousetools.com/llm/honeybee-revive/api/weather/adjustment_factors.md)
+- [Weather: resiliency_epw](https://docs.passivehousetools.com/llm/honeybee-revive/api/weather/resiliency_epw.md)

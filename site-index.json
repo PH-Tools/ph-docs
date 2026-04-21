@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-21T02:56:10Z",
+  "generated": "2026-04-21T03:08:05Z",
   "base_url": "https://docs.passivehousetools.com",
   "llm_nav": {
     "instructions": "/llm-instructions.md",
@@ -992,6 +992,48 @@
           "path": "/honeybee-revive/",
           "raw_path": "/llm/honeybee-revive/index.md",
           "section": null
+        },
+        {
+          "title": "CO2_measures",
+          "path": "/honeybee-revive/api/CO2_measures/",
+          "raw_path": "/llm/honeybee-revive/api/CO2_measures.md",
+          "section": "API Reference"
+        },
+        {
+          "title": "fuels",
+          "path": "/honeybee-revive/api/fuels/",
+          "raw_path": "/llm/honeybee-revive/api/fuels.md",
+          "section": "API Reference"
+        },
+        {
+          "title": "grid_region",
+          "path": "/honeybee-revive/api/grid_region/",
+          "raw_path": "/llm/honeybee-revive/api/grid_region.md",
+          "section": "API Reference"
+        },
+        {
+          "title": "national_emissions",
+          "path": "/honeybee-revive/api/national_emissions/",
+          "raw_path": "/llm/honeybee-revive/api/national_emissions.md",
+          "section": "API Reference"
+        },
+        {
+          "title": "equipment",
+          "path": "/honeybee-revive/api/hvac/equipment/",
+          "raw_path": "/llm/honeybee-revive/api/hvac/equipment.md",
+          "section": "HVAC"
+        },
+        {
+          "title": "adjustment_factors",
+          "path": "/honeybee-revive/api/weather/adjustment_factors/",
+          "raw_path": "/llm/honeybee-revive/api/weather/adjustment_factors.md",
+          "section": "Weather"
+        },
+        {
+          "title": "resiliency_epw",
+          "path": "/honeybee-revive/api/weather/resiliency_epw/",
+          "raw_path": "/llm/honeybee-revive/api/weather/resiliency_epw.md",
+          "section": "Weather"
         }
       ]
     }
