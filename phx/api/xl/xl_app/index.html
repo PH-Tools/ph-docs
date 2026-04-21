@@ -1,0 +1,983 @@
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>xl_app — PHX — PH-Tools Docs</title><script>
+      // Set theme before first paint to prevent flash
+      (function () {
+        try {
+          var t = localStorage.getItem("ph-docs:theme");
+          if (t) document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/_astro/_slug_.DGE2JEyD.css"></head> <body> <header class="site-header" id="siteHeader"> <a class="site-header__logo" href="/"> <span class="site-header__logo-mark" aria-hidden="true"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"> <path d="M12 2 L22 8 L12 14 L2 8 Z" fill="var(--accent-light)" stroke="var(--accent)"></path> <path d="M2 8 L2 17 L12 23 L12 14 Z" stroke="var(--accent)"></path> <path d="M22 8 L22 17 L12 23 L12 14 Z" stroke="var(--accent-dark)"></path> </svg> </span> <span>PH-TOOLS<span style="color:var(--fg-faint); margin-left:6px;">/ docs</span></span> </a> <nav class="nav-primary" id="primaryNav"> <a href="/honeybee-ph/" class> Honeybee-PH </a><a href="/phx/" class="is-active"> PHX </a><a href="/honeybee-revive/" class> Honeybee-REVIVE </a> </nav> <div class="nav-tools"> <button class="search-btn" id="openSearch" aria-label="Open search"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <span>Search docs…</span> <span class="kbd">⌘K</span> </button> <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme"> <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"> <circle cx="12" cy="12" r="4"></circle> <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path> </svg> <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" style="display:none;"> <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.8 6.8 0 0 0 9.8 9.8Z"></path> </svg> </button> <a class="icon-btn" href="https://github.com/PH-Tools" aria-label="GitHub" title="GitHub"> <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.56 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"></path></svg> </a> </div> </header> <main>  <div class="with-sidebar"> <aside class="sidebar"> <div class="sidebar__label">Library · PHX</div> <ul class="nav-tree"><li><a class="" href="/phx/"><span class="num">01</span>Overview</a></li><li class="group">
+        <button aria-expanded="false"><span class="num">02</span>Developer<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/dev/architecture/">Architecture</a></li><li><a class="" href="/phx/dev/exporter-patterns/">Exporter &amp; Importer Patterns</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false"><span class="num">03</span>Reference<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/reference/phx-model-reference/">PHX Model Reference</a></li><li><a class="" href="/phx/reference/wufi-xml-schema/">WUFI XML Schema</a></li><li><a class="" href="/phx/reference/phpp-field-mapping/">PHPP Field Mapping</a></li></ul>
+      </li><li class="group is-open">
+        <button aria-expanded="true"><span class="num">04</span>API Reference<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li class="group">
+        <button aria-expanded="false">Model<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/model/project/">project</a></li><li><a class="" href="/phx/api/model/building/">building</a></li><li><a class="" href="/phx/api/model/spaces/">spaces</a></li><li><a class="" href="/phx/api/model/components/">components</a></li><li><a class="" href="/phx/api/model/geometry/">geometry</a></li><li><a class="" href="/phx/api/model/constructions/">constructions</a></li><li><a class="" href="/phx/api/model/ground/">ground</a></li><li><a class="" href="/phx/api/model/shades/">shades</a></li><li><a class="" href="/phx/api/model/elec_equip/">elec_equip</a></li><li><a class="" href="/phx/api/model/certification/">certification</a></li><li><a class="" href="/phx/api/model/phx_site/">phx_site</a></li><li><a class="" href="/phx/api/model/assembly_pathways/">assembly_pathways</a></li><li><a class="" href="/phx/api/model/utilization_patterns/">utilization_patterns</a></li><li class="group">
+        <button aria-expanded="false">Enums<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/model/enums/building/">building</a></li><li><a class="" href="/phx/api/model/enums/hvac/">hvac</a></li><li><a class="" href="/phx/api/model/enums/foundations/">foundations</a></li><li><a class="" href="/phx/api/model/enums/elec_equip/">elec_equip</a></li><li><a class="" href="/phx/api/model/enums/phx_site/">phx_site</a></li><li><a class="" href="/phx/api/model/enums/phi_certification_phpp_9/">phi_certification_phpp_9</a></li><li><a class="" href="/phx/api/model/enums/phi_certification_phpp_10/">phi_certification_phpp_10</a></li><li><a class="" href="/phx/api/model/enums/phius_certification/">phius_certification</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">HVAC<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/model/hvac/base/">base</a></li><li><a class="" href="/phx/api/model/hvac/collection/">collection</a></li><li><a class="" href="/phx/api/model/hvac/ventilation/">ventilation</a></li><li><a class="" href="/phx/api/model/hvac/heating/">heating</a></li><li><a class="" href="/phx/api/model/hvac/heat_pumps/">heat_pumps</a></li><li><a class="" href="/phx/api/model/hvac/water/">water</a></li><li><a class="" href="/phx/api/model/hvac/cooling_params/">cooling_params</a></li><li><a class="" href="/phx/api/model/hvac/renewable_devices/">renewable_devices</a></li><li><a class="" href="/phx/api/model/hvac/piping/">piping</a></li><li><a class="" href="/phx/api/model/hvac/ducting/">ducting</a></li><li><a class="" href="/phx/api/model/hvac/supportive_devices/">supportive_devices</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">Loads<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/model/loads/occupancy/">occupancy</a></li><li><a class="" href="/phx/api/model/loads/lighting/">lighting</a></li><li><a class="" href="/phx/api/model/loads/ventilation/">ventilation</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">Programs<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/model/programs/occupancy/">occupancy</a></li><li><a class="" href="/phx/api/model/programs/lighting/">lighting</a></li><li><a class="" href="/phx/api/model/programs/ventilation/">ventilation</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">Schedules<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/model/schedules/occupancy/">occupancy</a></li><li><a class="" href="/phx/api/model/schedules/lighting/">lighting</a></li><li><a class="" href="/phx/api/model/schedules/ventilation/">ventilation</a></li></ul>
+      </li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">from_HBJSON<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/from_HBJSON/read_HBJSON_file/">read_HBJSON_file</a></li><li><a class="" href="/phx/api/from_HBJSON/create_project/">create_project</a></li><li><a class="" href="/phx/api/from_HBJSON/create_variant/">create_variant</a></li><li><a class="" href="/phx/api/from_HBJSON/create_building/">create_building</a></li><li><a class="" href="/phx/api/from_HBJSON/create_rooms/">create_rooms</a></li><li><a class="" href="/phx/api/from_HBJSON/create_assemblies/">create_assemblies</a></li><li><a class="" href="/phx/api/from_HBJSON/create_geometry/">create_geometry</a></li><li><a class="" href="/phx/api/from_HBJSON/create_schedules/">create_schedules</a></li><li><a class="" href="/phx/api/from_HBJSON/create_shades/">create_shades</a></li><li><a class="" href="/phx/api/from_HBJSON/create_hvac/">create_hvac</a></li><li><a class="" href="/phx/api/from_HBJSON/create_foundations/">create_foundations</a></li><li><a class="" href="/phx/api/from_HBJSON/create_elec_equip/">create_elec_equip</a></li><li><a class="" href="/phx/api/from_HBJSON/create_shw_devices/">create_shw_devices</a></li><li><a class="" href="/phx/api/from_HBJSON/cleanup/">cleanup</a></li><li><a class="" href="/phx/api/from_HBJSON/cleanup_merge_faces/">cleanup_merge_faces</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">from_WUFI_XML<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/from_WUFI_XML/read_WUFI_XML_file/">read_WUFI_XML_file</a></li><li><a class="" href="/phx/api/from_WUFI_XML/phx_converter/">phx_converter</a></li><li><a class="" href="/phx/api/from_WUFI_XML/phx_schemas/">phx_schemas</a></li><li><a class="" href="/phx/api/from_WUFI_XML/wufi_file_schema/">wufi_file_schema</a></li><li><a class="" href="/phx/api/from_WUFI_XML/wufi_file_types/">wufi_file_types</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">to_WUFI_XML<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/to_WUFI_XML/xml_txt_to_file/">xml_txt_to_file</a></li><li><a class="" href="/phx/api/to_WUFI_XML/xml_builder/">xml_builder</a></li><li><a class="" href="/phx/api/to_WUFI_XML/xml_converter/">xml_converter</a></li><li><a class="" href="/phx/api/to_WUFI_XML/xml_schemas/">xml_schemas</a></li><li><a class="" href="/phx/api/to_WUFI_XML/xml_writables/">xml_writables</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">to_PPP<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/to_PPP/ppp_txt_to_file/">ppp_txt_to_file</a></li><li><a class="" href="/phx/api/to_PPP/ppp_builder/">ppp_builder</a></li><li><a class="" href="/phx/api/to_PPP/ppp_schemas/">ppp_schemas</a></li><li><a class="" href="/phx/api/to_PPP/ppp_sections/">ppp_sections</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">to_METr_JSON<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/to_METr_JSON/metr_json_to_file/">metr_json_to_file</a></li><li><a class="" href="/phx/api/to_METr_JSON/metr_builder/">metr_builder</a></li><li><a class="" href="/phx/api/to_METr_JSON/metr_converter/">metr_converter</a></li><li><a class="" href="/phx/api/to_METr_JSON/metr_schemas/">metr_schemas</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">PHPP<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/PHPP/phpp_app/">phpp_app</a></li><li class="group">
+        <button aria-expanded="false">Localization<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/PHPP/phpp_localization/load/">load</a></li><li><a class="" href="/phx/api/PHPP/phpp_localization/shape_model/">shape_model</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">Model<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/PHPP/phpp_model/version/">version</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/climate_entry/">climate_entry</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/areas_data/">areas_data</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/areas_surface/">areas_surface</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/areas_thermal_bridges/">areas_thermal_bridges</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/windows_rows/">windows_rows</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/component_glazing/">component_glazing</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/component_frame/">component_frame</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/component_vent/">component_vent</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/shading_rows/">shading_rows</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/vent_space/">vent_space</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/vent_ducts/">vent_ducts</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/vent_units/">vent_units</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/ventilation_data/">ventilation_data</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/hot_water_tank/">hot_water_tank</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/hot_water_piping/">hot_water_piping</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/uvalues_constructor/">uvalues_constructor</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/electricity_item/">electricity_item</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/elec_non_res/">elec_non_res</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/verification_data/">verification_data</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">Sheet I/O<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/PHPP/sheet_io/io_exceptions/">io_exceptions</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_overview/">io_overview</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_areas/">io_areas</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_climate/">io_climate</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_windows/">io_windows</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_components/">io_components</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_u_values/">io_u_values</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_shading/">io_shading</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_ventilation/">io_ventilation</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_addnl_vent/">io_addnl_vent</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_hot_water/">io_hot_water</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_solar_dhw/">io_solar_dhw</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_solar_pv/">io_solar_pv</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_electricity/">io_electricity</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_elec_non_res/">io_elec_non_res</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_heating_demand/">io_heating_demand</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_heating_peak_load/">io_heating_peak_load</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_cooling_demand/">io_cooling_demand</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_cooling_peak_load/">io_cooling_peak_load</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_cooling_units/">io_cooling_units</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_PER/">io_PER</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_variants/">io_variants</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_ihg_non_res/">io_ihg_non_res</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_use_non_res/">io_use_non_res</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_verification/">io_verification</a></li></ul>
+      </li></ul>
+      </li><li class="group is-open">
+        <button aria-expanded="true">xl<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="is-active" href="/phx/api/xl/xl_app/">xl_app</a></li><li><a class="" href="/phx/api/xl/xl_data/">xl_data</a></li><li><a class="" href="/phx/api/xl/xl_typing/">xl_typing</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">Scripts<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/hbjson_to_wufi_xml/">hbjson_to_wufi_xml</a></li><li><a class="" href="/phx/api/hbjson_to_phpp/">hbjson_to_phpp</a></li><li><a class="" href="/phx/api/hbjson_to_ppp/">hbjson_to_ppp</a></li><li><a class="" href="/phx/api/hbjson_to_metr_json/">hbjson_to_metr_json</a></li></ul>
+      </li></ul>
+      </li></ul> </aside> <script type="module">document.querySelectorAll(".nav-tree .group > button").forEach(e=>{e.addEventListener("click",()=>{const t=e.parentElement.classList.toggle("is-open");e.setAttribute("aria-expanded",String(t))})});</script> <div> <header class="content-head"> <div class="content-head__crumb">  <span>API Reference</span> <span class="sep">&rsaquo;</span>  <span class="current">xl_app</span> </div> </header> <article class="article" data-pagefind-body data-pagefind-meta="library:PHX"> <h1 id="xl_app">xl_app</h1>
+<p>Class for managing the Excel Application Connection and common read/write operations.</p>
+<p><strong>Source</strong>: <code>PHX/xl_app.py</code></p>
+<hr>
+<h2 id="readrowserror">ReadRowsError</h2>
+<p>No description available.</p>
+<p><strong>Inherits from</strong>: <code>Exception</code></p>
+<h3 id="attributes">Attributes</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>msg</code></td><td>—</td><td>—</td></tr></tbody></table>
+<hr>
+<h2 id="noactiveexcelrunningerror">NoActiveExcelRunningError</h2>
+<p>No description available.</p>
+<p><strong>Inherits from</strong>: <code>Exception</code></p>
+<h3 id="attributes-1">Attributes</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>msg</code></td><td><code>str</code></td><td>—</td></tr></tbody></table>
+<hr>
+<h2 id="readmultiplecolumnserror">ReadMultipleColumnsError</h2>
+<p>No description available.</p>
+<p><strong>Inherits from</strong>: <code>Exception</code></p>
+<h3 id="attributes-2">Attributes</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>msg</code></td><td>—</td><td>—</td></tr></tbody></table>
+<hr>
+<h2 id="writevalueerror">WriteValueError</h2>
+<p>No description available.</p>
+<p><strong>Inherits from</strong>: <code>Exception</code></p>
+<h3 id="attributes-3">Attributes</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>msg</code></td><td>—</td><td>—</td></tr></tbody></table>
+<hr>
+<h2 id="xlreadexception">XlReadException</h2>
+<p>No description available.</p>
+<p><strong>Inherits from</strong>: <code>Exception</code></p>
+<h3 id="attributes-4">Attributes</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>msg</code></td><td>—</td><td>—</td></tr></tbody></table>
+<hr>
+<h2 id="nosuchfileerror">NoSuchFileError</h2>
+<p>No description available.</p>
+<p><strong>Inherits from</strong>: <code>Exception</code></p>
+<h3 id="attributes-5">Attributes</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>msg</code></td><td>—</td><td>—</td></tr></tbody></table>
+<hr>
+<h2 id="xlconnection">XLConnection</h2>
+<p>An Excel connection Facade / Interface.</p>
+<h3 id="properties">Properties</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>worksheet_names</code></td><td>—</td><td>—</td></tr><tr><td><code>excel_running</code></td><td>—</td><td>Returns True if Excel is currently running, False if not</td></tr><tr><td><code>apps</code></td><td>—</td><td>Return the xl framework ‘apps’ object.</td></tr><tr><td><code>books</code></td><td>—</td><td>Return the xl framework ‘books’ object.</td></tr><tr><td><code>os_is_windows</code></td><td>—</td><td>Return True if the current OS is Windows. False if it is Mac/Linux</td></tr><tr><td><code>wb</code></td><td>—</td><td>Returns the Workbook of the active Excel Instance.</td></tr></tbody></table>
+<h3 id="methods">Methods</h3>
+<h4 id="activate_new_workbook">activate_new_workbook()</h4>
+<p>Create a new blank workbook and set as the ‘Active’ book. Returns the new book.</p>
+<h4 id="start_excel_app">start_excel_app()</h4>
+<p>Starts Excel Application, if it is not currently running.</p>
+<h4 id="get_workbook">get_workbook()</h4>
+<p>Return the right Workbook, depending on the App state and user inputs.</p>
+<h4 id="autofit_columns_sheet_name">autofit_columns(_sheet_name)</h4>
+<p>Runs autofit on all the columns in a sheet.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_sheet_name</code></td><td>—</td><td>—</td></tr></tbody></table>
+<h4 id="autofit_rows_sheet_name">autofit_rows(_sheet_name)</h4>
+<p>Runs autofit on the rows in a sheet.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_sheet_name</code></td><td>—</td><td>—</td></tr></tbody></table>
+<h4 id="clear_range_data_sheet_name-_range">clear_range_data(_sheet_name, _range)</h4>
+<p>Sets the specified excel sheet’s range to ‘None’</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_sheet_name</code></td><td>—</td><td>(str) The name of the worksheet</td></tr><tr><td><code>_range</code></td><td>—</td><td>(str) The cell range to write to (ie: “A1”) or a set of ranges (ie: “A1:B4”)</td></tr></tbody></table>
+<h4 id="clear_sheet_contents_sheet_name">clear_sheet_contents(_sheet_name)</h4>
+<p>Clears the content of the whole sheet but leaves the formatting.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_sheet_name</code></td><td>—</td><td>—</td></tr></tbody></table>
+<h4 id="clear_sheet_formats_sheet_name">clear_sheet_formats(_sheet_name)</h4>
+<p>Clears the format of the whole sheet but leaves the content.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_sheet_name</code></td><td>—</td><td>—</td></tr></tbody></table>
+<h4 id="clear_sheet_all_sheet_name">clear_sheet_all(_sheet_name)</h4>
+<p>Clears the content and formatting of the whole sheet.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_sheet_name</code></td><td>—</td><td>—</td></tr></tbody></table>
+<h4 id="create_new_worksheet_sheet_name-before-after">create_new_worksheet(_sheet_name, before, after)</h4>
+<p>Try and add a new Worksheet to the Workbook.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_sheet_name</code></td><td>—</td><td>—</td></tr><tr><td><code>before</code></td><td>—</td><td>—</td></tr><tr><td><code>after</code></td><td>—</td><td>—</td></tr></tbody></table>
+<h4 id="find_row_search_item-_data-_start">find_row(_search_item, _data, _start)</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_search_item</code></td><td>—</td><td>—</td></tr><tr><td><code>_data</code></td><td>—</td><td>—</td></tr><tr><td><code>_start</code></td><td>—</td><td>—</td></tr></tbody></table>
+<h4 id="get_row_num_of_value_in_columnsheet_name-row_start-row_end-col-find">get_row_num_of_value_in_column(sheet_name, row_start, row_end, col, find)</h4>
+<p>Returns the row number of the first instance of a specific value</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>sheet_name</code></td><td>—</td><td>(str) The name of the sheet to be looking in</td></tr><tr><td><code>row_start</code></td><td>—</td><td>(int) The row number to begin looking from</td></tr><tr><td><code>row_end</code></td><td>—</td><td>(int) The row number to stop looking on</td></tr><tr><td><code>col</code></td><td>—</td><td>(str) The column to look in</td></tr><tr><td><code>find</code></td><td>—</td><td>(Optional[str]) The string to search for (or ‘None’ for blank cell)</td></tr></tbody></table>
+<h4 id="get_upper_case_worksheet_names">get_upper_case_worksheet_names()</h4>
+<p>Return a set of all the worksheet names in the workbook, upper-cased.</p>
+<h4 id="get_sheet_by_name_sheet_name">get_sheet_by_name(_sheet_name)</h4>
+<p>Returns an Excel Sheet with the specified name, or KeyError if not found.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_sheet_name</code></td><td>—</td><td>(str): The excel sheet name or index num. to locate.</td></tr></tbody></table>
+<h4 id="get_last_sheet">get_last_sheet()</h4>
+<p>Return the last Worksheet in the Workbook.</p>
+<h4 id="get_last_used_row_num_in_column_sheet_name-_col">get_last_used_row_num_in_column(_sheet_name, _col)</h4>
+<p>Return the row number of the last cell in a column with a value in it.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_sheet_name</code></td><td>—</td><td>The name of the Worksheet to read from.</td></tr><tr><td><code>_col</code></td><td>—</td><td>The Alpha character of the column to read.</td></tr></tbody></table>
+<h4 id="get_single_column_data_sheet_name-_col-_row_start-_row_end">get_single_column_data(_sheet_name, _col, _row_start, _row_end)</h4>
+<p>Return a list with the values read from a single column of the excel document.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_sheet_name</code></td><td>—</td><td>(str) The Excel Worksheet to read from.</td></tr><tr><td><code>_col</code></td><td>—</td><td>(str) The Column letter to read.</td></tr><tr><td><code>_row_start</code></td><td>—</td><td>(Optional[int]) default=None</td></tr><tr><td><code>_row_end</code></td><td>—</td><td>(Optional[int]) default=None</td></tr></tbody></table>
+<h4 id="get_last_used_column_in_row_sheet_name-_row">get_last_used_column_in_row(_sheet_name, _row)</h4>
+<p>Return the column letter of the last cell in a column with a value in it.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_sheet_name</code></td><td>—</td><td>The name of the Worksheet to read from.</td></tr><tr><td><code>_row</code></td><td>—</td><td>—</td></tr></tbody></table>
+<h4 id="get_single_row_data_sheet_name-_row_number">get_single_row_data(_sheet_name, _row_number)</h4>
+<p>Return all the data from a single Row in the Excel Workbook.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_sheet_name</code></td><td>—</td><td>The name of the sheet to read</td></tr><tr><td><code>_row_number</code></td><td>—</td><td>The row number to read</td></tr></tbody></table>
+<h4 id="get_multiple_column_data_sheet_name-_col_start-_col_end-_row_start-_row_end">get_multiple_column_data(_sheet_name, _col_start, _col_end, _row_start, _row_end)</h4>
+<p>Return a list of lists with the values read from a specified block of the xl document.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_sheet_name</code></td><td>—</td><td>(str) The Worksheet to read from.</td></tr><tr><td><code>_col_start</code></td><td>—</td><td>(str) The Column letter to read from.</td></tr><tr><td><code>_col_end</code></td><td>—</td><td>(str) The Column letter to read to.</td></tr><tr><td><code>_row_start</code></td><td>—</td><td>(int) default=1</td></tr><tr><td><code>_row_end</code></td><td>—</td><td>(int) default=100</td></tr></tbody></table>
+<h4 id="get_data_sheet_name-_range">get_data(_sheet_name, _range)</h4>
+<p>Return a value or values from the Excel document.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_sheet_name</code></td><td>—</td><td>(str) The name of the worksheet to read from.</td></tr><tr><td><code>_range</code></td><td>—</td><td>(str) The cell range to read from (ie: “A1”) or a set of ranges (ie: “A1:B4”)</td></tr></tbody></table>
+<h4 id="get_single_data_item_sheet_name-_range">get_single_data_item(_sheet_name, _range)</h4>
+<p>Return a single value from the Excel document.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_sheet_name</code></td><td>—</td><td>(str) The name of the worksheet to read from.</td></tr><tr><td><code>_range</code></td><td>—</td><td>(str) The cell range to read from to (ie: “A1”)</td></tr></tbody></table>
+<h4 id="get_data_by_columns_sheet_name-_range_address">get_data_by_columns(_sheet_name, _range_address)</h4>
+<p>Returns a List of column data, each column in a list.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_sheet_name</code></td><td>—</td><td>(str) The name of the worksheet to read from</td></tr><tr><td><code>_range_address</code></td><td>—</td><td>(str) The range read. ie: “A1:D56”</td></tr></tbody></table>
+<h4 id="get_data_with_column_letters_sheet_name-_range_address">get_data_with_column_letters(_sheet_name, _range_address)</h4>
+<p>Returns a Dict of column data, key’d by the Column Letter.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_sheet_name</code></td><td>—</td><td>(str) The name of the worksheet to read from</td></tr><tr><td><code>_range_address</code></td><td>—</td><td>(str) The range read. ie: “A1:D56”</td></tr></tbody></table>
+<h4 id="group_rows_sheet_name-_row_start-_row_end">group_rows(_sheet_name, _row_start, _row_end)</h4>
+<p>Group one or more rows.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_sheet_name</code></td><td>—</td><td>—</td></tr><tr><td><code>_row_start</code></td><td>—</td><td>—</td></tr><tr><td><code>_row_end</code></td><td>—</td><td>—</td></tr></tbody></table>
+<h4 id="hide_group_details_sheet_name">hide_group_details(_sheet_name)</h4>
+<p>Hide (collapse) all the ‘Groups’ on the specified worksheet.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_sheet_name</code></td><td>—</td><td>—</td></tr></tbody></table>
+<h4 id="in_silent_mode">in_silent_mode()</h4>
+<p>Context Manager which turns off screen-refresh and auto-calc in the</p>
+<h4 id="output_input">output(_input)</h4>
+<p>Used to set the output method. Default is None (silent).</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_input</code></td><td>—</td><td>The string to output.</td></tr></tbody></table>
+<h4 id="unprotect_all_sheets">unprotect_all_sheets()</h4>
+<p>Walk through all the sheets and unprotect them all.</p>
+<h4 id="write_xl_item_xl_item-_transpose">write_xl_item(_xl_item, _transpose)</h4>
+<p>Writes a single XLItem to the worksheet</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_xl_item</code></td><td>—</td><td>(XLItem) The XLItem with a sheet_name, range and value to write.</td></tr><tr><td><code>_transpose</code></td><td>—</td><td>(bool) Transpose the data before writing. Default=False. Set to true if you are passing in a list of items and want them to be written as rows instead of as columns.</td></tr></tbody></table>
+<h4 id="calculate">calculate()</h4>
+<p>Recalculate all the formulas in the workbook.</p>
+<hr> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
+(function () {
+  // ---------- Modal open / close ----------
+  var scrim = document.getElementById("searchScrim");
+  var input = document.getElementById("searchInput");
+  var resultsEl = document.getElementById("searchResults");
+  var footerEl = document.getElementById("searchFooter");
+  var metaEl = document.getElementById("searchMeta");
+  if (!scrim || !input || !resultsEl || !footerEl || !metaEl) return;
+
+  var focusedIdx = -1;
+
+  function openSearch() {
+    scrim.classList.add("is-open");
+    scrim.setAttribute("aria-hidden", "false");
+    setTimeout(function () { input.focus(); }, 40);
+  }
+  function closeSearch() {
+    scrim.classList.remove("is-open");
+    scrim.setAttribute("aria-hidden", "true");
+    input.value = "";
+    resultsEl.innerHTML = "";
+    footerEl.style.display = "none";
+    focusedIdx = -1;
+  }
+
+  var openBtn = document.getElementById("openSearch");
+  if (openBtn) openBtn.addEventListener("click", openSearch);
+  document.getElementById("closeSearch").addEventListener("click", closeSearch);
+  scrim.addEventListener("click", function (e) {
+    if (e.target === scrim) closeSearch();
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if ((e.key === "k" || e.key === "K") && (e.metaKey || e.ctrlKey)) {
+      e.preventDefault();
+      scrim.classList.contains("is-open") ? closeSearch() : openSearch();
+    }
+    if (e.key === "Escape" && scrim.classList.contains("is-open")) closeSearch();
+  });
+
+  // ---------- Pagefind integration ----------
+  var pagefind = null;
+
+  function loadPagefind() {
+    if (pagefind) return Promise.resolve(pagefind);
+    return import("/pagefind/pagefind.js")
+      .then(function (pf) {
+        pagefind = pf;
+        return pf.init();
+      })
+      .then(function () { return pagefind; })
+      .catch(function () { pagefind = null; return null; });
+  }
+
+  // Debounced search
+  var timer;
+  input.addEventListener("input", function () {
+    clearTimeout(timer);
+    timer = setTimeout(function () { doSearch(input.value.trim()); }, 150);
+  });
+
+  function doSearch(query) {
+    if (!query) {
+      resultsEl.innerHTML = "";
+      footerEl.style.display = "none";
+      return;
+    }
+
+    loadPagefind().then(function (pf) {
+      if (!pf) {
+        resultsEl.innerHTML = '<div style="padding:24px;color:var(--fg-muted);font-size:14px;">Search index not available. Run <code>pnpm build</code> first.</div>';
+        return;
+      }
+      return pf.search(query).then(function (search) {
+        return Promise.all(
+          search.results.slice(0, 20).map(function (r) { return r.data(); })
+        ).then(function (results) {
+          renderResults(results, search.results.length);
+        });
+      });
+    });
+  }
+
+  function renderResults(results, totalCount) {
+    // Group by library
+    var groups = {};
+    var order = [];
+    results.forEach(function (r) {
+      var lib = (r.meta && r.meta.library) || "Other";
+      if (!groups[lib]) { groups[lib] = []; order.push(lib); }
+      groups[lib].push(r);
+    });
+
+    var html = "";
+    var globalIdx = 0;
+    order.forEach(function (lib) {
+      var items = groups[lib];
+      html += '<div class="search-group">';
+      html += '<div class="search-group__head">';
+      html += '<div class="search-group__title"><span class="dot"></span>' + lib + '</div>';
+      html += '<div class="search-group__count">' + items.length + ' result' + (items.length === 1 ? '' : 's') + '</div>';
+      html += '</div>';
+      items.forEach(function (item) {
+        html += '<a class="search-result" href="' + item.url + '" data-idx="' + globalIdx + '">';
+        html += '<div>';
+        html += '<div class="search-result__crumb">' + buildCrumb(item.url) + '</div>';
+        html += '<div class="search-result__title">' + ((item.meta && item.meta.title) || '') + '</div>';
+        html += '<div class="search-result__excerpt">' + (item.excerpt || '') + '</div>';
+        html += '</div>';
+        html += '<div class="search-result__side">';
+        html += '<span class="search-badge">' + abbreviate(lib) + '</span>';
+        html += '<span class="search-result__enter">↵ Open</span>';
+        html += '</div>';
+        html += '</a>';
+        globalIdx++;
+      });
+      html += '</div>';
+    });
+
+    resultsEl.innerHTML = html;
+    focusedIdx = -1;
+
+    metaEl.textContent = totalCount + ' result' + (totalCount === 1 ? '' : 's') + ' across ' + order.length + ' ' + (order.length === 1 ? 'library' : 'libraries');
+    footerEl.style.display = totalCount > 0 ? "" : "none";
+  }
+
+  function buildCrumb(url) {
+    var parts = url.replace(/^\/|\/$/g, "").split("/");
+    return parts.map(function (p, i) {
+      return '<span>' + (i === 0 ? p.toUpperCase() : p) + '</span>';
+    }).join('<span class="tri">›</span>');
+  }
+
+  function abbreviate(lib) {
+    if (lib.length <= 4) return lib.toUpperCase();
+    return lib.split(/[\s-]+/).map(function (w) { return w[0]; }).join("").toUpperCase();
+  }
+
+  // ---------- Keyboard navigation ----------
+  document.addEventListener("keydown", function (e) {
+    if (!scrim.classList.contains("is-open")) return;
+    var items = resultsEl.querySelectorAll(".search-result");
+    if (!items.length) return;
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      focusedIdx = Math.min(focusedIdx + 1, items.length - 1);
+      updateFocus(items);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      focusedIdx = Math.max(focusedIdx - 1, 0);
+      updateFocus(items);
+    } else if (e.key === "Enter" && focusedIdx >= 0) {
+      e.preventDefault();
+      items[focusedIdx].click();
+    }
+  });
+
+  function updateFocus(items) {
+    for (var i = 0; i < items.length; i++) {
+      if (i === focusedIdx) items[i].classList.add("is-focused");
+      else items[i].classList.remove("is-focused");
+    }
+    if (items[focusedIdx]) items[focusedIdx].scrollIntoView({ block: "nearest" });
+  }
+})();
+</script> <script>
+      // Only load Mermaid if the page has mermaid diagrams
+      (function () {
+        if (!document.querySelector('.mermaid')) return;
+        var theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'neutral';
+        var s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js';
+        s.onload = function () {
+          mermaid.initialize({ startOnLoad: true, theme: theme, securityLevel: 'strict' });
+          mermaid.run();
+        };
+        document.head.appendChild(s);
+      })();
+    </script> <script type="module">const o=document.getElementById("themeToggle"),t=o?.querySelector(".icon-sun"),n=o?.querySelector(".icon-moon");function c(e){document.documentElement.setAttribute("data-theme",e);try{localStorage.setItem("ph-docs:theme",e)}catch{}t&&n&&(e==="dark"?(t.style.display="none",n.style.display=""):(t.style.display="",n.style.display="none"))}const d=document.documentElement.getAttribute("data-theme")||"light";c(d);o?.addEventListener("click",()=>{const e=document.documentElement.getAttribute("data-theme");c(e==="dark"?"light":"dark")});</script> </body> </html>
