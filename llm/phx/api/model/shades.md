@@ -1,6 +1,6 @@
 # shades
 
-PHX Window Shades.
+PHX Window Shade devices for solar gain reduction and overheating control.
 
 **Source**: `PHX/shades.py`
 
@@ -8,12 +8,12 @@ PHX Window Shades.
 
 ## PhxWindowShade
 
-No description available.
+A window shading device used for solar gain reduction and overheating control.
 
 ### Properties
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `identifier` | — | — |
+| `identifier` | — | The unique string identifier for this shading device. |
 
 ---

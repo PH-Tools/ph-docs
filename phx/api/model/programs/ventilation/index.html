@@ -71,7 +71,7 @@
 <p><strong>Source</strong>: <code>PHX/ventilation.py</code></p>
 <hr>
 <h2 id="phxprogramventilation">PhxProgramVentilation</h2>
-<p>A PHX Program for the Fresh-Air Ventilation with a load and schedule.</p>
+<p>Ventilation program pairing fresh-air airflow rates with a utilization schedule.</p>
 <h3 id="properties">Properties</h3>
 
 
@@ -88,7 +88,7 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>has_ventilation_airflow</code></td><td>—</td><td>Returns True if the load has any amount of ventilation airflow.</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>has_ventilation_airflow</code></td><td>—</td><td>Return True if the load has any non-zero ventilation airflow.</td></tr></tbody></table>
 <hr> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
 (function () {
   // ---------- Modal open / close ----------

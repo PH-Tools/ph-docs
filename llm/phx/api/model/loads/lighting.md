@@ -8,12 +8,12 @@ PHX Lighting Load.
 
 ## PhxLoadLighting
 
-A PHX Load for the Lighting.
+Lighting load defining the installed lighting power density for a PHX zone or space.
 
 ### Properties
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `unique_key` | — | — |
+| `unique_key` | — | Return a unique key string based on the installed lighting power density. |
 
 ---

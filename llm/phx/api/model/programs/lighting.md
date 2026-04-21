@@ -8,6 +8,6 @@ PHX Program Class for organizing Lighting Data.
 
 ## PhxProgramLighting
 
-A PHX Program for the Lighting with a load and schedule.
+Lighting program pairing an installed power density load with a utilization schedule.
 
 ---

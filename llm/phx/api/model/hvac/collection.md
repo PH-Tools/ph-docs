@@ -1,6 +1,6 @@
 # collection
 
-PHX Mechanical Collection Classes.
+PHX mechanical system collection classes.
 
 **Source**: `PHX/collection.py`
 
@@ -50,19 +50,19 @@ No description available.
 
 ## PhxZoneCoverage
 
-Percentage of the building load-type covered by the subsystem.
+Percentage of each building load type covered by a mechanical subsystem for a given zone.
 
 ---
 
 ## PhxRenewableDeviceCollection
 
-A Collection of PHX Renewable Energy Devices.
+A keyed collection of PHX renewable energy devices (PV systems).
 
 ### Properties
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `devices` | — | — |
+| `devices` | — | All renewable energy devices in the collection. |
 | `pv_devices` | — | Return a List of all the Photovoltaic devices |
 
 ### Methods
@@ -126,17 +126,17 @@ Merge all the devices in the collection together by identifier.
 
 ## PhxSupportiveDeviceCollection
 
-A Collection of PHX Supportive Devices.
+A keyed collection of PHX supportive (auxiliary energy) devices.
 
 ### Properties
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `devices` | — | — |
-| `heat_circulating_pumps` | — | Return a List of all the Kitchen Hood devices |
-| `dhw_circulating_pumps` | — | Return a List of all the Kitchen Hood devices |
-| `dhw_storage_pumps` | — | Return a List of all the Kitchen Hood devices |
-| `other_devices` | — | Return a List of all the Kitchen Hood devices |
+| `devices` | — | All supportive devices in the collection. |
+| `heat_circulating_pumps` | — | Return all heat-distribution circulating pump devices. |
+| `dhw_circulating_pumps` | — | Return all DHW recirculation pump devices. |
+| `dhw_storage_pumps` | — | Return all DHW storage load pump devices. |
+| `other_devices` | — | Return all supportive devices not classified as pumps. |
 
 ### Methods
 
@@ -199,13 +199,13 @@ Merge all the devices in the collection together by identifier.
 
 ## PhxExhaustVentilatorCollection
 
-A Collection of PHX Exhaust Ventilation Devices.
+A keyed collection of PHX point-exhaust ventilation devices.
 
 ### Properties
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `devices` | — | — |
+| `devices` | — | All exhaust ventilation devices in the collection. |
 | `kitchen_hood_devices` | — | Return a List of all the Kitchen Hood devices |
 | `dryer_devices` | — | Return a List of all the Dryer devices |
 | `user_determined_devices` | — | Return a List of all the User-Determined devices |
@@ -257,7 +257,7 @@ Merge all the devices in the collection together by type.
 
 ## PhxMechanicalSystemCollection
 
-A Collection of all the mechanical devices (heating, cooling, etc) and distribution in the project
+The top-level collection of all mechanical devices and distribution for a project variant.
 
 ### Properties
 
@@ -270,15 +270,15 @@ A Collection of all the mechanical devices (heating, cooling, etc) and distribut
 | `cooling_devices` | — | Returns a list of all the Cooling devices (heat pumps) in the collection. |
 | `dhw_heating_devices` | — | Returns a list of only the 'DHW Heating' devices (no tanks) in the collection. |
 | `dhw_tank_devices` | — | Returns a list of only the 'DHW Storage Tank' devices (no heaters) in the collection. |
-| `dhw_distribution_trunks` | — | — |
+| `dhw_distribution_trunks` | — | All DHW trunk pipes, sorted by display name. |
 | `dhw_distribution_piping` | — | Returns a list of ALL the DHW Piping from ALL Trunks, Branches, Twigs in the collection. |
 | `dhw_distribution_piping_segments` | — | Returns a list of ALL the DHW Piping Segments from ALL Trunks, Branches, Twigs in the collection. |
 | `dhw_distribution_piping_segments_by_diam` | — | Returns a list of the DHW branch-piping segments, grouped by diameter. |
 | `dhw_recirc_piping` | — | Returns a list of all the DHW recirculation-piping in the collection. |
 | `dhw_recirc_piping_segments_by_diam` | — | Returns a list of the DHW recirculation-piping segments, grouped by diameter. |
-| `dhw_recirc_total_length_m` | — | — |
+| `dhw_recirc_total_length_m` | — | Total length of all DHW recirculation piping (m). |
 | `dhw_recirc_weighted_heat_loss_coeff` | — | Return a length-weighted average pipe heat-loss coefficient. |
-| `dhw_distribution_total_length_m` | — | — |
+| `dhw_distribution_total_length_m` | — | Total length of all DHW distribution piping segments (m). |
 | `dhw_distribution_weighted_diameter_mm` | — | Return a length-weighted average diameter for the trunk/branch/twig piping. |
 | `vent_ducting` | — | Returns a list of all the Vent. Ducting in the collection. |
 
@@ -319,7 +319,7 @@ Adds a new PHX Mechanical device to the collection.
 
 #### add_distribution_piping(_p)
 
-Add a new DHW Trunc-Pipe to the System.
+Add a DHW trunk pipe to the system. All piping must follow Trunk > Branch > Fixture hierarchy.
 
 | Arg | Type | Description |
 |-----|------|-------------|
@@ -334,6 +334,8 @@ Add a new DHW Recirc-Pipe to the System.
 | `_p` | — | — |
 
 #### add_vent_ducting(_d)
+
+Add a ventilation duct element to the system.
 
 | Arg | Type | Description |
 |-----|------|-------------|

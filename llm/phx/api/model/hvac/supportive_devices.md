@@ -1,6 +1,6 @@
 # supportive_devices
 
-PHX Aux-Energy . Supportive Extra Devices.
+PHX supportive (auxiliary energy) device classes.
 
 **Source**: `PHX/supportive_devices.py`
 
@@ -8,7 +8,7 @@ PHX Aux-Energy . Supportive Extra Devices.
 
 ## PhxSupportiveDeviceParams
 
-No description available.
+Parameters for a supportive (auxiliary energy) device.
 
 **Inherits from**: `_base.PhxMechanicalDeviceParams`
 
@@ -16,7 +16,7 @@ No description available.
 
 ## PhxSupportiveDevice
 
-No description available.
+A supportive device such as a circulating pump or auxiliary electrical load.
 
 **Inherits from**: `_base.PhxMechanicalDevice`
 

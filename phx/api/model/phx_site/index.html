@@ -71,28 +71,28 @@
 <p><strong>Source</strong>: <code>PHX/phx_site.py</code></p>
 <hr>
 <h2 id="phxground">PhxGround</h2>
-<p>No description available.</p>
+<p>Soil and groundwater thermal properties for ground heat loss calculations.</p>
 <hr>
 <h2 id="phxpefactor">PhxPEFactor</h2>
-<p>Conversion Factors for Site-Energy->Primary-Energy</p>
+<p>Primary energy (PE) conversion factor for a single fuel type.</p>
 <hr>
 <h2 id="phxco2factor">PhxCO2Factor</h2>
-<p>Conversion Factors for Site->CO2</p>
+<p>CO2 emission factor for a single fuel type.</p>
 <hr>
 <h2 id="phxsiteenergyfactors">PhxSiteEnergyFactors</h2>
-<p>No description available.</p>
+<p>Collection of primary energy (PE) and CO2 conversion factors for the site.</p>
 <hr>
 <h2 id="phxlocation">PhxLocation</h2>
-<p>The physical location of the building.</p>
+<p>Geographic coordinates and site metadata for the building location.</p>
 <hr>
 <h2 id="phxclimatepeakload">PhxClimatePeakLoad</h2>
-<p>No description available.</p>
+<p>Climate conditions at a single peak-load design point (heating or cooling).</p>
 <hr>
 <h2 id="phxclimateiteroutput">PhxClimateIterOutput</h2>
-<p>Wrapper class for organizing output of the ‘PhxClimate.monthly_values’ property.</p>
+<p>Single month of climate data yielded by PhxClimate.monthly_values.</p>
 <hr>
 <h2 id="phxclimate">PhxClimate</h2>
-<p>Monthly Climate Date for the building location.</p>
+<p>Monthly climate dataset for the building location.</p>
 <h3 id="properties">Properties</h3>
 
 
@@ -137,10 +137,10 @@
 <table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>max_temperature_air</code></td><td>—</td><td>The maximum air temperature in the dataset.</td></tr><tr><td><code>min_temperature_air</code></td><td>—</td><td>The minimum air temperature in the dataset.</td></tr><tr><td><code>max_air_temperature_amplitude</code></td><td>—</td><td>The absolute difference between the maximum and minimum air temperature.</td></tr><tr><td><code>average_temperature_amplitude</code></td><td>—</td><td>The Average between the maximum and minimum air temperature.</td></tr><tr><td><code>monthly_hours</code></td><td>—</td><td>The a ordered (Jan-Dec) list of tuples containing the month-name and the number of hours in that month.</td></tr><tr><td><code>monthly_values</code></td><td>—</td><td>A generator that yields the monthly values one at a time for the climate data.</td></tr></tbody></table>
 <hr>
 <h2 id="phxphppcodes">PhxPHPPCodes</h2>
-<p>No description available.</p>
+<p>PHPP climate dataset selection codes for country, region, and dataset.</p>
 <hr>
 <h2 id="phxsite">PhxSite</h2>
-<p>The climate and location date for the building’s site.</p>
+<p>Top-level container for a building’s site location, climate, and energy factors.</p>
 <hr> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
 (function () {
   // ---------- Modal open / close ----------

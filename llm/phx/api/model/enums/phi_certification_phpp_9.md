@@ -8,7 +8,7 @@ Valid 'types' for PHI Certification Settings (PHPP v9).
 
 ## PhiCertBuildingCategoryType
 
-No description available.
+Building category for PHI certification (PHPP v9).
 
 **Inherits from**: `Enum`
 
@@ -16,7 +16,7 @@ No description available.
 
 ## PhiCertBuildingUseType
 
-No description available.
+Building use type for PHI certification (PHPP v9).
 
 **Inherits from**: `Enum`
 
@@ -24,7 +24,7 @@ No description available.
 
 ## PhiCertIHGType
 
-No description available.
+Internal heat gains calculation method for PHI certification (PHPP v9).
 
 **Inherits from**: `Enum`
 
@@ -32,7 +32,7 @@ No description available.
 
 ## PhiCertOccupancyType
 
-No description available.
+Occupancy calculation method for PHI certification (PHPP v9).
 
 **Inherits from**: `Enum`
 
@@ -40,7 +40,7 @@ No description available.
 
 ## PhiCertType
 
-No description available.
+PHI certification standard type (PHPP v9).
 
 **Inherits from**: `Enum`
 
@@ -48,7 +48,7 @@ No description available.
 
 ## PhiCertClass
 
-No description available.
+PHI certification class based on renewable energy generation (PHPP v9).
 
 **Inherits from**: `Enum`
 
@@ -56,7 +56,7 @@ No description available.
 
 ## PhiCertificationPEType
 
-No description available.
+Primary energy evaluation method for PHI certification (PHPP v9).
 
 **Inherits from**: `Enum`
 
@@ -64,7 +64,7 @@ No description available.
 
 ## PhiCertEnerPHitType
 
-No description available.
+EnerPHit certification compliance pathway (PHPP v9).
 
 **Inherits from**: `Enum`
 
@@ -72,7 +72,7 @@ No description available.
 
 ## PhiCertRetrofitType
 
-No description available.
+Building retrofit status for PHI certification (PHPP v9).
 
 **Inherits from**: `Enum`
 

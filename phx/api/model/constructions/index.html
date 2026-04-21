@@ -71,10 +71,10 @@
 <p><strong>Source</strong>: <code>PHX/constructions.py</code></p>
 <hr>
 <h2 id="phxcolor">PhxColor</h2>
-<p>No description available.</p>
+<p>An ARGB color value used for material display in WUFI-Passive.</p>
 <hr>
 <h2 id="phxmaterial">PhxMaterial</h2>
-<p>No description available.</p>
+<p>A single building material with thermal, hygric, and display properties.</p>
 <h3 id="methods">Methods</h3>
 <h4 id="equivalentother">equivalent(other)</h4>
 <p>Check if two materials are equivalent except for their ID-Number.</p>
@@ -96,10 +96,10 @@
 <table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>other</code></td><td>—</td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phxlayerdivisioncell">PhxLayerDivisionCell</h2>
-<p>A single cell aty a column/row in a PhxLayerDivisionGrid, with a specific material.</p>
+<p>A single cell at a column/row position in a PhxLayerDivisionGrid, holding one material.</p>
 <hr>
 <h2 id="phxlayerdivisiongrid">PhxLayerDivisionGrid</h2>
-<p>A grid of PhxLayerDivisionCells to support ‘mixed’ materials.</p>
+<p>A grid of PhxLayerDivisionCells to support ‘mixed’ materials in a single layer.</p>
 <h3 id="properties">Properties</h3>
 
 
@@ -318,7 +318,7 @@
 <p>Populate the grid with default values. Ensure that there is at least one row or column.</p>
 <hr>
 <h2 id="phxlayer">PhxLayer</h2>
-<p>A single layer in a PhxConstructionOpaque.</p>
+<p>A single layer in a PhxConstructionOpaque assembly.</p>
 <h3 id="properties-1">Properties</h3>
 
 
@@ -446,7 +446,7 @@
 <table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>other</code></td><td>—</td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phxconstructionopaque">PhxConstructionOpaque</h2>
-<p>No description available.</p>
+<p>An opaque assembly construction (wall, roof, or floor) composed of ordered material layers.</p>
 <h3 id="properties-2">Properties</h3>
 
 
@@ -483,7 +483,7 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>identifier</code></td><td>—</td><td>—</td></tr><tr><td><code>heat_flow_pathways</code></td><td>—</td><td>Return the unique heat-flow pathways through this assembly.</td></tr><tr><td><code>r_value</code></td><td>—</td><td>—</td></tr><tr><td><code>u_value</code></td><td>—</td><td>—</td></tr><tr><td><code>exchange_materials</code></td><td>—</td><td>Returns a flat list of all the ‘Exchange’ materials (for mixed layers) from all the Layers.</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>identifier</code></td><td>—</td><td>—</td></tr><tr><td><code>heat_flow_pathways</code></td><td>—</td><td>Return the unique heat-flow pathways through this assembly.</td></tr><tr><td><code>r_value</code></td><td>—</td><td>Total thermal resistance of the assembly in m2K/W, computed from heat-flow pathways.</td></tr><tr><td><code>u_value</code></td><td>—</td><td>Total thermal transmittance (U-value) of the assembly in W/m2K.</td></tr><tr><td><code>exchange_materials</code></td><td>—</td><td>Returns a flat list of all the ‘Exchange’ materials (for mixed layers) from all the Layers.</td></tr></tbody></table>
 <h3 id="methods-3">Methods</h3>
 <h4 id="classmethod-from_total_u_value_total_u_value-_display_name"><em>classmethod</em> from_total_u_value(_total_u_value, _display_name)</h4>
 <p>Returns a new PhxConstructionOpaque with a single layer with the given U-Value.</p>
@@ -510,7 +510,7 @@
 <table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_total_u_value</code></td><td>—</td><td>—</td></tr><tr><td><code>_display_name</code></td><td>—</td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phxwindowframeelement">PhxWindowFrameElement</h2>
-<p>No description available.</p>
+<p>A single frame edge element (top, bottom, left, or right) of a window construction.</p>
 <h3 id="methods-4">Methods</h3>
 <h4 id="classmethod-from_total_u_value_total_u_value-1"><em>classmethod</em> from_total_u_value(_total_u_value)</h4>
 <p>Returns a new PhxWindowFrameElement with u-values set to a single value.</p>
@@ -532,7 +532,7 @@
 <table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_total_u_value</code></td><td>—</td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phxconstructionwindow">PhxConstructionWindow</h2>
-<p>No description available.</p>
+<p>A window construction defining glazing, frame, and overall thermal properties.</p>
 <h3 id="properties-3">Properties</h3>
 
 

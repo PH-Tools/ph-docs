@@ -1,6 +1,6 @@
 # piping
 
-PHX Water Piping Distribution Objects.
+PHX DHW piping distribution objects.
 
 **Source**: `PHX/piping.py`
 
@@ -8,23 +8,23 @@ PHX Water Piping Distribution Objects.
 
 ## PhxRecirculationParameters
 
-No description available.
+Global DHW recirculation piping parameters used by the simplified PHPP method.
 
 ---
 
 ## PhxPipeSegment
 
-An individual Pipe Segment.
+An individual pipe segment with geometry, material, diameter, and insulation properties.
 
 ### Properties
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `diameter_mm` | — | — |
-| `diameter_inner_m` | — | — |
+| `diameter_mm` | — | Inner pipe diameter converted to millimeters. |
+| `diameter_inner_m` | — | Inner pipe diameter (m), alias for diameter_m. |
 | `diameter_outer_m` | — | Return the outside diameter including the pipe wall thickness. |
-| `diameter_with_insulation_m` | — | — |
-| `length_m` | — | — |
+| `diameter_with_insulation_m` | — | Total outer diameter including pipe wall and insulation (m). |
+| `length_m` | — | Segment length derived from the line geometry (m). |
 | `pipe_heat_loss_coefficient` | — | Return the pipe's heat-loss-coefficient (W/mk) considering the diameter and insulation. |
 
 ### Methods
@@ -53,7 +53,7 @@ Create a Pipe Segment from a length value (m).
 
 ## PhxPipeElement
 
-A Pipe Element / Run made of one or more PhxPipeSegments.
+A pipe element (run) composed of one or more PhxPipeSegment objects.
 
 ### Properties
 
@@ -63,26 +63,30 @@ A Pipe Element / Run made of one or more PhxPipeSegments.
 | `length_m` | — | Return the total length of all the Pipe Segments. |
 | `weighted_pipe_heat_loss_coefficient` | — | Return a length-weighted total heat loss coefficient (W/mk) |
 | `weighted_diameter_mm` | — | Return a length-weighted total diameter (mm) |
-| `material` | — | — |
-| `demand_recirculation` | — | — |
+| `material` | — | Return the single pipe material shared by all segments. Raises ValueError if mixed. |
+| `demand_recirculation` | — | Always False for standard pipe elements (overridden in trunk). |
 
 ### Methods
 
 #### add_segment(_s)
 
+Add a pipe segment to this element.
+
 | Arg | Type | Description |
 |-----|------|-------------|
-| `_s` | — | — |
+| `_s` | — | The pipe segment to add. |
 
 ---
 
 ## PhxPipeBranch
 
-A Pipe Branch made of one or more Fixture-pipes (PhxPipeElement).
+A DHW pipe branch connecting a trunk to one or more fixture twigs.
 
 ### Methods
 
 #### add_fixture(_f)
+
+Append a fixture (twig) pipe element to this branch.
 
 | Arg | Type | Description |
 |-----|------|-------------|
@@ -92,11 +96,13 @@ A Pipe Branch made of one or more Fixture-pipes (PhxPipeElement).
 
 ## PhxPipeTrunk
 
-A Pipe Trunk made of one or more Pipe Branches (PhxPipeBranch).
+A DHW pipe trunk (riser/main) serving one or more branches.
 
 ### Methods
 
 #### add_branch(_b)
+
+Append a branch pipe to this trunk.
 
 | Arg | Type | Description |
 |-----|------|-------------|

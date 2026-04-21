@@ -71,16 +71,16 @@
 <p><strong>Source</strong>: <code>PHX/ventilation.py</code></p>
 <hr>
 <h2 id="vent_operatingperiod">Vent_OperatingPeriod</h2>
-<p>No description available.</p>
+<p>A single ventilation operating period with duration and fan speed.</p>
 <hr>
 <h2 id="vent_utilperiods">Vent_UtilPeriods</h2>
-<p>No description available.</p>
+<p>Collection of four ventilation operating periods at descending speed levels.</p>
 <hr>
 <h2 id="phxscheduleventilation">PhxScheduleVentilation</h2>
-<p>A PHX Schedule for the Ventilation.</p>
+<p>Fresh-air ventilation utilization schedule with multi-speed operating periods.</p>
 <h3 id="methods">Methods</h3>
 <h4 id="force_max_utilization_hours_max_hours-_tol">force_max_utilization_hours(_max_hours, _tol)</h4>
-<p>Ensure that the total utilization hours never exceed target (default=24).</p>
+<p>Clamp total daily operating hours to a maximum by adjusting the high-speed period.</p>
 
 
 
@@ -101,7 +101,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_max_hours</code></td><td>—</td><td>—</td></tr><tr><td><code>_tol</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_max_hours</code></td><td>—</td><td>Maximum allowed total daily hours. Default: 24.0.</td></tr><tr><td><code>_tol</code></td><td>—</td><td>Rounding precision (decimal places). Default: 2.</td></tr></tbody></table>
 <hr> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
 (function () {
   // ---------- Modal open / close ----------

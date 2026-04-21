@@ -8,7 +8,7 @@ PHX Component (Face, Aperture) Classes
 
 ## PhxComponentBase
 
-Base class with id_num counter for Opaque and Aperture Components
+Base class with auto-incrementing ID counter for all PHX building components.
 
 ### Properties
 
@@ -20,7 +20,7 @@ Base class with id_num counter for Opaque and Aperture Components
 
 ## PhxComponentOpaque
 
-Opaque surface components (wall, roof, floor).
+An opaque building-envelope surface (wall, roof, or floor).
 
 **Inherits from**: `PhxComponentBase`
 
@@ -28,15 +28,15 @@ Opaque surface components (wall, roof, floor).
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `u_value` | — | — |
+| `u_value` | — | Whole-assembly U-value (W/m2K) from the assigned opaque construction. |
 | `polygon_ids` | — | Return a Set of all the Polygon-id numbers found in the Component's Polygon group. |
 | `unique_key` | — | Returns a unique text key,. Useful for sorting / grouping / merging components. |
-| `is_shade` | — | — |
-| `is_above_grade_wall` | — | — |
-| `is_below_grade_wall` | — | — |
-| `is_above_grade_floor` | — | — |
-| `is_below_grade_floor` | — | — |
-| `is_roof` | — | — |
+| `is_shade` | — | True if this component is an opaque shading element (no interior zone attachment). |
+| `is_above_grade_wall` | — | True if this component is a wall exposed to exterior air (above grade). |
+| `is_below_grade_wall` | — | True if this component is a wall exposed to ground (below grade). |
+| `is_above_grade_floor` | — | True if this component is a floor exposed to exterior air (e.g. cantilever). |
+| `is_below_grade_floor` | — | True if this component is a floor exposed to ground (slab-on-grade or basement). |
+| `is_roof` | — | True if this component is a roof or ceiling surface. |
 | `aperture_ids` | — | Return a Set of all the Aperture-id numbers found in the Component's Aperture group. |
 | `aperture_elements` | — | Return a list of all the Aperture Elements found in the Component's Aperture group. |
 
@@ -106,7 +106,7 @@ Return the total net area of the Component (gross - apertures).
 
 ## PhxApertureShadingDimensions
 
-PHPP old-style shading dimensions data.
+PHPP old-style shading dimensions for an aperture element.
 
 **Inherits from**: `PhxComponentBase`
 
@@ -114,7 +114,7 @@ PHPP old-style shading dimensions data.
 
 ## PhxApertureElement
 
-A single sash / element of an Aperture Component.
+A single sash or glazing unit within an aperture component.
 
 **Inherits from**: `PhxComponentBase`
 
@@ -122,15 +122,15 @@ A single sash / element of an Aperture Component.
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `shading_dimensions` | `PhxApertureShadingDimensions` | — |
+| `shading_dimensions` | `PhxApertureShadingDimensions` | PHPP-style horizon, reveal, and overhang dimensions. Default: new PhxApertureShadingDimensions(). |
 
 ### Properties
 
 | Property | Type | Description |
 |----------|------|-------------|
 | `area` | — | Return the area of the element's polygon. |
-| `width` | — | — |
-| `height` | — | — |
+| `width` | — | Width of the element's polygon, or perimeter/4 as fallback for non-rectangular shapes. |
+| `height` | — | Height of the element's polygon, or perimeter/4 as fallback for non-rectangular shapes. |
 | `frame_area` | — | Return the area of the frame in the Aperture Element. |
 | `frame_factor` | — | Return the % of the Aperture Element which is frame (as opposed to glazing). |
 | `glazing_area` | — | Return the area of the glazing in the Aperture Element. |
@@ -166,7 +166,7 @@ Scale the element's polygon by the specified factor.
 
 ## PhxComponentAperture
 
-An Aperture (window, door) component with one or more 'element' (sash).
+A transparent building-envelope component (window or door) with one or more sash elements.
 
 **Inherits from**: `PhxComponentBase`
 
@@ -174,7 +174,7 @@ An Aperture (window, door) component with one or more 'element' (sash).
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `host` | — | — |
+| `host` | — | The parent opaque component this aperture is installed in. |
 
 ### Properties
 
@@ -184,8 +184,8 @@ An Aperture (window, door) component with one or more 'element' (sash).
 | `average_shading_d_reveal` | — | The average shading 'reveal' distance of the Aperture's Elements from the glass. |
 | `default_monthly_shading_correction_factor` | — | Return the default monthly shading correction factor. |
 | `shade_type_id_num` | — | Return the ID-Number of the Component Construction's Shade-Type, or -1 if None. |
-| `window_type_id_num` | — | — |
-| `polygons` | — | — |
+| `window_type_id_num` | — | ID number of the assigned window construction type. |
+| `polygons` | — | Collected polygons from all child elements that have geometry assigned. |
 | `polygon_ids` | — | Return a Set of all the Polygon-id numbers found in the Component's Polygon group. |
 | `polygon_ids_sorted` | — | Return a Tuple of all the Polygon-id numbers found in the Component's Polygon group, sorted. |
 | `unique_key` | — | Returns a unique text key,. Useful for sorting / grouping / merging components. |
@@ -232,7 +232,7 @@ Scale the Component's size by the given factor.
 
 ## PhxComponentThermalBridge
 
-A single Thermal Bridge Element.
+A linear thermal bridge element in the building envelope.
 
 **Inherits from**: `PhxComponentBase`
 
@@ -243,7 +243,7 @@ A single Thermal Bridge Element.
 | `identifier` | — | — |
 | `quantity` | — | — |
 | `group_type` | — | — |
-| `group_number` | — | — |
+| `group_number` | — | Integer group number from the thermal bridge type, or 15 (default) if unset. |
 | `display_name` | — | — |
 | `psi_value` | — | — |
 | `fRsi_value` | — | — |

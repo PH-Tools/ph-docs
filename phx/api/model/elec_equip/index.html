@@ -67,11 +67,11 @@
         <ul class="children"><li><a class="" href="/phx/api/hbjson_to_wufi_xml/">hbjson_to_wufi_xml</a></li><li><a class="" href="/phx/api/hbjson_to_phpp/">hbjson_to_phpp</a></li><li><a class="" href="/phx/api/hbjson_to_ppp/">hbjson_to_ppp</a></li><li><a class="" href="/phx/api/hbjson_to_metr_json/">hbjson_to_metr_json</a></li></ul>
       </li></ul>
       </li></ul> </aside> <script type="module">document.querySelectorAll(".nav-tree .group > button").forEach(e=>{e.addEventListener("click",()=>{const t=e.parentElement.classList.toggle("is-open");e.setAttribute("aria-expanded",String(t))})});</script> <div> <header class="content-head"> <div class="content-head__crumb">  <span>API Reference</span> <span class="sep">&rsaquo;</span>  <span class="current">elec_equip</span> </div> </header> <article class="article" data-pagefind-body data-pagefind-meta="library:PHX"> <h1 id="elec_equip">elec_equip</h1>
-<p>PHX Passive House Electrical Equipment (Appliances) Classes</p>
+<p>PHX Passive House electrical equipment (appliance) classes for energy demand and IHG calculations.</p>
 <p><strong>Source</strong>: <code>PHX/elec_equip.py</code></p>
 <hr>
 <h2 id="phxelectricaldevice">PhxElectricalDevice</h2>
-<p>Base class for PHX Electrical Equipment (dishwashers, laundry, lighting, etc.)</p>
+<p>Base class for all PHX electrical equipment (dishwashers, laundry, lighting, etc.).</p>
 <h3 id="properties">Properties</h3>
 
 
@@ -98,7 +98,7 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>reference_quantity</code></td><td>—</td><td>—</td></tr><tr><td><code>reference_energy_norm</code></td><td>—</td><td>—</td></tr><tr><td><code>quantity</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>reference_quantity</code></td><td>—</td><td>The reference quantity used for energy-demand normalization.</td></tr><tr><td><code>reference_energy_norm</code></td><td>—</td><td>The reference energy normalization standard for the device.</td></tr><tr><td><code>quantity</code></td><td>—</td><td>The number of this device in the zone.</td></tr></tbody></table>
 <h3 id="methods">Methods</h3>
 <h4 id="get_energy_demand">get_energy_demand()</h4>
 <p>To allow for subclass custom behavior. Cannot use @property since</p>
@@ -106,7 +106,7 @@
 <p>To allow for subclass custom behavior. Cannot use @property since</p>
 <hr>
 <h2 id="phxdevicedishwasher">PhxDeviceDishwasher</h2>
-<p>No description available.</p>
+<p>A kitchen dishwasher appliance.</p>
 <p><strong>Inherits from</strong>: <code>PhxElectricalDevice</code></p>
 <h3 id="attributes">Attributes</h3>
 
@@ -156,10 +156,10 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>water_connection</code></td><td>—</td><td>—</td></tr><tr><td><code>capacity_type</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>water_connection</code></td><td>—</td><td>The DHW connection type for the dishwasher.</td></tr><tr><td><code>capacity_type</code></td><td>—</td><td>The capacity type classification for the dishwasher.</td></tr></tbody></table>
 <hr>
 <h2 id="phxdeviceclotheswasher">PhxDeviceClothesWasher</h2>
-<p>No description available.</p>
+<p>A clothes washing machine appliance.</p>
 <p><strong>Inherits from</strong>: <code>PhxElectricalDevice</code></p>
 <h3 id="attributes-1">Attributes</h3>
 
@@ -204,10 +204,10 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>water_connection</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>water_connection</code></td><td>—</td><td>The DHW connection type for the clothes washer.</td></tr></tbody></table>
 <hr>
 <h2 id="phxdeviceclothesdryer">PhxDeviceClothesDryer</h2>
-<p>No description available.</p>
+<p>A clothes dryer appliance (electric or gas).</p>
 <p><strong>Inherits from</strong>: <code>PhxElectricalDevice</code></p>
 <h3 id="attributes-2">Attributes</h3>
 
@@ -257,10 +257,10 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>dryer_type</code></td><td>—</td><td>—</td></tr><tr><td><code>field_utilization_factor_type</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>dryer_type</code></td><td>—</td><td>The dryer type classification (e.g., 4 = condensation dryer).</td></tr><tr><td><code>field_utilization_factor_type</code></td><td>—</td><td>The field utilization factor type (e.g., 1 = timer).</td></tr></tbody></table>
 <hr>
 <h2 id="phxdevicerefrigerator">PhxDeviceRefrigerator</h2>
-<p>No description available.</p>
+<p>A standalone kitchen refrigerator (no freezer compartment).</p>
 <p><strong>Inherits from</strong>: <code>PhxElectricalDevice</code></p>
 <h3 id="attributes-3">Attributes</h3>
 
@@ -286,7 +286,7 @@
 <table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td><code>str</code></td><td>—</td></tr><tr><td><code>device_type</code></td><td>—</td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phxdevicefreezer">PhxDeviceFreezer</h2>
-<p>No description available.</p>
+<p>A standalone kitchen freezer.</p>
 <p><strong>Inherits from</strong>: <code>PhxElectricalDevice</code></p>
 <h3 id="attributes-4">Attributes</h3>
 
@@ -312,7 +312,7 @@
 <table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td><code>str</code></td><td>—</td></tr><tr><td><code>device_type</code></td><td>—</td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phxdevicefridgefreezer">PhxDeviceFridgeFreezer</h2>
-<p>No description available.</p>
+<p>A combined refrigerator/freezer unit.</p>
 <p><strong>Inherits from</strong>: <code>PhxElectricalDevice</code></p>
 <h3 id="attributes-5">Attributes</h3>
 
@@ -338,7 +338,7 @@
 <table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td><code>str</code></td><td>—</td></tr><tr><td><code>device_type</code></td><td>—</td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phxdevicecooktop">PhxDeviceCooktop</h2>
-<p>No description available.</p>
+<p>A kitchen cooktop appliance (electric or gas).</p>
 <p><strong>Inherits from</strong>: <code>PhxElectricalDevice</code></p>
 <h3 id="attributes-6">Attributes</h3>
 
@@ -383,10 +383,10 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>cooktop_type</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>cooktop_type</code></td><td>—</td><td>The cooktop fuel type (e.g., 1 = electric).</td></tr></tbody></table>
 <hr>
 <h2 id="phxdevicemel">PhxDeviceMEL</h2>
-<p>No description available.</p>
+<p>Miscellaneous electrical loads (MEL) per the Phius protocol.</p>
 <p><strong>Inherits from</strong>: <code>PhxElectricalDevice</code></p>
 <h3 id="attributes-7">Attributes</h3>
 
@@ -412,7 +412,7 @@
 <table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td><code>str</code></td><td>—</td></tr><tr><td><code>device_type</code></td><td>—</td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phxdevicelightinginterior">PhxDeviceLightingInterior</h2>
-<p>No description available.</p>
+<p>Interior lighting per the Phius protocol.</p>
 <p><strong>Inherits from</strong>: <code>PhxElectricalDevice</code></p>
 <h3 id="attributes-8">Attributes</h3>
 
@@ -438,7 +438,7 @@
 <table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td><code>str</code></td><td>—</td></tr><tr><td><code>device_type</code></td><td>—</td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phxdevicelightingexterior">PhxDeviceLightingExterior</h2>
-<p>No description available.</p>
+<p>Exterior lighting per the Phius protocol (outside the thermal envelope).</p>
 <p><strong>Inherits from</strong>: <code>PhxElectricalDevice</code></p>
 <h3 id="attributes-9">Attributes</h3>
 
@@ -469,7 +469,7 @@
 <table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td><code>str</code></td><td>—</td></tr><tr><td><code>device_type</code></td><td>—</td><td>—</td></tr><tr><td><code>in_conditioned_space</code></td><td><code>bool</code></td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phxdevicelightinggarage">PhxDeviceLightingGarage</h2>
-<p>No description available.</p>
+<p>Garage lighting per the Phius protocol (outside the thermal envelope).</p>
 <p><strong>Inherits from</strong>: <code>PhxElectricalDevice</code></p>
 <h3 id="attributes-10">Attributes</h3>
 
@@ -500,7 +500,7 @@
 <table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td><code>str</code></td><td>—</td></tr><tr><td><code>device_type</code></td><td>—</td><td>—</td></tr><tr><td><code>in_conditioned_space</code></td><td><code>bool</code></td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phxdevicecustomelec">PhxDeviceCustomElec</h2>
-<p>No description available.</p>
+<p>A user-defined custom electrical device.</p>
 <p><strong>Inherits from</strong>: <code>PhxElectricalDevice</code></p>
 <h3 id="attributes-11">Attributes</h3>
 
@@ -526,7 +526,7 @@
 <table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td><code>str</code></td><td>—</td></tr><tr><td><code>device_type</code></td><td>—</td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phxdevicecustomlighting">PhxDeviceCustomLighting</h2>
-<p>Override so that WUFI output quantity shows up as 1</p>
+<p>A user-defined custom lighting device.</p>
 <p><strong>Inherits from</strong>: <code>PhxElectricalDevice</code></p>
 <h3 id="attributes-12">Attributes</h3>
 
@@ -555,7 +555,7 @@
 <h4 id="get_quantity-1">get_quantity()</h4>
 <hr>
 <h2 id="phxdevicecustommel">PhxDeviceCustomMEL</h2>
-<p>Override so that WUFI output quantity shows up as 1</p>
+<p>A user-defined custom miscellaneous electrical load (MEL).</p>
 <p><strong>Inherits from</strong>: <code>PhxElectricalDevice</code></p>
 <h3 id="attributes-13">Attributes</h3>
 
@@ -584,7 +584,7 @@
 <h4 id="get_quantity-2">get_quantity()</h4>
 <hr>
 <h2 id="phxelevatorhydraulic">PhxElevatorHydraulic</h2>
-<p>No description available.</p>
+<p>A hydraulic elevator, modeled as a custom electrical device for energy demand.</p>
 <p><strong>Inherits from</strong>: <code>PhxElectricalDevice</code></p>
 <h3 id="attributes-14">Attributes</h3>
 
@@ -613,7 +613,7 @@
 <h4 id="get_quantity-3">get_quantity()</h4>
 <hr>
 <h2 id="phxelevatorgearedtraction">PhxElevatorGearedTraction</h2>
-<p>No description available.</p>
+<p>A geared-traction elevator, modeled as a custom electrical device for energy demand.</p>
 <p><strong>Inherits from</strong>: <code>PhxElectricalDevice</code></p>
 <h3 id="attributes-15">Attributes</h3>
 
@@ -642,7 +642,7 @@
 <h4 id="get_quantity-4">get_quantity()</h4>
 <hr>
 <h2 id="phxelevatorgearlesstraction">PhxElevatorGearlessTraction</h2>
-<p>No description available.</p>
+<p>A gearless-traction elevator, modeled as a custom electrical device for energy demand.</p>
 <p><strong>Inherits from</strong>: <code>PhxElectricalDevice</code></p>
 <h3 id="attributes-16">Attributes</h3>
 
@@ -671,7 +671,7 @@
 <h4 id="get_quantity-5">get_quantity()</h4>
 <hr>
 <h2 id="phxelectricdevicecollection">PhxElectricDeviceCollection</h2>
-<p>A collection of all the PhxElectricalDevices (laundry, lighting, etc.) in the Zone</p>
+<p>A collection of all the PhxElectricalDevices (laundry, lighting, etc.) in a Zone.</p>
 <h3 id="properties-5">Properties</h3>
 
 
@@ -709,6 +709,7 @@
 
 <table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_device_key</code></td><td>—</td><td>—</td></tr></tbody></table>
 <h4 id="get_equipment_by_key_key">get_equipment_by_key(_key)</h4>
+<p>Return the device matching the given key, or None if not found.</p>
 
 
 
@@ -724,7 +725,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_key</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_key</code></td><td>—</td><td>The lookup key for the device.</td></tr></tbody></table>
 <h4 id="add_new_device_key-_device">add_new_device(_key, _device)</h4>
 <p>Adds a new PHX Electric-Equipment device to the PhxElectricDeviceCollection.</p>
 

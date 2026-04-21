@@ -8,12 +8,12 @@ PHX Occupancy (People) Load.
 
 ## PhxLoadOccupancy
 
-A PHX Load for the Occupancy (People).
+Occupancy load defining the people density for a PHX zone or space.
 
 ### Properties
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `unique_key` | — | — |
+| `unique_key` | — | Return a unique key string based on the occupancy density value. |
 
 ---

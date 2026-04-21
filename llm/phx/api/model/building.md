@@ -8,7 +8,7 @@ PHX Building Classes
 
 ## PhxZone
 
-No description available.
+A single thermal zone within a PHX building model.
 
 ### Properties
 
@@ -48,7 +48,7 @@ Merge together all the Thermal Bridges in the Zone if they have the same 'unique
 
 ## PhxBuilding
 
-PHX Building Class
+The building-level container within a PHX project variant.
 
 ### Properties
 
@@ -61,7 +61,7 @@ PHX Building Class
 | `aperture_components` | — | Returns a sorted list (by display name) of all the aperture components in the building. |
 | `aperture_elements` | — | Returns a sorted list (by display name) of all the aperture elements in the building. |
 | `aperture_elements_by_orientation` | — | Return all of the Aperture Elements, grouped by their cardinal orientation. |
-| `aperture_components_horizontal` | — | — |
+| `aperture_components_horizontal` | — | Return all aperture components in the building (currently unfiltered). |
 | `wall_aperture_components` | — | Returns a sorted list (by display name) of all the wall aperture (window) components in the building. |
 | `roof_aperture_components` | — | Returns a sorted list (by display name) of all the roof aperture (skylight) components in the building. |
 | `opaque_components` | — | Returns a sorted list (by display name) of all the opaque non-shade components in the building. |

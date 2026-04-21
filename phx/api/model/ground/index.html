@@ -67,11 +67,11 @@
         <ul class="children"><li><a class="" href="/phx/api/hbjson_to_wufi_xml/">hbjson_to_wufi_xml</a></li><li><a class="" href="/phx/api/hbjson_to_phpp/">hbjson_to_phpp</a></li><li><a class="" href="/phx/api/hbjson_to_ppp/">hbjson_to_ppp</a></li><li><a class="" href="/phx/api/hbjson_to_metr_json/">hbjson_to_metr_json</a></li></ul>
       </li></ul>
       </li></ul> </aside> <script type="module">document.querySelectorAll(".nav-tree .group > button").forEach(e=>{e.addEventListener("click",()=>{const t=e.parentElement.classList.toggle("is-open");e.setAttribute("aria-expanded",String(t))})});</script> <div> <header class="content-head"> <div class="content-head__crumb">  <span>API Reference</span> <span class="sep">&rsaquo;</span>  <span class="current">ground</span> </div> </header> <article class="article" data-pagefind-body data-pagefind-meta="library:PHX"> <h1 id="ground">ground</h1>
-<p>PHX Foundation Class</p>
+<p>PHX Foundation Classes for below-grade and ground-contact thermal boundary conditions.</p>
 <p><strong>Source</strong>: <code>PHX/ground.py</code></p>
 <hr>
 <h2 id="phxfoundation">PhxFoundation</h2>
-<p>No description available.</p>
+<p>Base class for all PHX foundation / ground-contact boundary conditions.</p>
 <h3 id="properties">Properties</h3>
 
 
@@ -88,18 +88,18 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>foundation_type_num</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>foundation_type_num</code></td><td>—</td><td>The FoundationType enum for this foundation element.</td></tr></tbody></table>
 <hr>
 <h2 id="phxheatedbasement">PhxHeatedBasement</h2>
-<p>No description available.</p>
+<p>A heated (conditioned) basement foundation within the thermal envelope.</p>
 <p><strong>Inherits from</strong>: <code>PhxFoundation</code></p>
 <hr>
 <h2 id="phxunheatedbasement">PhxUnHeatedBasement</h2>
-<p>No description available.</p>
+<p>An unheated (unconditioned) basement below the thermal envelope.</p>
 <p><strong>Inherits from</strong>: <code>PhxFoundation</code></p>
 <hr>
 <h2 id="phxslabongrade">PhxSlabOnGrade</h2>
-<p>No description available.</p>
+<p>A slab-on-grade foundation in direct contact with the soil.</p>
 <p><strong>Inherits from</strong>: <code>PhxFoundation</code></p>
 <h3 id="properties-1">Properties</h3>
 
@@ -117,10 +117,10 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>perim_insulation_position</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>perim_insulation_position</code></td><td>—</td><td>The PerimeterInsulationPosition enum (horizontal or vertical).</td></tr></tbody></table>
 <hr>
 <h2 id="phxventedcrawlspace">PhxVentedCrawlspace</h2>
-<p>No description available.</p>
+<p>A vented crawlspace foundation beneath the thermal envelope.</p>
 <p><strong>Inherits from</strong>: <code>PhxFoundation</code></p>
 <hr> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
 (function () {

@@ -1,6 +1,6 @@
 # heat_pumps
 
-PHX Mechanical Heat-Pump (Heating + Cooling) Devices.
+PHX heat pump device classes for heating and cooling.
 
 **Source**: `PHX/heat_pumps.py`
 
@@ -8,7 +8,7 @@ PHX Mechanical Heat-Pump (Heating + Cooling) Devices.
 
 ## PhxHeatPumpDevice
 
-No description available.
+Base class for all PHX heat pump devices (heating and/or cooling).
 
 **Inherits from**: `_base.PhxMechanicalDevice`
 
@@ -16,7 +16,7 @@ No description available.
 
 ## PhxHeatPumpAnnualParams
 
-No description available.
+Parameters for a heat pump characterized by a single annual COP.
 
 **Inherits from**: `_base.PhxMechanicalDeviceParams`
 
@@ -24,7 +24,7 @@ No description available.
 
 ## PhxHeatPumpMonthlyParams
 
-No description available.
+Parameters for a heat pump characterized by two rated COP/temperature points.
 
 **Inherits from**: `_base.PhxMechanicalDeviceParams`
 
@@ -43,7 +43,7 @@ No description available.
 
 ## PhxHeatPumpHotWaterParams
 
-No description available.
+Parameters for a dedicated DHW heat pump (heat-pump water heater).
 
 **Inherits from**: `_base.PhxMechanicalDeviceParams`
 
@@ -51,7 +51,7 @@ No description available.
 
 ## PhxHeatPumpCombinedParams
 
-No description available.
+Parameters for a combined (space heating + DHW) heat pump.
 
 **Inherits from**: `_base.PhxMechanicalDeviceParams`
 
@@ -59,7 +59,7 @@ No description available.
 
 ## PhxHeatPumpAnnual
 
-No description available.
+A heat pump characterized by a single annual COP value.
 
 **Inherits from**: `PhxHeatPumpDevice`
 
@@ -67,7 +67,7 @@ No description available.
 
 ## PhxHeatPumpMonthly
 
-No description available.
+A heat pump characterized by two rated COP/temperature operating points.
 
 **Inherits from**: `PhxHeatPumpDevice`
 
@@ -75,7 +75,7 @@ No description available.
 
 ## PhxHeatPumpCombined
 
-No description available.
+A combined heat pump serving both space heating and DHW.
 
 **Inherits from**: `PhxHeatPumpDevice`
 
@@ -83,7 +83,7 @@ No description available.
 
 ## PhxHeatPumpHotWater
 
-No description available.
+A dedicated DHW heat pump (heat-pump water heater).
 
 **Inherits from**: `PhxHeatPumpDevice`
 

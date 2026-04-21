@@ -8,49 +8,49 @@ PHX Site (Location and Climate) Dataclasses
 
 ## PhxGround
 
-No description available.
+Soil and groundwater thermal properties for ground heat loss calculations.
 
 ---
 
 ## PhxPEFactor
 
-Conversion Factors for Site-Energy->Primary-Energy
+Primary energy (PE) conversion factor for a single fuel type.
 
 ---
 
 ## PhxCO2Factor
 
-Conversion Factors for Site->CO2
+CO2 emission factor for a single fuel type.
 
 ---
 
 ## PhxSiteEnergyFactors
 
-No description available.
+Collection of primary energy (PE) and CO2 conversion factors for the site.
 
 ---
 
 ## PhxLocation
 
-The physical location of the building.
+Geographic coordinates and site metadata for the building location.
 
 ---
 
 ## PhxClimatePeakLoad
 
-No description available.
+Climate conditions at a single peak-load design point (heating or cooling).
 
 ---
 
 ## PhxClimateIterOutput
 
-Wrapper class for organizing output of the 'PhxClimate.monthly_values' property.
+Single month of climate data yielded by PhxClimate.monthly_values.
 
 ---
 
 ## PhxClimate
 
-Monthly Climate Date for the building location.
+Monthly climate dataset for the building location.
 
 ### Properties
 
@@ -67,12 +67,12 @@ Monthly Climate Date for the building location.
 
 ## PhxPHPPCodes
 
-No description available.
+PHPP climate dataset selection codes for country, region, and dataset.
 
 ---
 
 ## PhxSite
 
-The climate and location date for the building's site.
+Top-level container for a building's site location, climate, and energy factors.
 
 ---

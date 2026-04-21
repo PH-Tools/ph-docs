@@ -67,11 +67,11 @@
         <ul class="children"><li><a class="" href="/phx/api/hbjson_to_wufi_xml/">hbjson_to_wufi_xml</a></li><li><a class="" href="/phx/api/hbjson_to_phpp/">hbjson_to_phpp</a></li><li><a class="" href="/phx/api/hbjson_to_ppp/">hbjson_to_ppp</a></li><li><a class="" href="/phx/api/hbjson_to_metr_json/">hbjson_to_metr_json</a></li></ul>
       </li></ul>
       </li></ul> </aside> <script type="module">document.querySelectorAll(".nav-tree .group > button").forEach(e=>{e.addEventListener("click",()=>{const t=e.parentElement.classList.toggle("is-open");e.setAttribute("aria-expanded",String(t))})});</script> <div> <header class="content-head"> <div class="content-head__crumb">  <span>API Reference</span> <span class="sep">&rsaquo;</span>  <span class="current">cooling_params</span> </div> </header> <article class="article" data-pagefind-body data-pagefind-meta="library:PHX"> <h1 id="cooling_params">cooling_params</h1>
-<p>PHX Mechanical Cooling Devices and Parameters.</p>
+<p>PHX cooling parameter classes for heat pump cooling modes.</p>
 <p><strong>Source</strong>: <code>PHX/cooling_params.py</code></p>
 <hr>
 <h2 id="phxcoolingventilationparams">PhxCoolingVentilationParams</h2>
-<p>No description available.</p>
+<p>Parameters for cooling via the ventilation supply air (cooling coil in AHU).</p>
 <p><strong>Inherits from</strong>: <code>_base.PhxMechanicalDeviceParams</code></p>
 <h3 id="properties">Properties</h3>
 
@@ -89,10 +89,10 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>total_system_perf_ratio</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>total_system_perf_ratio</code></td><td>—</td><td>Reciprocal of annual COP (kW-input / kW-cooling).</td></tr></tbody></table>
 <hr>
 <h2 id="phxcoolingrecirculationparams">PhxCoolingRecirculationParams</h2>
-<p>No description available.</p>
+<p>Parameters for cooling via recirculated air (fan coil, mini-split, etc.).</p>
 <p><strong>Inherits from</strong>: <code>_base.PhxMechanicalDeviceParams</code></p>
 <h3 id="properties-1">Properties</h3>
 
@@ -110,10 +110,10 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>total_system_perf_ratio</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>total_system_perf_ratio</code></td><td>—</td><td>Reciprocal of annual COP (kW-input / kW-cooling).</td></tr></tbody></table>
 <hr>
 <h2 id="phxcoolingdehumidificationparams">PhxCoolingDehumidificationParams</h2>
-<p>No description available.</p>
+<p>Parameters for active dehumidification cooling.</p>
 <p><strong>Inherits from</strong>: <code>_base.PhxMechanicalDeviceParams</code></p>
 <h3 id="properties-2">Properties</h3>
 
@@ -131,10 +131,10 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>total_system_perf_ratio</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>total_system_perf_ratio</code></td><td>—</td><td>Reciprocal of annual COP (kW-input / kW-cooling).</td></tr></tbody></table>
 <hr>
 <h2 id="phxcoolingpanelparams">PhxCoolingPanelParams</h2>
-<p>No description available.</p>
+<p>Parameters for radiant cooling panel distribution.</p>
 <p><strong>Inherits from</strong>: <code>_base.PhxMechanicalDeviceParams</code></p>
 <h3 id="properties-3">Properties</h3>
 
@@ -152,10 +152,10 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>total_system_perf_ratio</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>total_system_perf_ratio</code></td><td>—</td><td>Reciprocal of annual COP (kW-input / kW-cooling).</td></tr></tbody></table>
 <hr>
 <h2 id="phxcoolingparams">PhxCoolingParams</h2>
-<p>No description available.</p>
+<p>Collection of cooling parameters across all four distribution strategies.</p>
 <hr> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
 (function () {
   // ---------- Modal open / close ----------

@@ -67,14 +67,14 @@
         <ul class="children"><li><a class="" href="/phx/api/hbjson_to_wufi_xml/">hbjson_to_wufi_xml</a></li><li><a class="" href="/phx/api/hbjson_to_phpp/">hbjson_to_phpp</a></li><li><a class="" href="/phx/api/hbjson_to_ppp/">hbjson_to_ppp</a></li><li><a class="" href="/phx/api/hbjson_to_metr_json/">hbjson_to_metr_json</a></li></ul>
       </li></ul>
       </li></ul> </aside> <script type="module">document.querySelectorAll(".nav-tree .group > button").forEach(e=>{e.addEventListener("click",()=>{const t=e.parentElement.classList.toggle("is-open");e.setAttribute("aria-expanded",String(t))})});</script> <div> <header class="content-head"> <div class="content-head__crumb">  <span>API Reference</span> <span class="sep">&rsaquo;</span>  <span class="current">piping</span> </div> </header> <article class="article" data-pagefind-body data-pagefind-meta="library:PHX"> <h1 id="piping">piping</h1>
-<p>PHX Water Piping Distribution Objects.</p>
+<p>PHX DHW piping distribution objects.</p>
 <p><strong>Source</strong>: <code>PHX/piping.py</code></p>
 <hr>
 <h2 id="phxrecirculationparameters">PhxRecirculationParameters</h2>
-<p>No description available.</p>
+<p>Global DHW recirculation piping parameters used by the simplified PHPP method.</p>
 <hr>
 <h2 id="phxpipesegment">PhxPipeSegment</h2>
-<p>An individual Pipe Segment.</p>
+<p>An individual pipe segment with geometry, material, diameter, and insulation properties.</p>
 <h3 id="properties">Properties</h3>
 
 
@@ -116,7 +116,7 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>diameter_mm</code></td><td>—</td><td>—</td></tr><tr><td><code>diameter_inner_m</code></td><td>—</td><td>—</td></tr><tr><td><code>diameter_outer_m</code></td><td>—</td><td>Return the outside diameter including the pipe wall thickness.</td></tr><tr><td><code>diameter_with_insulation_m</code></td><td>—</td><td>—</td></tr><tr><td><code>length_m</code></td><td>—</td><td>—</td></tr><tr><td><code>pipe_heat_loss_coefficient</code></td><td>—</td><td>Return the pipe’s heat-loss-coefficient (W/mk) considering the diameter and insulation.</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>diameter_mm</code></td><td>—</td><td>Inner pipe diameter converted to millimeters.</td></tr><tr><td><code>diameter_inner_m</code></td><td>—</td><td>Inner pipe diameter (m), alias for diameter_m.</td></tr><tr><td><code>diameter_outer_m</code></td><td>—</td><td>Return the outside diameter including the pipe wall thickness.</td></tr><tr><td><code>diameter_with_insulation_m</code></td><td>—</td><td>Total outer diameter including pipe wall and insulation (m).</td></tr><tr><td><code>length_m</code></td><td>—</td><td>Segment length derived from the line geometry (m).</td></tr><tr><td><code>pipe_heat_loss_coefficient</code></td><td>—</td><td>Return the pipe’s heat-loss-coefficient (W/mk) considering the diameter and insulation.</td></tr></tbody></table>
 <h3 id="methods">Methods</h3>
 <h4 id="reverse_solve_for_insulation_conductivitytarget_result-starting_conductivity">reverse_solve_for_insulation_conductivity(target_result, starting_conductivity)</h4>
 <p>Return an insulation conductivity (W/mk) when given a known heat-loss-coeff (W/MK).</p>
@@ -176,7 +176,7 @@
 <table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td>—</td><td>—</td></tr><tr><td><code>length_m</code></td><td>—</td><td>—</td></tr><tr><td><code>pipe_material</code></td><td>—</td><td>—</td></tr><tr><td><code>pipe_diameter_m</code></td><td>—</td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phxpipeelement">PhxPipeElement</h2>
-<p>A Pipe Element / Run made of one or more PhxPipeSegments.</p>
+<p>A pipe element (run) composed of one or more PhxPipeSegment objects.</p>
 <h3 id="properties-1">Properties</h3>
 
 
@@ -218,9 +218,10 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>segments</code></td><td>—</td><td>—</td></tr><tr><td><code>length_m</code></td><td>—</td><td>Return the total length of all the Pipe Segments.</td></tr><tr><td><code>weighted_pipe_heat_loss_coefficient</code></td><td>—</td><td>Return a length-weighted total heat loss coefficient (W/mk)</td></tr><tr><td><code>weighted_diameter_mm</code></td><td>—</td><td>Return a length-weighted total diameter (mm)</td></tr><tr><td><code>material</code></td><td>—</td><td>—</td></tr><tr><td><code>demand_recirculation</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>segments</code></td><td>—</td><td>—</td></tr><tr><td><code>length_m</code></td><td>—</td><td>Return the total length of all the Pipe Segments.</td></tr><tr><td><code>weighted_pipe_heat_loss_coefficient</code></td><td>—</td><td>Return a length-weighted total heat loss coefficient (W/mk)</td></tr><tr><td><code>weighted_diameter_mm</code></td><td>—</td><td>Return a length-weighted total diameter (mm)</td></tr><tr><td><code>material</code></td><td>—</td><td>Return the single pipe material shared by all segments. Raises ValueError if mixed.</td></tr><tr><td><code>demand_recirculation</code></td><td>—</td><td>Always False for standard pipe elements (overridden in trunk).</td></tr></tbody></table>
 <h3 id="methods-1">Methods</h3>
 <h4 id="add_segment_s">add_segment(_s)</h4>
+<p>Add a pipe segment to this element.</p>
 
 
 
@@ -236,12 +237,13 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_s</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_s</code></td><td>—</td><td>The pipe segment to add.</td></tr></tbody></table>
 <hr>
 <h2 id="phxpipebranch">PhxPipeBranch</h2>
-<p>A Pipe Branch made of one or more Fixture-pipes (PhxPipeElement).</p>
+<p>A DHW pipe branch connecting a trunk to one or more fixture twigs.</p>
 <h3 id="methods-2">Methods</h3>
 <h4 id="add_fixture_f">add_fixture(_f)</h4>
+<p>Append a fixture (twig) pipe element to this branch.</p>
 
 
 
@@ -260,9 +262,10 @@
 <table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_f</code></td><td>—</td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phxpipetrunk">PhxPipeTrunk</h2>
-<p>A Pipe Trunk made of one or more Pipe Branches (PhxPipeBranch).</p>
+<p>A DHW pipe trunk (riser/main) serving one or more branches.</p>
 <h3 id="methods-3">Methods</h3>
 <h4 id="add_branch_b">add_branch(_b)</h4>
+<p>Append a branch pipe to this trunk.</p>
 
 
 

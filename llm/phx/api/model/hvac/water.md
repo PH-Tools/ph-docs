@@ -1,6 +1,6 @@
 # water
 
-PHX Water Devices
+PHX domestic hot water (DHW) storage tank device classes.
 
 **Source**: `PHX/water.py`
 
@@ -8,7 +8,7 @@ PHX Water Devices
 
 ## PhxHotWaterDevice
 
-No description available.
+Base class for all PHX DHW devices. Automatically sets dhw_heating usage on init.
 
 **Inherits from**: `_base.PhxMechanicalDevice`
 
@@ -16,7 +16,7 @@ No description available.
 
 ## PhxHotWaterTankParams
 
-No description available.
+Performance and geometry parameters for a DHW storage tank.
 
 **Inherits from**: `_base.PhxMechanicalDeviceParams`
 
@@ -40,7 +40,7 @@ No description available.
 
 ## PhxHotWaterTank
 
-No description available.
+A DHW storage tank with standby and solar loss parameters.
 
 **Inherits from**: `PhxHotWaterDevice`
 

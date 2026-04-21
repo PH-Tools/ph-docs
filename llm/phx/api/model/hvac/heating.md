@@ -1,6 +1,6 @@
 # heating
 
-PHX Mechanical Heating Devices.
+PHX mechanical heating device classes.
 
 **Source**: `PHX/heating.py`
 
@@ -8,7 +8,7 @@ PHX Mechanical Heating Devices.
 
 ## PhxHeatingDevice
 
-No description available.
+Base class for all PHX heating devices (electric, boiler, district heat).
 
 **Inherits from**: `_base.PhxMechanicalDevice`
 
@@ -16,7 +16,7 @@ No description available.
 
 ## PhxHeaterElectricParams
 
-No description available.
+Parameters for an electric resistance heater (no additional fields beyond base).
 
 **Inherits from**: `_base.PhxMechanicalDeviceParams`
 
@@ -24,7 +24,7 @@ No description available.
 
 ## PhxHeaterElectric
 
-No description available.
+An electric resistance heater for space heating and/or DHW.
 
 **Inherits from**: `PhxHeatingDevice`
 
@@ -32,7 +32,7 @@ No description available.
 
 ## PhxHeaterBoilerFossilParams
 
-No description available.
+Performance parameters for a fossil-fuel boiler (gas, oil, propane).
 
 **Inherits from**: `_base.PhxMechanicalDeviceParams`
 
@@ -56,7 +56,7 @@ No description available.
 
 ## PhxHeaterBoilerWoodParams
 
-No description available.
+Performance parameters for a wood-fired boiler (log, pellet).
 
 **Inherits from**: `_base.PhxMechanicalDeviceParams`
 
@@ -70,7 +70,7 @@ No description available.
 
 ## PhxHeaterBoilerFossil
 
-No description available.
+A fossil-fuel boiler (gas, oil, propane) for space heating and/or DHW.
 
 **Inherits from**: `PhxHeatingDevice`
 
@@ -78,7 +78,7 @@ No description available.
 
 ## PhxHeaterBoilerWood
 
-No description available.
+A wood-fired boiler (log or pellet) for space heating and/or DHW.
 
 **Inherits from**: `PhxHeatingDevice`
 
@@ -86,7 +86,7 @@ No description available.
 
 ## PhxHeaterDistrictHeatParams
 
-No description available.
+Parameters for a district heat connection (no additional fields beyond base).
 
 **Inherits from**: `_base.PhxMechanicalDeviceParams`
 
@@ -94,7 +94,7 @@ No description available.
 
 ## PhxHeaterDistrictHeat
 
-No description available.
+A district heat connection for space heating and/or DHW.
 
 **Inherits from**: `PhxHeatingDevice`
 

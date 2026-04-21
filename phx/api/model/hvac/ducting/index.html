@@ -67,11 +67,11 @@
         <ul class="children"><li><a class="" href="/phx/api/hbjson_to_wufi_xml/">hbjson_to_wufi_xml</a></li><li><a class="" href="/phx/api/hbjson_to_phpp/">hbjson_to_phpp</a></li><li><a class="" href="/phx/api/hbjson_to_ppp/">hbjson_to_ppp</a></li><li><a class="" href="/phx/api/hbjson_to_metr_json/">hbjson_to_metr_json</a></li></ul>
       </li></ul>
       </li></ul> </aside> <script type="module">document.querySelectorAll(".nav-tree .group > button").forEach(e=>{e.addEventListener("click",()=>{const t=e.parentElement.classList.toggle("is-open");e.setAttribute("aria-expanded",String(t))})});</script> <div> <header class="content-head"> <div class="content-head__crumb">  <span>API Reference</span> <span class="sep">&rsaquo;</span>  <span class="current">ducting</span> </div> </header> <article class="article" data-pagefind-body data-pagefind-meta="library:PHX"> <h1 id="ducting">ducting</h1>
-<p>PHX Ventilation Ducting Distribution Objects.</p>
+<p>PHX ventilation duct distribution objects.</p>
 <p><strong>Source</strong>: <code>PHX/ducting.py</code></p>
 <hr>
 <h2 id="phxductsegment">PhxDuctSegment</h2>
-<p>An individual Duct Segment Segment.</p>
+<p>An individual duct segment with geometry, cross-section, and insulation properties.</p>
 <h3 id="properties">Properties</h3>
 
 
@@ -108,10 +108,10 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>length</code></td><td>—</td><td>—</td></tr><tr><td><code>diameter_mm</code></td><td>—</td><td>Return the diameter in MM.</td></tr><tr><td><code>height_mm</code></td><td>—</td><td>Return the height in MM.</td></tr><tr><td><code>width_mm</code></td><td>—</td><td>Return the width in MM.</td></tr><tr><td><code>insulation_thickness_mm</code></td><td>—</td><td>Return the insulation-thickness in MM.</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>length</code></td><td>—</td><td>Segment length derived from the line geometry (m).</td></tr><tr><td><code>diameter_mm</code></td><td>—</td><td>Return the diameter in MM.</td></tr><tr><td><code>height_mm</code></td><td>—</td><td>Return the height in MM.</td></tr><tr><td><code>width_mm</code></td><td>—</td><td>Return the width in MM.</td></tr><tr><td><code>insulation_thickness_mm</code></td><td>—</td><td>Return the insulation-thickness in MM.</td></tr></tbody></table>
 <hr>
 <h2 id="phxductelement">PhxDuctElement</h2>
-<p>A Duct Element / Run made of one or more PhxDuctSegments.</p>
+<p>A duct run composed of one or more PhxDuctSegment objects.</p>
 <h3 id="properties-1">Properties</h3>
 
 
@@ -178,9 +178,10 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>quantity</code></td><td>—</td><td>—</td></tr><tr><td><code>segments</code></td><td>—</td><td>—</td></tr><tr><td><code>length_m</code></td><td>—</td><td>—</td></tr><tr><td><code>diameter_mm</code></td><td>—</td><td>—</td></tr><tr><td><code>height_mm</code></td><td>—</td><td>—</td></tr><tr><td><code>width_mm</code></td><td>—</td><td>—</td></tr><tr><td><code>insulation_thickness_mm</code></td><td>—</td><td>—</td></tr><tr><td><code>insulation_conductivity_wmk</code></td><td>—</td><td>—</td></tr><tr><td><code>duct_shape</code></td><td>—</td><td>—</td></tr><tr><td><code>is_reflective</code></td><td>—</td><td>—</td></tr><tr><td><code>assigned_vent_unit_ids</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>quantity</code></td><td>—</td><td>Always 1 for a single duct element.</td></tr><tr><td><code>segments</code></td><td>—</td><td>All duct segments in this element.</td></tr><tr><td><code>length_m</code></td><td>—</td><td>Total duct length across all segments (m).</td></tr><tr><td><code>diameter_mm</code></td><td>—</td><td>Length-weighted average diameter across all segments (mm).</td></tr><tr><td><code>height_mm</code></td><td>—</td><td>Length-weighted average height for rectangular ducts (mm). 0.0 if round.</td></tr><tr><td><code>width_mm</code></td><td>—</td><td>Length-weighted average width for rectangular ducts (mm). 0.0 if round.</td></tr><tr><td><code>insulation_thickness_mm</code></td><td>—</td><td>Length-weighted average insulation thickness (mm).</td></tr><tr><td><code>insulation_conductivity_wmk</code></td><td>—</td><td>Length-weighted average insulation conductivity (W/mK).</td></tr><tr><td><code>duct_shape</code></td><td>—</td><td>Return 1 for round duct, 2 for rectangular duct.</td></tr><tr><td><code>is_reflective</code></td><td>—</td><td>True if any segment has reflective insulation facing.</td></tr><tr><td><code>assigned_vent_unit_ids</code></td><td>—</td><td>List of ventilation unit IDs this duct element is assigned to.</td></tr></tbody></table>
 <h3 id="methods">Methods</h3>
 <h4 id="add_segment_s">add_segment(_s)</h4>
+<p>Add a duct segment to this element.</p>
 
 
 
@@ -196,7 +197,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_s</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_s</code></td><td>—</td><td>The duct segment to add.</td></tr></tbody></table>
 <hr> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
 (function () {
   // ---------- Modal open / close ----------

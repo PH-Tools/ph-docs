@@ -1,6 +1,6 @@
 # renewable_devices
 
-PHX Passive House Renewable Energy (PV) Device classes
+PHX renewable energy device classes (photovoltaic systems).
 
 **Source**: `PHX/renewable_devices.py`
 
@@ -8,7 +8,7 @@ PHX Passive House Renewable Energy (PV) Device classes
 
 ## PhxDevicePhotovoltaicParams
 
-PV System Parameters
+Performance parameters for a photovoltaic (PV) system.
 
 **Inherits from**: `_base.PhxMechanicalDeviceParams`
 
@@ -30,7 +30,7 @@ PV System Parameters
 
 ## PhxDevicePhotovoltaic
 
-PV Panel Systems.
+A photovoltaic panel system (PV array with inverter).
 
 **Inherits from**: `_base.PhxMechanicalDevice`
 

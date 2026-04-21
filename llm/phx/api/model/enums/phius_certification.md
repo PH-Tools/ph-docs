@@ -8,7 +8,7 @@ Valid 'types' for PHIUS Certification Settings.
 
 ## PhiusCertificationBuildingCategoryType
 
-No description available.
+Building category for Phius certification.
 
 **Inherits from**: `Enum`
 
@@ -16,7 +16,7 @@ No description available.
 
 ## PhiusCertificationBuildingUseType
 
-No description available.
+Building use type for Phius certification.
 
 **Inherits from**: `Enum`
 
@@ -24,7 +24,7 @@ No description available.
 
 ## PhiusCertificationBuildingStatus
 
-No description available.
+Current construction status of the building for Phius certification.
 
 **Inherits from**: `Enum`
 
@@ -32,7 +32,7 @@ No description available.
 
 ## PhiusCertificationBuildingType
 
-No description available.
+Building construction type for Phius certification.
 
 **Inherits from**: `Enum`
 
@@ -40,7 +40,7 @@ No description available.
 
 ## PhiusCertificationProgram
 
-No description available.
+Phius certification program version.
 
 **Inherits from**: `Enum`
 

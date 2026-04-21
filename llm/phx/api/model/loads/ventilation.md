@@ -8,12 +8,12 @@ PHX Ventilation Load.
 
 ## PhxLoadVentilation
 
-A PHX Load for the Ventilation.
+Ventilation load defining the fresh-air supply, extract, and transfer airflow rates for a PHX zone or space.
 
 ### Properties
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `total_airflow` | — | Returns the total airflow for the ventilation load. |
+| `total_airflow` | — | Return the combined supply, extract, and transfer airflow. |
 
 ---

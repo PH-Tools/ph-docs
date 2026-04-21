@@ -8,7 +8,7 @@ Valid 'types' for Site Settings.
 
 ## SiteSelection
 
-No description available.
+Selection source for site location data.
 
 **Inherits from**: `Enum`
 
@@ -16,7 +16,7 @@ No description available.
 
 ## SiteClimateSelection
 
-No description available.
+Selection source for climate data.
 
 **Inherits from**: `Enum`
 
@@ -24,7 +24,7 @@ No description available.
 
 ## SiteEnergyFactorSelection
 
-No description available.
+Selection source for primary energy and CO2 conversion factors.
 
 **Inherits from**: `Enum`
 

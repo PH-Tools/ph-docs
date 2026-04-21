@@ -8,12 +8,12 @@ PHX Program Class for organizing Fresh-Air Ventilation Data.
 
 ## PhxProgramVentilation
 
-A PHX Program for the Fresh-Air Ventilation with a load and schedule.
+Ventilation program pairing fresh-air airflow rates with a utilization schedule.
 
 ### Properties
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `has_ventilation_airflow` | — | Returns True if the load has any amount of ventilation airflow. |
+| `has_ventilation_airflow` | — | Return True if the load has any non-zero ventilation airflow. |
 
 ---

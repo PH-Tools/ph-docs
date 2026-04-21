@@ -1,6 +1,6 @@
 # _base
 
-PHX Passive House Mechanical Equipment Classes
+PHX Passive House Mechanical Equipment base classes.
 
 **Source**: `PHX/_base.py`
 
@@ -8,7 +8,7 @@ PHX Passive House Mechanical Equipment Classes
 
 ## PhxUsageProfile
 
-Is the device used to provide...
+Flags indicating which building loads a mechanical device serves and its percent coverage.
 
 ### Properties
 
@@ -25,11 +25,13 @@ Is the device used to provide...
 
 ## PhxMechanicalDeviceParams
 
-Base class PHX MechanicalEquipment Params
+Base parameter set shared by all PHX mechanical devices.
 
 ### Methods
 
 #### *staticmethod* safe_add(attr_1, attr_2)
+
+Add two optional numeric values, returning None only if both are falsy.
 
 | Arg | Type | Description |
 |-----|------|-------------|
@@ -40,7 +42,7 @@ Base class PHX MechanicalEquipment Params
 
 ## PhxMechanicalDevice
 
-Base class for PHX Mechanical Devices (heaters, tanks, ventilators, etc...)
+Base class for all PHX mechanical devices (heaters, tanks, ventilators, heat pumps, etc.).
 
 ### Properties
 

@@ -8,7 +8,7 @@ Valid 'types' for PHI Certification Settings (PHPP v10).
 
 ## PhiCertBuildingUseType
 
-No description available.
+Building use type for PHI certification (PHPP v10).
 
 **Inherits from**: `Enum`
 
@@ -16,7 +16,7 @@ No description available.
 
 ## PhiCertIHGType
 
-No description available.
+Internal heat gains calculation method for PHI certification (PHPP v10).
 
 **Inherits from**: `Enum`
 
@@ -24,7 +24,7 @@ No description available.
 
 ## PhiCertType
 
-No description available.
+PHI certification standard type (PHPP v10).
 
 **Inherits from**: `Enum`
 
@@ -32,7 +32,7 @@ No description available.
 
 ## PhiCertClass
 
-No description available.
+PHI certification class based on renewable energy generation (PHPP v10).
 
 **Inherits from**: `Enum`
 
@@ -40,7 +40,7 @@ No description available.
 
 ## PhiCertificationPEType
 
-No description available.
+Primary energy factor source for PHI certification (PHPP v10).
 
 **Inherits from**: `Enum`
 
@@ -48,7 +48,7 @@ No description available.
 
 ## PhiCertRetrofitType
 
-No description available.
+Building retrofit status for PHI certification (PHPP v10).
 
 **Inherits from**: `Enum`
 

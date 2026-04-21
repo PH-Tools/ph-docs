@@ -67,7 +67,7 @@
         <ul class="children"><li><a class="" href="/phx/api/hbjson_to_wufi_xml/">hbjson_to_wufi_xml</a></li><li><a class="" href="/phx/api/hbjson_to_phpp/">hbjson_to_phpp</a></li><li><a class="" href="/phx/api/hbjson_to_ppp/">hbjson_to_ppp</a></li><li><a class="" href="/phx/api/hbjson_to_metr_json/">hbjson_to_metr_json</a></li></ul>
       </li></ul>
       </li></ul> </aside> <script type="module">document.querySelectorAll(".nav-tree .group > button").forEach(e=>{e.addEventListener("click",()=>{const t=e.parentElement.classList.toggle("is-open");e.setAttribute("aria-expanded",String(t))})});</script> <div> <header class="content-head"> <div class="content-head__crumb">  <span>API Reference</span> <span class="sep">&rsaquo;</span>  <span class="current">collection</span> </div> </header> <article class="article" data-pagefind-body data-pagefind-meta="library:PHX"> <h1 id="collection">collection</h1>
-<p>PHX Mechanical Collection Classes.</p>
+<p>PHX mechanical system collection classes.</p>
 <p><strong>Source</strong>: <code>PHX/collection.py</code></p>
 <hr>
 <h2 id="nodevicefounderror">NoDeviceFoundError</h2>
@@ -134,10 +134,10 @@
 <table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>msg</code></td><td>—</td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phxzonecoverage">PhxZoneCoverage</h2>
-<p>Percentage of the building load-type covered by the subsystem.</p>
+<p>Percentage of each building load type covered by a mechanical subsystem for a given zone.</p>
 <hr>
 <h2 id="phxrenewabledevicecollection">PhxRenewableDeviceCollection</h2>
-<p>A Collection of PHX Renewable Energy Devices.</p>
+<p>A keyed collection of PHX renewable energy devices (PV systems).</p>
 <h3 id="properties">Properties</h3>
 
 
@@ -159,7 +159,7 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>devices</code></td><td>—</td><td>—</td></tr><tr><td><code>pv_devices</code></td><td>—</td><td>Return a List of all the Photovoltaic devices</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>devices</code></td><td>—</td><td>All renewable energy devices in the collection.</td></tr><tr><td><code>pv_devices</code></td><td>—</td><td>Return a List of all the Photovoltaic devices</td></tr></tbody></table>
 <h3 id="methods">Methods</h3>
 <h4 id="clear_all_devices">clear_all_devices()</h4>
 <p>Reset the collection to an empty dictionary.</p>
@@ -279,7 +279,7 @@
 <p>Merge all the devices in the collection together by identifier.</p>
 <hr>
 <h2 id="phxsupportivedevicecollection">PhxSupportiveDeviceCollection</h2>
-<p>A Collection of PHX Supportive Devices.</p>
+<p>A keyed collection of PHX supportive (auxiliary energy) devices.</p>
 <h3 id="properties-1">Properties</h3>
 
 
@@ -316,7 +316,7 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>devices</code></td><td>—</td><td>—</td></tr><tr><td><code>heat_circulating_pumps</code></td><td>—</td><td>Return a List of all the Kitchen Hood devices</td></tr><tr><td><code>dhw_circulating_pumps</code></td><td>—</td><td>Return a List of all the Kitchen Hood devices</td></tr><tr><td><code>dhw_storage_pumps</code></td><td>—</td><td>Return a List of all the Kitchen Hood devices</td></tr><tr><td><code>other_devices</code></td><td>—</td><td>Return a List of all the Kitchen Hood devices</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>devices</code></td><td>—</td><td>All supportive devices in the collection.</td></tr><tr><td><code>heat_circulating_pumps</code></td><td>—</td><td>Return all heat-distribution circulating pump devices.</td></tr><tr><td><code>dhw_circulating_pumps</code></td><td>—</td><td>Return all DHW recirculation pump devices.</td></tr><tr><td><code>dhw_storage_pumps</code></td><td>—</td><td>Return all DHW storage load pump devices.</td></tr><tr><td><code>other_devices</code></td><td>—</td><td>Return all supportive devices not classified as pumps.</td></tr></tbody></table>
 <h3 id="methods-1">Methods</h3>
 <h4 id="clear_all_devices-1">clear_all_devices()</h4>
 <p>Reset the collection to an empty dictionary.</p>
@@ -436,7 +436,7 @@
 <p>Merge all the devices in the collection together by identifier.</p>
 <hr>
 <h2 id="phxexhaustventilatorcollection">PhxExhaustVentilatorCollection</h2>
-<p>A Collection of PHX Exhaust Ventilation Devices.</p>
+<p>A keyed collection of PHX point-exhaust ventilation devices.</p>
 <h3 id="properties-2">Properties</h3>
 
 
@@ -468,7 +468,7 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>devices</code></td><td>—</td><td>—</td></tr><tr><td><code>kitchen_hood_devices</code></td><td>—</td><td>Return a List of all the Kitchen Hood devices</td></tr><tr><td><code>dryer_devices</code></td><td>—</td><td>Return a List of all the Dryer devices</td></tr><tr><td><code>user_determined_devices</code></td><td>—</td><td>Return a List of all the User-Determined devices</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>devices</code></td><td>—</td><td>All exhaust ventilation devices in the collection.</td></tr><tr><td><code>kitchen_hood_devices</code></td><td>—</td><td>Return a List of all the Kitchen Hood devices</td></tr><tr><td><code>dryer_devices</code></td><td>—</td><td>Return a List of all the Dryer devices</td></tr><tr><td><code>user_determined_devices</code></td><td>—</td><td>Return a List of all the User-Determined devices</td></tr></tbody></table>
 <h3 id="methods-2">Methods</h3>
 <h4 id="clear_all_devices-2">clear_all_devices()</h4>
 <p>Reset the collection to an empty dictionary.</p>
@@ -553,7 +553,7 @@
 <p>Merge all the devices in the collection together by type.</p>
 <hr>
 <h2 id="phxmechanicalsystemcollection">PhxMechanicalSystemCollection</h2>
-<p>A Collection of all the mechanical devices (heating, cooling, etc) and distribution in the project</p>
+<p>The top-level collection of all mechanical devices and distribution for a project variant.</p>
 <h3 id="properties-3">Properties</h3>
 
 
@@ -655,7 +655,7 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>devices</code></td><td>—</td><td>Returns a list of the ‘devices’ in the collection.</td></tr><tr><td><code>ventilation_devices</code></td><td>—</td><td>Returns a list of the ‘Ventilation’ devices in the collection.</td></tr><tr><td><code>space_heating_devices</code></td><td>—</td><td>Returns a list of the ‘Space Heating’ devices in the collection.</td></tr><tr><td><code>heat_pump_devices</code></td><td>—</td><td>Returns a list of all the Heat-Pump devices in the collection.</td></tr><tr><td><code>cooling_devices</code></td><td>—</td><td>Returns a list of all the Cooling devices (heat pumps) in the collection.</td></tr><tr><td><code>dhw_heating_devices</code></td><td>—</td><td>Returns a list of only the ‘DHW Heating’ devices (no tanks) in the collection.</td></tr><tr><td><code>dhw_tank_devices</code></td><td>—</td><td>Returns a list of only the ‘DHW Storage Tank’ devices (no heaters) in the collection.</td></tr><tr><td><code>dhw_distribution_trunks</code></td><td>—</td><td>—</td></tr><tr><td><code>dhw_distribution_piping</code></td><td>—</td><td>Returns a list of ALL the DHW Piping from ALL Trunks, Branches, Twigs in the collection.</td></tr><tr><td><code>dhw_distribution_piping_segments</code></td><td>—</td><td>Returns a list of ALL the DHW Piping Segments from ALL Trunks, Branches, Twigs in the collection.</td></tr><tr><td><code>dhw_distribution_piping_segments_by_diam</code></td><td>—</td><td>Returns a list of the DHW branch-piping segments, grouped by diameter.</td></tr><tr><td><code>dhw_recirc_piping</code></td><td>—</td><td>Returns a list of all the DHW recirculation-piping in the collection.</td></tr><tr><td><code>dhw_recirc_piping_segments_by_diam</code></td><td>—</td><td>Returns a list of the DHW recirculation-piping segments, grouped by diameter.</td></tr><tr><td><code>dhw_recirc_total_length_m</code></td><td>—</td><td>—</td></tr><tr><td><code>dhw_recirc_weighted_heat_loss_coeff</code></td><td>—</td><td>Return a length-weighted average pipe heat-loss coefficient.</td></tr><tr><td><code>dhw_distribution_total_length_m</code></td><td>—</td><td>—</td></tr><tr><td><code>dhw_distribution_weighted_diameter_mm</code></td><td>—</td><td>Return a length-weighted average diameter for the trunk/branch/twig piping.</td></tr><tr><td><code>vent_ducting</code></td><td>—</td><td>Returns a list of all the Vent. Ducting in the collection.</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>devices</code></td><td>—</td><td>Returns a list of the ‘devices’ in the collection.</td></tr><tr><td><code>ventilation_devices</code></td><td>—</td><td>Returns a list of the ‘Ventilation’ devices in the collection.</td></tr><tr><td><code>space_heating_devices</code></td><td>—</td><td>Returns a list of the ‘Space Heating’ devices in the collection.</td></tr><tr><td><code>heat_pump_devices</code></td><td>—</td><td>Returns a list of all the Heat-Pump devices in the collection.</td></tr><tr><td><code>cooling_devices</code></td><td>—</td><td>Returns a list of all the Cooling devices (heat pumps) in the collection.</td></tr><tr><td><code>dhw_heating_devices</code></td><td>—</td><td>Returns a list of only the ‘DHW Heating’ devices (no tanks) in the collection.</td></tr><tr><td><code>dhw_tank_devices</code></td><td>—</td><td>Returns a list of only the ‘DHW Storage Tank’ devices (no heaters) in the collection.</td></tr><tr><td><code>dhw_distribution_trunks</code></td><td>—</td><td>All DHW trunk pipes, sorted by display name.</td></tr><tr><td><code>dhw_distribution_piping</code></td><td>—</td><td>Returns a list of ALL the DHW Piping from ALL Trunks, Branches, Twigs in the collection.</td></tr><tr><td><code>dhw_distribution_piping_segments</code></td><td>—</td><td>Returns a list of ALL the DHW Piping Segments from ALL Trunks, Branches, Twigs in the collection.</td></tr><tr><td><code>dhw_distribution_piping_segments_by_diam</code></td><td>—</td><td>Returns a list of the DHW branch-piping segments, grouped by diameter.</td></tr><tr><td><code>dhw_recirc_piping</code></td><td>—</td><td>Returns a list of all the DHW recirculation-piping in the collection.</td></tr><tr><td><code>dhw_recirc_piping_segments_by_diam</code></td><td>—</td><td>Returns a list of the DHW recirculation-piping segments, grouped by diameter.</td></tr><tr><td><code>dhw_recirc_total_length_m</code></td><td>—</td><td>Total length of all DHW recirculation piping (m).</td></tr><tr><td><code>dhw_recirc_weighted_heat_loss_coeff</code></td><td>—</td><td>Return a length-weighted average pipe heat-loss coefficient.</td></tr><tr><td><code>dhw_distribution_total_length_m</code></td><td>—</td><td>Total length of all DHW distribution piping segments (m).</td></tr><tr><td><code>dhw_distribution_weighted_diameter_mm</code></td><td>—</td><td>Return a length-weighted average diameter for the trunk/branch/twig piping.</td></tr><tr><td><code>vent_ducting</code></td><td>—</td><td>Returns a list of all the Vent. Ducting in the collection.</td></tr></tbody></table>
 <h3 id="methods-3">Methods</h3>
 <h4 id="device_in_collection_device_key-3">device_in_collection(_device_key)</h4>
 <p>Return True if the a Mech device with the matching key is already in the collection.</p>
@@ -735,7 +735,7 @@
 
 <table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_key</code></td><td>—</td><td>The key to use when storing the new mechanical device</td></tr><tr><td><code>_d</code></td><td>—</td><td>—</td></tr></tbody></table>
 <h4 id="add_distribution_piping_p">add_distribution_piping(_p)</h4>
-<p>Add a new DHW Trunc-Pipe to the System.</p>
+<p>Add a DHW trunk pipe to the system. All piping must follow Trunk > Branch > Fixture hierarchy.</p>
 
 
 
@@ -771,6 +771,7 @@
 
 <table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_p</code></td><td>—</td><td>—</td></tr></tbody></table>
 <h4 id="add_vent_ducting_d">add_vent_ducting(_d)</h4>
+<p>Add a ventilation duct element to the system.</p>
 
 
 

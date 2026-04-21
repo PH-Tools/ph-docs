@@ -67,11 +67,11 @@
         <ul class="children"><li><a class="" href="/phx/api/hbjson_to_wufi_xml/">hbjson_to_wufi_xml</a></li><li><a class="" href="/phx/api/hbjson_to_phpp/">hbjson_to_phpp</a></li><li><a class="" href="/phx/api/hbjson_to_ppp/">hbjson_to_ppp</a></li><li><a class="" href="/phx/api/hbjson_to_metr_json/">hbjson_to_metr_json</a></li></ul>
       </li></ul>
       </li></ul> </aside> <script type="module">document.querySelectorAll(".nav-tree .group > button").forEach(e=>{e.addEventListener("click",()=>{const t=e.parentElement.classList.toggle("is-open");e.setAttribute("aria-expanded",String(t))})});</script> <div> <header class="content-head"> <div class="content-head__crumb">  <span>API Reference</span> <span class="sep">&rsaquo;</span>  <span class="current">renewable_devices</span> </div> </header> <article class="article" data-pagefind-body data-pagefind-meta="library:PHX"> <h1 id="renewable_devices">renewable_devices</h1>
-<p>PHX Passive House Renewable Energy (PV) Device classes</p>
+<p>PHX renewable energy device classes (photovoltaic systems).</p>
 <p><strong>Source</strong>: <code>PHX/renewable_devices.py</code></p>
 <hr>
 <h2 id="phxdevicephotovoltaicparams">PhxDevicePhotovoltaicParams</h2>
-<p>PV System Parameters</p>
+<p>Performance parameters for a photovoltaic (PV) system.</p>
 <p><strong>Inherits from</strong>: <code>_base.PhxMechanicalDeviceParams</code></p>
 <h3 id="properties">Properties</h3>
 
@@ -132,7 +132,7 @@
 <table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>location_type</code></td><td>—</td><td>—</td></tr><tr><td><code>onsite_utilization_type</code></td><td>—</td><td>—</td></tr><tr><td><code>utilization_type</code></td><td>—</td><td>—</td></tr><tr><td><code>array_size</code></td><td>—</td><td>—</td></tr><tr><td><code>photovoltaic_renewable_energy</code></td><td>—</td><td>—</td></tr><tr><td><code>onsite_utilization_factor</code></td><td>—</td><td>—</td></tr><tr><td><code>auxiliary_energy</code></td><td>—</td><td>—</td></tr><tr><td><code>auxiliary_energy_DHW</code></td><td>—</td><td>—</td></tr><tr><td><code>in_conditioned_space</code></td><td>—</td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phxdevicephotovoltaic">PhxDevicePhotovoltaic</h2>
-<p>PV Panel Systems.</p>
+<p>A photovoltaic panel system (PV array with inverter).</p>
 <p><strong>Inherits from</strong>: <code>_base.PhxMechanicalDevice</code></p>
 <hr> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
 (function () {

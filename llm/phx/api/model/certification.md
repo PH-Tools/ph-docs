@@ -8,19 +8,19 @@ PHX Passive House Certification Classes
 
 ## PhxSetpoints
 
-No description available.
+Indoor temperature setpoints for heating and cooling seasons.
 
 ---
 
 ## PhxSummerVentilation
 
-No description available.
+Summer ventilation strategy parameters for overheating prevention.
 
 ---
 
 ## PhxPhBuildingData
 
-No description available.
+General building-level data used by both PHI and Phius certification paths.
 
 ### Properties
 
@@ -32,38 +32,40 @@ No description available.
 
 #### add_foundation(_input)
 
+Append a foundation element to this building's foundation collection.
+
 | Arg | Type | Description |
 |-----|------|-------------|
-| `_input` | — | — |
+| `_input` | — | The foundation to add. None values are ignored. |
 
 ---
 
 ## PhxPhiusCertificationCriteria
 
-No description available.
+Phius certification performance target thresholds.
 
 ---
 
 ## PhxPhiusCertificationSettings
 
-No description available.
+Phius certification program and building classification settings.
 
 ---
 
 ## PhxPhiusCertification
 
-No description available.
+Top-level container for all Phius certification data.
 
 ---
 
 ## PhxPhiCertificationSettings
 
-No description available.
+PHI (Passive House Institute) certification program settings for PHPP 9+.
 
 ---
 
 ## PhxPhiCertification
 
-No description available.
+Top-level container for PHI (Passive House Institute) certification data.
 
 ---

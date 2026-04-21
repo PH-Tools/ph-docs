@@ -8,7 +8,7 @@ PHX Lighting Utilization Schedule.
 
 ## PhxScheduleLighting
 
-A PHX Schedule for the Lighting.
+Lighting utilization schedule defining daily operating hours and annual utilization.
 
 ### Properties
 
@@ -18,14 +18,16 @@ A PHX Schedule for the Lighting.
 | `daily_operating_hours` | — | Return the total Daily Operating Hours (end-hour - start-hour). |
 | `annual_operating_hours` | — | Return the total Annual Operating Hours (daily-hours * annual-util-days). |
 | `unique_key` | — | Return a key unique to this 'type' (collection of values) of pattern |
-| `full_load_lighting_hours` | — | — |
+| `full_load_lighting_hours` | — | Return the annual full-load lighting hours, clamped to 0-8760. |
 
 ### Methods
 
 #### *classmethod* from_annual_operating_hours(_annual_operating_hours)
 
+Create a lighting schedule from total annual operating hours.
+
 | Arg | Type | Description |
 |-----|------|-------------|
-| `_annual_operating_hours` | — | — |
+| `_annual_operating_hours` | — | Total lighting operating hours per year. |
 
 ---

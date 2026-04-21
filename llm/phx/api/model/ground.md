@@ -1,6 +1,6 @@
 # ground
 
-PHX Foundation Class
+PHX Foundation Classes for below-grade and ground-contact thermal boundary conditions.
 
 **Source**: `PHX/ground.py`
 
@@ -8,19 +8,19 @@ PHX Foundation Class
 
 ## PhxFoundation
 
-No description available.
+Base class for all PHX foundation / ground-contact boundary conditions.
 
 ### Properties
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `foundation_type_num` | — | — |
+| `foundation_type_num` | — | The FoundationType enum for this foundation element. |
 
 ---
 
 ## PhxHeatedBasement
 
-No description available.
+A heated (conditioned) basement foundation within the thermal envelope.
 
 **Inherits from**: `PhxFoundation`
 
@@ -28,7 +28,7 @@ No description available.
 
 ## PhxUnHeatedBasement
 
-No description available.
+An unheated (unconditioned) basement below the thermal envelope.
 
 **Inherits from**: `PhxFoundation`
 
@@ -36,7 +36,7 @@ No description available.
 
 ## PhxSlabOnGrade
 
-No description available.
+A slab-on-grade foundation in direct contact with the soil.
 
 **Inherits from**: `PhxFoundation`
 
@@ -44,13 +44,13 @@ No description available.
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `perim_insulation_position` | — | — |
+| `perim_insulation_position` | — | The PerimeterInsulationPosition enum (horizontal or vertical). |
 
 ---
 
 ## PhxVentedCrawlspace
 
-No description available.
+A vented crawlspace foundation beneath the thermal envelope.
 
 **Inherits from**: `PhxFoundation`
 

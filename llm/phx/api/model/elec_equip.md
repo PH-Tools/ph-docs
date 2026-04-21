@@ -1,6 +1,6 @@
 # elec_equip
 
-PHX Passive House Electrical Equipment (Appliances) Classes
+PHX Passive House electrical equipment (appliance) classes for energy demand and IHG calculations.
 
 **Source**: `PHX/elec_equip.py`
 
@@ -8,15 +8,15 @@ PHX Passive House Electrical Equipment (Appliances) Classes
 
 ## PhxElectricalDevice
 
-Base class for PHX Electrical Equipment (dishwashers, laundry, lighting, etc.)
+Base class for all PHX electrical equipment (dishwashers, laundry, lighting, etc.).
 
 ### Properties
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `reference_quantity` | — | — |
-| `reference_energy_norm` | — | — |
-| `quantity` | — | — |
+| `reference_quantity` | — | The reference quantity used for energy-demand normalization. |
+| `reference_energy_norm` | — | The reference energy normalization standard for the device. |
+| `quantity` | — | The number of this device in the zone. |
 
 ### Methods
 
@@ -32,7 +32,7 @@ To allow for subclass custom behavior. Cannot use @property since
 
 ## PhxDeviceDishwasher
 
-No description available.
+A kitchen dishwasher appliance.
 
 **Inherits from**: `PhxElectricalDevice`
 
@@ -48,14 +48,14 @@ No description available.
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `water_connection` | — | — |
-| `capacity_type` | — | — |
+| `water_connection` | — | The DHW connection type for the dishwasher. |
+| `capacity_type` | — | The capacity type classification for the dishwasher. |
 
 ---
 
 ## PhxDeviceClothesWasher
 
-No description available.
+A clothes washing machine appliance.
 
 **Inherits from**: `PhxElectricalDevice`
 
@@ -71,13 +71,13 @@ No description available.
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `water_connection` | — | — |
+| `water_connection` | — | The DHW connection type for the clothes washer. |
 
 ---
 
 ## PhxDeviceClothesDryer
 
-No description available.
+A clothes dryer appliance (electric or gas).
 
 **Inherits from**: `PhxElectricalDevice`
 
@@ -93,14 +93,14 @@ No description available.
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `dryer_type` | — | — |
-| `field_utilization_factor_type` | — | — |
+| `dryer_type` | — | The dryer type classification (e.g., 4 = condensation dryer). |
+| `field_utilization_factor_type` | — | The field utilization factor type (e.g., 1 = timer). |
 
 ---
 
 ## PhxDeviceRefrigerator
 
-No description available.
+A standalone kitchen refrigerator (no freezer compartment).
 
 **Inherits from**: `PhxElectricalDevice`
 
@@ -115,7 +115,7 @@ No description available.
 
 ## PhxDeviceFreezer
 
-No description available.
+A standalone kitchen freezer.
 
 **Inherits from**: `PhxElectricalDevice`
 
@@ -130,7 +130,7 @@ No description available.
 
 ## PhxDeviceFridgeFreezer
 
-No description available.
+A combined refrigerator/freezer unit.
 
 **Inherits from**: `PhxElectricalDevice`
 
@@ -145,7 +145,7 @@ No description available.
 
 ## PhxDeviceCooktop
 
-No description available.
+A kitchen cooktop appliance (electric or gas).
 
 **Inherits from**: `PhxElectricalDevice`
 
@@ -161,13 +161,13 @@ No description available.
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `cooktop_type` | — | — |
+| `cooktop_type` | — | The cooktop fuel type (e.g., 1 = electric). |
 
 ---
 
 ## PhxDeviceMEL
 
-No description available.
+Miscellaneous electrical loads (MEL) per the Phius protocol.
 
 **Inherits from**: `PhxElectricalDevice`
 
@@ -182,7 +182,7 @@ No description available.
 
 ## PhxDeviceLightingInterior
 
-No description available.
+Interior lighting per the Phius protocol.
 
 **Inherits from**: `PhxElectricalDevice`
 
@@ -197,7 +197,7 @@ No description available.
 
 ## PhxDeviceLightingExterior
 
-No description available.
+Exterior lighting per the Phius protocol (outside the thermal envelope).
 
 **Inherits from**: `PhxElectricalDevice`
 
@@ -213,7 +213,7 @@ No description available.
 
 ## PhxDeviceLightingGarage
 
-No description available.
+Garage lighting per the Phius protocol (outside the thermal envelope).
 
 **Inherits from**: `PhxElectricalDevice`
 
@@ -229,7 +229,7 @@ No description available.
 
 ## PhxDeviceCustomElec
 
-No description available.
+A user-defined custom electrical device.
 
 **Inherits from**: `PhxElectricalDevice`
 
@@ -244,7 +244,7 @@ No description available.
 
 ## PhxDeviceCustomLighting
 
-Override so that WUFI output quantity shows up as 1
+A user-defined custom lighting device.
 
 **Inherits from**: `PhxElectricalDevice`
 
@@ -265,7 +265,7 @@ Override so that WUFI output quantity shows up as 1
 
 ## PhxDeviceCustomMEL
 
-Override so that WUFI output quantity shows up as 1
+A user-defined custom miscellaneous electrical load (MEL).
 
 **Inherits from**: `PhxElectricalDevice`
 
@@ -286,7 +286,7 @@ Override so that WUFI output quantity shows up as 1
 
 ## PhxElevatorHydraulic
 
-No description available.
+A hydraulic elevator, modeled as a custom electrical device for energy demand.
 
 **Inherits from**: `PhxElectricalDevice`
 
@@ -307,7 +307,7 @@ No description available.
 
 ## PhxElevatorGearedTraction
 
-No description available.
+A geared-traction elevator, modeled as a custom electrical device for energy demand.
 
 **Inherits from**: `PhxElectricalDevice`
 
@@ -328,7 +328,7 @@ No description available.
 
 ## PhxElevatorGearlessTraction
 
-No description available.
+A gearless-traction elevator, modeled as a custom electrical device for energy demand.
 
 **Inherits from**: `PhxElectricalDevice`
 
@@ -349,7 +349,7 @@ No description available.
 
 ## PhxElectricDeviceCollection
 
-A collection of all the PhxElectricalDevices (laundry, lighting, etc.) in the Zone
+A collection of all the PhxElectricalDevices (laundry, lighting, etc.) in a Zone.
 
 ### Properties
 
@@ -369,9 +369,11 @@ Returns True if the key supplied is in the existing device collection.
 
 #### get_equipment_by_key(_key)
 
+Return the device matching the given key, or None if not found.
+
 | Arg | Type | Description |
 |-----|------|-------------|
-| `_key` | — | — |
+| `_key` | — | The lookup key for the device. |
 
 #### add_new_device(_key, _device)
 

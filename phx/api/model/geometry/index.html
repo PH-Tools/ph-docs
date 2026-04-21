@@ -71,7 +71,7 @@
 <p><strong>Source</strong>: <code>PHX/geometry.py</code></p>
 <hr>
 <h2 id="polygonedgeerror">PolygonEdgeError</h2>
-<p>No description available.</p>
+<p>Raised when a PhxPolygonRectangular edge cannot be constructed due to missing vertices.</p>
 <p><strong>Inherits from</strong>: <code>Exception</code></p>
 <h3 id="attributes">Attributes</h3>
 
@@ -92,7 +92,7 @@
 <table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>msg</code></td><td>—</td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phxvertix2d">PhxVertix2D</h2>
-<p>A 2D vertix.</p>
+<p>A 2D vertex point used for planar geometry operations.</p>
 <h3 id="properties">Properties</h3>
 
 
@@ -112,6 +112,7 @@
 <table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>unique_key</code></td><td>—</td><td>Return a unique key (str) for the Vertex. Used for dicts, welding, etc</td></tr></tbody></table>
 <h3 id="methods">Methods</h3>
 <h4 id="is_equivalentother">is_equivalent(other)</h4>
+<p>Check coordinate equivalence with another vertex, ignoring ID.</p>
 
 
 
@@ -127,10 +128,10 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>other</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>other</code></td><td>—</td><td>The vertex to compare against.</td></tr></tbody></table>
 <hr>
 <h2 id="phxvertix">PhxVertix</h2>
-<p>No description available.</p>
+<p>A 3D vertex point used as the fundamental geometric primitive in PHX.</p>
 <h3 id="properties-1">Properties</h3>
 
 
@@ -150,6 +151,7 @@
 <table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>unique_key</code></td><td>—</td><td>Return a unique key (str) for the Vertex. Used for dicts, welding, etc</td></tr></tbody></table>
 <h3 id="methods-1">Methods</h3>
 <h4 id="is_equivalentother-1">is_equivalent(other)</h4>
+<p>Check coordinate equivalence with another vertex, ignoring ID.</p>
 
 
 
@@ -165,7 +167,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>other</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>other</code></td><td>—</td><td>The vertex to compare against.</td></tr></tbody></table>
 <h4 id="distance_toother">distance_to(other)</h4>
 <p>Return the distance between this vertex and another.</p>
 
@@ -186,7 +188,7 @@
 <table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>other</code></td><td>—</td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phxvector">PhxVector</h2>
-<p>No description available.</p>
+<p>A 3D vector used for normals, directions, and geometric operations.</p>
 <h3 id="methods-2">Methods</h3>
 <h4 id="classmethod-from_2_points_start_pt-_end_pt"><em>classmethod</em> from_2_points(_start_pt, _end_pt)</h4>
 <p>Return a new PhxVector based on a start and end point.</p>
@@ -212,6 +214,7 @@
 
 <table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_start_pt</code></td><td>—</td><td>—</td></tr><tr><td><code>_end_pt</code></td><td>—</td><td>—</td></tr></tbody></table>
 <h4 id="scale_factor">scale(_factor)</h4>
+<p>Scale this vector in-place by a scalar factor.</p>
 
 
 
@@ -227,7 +230,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_factor</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_factor</code></td><td>—</td><td>The scalar multiplier.</td></tr></tbody></table>
 <h4 id="dotother">dot(other)</h4>
 <p>Get the dot product of this vector with another.</p>
 
@@ -247,7 +250,7 @@
 
 <table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>other</code></td><td>—</td><td>—</td></tr></tbody></table>
 <h4 id="rotate_around_axis-_angle_deg">rotate_around(_axis, _angle_deg)</h4>
-<p>Rotate this vector around an axis by an angle in radians.</p>
+<p>Rotate this vector around an axis by an angle in degrees using Rodrigues’ rotation formula.</p>
 
 
 
@@ -268,12 +271,12 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_axis</code></td><td>—</td><td>—</td></tr><tr><td><code>_angle_deg</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_axis</code></td><td>—</td><td>The unit axis of rotation.</td></tr><tr><td><code>_angle_deg</code></td><td>—</td><td>The rotation angle in degrees.</td></tr></tbody></table>
 <h4 id="unitize">unitize()</h4>
 <p>Convert this vector to a unit vector.</p>
 <hr>
 <h2 id="phxplane">PhxPlane</h2>
-<p>No description available.</p>
+<p>A 3D plane defined by an origin point, a normal vector, and local X/Y axes.</p>
 <h3 id="properties-2">Properties</h3>
 
 
@@ -290,7 +293,7 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal</code></td><td>—</td><td>The plane’s surface normal vector.</td></tr></tbody></table>
 <h3 id="methods-3">Methods</h3>
 <h4 id="xyz_to_xypoint">xyz_to_xy(point)</h4>
 <p>Get a Point2D in the coordinate system of this plane from a Point3D.</p>
@@ -330,7 +333,7 @@
 <table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>point</code></td><td>—</td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phxlinesegment">PhxLineSegment</h2>
-<p>No description available.</p>
+<p>A 3D line segment defined by two endpoint vertices.</p>
 <h3 id="properties-3">Properties</h3>
 
 
@@ -347,7 +350,7 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>length</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>length</code></td><td>—</td><td>The Euclidean length of the segment.</td></tr></tbody></table>
 <h3 id="methods-4">Methods</h3>
 <h4 id="classmethod-from_length_length"><em>classmethod</em> from_length(_length)</h4>
 <p>Create a PhxLineSegment from a length value along the X-axis.</p>
@@ -369,7 +372,7 @@
 <table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_length</code></td><td>—</td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phxpolygon">PhxPolygon</h2>
-<p>A Polygon surface defined by 3 or more vertices.</p>
+<p>A 3D polygon surface defined by 3 or more coplanar vertices.</p>
 <h3 id="properties-4">Properties</h3>
 
 
@@ -426,9 +429,10 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>area</code></td><td>—</td><td>—</td></tr><tr><td><code>center</code></td><td>—</td><td>—</td></tr><tr><td><code>display_name</code></td><td>—</td><td>—</td></tr><tr><td><code>vertices</code></td><td>—</td><td>—</td></tr><tr><td><code>vertices_id_numbers</code></td><td>—</td><td>—</td></tr><tr><td><code>angle_from_horizontal</code></td><td>—</td><td>Return the surface normal’s angle (degrees) off horizontal.</td></tr><tr><td><code>is_horizontal</code></td><td>—</td><td>—</td></tr><tr><td><code>is_vertical</code></td><td>—</td><td>—</td></tr><tr><td><code>cardinal_orientation_angle</code></td><td>—</td><td>Calculate polygon normal’s horizontal angle off a reference. By default, the</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>area</code></td><td>—</td><td>The polygon area, lazily computed from vertices using the shoelace formula.</td></tr><tr><td><code>center</code></td><td>—</td><td>The polygon centroid, lazily computed as the average of all vertex positions.</td></tr><tr><td><code>display_name</code></td><td>—</td><td>The polygon’s display name, falling back to its numeric ID if unset.</td></tr><tr><td><code>vertices</code></td><td>—</td><td>The ordered list of vertices defining this polygon’s boundary.</td></tr><tr><td><code>vertices_id_numbers</code></td><td>—</td><td>The ID numbers of all vertices in order.</td></tr><tr><td><code>angle_from_horizontal</code></td><td>—</td><td>Return the surface normal’s angle (degrees) off horizontal.</td></tr><tr><td><code>is_horizontal</code></td><td>—</td><td>True if the polygon faces up or down (normal within tolerance of vertical).</td></tr><tr><td><code>is_vertical</code></td><td>—</td><td>True if the polygon’s normal is perpendicular to the vertical axis.</td></tr><tr><td><code>cardinal_orientation_angle</code></td><td>—</td><td>Calculate polygon normal’s horizontal angle off a reference. By default, the</td></tr></tbody></table>
 <h3 id="methods-5">Methods</h3>
 <h4 id="add_vertix_phx_vertix">add_vertix(_phx_vertix)</h4>
+<p>Append a vertex to this polygon’s boundary.</p>
 
 
 
@@ -444,8 +448,9 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_phx_vertix</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_phx_vertix</code></td><td>—</td><td>The vertex to add.</td></tr></tbody></table>
 <h4 id="add_child_poly_id_child_ids">add_child_poly_id(_child_ids)</h4>
+<p>Register one or more child polygon IDs (e.g., window openings within a wall polygon).</p>
 
 
 
@@ -461,7 +466,7 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_child_ids</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_child_ids</code></td><td>—</td><td>A single ID or collection of child polygon IDs.</td></tr></tbody></table>
 <h4 id="set_vertex_phx_vertix-index">set_vertex(_phx_vertix, index)</h4>
 <p>Set a vertex at a specific index.</p>
 
@@ -490,7 +495,7 @@
 <h4 id="calculate_center">calculate_center()</h4>
 <p>Find the center of the polygon.</p>
 <h4 id="scale_scale_factor">scale(_scale_factor)</h4>
-<p>Scale the polygon by the given factor.</p>
+<p>Scale the polygon in-place about its centroid by the given factor.</p>
 
 
 
@@ -506,12 +511,12 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_scale_factor</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_scale_factor</code></td><td>—</td><td>The scale multiplier. Default: 1.0.</td></tr></tbody></table>
 <h4 id="perimeter_length">perimeter_length()</h4>
 <p>Calculate the total perimeter length of the polygon.</p>
 <hr>
 <h2 id="phxpolygonrectangular">PhxPolygonRectangular</h2>
-<p>A Polygon with additional geometric attributes for rectangular surfaces.</p>
+<p>A rectangular polygon with named corner vertices and edge accessors.</p>
 <p><strong>Inherits from</strong>: <code>PhxPolygon</code></p>
 <h3 id="properties-5">Properties</h3>
 
@@ -564,7 +569,7 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>edge_top</code></td><td>—</td><td>Returns the PhxLineSegment representing the ‘Top’ side of the Polygon (viewed from outside).</td></tr><tr><td><code>edge_left</code></td><td>—</td><td>Returns the PhxLineSegment representing the ‘Left’ side of the Polygon (viewed from outside).</td></tr><tr><td><code>edge_bottom</code></td><td>—</td><td>Returns the PhxLineSegment representing the ‘Bottom’ side of the Polygon (viewed from outside).</td></tr><tr><td><code>edge_right</code></td><td>—</td><td>Returns the PhxLineSegment representing the ‘Right’ side of the Polygon (viewed from outside).</td></tr><tr><td><code>width</code></td><td>—</td><td>—</td></tr><tr><td><code>height</code></td><td>—</td><td>—</td></tr><tr><td><code>vertices</code></td><td>—</td><td>Return a List of the PhxPolygonRectangle Vertices (counter-clockwise from upper-left).</td></tr><tr><td><code>area</code></td><td>—</td><td>Returns the area of the rectangular surface.</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>edge_top</code></td><td>—</td><td>Returns the PhxLineSegment representing the ‘Top’ side of the Polygon (viewed from outside).</td></tr><tr><td><code>edge_left</code></td><td>—</td><td>Returns the PhxLineSegment representing the ‘Left’ side of the Polygon (viewed from outside).</td></tr><tr><td><code>edge_bottom</code></td><td>—</td><td>Returns the PhxLineSegment representing the ‘Bottom’ side of the Polygon (viewed from outside).</td></tr><tr><td><code>edge_right</code></td><td>—</td><td>Returns the PhxLineSegment representing the ‘Right’ side of the Polygon (viewed from outside).</td></tr><tr><td><code>width</code></td><td>—</td><td>The width of the rectangular polygon (top edge length).</td></tr><tr><td><code>height</code></td><td>—</td><td>The height of the rectangular polygon (left edge length).</td></tr><tr><td><code>vertices</code></td><td>—</td><td>Return a List of the PhxPolygonRectangle Vertices (counter-clockwise from upper-left).</td></tr><tr><td><code>area</code></td><td>—</td><td>Returns the area of the rectangular surface.</td></tr></tbody></table>
 <h3 id="methods-6">Methods</h3>
 <h4 id="add_vertix_phx_vertix-1">add_vertix(_phx_vertix)</h4>
 
@@ -610,7 +615,7 @@
 <p>Calculate the total perimeter length of the polygon.</p>
 <hr>
 <h2 id="phxgraphics3d">PhxGraphics3D</h2>
-<p>No description available.</p>
+<p>A collection of 3D polygons representing the geometry of a building component.</p>
 <h3 id="properties-6">Properties</h3>
 
 

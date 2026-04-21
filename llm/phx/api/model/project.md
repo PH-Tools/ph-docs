@@ -8,13 +8,13 @@ PHX Project Classes
 
 ## WufiPlugin
 
-No description available.
+WUFI-Passive plugin configuration for a variant.
 
 ---
 
 ## PhxVariant
 
-No description available.
+A single design variant within a PHX project.
 
 ### Properties
 
@@ -113,25 +113,25 @@ Returns a Mechanical Device from the collections which has a matching id-num.
 
 ## ProjectData_Agent
 
-No description available.
+Contact information for a project stakeholder (customer, owner, designer, etc.).
 
 ---
 
 ## PhxProjectDate
 
-No description available.
+Timestamp for a PHX project, defaulting to the current date and time.
 
 ---
 
 ## PhxProjectData
 
-No description available.
+Project-level metadata including stakeholder contacts and dates.
 
 ---
 
 ## PhxProject
 
-No description available.
+Top-level PHX project container.
 
 ### Properties
 

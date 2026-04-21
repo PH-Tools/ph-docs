@@ -1,6 +1,6 @@
 # cooling_params
 
-PHX Mechanical Cooling Devices and Parameters.
+PHX cooling parameter classes for heat pump cooling modes.
 
 **Source**: `PHX/cooling_params.py`
 
@@ -8,7 +8,7 @@ PHX Mechanical Cooling Devices and Parameters.
 
 ## PhxCoolingVentilationParams
 
-No description available.
+Parameters for cooling via the ventilation supply air (cooling coil in AHU).
 
 **Inherits from**: `_base.PhxMechanicalDeviceParams`
 
@@ -16,13 +16,13 @@ No description available.
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `total_system_perf_ratio` | — | — |
+| `total_system_perf_ratio` | — | Reciprocal of annual COP (kW-input / kW-cooling). |
 
 ---
 
 ## PhxCoolingRecirculationParams
 
-No description available.
+Parameters for cooling via recirculated air (fan coil, mini-split, etc.).
 
 **Inherits from**: `_base.PhxMechanicalDeviceParams`
 
@@ -30,13 +30,13 @@ No description available.
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `total_system_perf_ratio` | — | — |
+| `total_system_perf_ratio` | — | Reciprocal of annual COP (kW-input / kW-cooling). |
 
 ---
 
 ## PhxCoolingDehumidificationParams
 
-No description available.
+Parameters for active dehumidification cooling.
 
 **Inherits from**: `_base.PhxMechanicalDeviceParams`
 
@@ -44,13 +44,13 @@ No description available.
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `total_system_perf_ratio` | — | — |
+| `total_system_perf_ratio` | — | Reciprocal of annual COP (kW-input / kW-cooling). |
 
 ---
 
 ## PhxCoolingPanelParams
 
-No description available.
+Parameters for radiant cooling panel distribution.
 
 **Inherits from**: `_base.PhxMechanicalDeviceParams`
 
@@ -58,12 +58,12 @@ No description available.
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `total_system_perf_ratio` | — | — |
+| `total_system_perf_ratio` | — | Reciprocal of annual COP (kW-input / kW-cooling). |
 
 ---
 
 ## PhxCoolingParams
 
-No description available.
+Collection of cooling parameters across all four distribution strategies.
 
 ---

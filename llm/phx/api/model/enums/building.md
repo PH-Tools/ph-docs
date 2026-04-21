@@ -8,7 +8,7 @@ Valid 'types' for Building Elements.
 
 ## ComponentFaceType
 
-No description available.
+Classification of building component face orientations.
 
 **Inherits from**: `Enum`
 
@@ -16,7 +16,7 @@ No description available.
 
 ## ComponentExposureExterior
 
-No description available.
+Exterior exposure condition for a building component.
 
 **Inherits from**: `Enum`
 
@@ -24,7 +24,7 @@ No description available.
 
 ## ComponentFaceOpacity
 
-No description available.
+Opacity classification of a building component face.
 
 **Inherits from**: `Enum`
 
@@ -32,7 +32,7 @@ No description available.
 
 ## ComponentColor
 
-No description available.
+Display color assignment for building components in WUFI visualization.
 
 **Inherits from**: `Enum`
 
@@ -40,7 +40,7 @@ No description available.
 
 ## ThermalBridgeType
 
-No description available.
+Classification of thermal bridge boundary conditions.
 
 **Inherits from**: `Enum`
 
@@ -48,7 +48,7 @@ No description available.
 
 ## SpecificHeatCapacityType
 
-No description available.
+Thermal mass classification for a building zone.
 
 **Inherits from**: `Enum`
 
@@ -56,7 +56,7 @@ No description available.
 
 ## SpecificHeatCapacityValueWhM2K
 
-No description available.
+Specific heat capacity values in Wh/m2K for standard construction types.
 
 **Inherits from**: `Enum`
 
@@ -64,7 +64,7 @@ No description available.
 
 ## WufiVolumeGrossMode
 
-No description available.
+Method for determining gross building volume in WUFI.
 
 **Inherits from**: `Enum`
 
@@ -72,7 +72,7 @@ No description available.
 
 ## WufiVolumeNetMode
 
-No description available.
+Method for determining net interior volume in WUFI.
 
 **Inherits from**: `Enum`
 
@@ -80,7 +80,7 @@ No description available.
 
 ## WufiWeightedFloorAreaMode
 
-No description available.
+Method for determining weighted floor area (TFA/iCFA) in WUFI.
 
 **Inherits from**: `Enum`
 
@@ -88,7 +88,7 @@ No description available.
 
 ## ZoneType
 
-No description available.
+Classification of thermal zones in the energy model.
 
 **Inherits from**: `Enum`
 
@@ -96,7 +96,7 @@ No description available.
 
 ## AttachedZoneType
 
-No description available.
+Specific type of an attached (non-simulated) thermal zone.
 
 **Inherits from**: `Enum`
 
@@ -104,7 +104,7 @@ No description available.
 
 ## WindExposureType
 
-No description available.
+Wind exposure classification for infiltration calculations.
 
 **Inherits from**: `Enum`
 

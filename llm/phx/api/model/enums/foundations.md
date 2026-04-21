@@ -8,7 +8,7 @@ Valid 'types' for Foundation Options and Types
 
 ## CalculationSetting
 
-No description available.
+Foundation heat loss calculation setting.
 
 **Inherits from**: `Enum`
 
@@ -16,7 +16,7 @@ No description available.
 
 ## FoundationType
 
-No description available.
+Classification of foundation types for ground heat loss calculations.
 
 **Inherits from**: `Enum`
 
@@ -24,7 +24,7 @@ No description available.
 
 ## PerimeterInsulationPosition
 
-No description available.
+Orientation of perimeter insulation at the foundation edge.
 
 **Inherits from**: `Enum`
 

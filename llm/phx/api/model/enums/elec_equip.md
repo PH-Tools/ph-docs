@@ -8,7 +8,7 @@ Valid 'types' for Building Elements.
 
 ## ElectricEquipmentType
 
-No description available.
+Classification of electrical equipment and appliance types.
 
 **Inherits from**: `Enum`
 

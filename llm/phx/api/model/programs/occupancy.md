@@ -8,6 +8,6 @@ PHX Program Class for organizing Occupancy Data (People)
 
 ## PhxProgramOccupancy
 
-A PHX Program for the Occupancy (People) with a load and schedule.
+Occupancy program pairing a people-density load with a utilization schedule.
 
 ---

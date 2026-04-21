@@ -8,7 +8,7 @@ PHX Occupancy (People) Utilization Schedule.
 
 ## PhxScheduleOccupancy
 
-A PHX Schedule for the Occupancy (People).
+Occupancy utilization schedule defining daily operating hours and annual utilization.
 
 ### Properties
 

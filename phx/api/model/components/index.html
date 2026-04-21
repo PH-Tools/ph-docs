@@ -71,7 +71,7 @@
 <p><strong>Source</strong>: <code>PHX/components.py</code></p>
 <hr>
 <h2 id="phxcomponentbase">PhxComponentBase</h2>
-<p>Base class with id_num counter for Opaque and Aperture Components</p>
+<p>Base class with auto-incrementing ID counter for all PHX building components.</p>
 <h3 id="properties">Properties</h3>
 
 
@@ -91,7 +91,7 @@
 <table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>id_num</code></td><td>—</td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phxcomponentopaque">PhxComponentOpaque</h2>
-<p>Opaque surface components (wall, roof, floor).</p>
+<p>An opaque building-envelope surface (wall, roof, or floor).</p>
 <p><strong>Inherits from</strong>: <code>PhxComponentBase</code></p>
 <h3 id="properties-1">Properties</h3>
 
@@ -159,7 +159,7 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>u_value</code></td><td>—</td><td>—</td></tr><tr><td><code>polygon_ids</code></td><td>—</td><td>Return a Set of all the Polygon-id numbers found in the Component’s Polygon group.</td></tr><tr><td><code>unique_key</code></td><td>—</td><td>Returns a unique text key,. Useful for sorting / grouping / merging components.</td></tr><tr><td><code>is_shade</code></td><td>—</td><td>—</td></tr><tr><td><code>is_above_grade_wall</code></td><td>—</td><td>—</td></tr><tr><td><code>is_below_grade_wall</code></td><td>—</td><td>—</td></tr><tr><td><code>is_above_grade_floor</code></td><td>—</td><td>—</td></tr><tr><td><code>is_below_grade_floor</code></td><td>—</td><td>—</td></tr><tr><td><code>is_roof</code></td><td>—</td><td>—</td></tr><tr><td><code>aperture_ids</code></td><td>—</td><td>Return a Set of all the Aperture-id numbers found in the Component’s Aperture group.</td></tr><tr><td><code>aperture_elements</code></td><td>—</td><td>Return a list of all the Aperture Elements found in the Component’s Aperture group.</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>u_value</code></td><td>—</td><td>Whole-assembly U-value (W/m2K) from the assigned opaque construction.</td></tr><tr><td><code>polygon_ids</code></td><td>—</td><td>Return a Set of all the Polygon-id numbers found in the Component’s Polygon group.</td></tr><tr><td><code>unique_key</code></td><td>—</td><td>Returns a unique text key,. Useful for sorting / grouping / merging components.</td></tr><tr><td><code>is_shade</code></td><td>—</td><td>True if this component is an opaque shading element (no interior zone attachment).</td></tr><tr><td><code>is_above_grade_wall</code></td><td>—</td><td>True if this component is a wall exposed to exterior air (above grade).</td></tr><tr><td><code>is_below_grade_wall</code></td><td>—</td><td>True if this component is a wall exposed to ground (below grade).</td></tr><tr><td><code>is_above_grade_floor</code></td><td>—</td><td>True if this component is a floor exposed to exterior air (e.g. cantilever).</td></tr><tr><td><code>is_below_grade_floor</code></td><td>—</td><td>True if this component is a floor exposed to ground (slab-on-grade or basement).</td></tr><tr><td><code>is_roof</code></td><td>—</td><td>True if this component is a roof or ceiling surface.</td></tr><tr><td><code>aperture_ids</code></td><td>—</td><td>Return a Set of all the Aperture-id numbers found in the Component’s Aperture group.</td></tr><tr><td><code>aperture_elements</code></td><td>—</td><td>Return a list of all the Aperture Elements found in the Component’s Aperture group.</td></tr></tbody></table>
 <h3 id="methods">Methods</h3>
 <h4 id="add_polygons_input">add_polygons(_input)</h4>
 <p>Adds a new Polygon or Polygons to the Component’s collection.</p>
@@ -277,11 +277,11 @@
 <p>Return the total net area of the Component (gross - apertures).</p>
 <hr>
 <h2 id="phxapertureshadingdimensions">PhxApertureShadingDimensions</h2>
-<p>PHPP old-style shading dimensions data.</p>
+<p>PHPP old-style shading dimensions for an aperture element.</p>
 <p><strong>Inherits from</strong>: <code>PhxComponentBase</code></p>
 <hr>
 <h2 id="phxapertureelement">PhxApertureElement</h2>
-<p>A single sash / element of an Aperture Component.</p>
+<p>A single sash or glazing unit within an aperture component.</p>
 <p><strong>Inherits from</strong>: <code>PhxComponentBase</code></p>
 <h3 id="attributes">Attributes</h3>
 
@@ -299,7 +299,7 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>shading_dimensions</code></td><td><code>PhxApertureShadingDimensions</code></td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>shading_dimensions</code></td><td><code>PhxApertureShadingDimensions</code></td><td>PHPP-style horizon, reveal, and overhang dimensions. Default: new PhxApertureShadingDimensions().</td></tr></tbody></table>
 <h3 id="properties-2">Properties</h3>
 
 
@@ -346,7 +346,7 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>area</code></td><td>—</td><td>Return the area of the element’s polygon.</td></tr><tr><td><code>width</code></td><td>—</td><td>—</td></tr><tr><td><code>height</code></td><td>—</td><td>—</td></tr><tr><td><code>frame_area</code></td><td>—</td><td>Return the area of the frame in the Aperture Element.</td></tr><tr><td><code>frame_factor</code></td><td>—</td><td>Return the % of the Aperture Element which is frame (as opposed to glazing).</td></tr><tr><td><code>glazing_area</code></td><td>—</td><td>Return the area of the glazing in the Aperture Element.</td></tr><tr><td><code>glazing_factor</code></td><td>—</td><td>Return the % of the Aperture Element which is glazing (as opposed to frame).</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>area</code></td><td>—</td><td>Return the area of the element’s polygon.</td></tr><tr><td><code>width</code></td><td>—</td><td>Width of the element’s polygon, or perimeter/4 as fallback for non-rectangular shapes.</td></tr><tr><td><code>height</code></td><td>—</td><td>Height of the element’s polygon, or perimeter/4 as fallback for non-rectangular shapes.</td></tr><tr><td><code>frame_area</code></td><td>—</td><td>Return the area of the frame in the Aperture Element.</td></tr><tr><td><code>frame_factor</code></td><td>—</td><td>Return the % of the Aperture Element which is frame (as opposed to glazing).</td></tr><tr><td><code>glazing_area</code></td><td>—</td><td>Return the area of the glazing in the Aperture Element.</td></tr><tr><td><code>glazing_factor</code></td><td>—</td><td>Return the % of the Aperture Element which is glazing (as opposed to frame).</td></tr></tbody></table>
 <h3 id="methods-1">Methods</h3>
 <h4 id="is_equivalentother">is_equivalent(other)</h4>
 <p>Return True if the two elements are equivalent.</p>
@@ -404,7 +404,7 @@
 <table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_scale_factor</code></td><td>—</td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phxcomponentaperture">PhxComponentAperture</h2>
-<p>An Aperture (window, door) component with one or more ‘element’ (sash).</p>
+<p>A transparent building-envelope component (window or door) with one or more sash elements.</p>
 <p><strong>Inherits from</strong>: <code>PhxComponentBase</code></p>
 <h3 id="attributes-1">Attributes</h3>
 
@@ -422,7 +422,7 @@
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>host</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>host</code></td><td>—</td><td>The parent opaque component this aperture is installed in.</td></tr></tbody></table>
 <h3 id="properties-3">Properties</h3>
 
 
@@ -479,7 +479,7 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>install_depth</code></td><td>—</td><td>Return the installation depth of the Aperture.</td></tr><tr><td><code>average_shading_d_reveal</code></td><td>—</td><td>The average shading ‘reveal’ distance of the Aperture’s Elements from the glass.</td></tr><tr><td><code>default_monthly_shading_correction_factor</code></td><td>—</td><td>Return the default monthly shading correction factor.</td></tr><tr><td><code>shade_type_id_num</code></td><td>—</td><td>Return the ID-Number of the Component Construction’s Shade-Type, or -1 if None.</td></tr><tr><td><code>window_type_id_num</code></td><td>—</td><td>—</td></tr><tr><td><code>polygons</code></td><td>—</td><td>—</td></tr><tr><td><code>polygon_ids</code></td><td>—</td><td>Return a Set of all the Polygon-id numbers found in the Component’s Polygon group.</td></tr><tr><td><code>polygon_ids_sorted</code></td><td>—</td><td>Return a Tuple of all the Polygon-id numbers found in the Component’s Polygon group, sorted.</td></tr><tr><td><code>unique_key</code></td><td>—</td><td>Returns a unique text key,. Useful for sorting / grouping / merging components.</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>install_depth</code></td><td>—</td><td>Return the installation depth of the Aperture.</td></tr><tr><td><code>average_shading_d_reveal</code></td><td>—</td><td>The average shading ‘reveal’ distance of the Aperture’s Elements from the glass.</td></tr><tr><td><code>default_monthly_shading_correction_factor</code></td><td>—</td><td>Return the default monthly shading correction factor.</td></tr><tr><td><code>shade_type_id_num</code></td><td>—</td><td>Return the ID-Number of the Component Construction’s Shade-Type, or -1 if None.</td></tr><tr><td><code>window_type_id_num</code></td><td>—</td><td>ID number of the assigned window construction type.</td></tr><tr><td><code>polygons</code></td><td>—</td><td>Collected polygons from all child elements that have geometry assigned.</td></tr><tr><td><code>polygon_ids</code></td><td>—</td><td>Return a Set of all the Polygon-id numbers found in the Component’s Polygon group.</td></tr><tr><td><code>polygon_ids_sorted</code></td><td>—</td><td>Return a Tuple of all the Polygon-id numbers found in the Component’s Polygon group, sorted.</td></tr><tr><td><code>unique_key</code></td><td>—</td><td>Returns a unique text key,. Useful for sorting / grouping / merging components.</td></tr></tbody></table>
 <h3 id="methods-2">Methods</h3>
 <h4 id="add_elements_elements">add_elements(_elements)</h4>
 <p>Add one or more new ‘Elements’ (Sashes) to the Aperture</p>
@@ -557,7 +557,7 @@
 <table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_scale_factor</code></td><td>—</td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phxcomponentthermalbridge">PhxComponentThermalBridge</h2>
-<p>A single Thermal Bridge Element.</p>
+<p>A linear thermal bridge element in the building envelope.</p>
 <p><strong>Inherits from</strong>: <code>PhxComponentBase</code></p>
 <h3 id="properties-4">Properties</h3>
 
@@ -615,7 +615,7 @@
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>identifier</code></td><td>—</td><td>—</td></tr><tr><td><code>quantity</code></td><td>—</td><td>—</td></tr><tr><td><code>group_type</code></td><td>—</td><td>—</td></tr><tr><td><code>group_number</code></td><td>—</td><td>—</td></tr><tr><td><code>display_name</code></td><td>—</td><td>—</td></tr><tr><td><code>psi_value</code></td><td>—</td><td>—</td></tr><tr><td><code>fRsi_value</code></td><td>—</td><td>—</td></tr><tr><td><code>length</code></td><td>—</td><td>—</td></tr><tr><td><code>unique_key</code></td><td>—</td><td>Returns a unique text key,. Useful for sorting / grouping / merging components.</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>identifier</code></td><td>—</td><td>—</td></tr><tr><td><code>quantity</code></td><td>—</td><td>—</td></tr><tr><td><code>group_type</code></td><td>—</td><td>—</td></tr><tr><td><code>group_number</code></td><td>—</td><td>Integer group number from the thermal bridge type, or 15 (default) if unset.</td></tr><tr><td><code>display_name</code></td><td>—</td><td>—</td></tr><tr><td><code>psi_value</code></td><td>—</td><td>—</td></tr><tr><td><code>fRsi_value</code></td><td>—</td><td>—</td></tr><tr><td><code>length</code></td><td>—</td><td>—</td></tr><tr><td><code>unique_key</code></td><td>—</td><td>Returns a unique text key,. Useful for sorting / grouping / merging components.</td></tr></tbody></table>
 <hr> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
 (function () {
   // ---------- Modal open / close ----------

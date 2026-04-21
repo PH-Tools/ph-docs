@@ -8,13 +8,13 @@ PHX Construction, Materials Classes
 
 ## PhxColor
 
-No description available.
+An ARGB color value used for material display in WUFI-Passive.
 
 ---
 
 ## PhxMaterial
 
-No description available.
+A single building material with thermal, hygric, and display properties.
 
 ### Methods
 
@@ -30,13 +30,13 @@ Check if two materials are equivalent except for their ID-Number.
 
 ## PhxLayerDivisionCell
 
-A single cell aty a column/row in a PhxLayerDivisionGrid, with a specific material.
+A single cell at a column/row position in a PhxLayerDivisionGrid, holding one material.
 
 ---
 
 ## PhxLayerDivisionGrid
 
-A grid of PhxLayerDivisionCells to support 'mixed' materials.
+A grid of PhxLayerDivisionCells to support 'mixed' materials in a single layer.
 
 ### Properties
 
@@ -132,7 +132,7 @@ Populate the grid with default values. Ensure that there is at least one row or 
 
 ## PhxLayer
 
-A single layer in a PhxConstructionOpaque.
+A single layer in a PhxConstructionOpaque assembly.
 
 ### Properties
 
@@ -185,7 +185,7 @@ Check if two layers are equivalent.
 
 ## PhxConstructionOpaque
 
-No description available.
+An opaque assembly construction (wall, roof, or floor) composed of ordered material layers.
 
 ### Properties
 
@@ -193,8 +193,8 @@ No description available.
 |----------|------|-------------|
 | `identifier` | — | — |
 | `heat_flow_pathways` | — | Return the unique heat-flow pathways through this assembly. |
-| `r_value` | — | — |
-| `u_value` | — | — |
+| `r_value` | — | Total thermal resistance of the assembly in m2K/W, computed from heat-flow pathways. |
+| `u_value` | — | Total thermal transmittance (U-value) of the assembly in W/m2K. |
 | `exchange_materials` | — | Returns a flat list of all the 'Exchange' materials (for mixed layers) from all the Layers. |
 
 ### Methods
@@ -212,7 +212,7 @@ Returns a new PhxConstructionOpaque with a single layer with the given U-Value.
 
 ## PhxWindowFrameElement
 
-No description available.
+A single frame edge element (top, bottom, left, or right) of a window construction.
 
 ### Methods
 
@@ -228,7 +228,7 @@ Returns a new PhxWindowFrameElement with u-values set to a single value.
 
 ## PhxConstructionWindow
 
-No description available.
+A window construction defining glazing, frame, and overall thermal properties.
 
 ### Properties
 

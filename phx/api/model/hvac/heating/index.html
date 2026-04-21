@@ -67,23 +67,23 @@
         <ul class="children"><li><a class="" href="/phx/api/hbjson_to_wufi_xml/">hbjson_to_wufi_xml</a></li><li><a class="" href="/phx/api/hbjson_to_phpp/">hbjson_to_phpp</a></li><li><a class="" href="/phx/api/hbjson_to_ppp/">hbjson_to_ppp</a></li><li><a class="" href="/phx/api/hbjson_to_metr_json/">hbjson_to_metr_json</a></li></ul>
       </li></ul>
       </li></ul> </aside> <script type="module">document.querySelectorAll(".nav-tree .group > button").forEach(e=>{e.addEventListener("click",()=>{const t=e.parentElement.classList.toggle("is-open");e.setAttribute("aria-expanded",String(t))})});</script> <div> <header class="content-head"> <div class="content-head__crumb">  <span>API Reference</span> <span class="sep">&rsaquo;</span>  <span class="current">heating</span> </div> </header> <article class="article" data-pagefind-body data-pagefind-meta="library:PHX"> <h1 id="heating">heating</h1>
-<p>PHX Mechanical Heating Devices.</p>
+<p>PHX mechanical heating device classes.</p>
 <p><strong>Source</strong>: <code>PHX/heating.py</code></p>
 <hr>
 <h2 id="phxheatingdevice">PhxHeatingDevice</h2>
-<p>No description available.</p>
+<p>Base class for all PHX heating devices (electric, boiler, district heat).</p>
 <p><strong>Inherits from</strong>: <code>_base.PhxMechanicalDevice</code></p>
 <hr>
 <h2 id="phxheaterelectricparams">PhxHeaterElectricParams</h2>
-<p>No description available.</p>
+<p>Parameters for an electric resistance heater (no additional fields beyond base).</p>
 <p><strong>Inherits from</strong>: <code>_base.PhxMechanicalDeviceParams</code></p>
 <hr>
 <h2 id="phxheaterelectric">PhxHeaterElectric</h2>
-<p>No description available.</p>
+<p>An electric resistance heater for space heating and/or DHW.</p>
 <p><strong>Inherits from</strong>: <code>PhxHeatingDevice</code></p>
 <hr>
 <h2 id="phxheaterboilerfossilparams">PhxHeaterBoilerFossilParams</h2>
-<p>No description available.</p>
+<p>Performance parameters for a fossil-fuel boiler (gas, oil, propane).</p>
 <p><strong>Inherits from</strong>: <code>_base.PhxMechanicalDeviceParams</code></p>
 <h3 id="properties">Properties</h3>
 
@@ -154,7 +154,7 @@
 <table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>fuel</code></td><td>—</td><td>—</td></tr><tr><td><code>condensing</code></td><td>—</td><td>—</td></tr><tr><td><code>in_conditioned_space</code></td><td>—</td><td>—</td></tr><tr><td><code>effic_at_30_percent_load</code></td><td>—</td><td>—</td></tr><tr><td><code>effic_at_nominal_load</code></td><td>—</td><td>—</td></tr><tr><td><code>avg_rtrn_temp_at_30_percent_load</code></td><td>—</td><td>—</td></tr><tr><td><code>avg_temp_at_70C_55C</code></td><td>—</td><td>—</td></tr><tr><td><code>avg_temp_at_55C_45C</code></td><td>—</td><td>—</td></tr><tr><td><code>avg_temp_at_32C_28C</code></td><td>—</td><td>—</td></tr><tr><td><code>standby_loss_at_70C</code></td><td>—</td><td>—</td></tr><tr><td><code>rated_capacity</code></td><td>—</td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phxheaterboilerwoodparams">PhxHeaterBoilerWoodParams</h2>
-<p>No description available.</p>
+<p>Performance parameters for a wood-fired boiler (log, pellet).</p>
 <p><strong>Inherits from</strong>: <code>_base.PhxMechanicalDeviceParams</code></p>
 <h3 id="properties-1">Properties</h3>
 
@@ -175,19 +175,19 @@
 <table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>fuel</code></td><td>—</td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="phxheaterboilerfossil">PhxHeaterBoilerFossil</h2>
-<p>No description available.</p>
+<p>A fossil-fuel boiler (gas, oil, propane) for space heating and/or DHW.</p>
 <p><strong>Inherits from</strong>: <code>PhxHeatingDevice</code></p>
 <hr>
 <h2 id="phxheaterboilerwood">PhxHeaterBoilerWood</h2>
-<p>No description available.</p>
+<p>A wood-fired boiler (log or pellet) for space heating and/or DHW.</p>
 <p><strong>Inherits from</strong>: <code>PhxHeatingDevice</code></p>
 <hr>
 <h2 id="phxheaterdistrictheatparams">PhxHeaterDistrictHeatParams</h2>
-<p>No description available.</p>
+<p>Parameters for a district heat connection (no additional fields beyond base).</p>
 <p><strong>Inherits from</strong>: <code>_base.PhxMechanicalDeviceParams</code></p>
 <hr>
 <h2 id="phxheaterdistrictheat">PhxHeaterDistrictHeat</h2>
-<p>No description available.</p>
+<p>A district heat connection for space heating and/or DHW.</p>
 <p><strong>Inherits from</strong>: <code>PhxHeatingDevice</code></p>
 <hr> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
 (function () {

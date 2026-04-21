@@ -71,13 +71,13 @@
 <p><strong>Source</strong>: <code>PHX/certification.py</code></p>
 <hr>
 <h2 id="phxsetpoints">PhxSetpoints</h2>
-<p>No description available.</p>
+<p>Indoor temperature setpoints for heating and cooling seasons.</p>
 <hr>
 <h2 id="phxsummerventilation">PhxSummerVentilation</h2>
-<p>No description available.</p>
+<p>Summer ventilation strategy parameters for overheating prevention.</p>
 <hr>
 <h2 id="phxphbuildingdata">PhxPhBuildingData</h2>
-<p>No description available.</p>
+<p>General building-level data used by both PHI and Phius certification paths.</p>
 <h3 id="properties">Properties</h3>
 
 
@@ -97,6 +97,7 @@
 <table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>wind_coefficient_e</code></td><td>—</td><td>Wind pressure coefficient E, used for calculating infiltration due to wind pressure.</td></tr></tbody></table>
 <h3 id="methods">Methods</h3>
 <h4 id="add_foundation_input">add_foundation(_input)</h4>
+<p>Append a foundation element to this building’s foundation collection.</p>
 
 
 
@@ -112,22 +113,22 @@
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_input</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_input</code></td><td>—</td><td>The foundation to add. None values are ignored.</td></tr></tbody></table>
 <hr>
 <h2 id="phxphiuscertificationcriteria">PhxPhiusCertificationCriteria</h2>
-<p>No description available.</p>
+<p>Phius certification performance target thresholds.</p>
 <hr>
 <h2 id="phxphiuscertificationsettings">PhxPhiusCertificationSettings</h2>
-<p>No description available.</p>
+<p>Phius certification program and building classification settings.</p>
 <hr>
 <h2 id="phxphiuscertification">PhxPhiusCertification</h2>
-<p>No description available.</p>
+<p>Top-level container for all Phius certification data.</p>
 <hr>
 <h2 id="phxphicertificationsettings">PhxPhiCertificationSettings</h2>
-<p>No description available.</p>
+<p>PHI (Passive House Institute) certification program settings for PHPP 9+.</p>
 <hr>
 <h2 id="phxphicertification">PhxPhiCertification</h2>
-<p>No description available.</p>
+<p>Top-level container for PHI (Passive House Institute) certification data.</p>
 <hr> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
 (function () {
   // ---------- Modal open / close ----------

@@ -1,6 +1,6 @@
 # utilization_patterns
 
-PHX Collection class for Organizing Space Schedules as Utilization Patterns.
+Collections for organizing PH space schedules as utilization patterns.
 
 **Source**: `PHX/utilization_patterns.py`
 
@@ -8,7 +8,7 @@ PHX Collection class for Organizing Space Schedules as Utilization Patterns.
 
 ## UtilizationPatternCollection_Ventilation
 
-No description available.
+Collection of ventilation utilization patterns for PH spaces.
 
 ### Methods
 
@@ -46,7 +46,7 @@ Return a ventilation.PhxScheduleVentilation from the collection found by an id-n
 
 ## UtilizationPatternCollection_Occupancy
 
-No description available.
+Collection of occupancy utilization patterns for PH spaces.
 
 ### Methods
 
@@ -84,7 +84,7 @@ Return a occupancy.PhxScheduleOccupancy from the collection found by an id-num
 
 ## UtilizationPatternCollection_Lighting
 
-No description available.
+Collection of lighting utilization patterns for PH spaces.
 
 ### Methods
 

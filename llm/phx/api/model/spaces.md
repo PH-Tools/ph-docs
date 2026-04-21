@@ -1,6 +1,6 @@
 # spaces
 
-PHX Space (Room) Class
+PHX Space (Room) classes and utilities for Passive House zone ventilation grouping.
 
 **Source**: `PHX/spaces.py`
 
@@ -8,7 +8,7 @@ PHX Space (Room) Class
 
 ## PhxSpace
 
-No description available.
+A single ventilation space (room) within a PHX zone.
 
 ### Properties
 

@@ -8,7 +8,7 @@ Valid 'types' for Mech Equipment Options.
 
 ## PhxFuelType
 
-No description available.
+Fuel type for combustion-based heating equipment.
 
 **Inherits from**: `Enum`
 
@@ -16,7 +16,7 @@ No description available.
 
 ## SystemType
 
-No description available.
+Classification of mechanical system types in the energy model.
 
 **Inherits from**: `Enum`
 
@@ -24,7 +24,7 @@ No description available.
 
 ## DeviceType
 
-No description available.
+Classification of individual HVAC device types.
 
 **Inherits from**: `Enum`
 
@@ -32,7 +32,7 @@ No description available.
 
 ## HeatPumpType
 
-No description available.
+Heat pump performance data entry method.
 
 **Inherits from**: `Enum`
 
@@ -40,7 +40,7 @@ No description available.
 
 ## CoolingType
 
-No description available.
+Classification of active cooling delivery methods.
 
 **Inherits from**: `Enum`
 
@@ -48,7 +48,7 @@ No description available.
 
 ## PhxHotWaterPipingCalcMethod
 
-No description available.
+Calculation method for hot water distribution piping losses.
 
 **Inherits from**: `Enum`
 
@@ -56,7 +56,7 @@ No description available.
 
 ## PhxHotWaterPipingMaterial
 
-No description available.
+Material type for hot water distribution piping.
 
 **Inherits from**: `Enum`
 
@@ -64,7 +64,7 @@ No description available.
 
 ## PhxHotWaterPipingInchDiameterType
 
-No description available.
+Nominal pipe diameter in inches for hot water piping.
 
 **Inherits from**: `Enum`
 
@@ -72,7 +72,7 @@ No description available.
 
 ## PhxHotWaterInputOptions
 
-No description available.
+Input method for hot water storage tank loss specification.
 
 **Inherits from**: `Enum`
 
@@ -80,7 +80,7 @@ No description available.
 
 ## PhxHotWaterTankType
 
-No description available.
+Hot water storage tank usage classification.
 
 **Inherits from**: `Enum`
 
@@ -88,7 +88,7 @@ No description available.
 
 ## PhxHotWaterSelectionUnitsOrFloors
 
-No description available.
+Selection basis for hot water piping calculation scope.
 
 **Inherits from**: `Enum`
 
@@ -96,7 +96,7 @@ No description available.
 
 ## PhxExhaustVentType
 
-No description available.
+Type of dedicated exhaust ventilation device.
 
 **Inherits from**: `Enum`
 
@@ -104,7 +104,7 @@ No description available.
 
 ## PhxVentDuctType
 
-No description available.
+Ventilation duct direction classification.
 
 **Inherits from**: `Enum`
 
@@ -112,7 +112,7 @@ No description available.
 
 ## PhxSupportiveDeviceType
 
-No description available.
+Type of supportive (auxiliary) mechanical device.
 
 **Inherits from**: `Enum`
 
@@ -120,7 +120,7 @@ No description available.
 
 ## PhxSummerBypassMode
 
-No description available.
+Summer bypass mode for the heat recovery ventilator.
 
 **Inherits from**: `Enum`
 
@@ -128,7 +128,7 @@ No description available.
 
 ## PhxNighttimeVentilationControl
 
-No description available.
+Control strategy for nighttime ventilation cooling.
 
 **Inherits from**: `Enum`
 

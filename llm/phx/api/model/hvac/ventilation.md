@@ -1,6 +1,6 @@
 # ventilation
 
-PHX Mechanical Ventilation Devices
+PHX mechanical ventilation device classes.
 
 **Source**: `PHX/ventilation.py`
 
@@ -8,7 +8,7 @@ PHX Mechanical Ventilation Devices
 
 ## PhxDeviceVentilation
 
-No description available.
+Base class for all PHX balanced ventilation devices (HRV/ERV).
 
 **Inherits from**: `_base.PhxMechanicalDevice`
 
@@ -16,7 +16,7 @@ No description available.
 
 ## PhxDeviceVentilatorParams
 
-No description available.
+Performance parameters for a balanced ventilation unit (HRV/ERV).
 
 **Inherits from**: `_base.PhxMechanicalDeviceParams`
 
@@ -35,7 +35,7 @@ No description available.
 
 ## PhxDeviceVentilator
 
-No description available.
+A balanced ventilation unit (HRV or ERV) with sensible/latent recovery.
 
 **Inherits from**: `PhxDeviceVentilation`
 
@@ -43,7 +43,7 @@ No description available.
 
 ## PhxExhaustVentilatorParams
 
-No description available.
+Performance parameters for a point-exhaust ventilator (range hood, dryer, etc.).
 
 **Inherits from**: `_base.PhxMechanicalDeviceParams`
 
@@ -67,7 +67,7 @@ Base class for all Exhaust Ventilation.
 
 ## PhxExhaustVentilatorRangeHood
 
-No description available.
+A kitchen range-hood exhaust ventilator.
 
 **Inherits from**: `PhxExhaustVentilatorBase`
 
@@ -75,7 +75,7 @@ No description available.
 
 ## PhxExhaustVentilatorDryer
 
-No description available.
+A clothes-dryer exhaust ventilator.
 
 **Inherits from**: `PhxExhaustVentilatorBase`
 
@@ -83,7 +83,7 @@ No description available.
 
 ## PhxExhaustVentilatorUserDefined
 
-No description available.
+A user-defined point-exhaust ventilator.
 
 **Inherits from**: `PhxExhaustVentilatorBase`
 

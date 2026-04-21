@@ -8,29 +8,29 @@ PHX Fresh-Air Ventilation Utilization Schedule.
 
 ## Vent_OperatingPeriod
 
-No description available.
+A single ventilation operating period with duration and fan speed.
 
 ---
 
 ## Vent_UtilPeriods
 
-No description available.
+Collection of four ventilation operating periods at descending speed levels.
 
 ---
 
 ## PhxScheduleVentilation
 
-A PHX Schedule for the Ventilation.
+Fresh-air ventilation utilization schedule with multi-speed operating periods.
 
 ### Methods
 
 #### force_max_utilization_hours(_max_hours, _tol)
 
-Ensure that the total utilization hours never exceed target (default=24).
+Clamp total daily operating hours to a maximum by adjusting the high-speed period.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `_max_hours` | — | — |
-| `_tol` | — | — |
+| `_max_hours` | — | Maximum allowed total daily hours. Default: 24.0. |
+| `_tol` | — | Rounding precision (decimal places). Default: 2. |
 
 ---
