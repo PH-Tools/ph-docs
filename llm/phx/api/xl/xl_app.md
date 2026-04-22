@@ -8,7 +8,7 @@ Class for managing the Excel Application Connection and common read/write operat
 
 ## ReadRowsError
 
-No description available.
+Raised when the row_start value exceeds row_end in an Excel range read.
 
 **Inherits from**: `Exception`
 
@@ -22,7 +22,7 @@ No description available.
 
 ## NoActiveExcelRunningError
 
-No description available.
+Raised when no active instance of Excel is found running.
 
 **Inherits from**: `Exception`
 
@@ -36,7 +36,7 @@ No description available.
 
 ## ReadMultipleColumnsError
 
-No description available.
+Raised when read_multiple_columns is called with identical start and end columns.
 
 **Inherits from**: `Exception`
 
@@ -50,7 +50,7 @@ No description available.
 
 ## WriteValueError
 
-No description available.
+Raised when writing a value to an Excel cell fails.
 
 **Inherits from**: `Exception`
 
@@ -64,7 +64,7 @@ No description available.
 
 ## XlReadException
 
-No description available.
+Raised when get_single_data_item is called with a multi-cell range.
 
 **Inherits from**: `Exception`
 
@@ -78,7 +78,7 @@ No description available.
 
 ## NoSuchFileError
 
-No description available.
+Raised when the specified Excel file cannot be found on disk.
 
 **Inherits from**: `Exception`
 

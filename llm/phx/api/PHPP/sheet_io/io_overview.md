@@ -8,7 +8,7 @@ Controller Class for the PHPP 'Overview' Worksheet.
 
 ## OverviewBasicData
 
-No description available.
+Reads basic project data (dwellings, occupants, name) from the PHPP 'Overview' worksheet.
 
 ### Attributes
 
@@ -36,7 +36,7 @@ Return the name of the Project / Building
 
 ## OverviewVentilation
 
-No description available.
+Reads ventilation data (Vn50) from the PHPP 'Overview' worksheet.
 
 ### Attributes
 

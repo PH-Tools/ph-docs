@@ -8,6 +8,6 @@ Functions for importing WUFI XML file data.
 
 ## Tag
 
-No description available.
+A parsed XML element with its text content, tag name, and attributes.
 
 ---

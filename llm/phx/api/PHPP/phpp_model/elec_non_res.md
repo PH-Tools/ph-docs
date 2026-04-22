@@ -8,7 +8,7 @@ The data from an existing PHPP Non-Res Lighting Entry row.
 
 ## ExistingLightingRow
 
-No description available.
+Wraps a single row of existing lighting data read from the PHPP 'Electricity non-res' worksheet.
 
 ### Properties
 

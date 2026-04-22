@@ -8,7 +8,7 @@ Run script to convert an HBJSON file to PPP format.
 
 ## InputFileError
 
-No description available.
+Raised when the specified HBJSON source file cannot be found.
 
 **Inherits from**: `Exception`
 

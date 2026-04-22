@@ -31,7 +31,7 @@ Clean up the data coming in from PHPP
 
 ## SupplyAir
 
-No description available.
+Reads supply-air cooling unit data from the PHPP 'Cooling Units' worksheet.
 
 ### Attributes
 
@@ -48,7 +48,7 @@ No description available.
 
 ## RecirculationAir
 
-No description available.
+Reads recirculation-air cooling unit data from the PHPP 'Cooling Units' worksheet.
 
 ### Attributes
 
@@ -65,7 +65,7 @@ No description available.
 
 ## Dehumidification
 
-No description available.
+Reads dehumidification cooling unit data from the PHPP 'Cooling Units' worksheet.
 
 ### Attributes
 
@@ -82,7 +82,7 @@ No description available.
 
 ## Panel
 
-No description available.
+Reads panel cooling unit data from the PHPP 'Cooling Units' worksheet.
 
 ### Attributes
 

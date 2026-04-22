@@ -8,7 +8,7 @@ Controller Class for the PHPP "Electricity non-res" worksheet.
 
 ## Lighting
 
-No description available.
+Reads and writes lighting data in the PHPP 'Electricity non-res' worksheet.
 
 ### Attributes
 

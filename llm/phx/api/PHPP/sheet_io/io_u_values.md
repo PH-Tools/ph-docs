@@ -8,7 +8,7 @@ Controller Class for the PHPP "U-Values" worksheet.
 
 ## NoEmptyConstructorError
 
-No description available.
+Raised when no empty constructor slots remain in the PHPP 'U-Values' worksheet.
 
 **Inherits from**: `Exception`
 
@@ -22,7 +22,7 @@ No description available.
 
 ## ExistingAssemblyData
 
-No description available.
+Stores name, U-value, R-value, and exposure data for an existing PHPP assembly.
 
 ---
 

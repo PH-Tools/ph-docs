@@ -6,7 +6,7 @@
 
 ## NoXMLSchemaFoundError
 
-No description available.
+Raised when no XML write schema is found for a given PHX object.
 
 **Inherits from**: `Exception`
 
@@ -14,6 +14,6 @@ No description available.
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `message` | — | — |
+| `message` | — | Detailed error describing the missing schema, object type, and module searched. |
 
 ---

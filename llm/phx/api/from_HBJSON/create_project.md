@@ -8,7 +8,7 @@ Functions used to convert a standard HBJSON Model over to WUFI Objects
 
 ## MissingPropertiesError
 
-No description available.
+Raised when a Ladybug Tools object is missing its .properties attribute.
 
 **Inherits from**: `Exception`
 
@@ -16,6 +16,6 @@ No description available.
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `message` | — | — |
+| `message` | — | Description of the error including the object reference. |
 
 ---

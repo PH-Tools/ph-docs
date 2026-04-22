@@ -8,7 +8,7 @@ Schema lookup: finds the appropriate METr JSON schema function for a given PHX o
 
 ## NoMETrSchemaFoundError
 
-No description available.
+Raised when no METr JSON schema is found for a given PHX object.
 
 **Inherits from**: `Exception`
 
@@ -16,6 +16,6 @@ No description available.
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `message` | — | — |
+| `message` | — | Detailed error describing the missing schema, object type, and module searched. |
 
 ---

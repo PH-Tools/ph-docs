@@ -8,7 +8,7 @@ Controller Class for the PHPP "Additional Vent" worksheet.
 
 ## Spaces
 
-No description available.
+Reads and writes ventilation space data in the PHPP 'Additional Vent' worksheet.
 
 ### Attributes
 
@@ -61,7 +61,7 @@ Create a new instance from a row of data from PHPP.
 
 ## VentUnits
 
-No description available.
+Reads and writes ventilation unit data in the PHPP 'Additional Vent' worksheet.
 
 ### Attributes
 
@@ -119,7 +119,7 @@ Return a tuple of VentilatorDeviceUsage objects from the PHPP worksheet.
 
 ## VentDucts
 
-No description available.
+Reads and writes ventilation duct data in the PHPP 'Additional Vent' worksheet.
 
 ### Attributes
 

@@ -8,7 +8,7 @@ Exceptions used by the IO classes.
 
 ## FindSectionMarkerException
 
-No description available.
+Raised when a section marker string cannot be found in a worksheet column.
 
 **Inherits from**: `Exception`
 
@@ -22,7 +22,7 @@ No description available.
 
 ## PerReferenceAreaException
 
-No description available.
+Raised when the PER reference area (TFA or footprint) cannot be found.
 
 **Inherits from**: `Exception`
 
@@ -36,7 +36,7 @@ No description available.
 
 ## ReadDataException
 
-No description available.
+Raised when a value cannot be read from a PHPP worksheet cell.
 
 **Inherits from**: `Exception`
 
@@ -50,7 +50,7 @@ No description available.
 
 ## PHPPDataMissingException
 
-No description available.
+Raised when a required PHPP field returns None.
 
 **Inherits from**: `Exception`
 

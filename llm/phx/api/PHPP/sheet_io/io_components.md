@@ -8,7 +8,7 @@ Controller Class for the PHPP 'Components' worksheet.
 
 ## ExistingGlazingTypeData
 
-No description available.
+Stores name, g-value, and U-value for an existing PHPP glazing type.
 
 ### Properties
 
@@ -20,7 +20,7 @@ No description available.
 
 ## Glazings
 
-No description available.
+Reads and writes glazing component data in the PHPP 'Components' worksheet.
 
 ### Attributes
 
@@ -90,7 +90,7 @@ Return a set of all glazing types in the Glazing input section.
 
 ## Frames
 
-No description available.
+Reads and writes frame component data in the PHPP 'Components' worksheet.
 
 ### Attributes
 
@@ -156,7 +156,7 @@ Return the PHPP Frame ID ("01ud-MyFrame", etc..) for the given row number.
 
 ## Ventilators
 
-No description available.
+Reads and writes ventilator component data in the PHPP 'Components' worksheet.
 
 ### Attributes
 

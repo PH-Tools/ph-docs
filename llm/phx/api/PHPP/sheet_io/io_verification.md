@@ -51,7 +51,7 @@ Create a new TeamMemberData object from raw excel data read in from PHPP
 
 ## Verification
 
-No description available.
+Reads and writes data to the PHPP 'Verification' worksheet.
 
 ### Attributes
 

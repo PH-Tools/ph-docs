@@ -8,7 +8,7 @@ Functions for importing / converting Honeybee Models into PHX Models
 
 ## HBJSONModelReadError
 
-No description available.
+Raised when an HBJSON file contains a non-Model object type.
 
 **Inherits from**: `Exception`
 
@@ -16,6 +16,6 @@ No description available.
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `message` | — | — |
+| `message` | — | Description of the error including the unexpected type. |
 
 ---

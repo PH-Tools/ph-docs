@@ -35,7 +35,7 @@ Return the row number where the search-item is found input.
 
 ## Surfaces
 
-No description available.
+Reads and writes surface data to the PHPP 'Areas' worksheet.
 
 ### Attributes
 
@@ -95,7 +95,7 @@ Return a set of all the construction names used in the Areas worksheet.
 
 ## ThermalBridges
 
-No description available.
+Reads and writes thermal bridge data to the PHPP 'Areas' worksheet.
 
 ### Attributes
 

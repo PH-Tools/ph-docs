@@ -8,7 +8,7 @@ Functions for building PHX-Geometry from Ladybug / Honeybee Geometry.
 
 ## InvalidRectangularFaceError
 
-No description available.
+Raised when a face cannot be converted to a PhxPolygonRectangular.
 
 **Inherits from**: `Exception`
 
@@ -16,6 +16,6 @@ No description available.
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `msg` | — | — |
+| `msg` | — | Description of the error including the face name and vertex count. |
 
 ---

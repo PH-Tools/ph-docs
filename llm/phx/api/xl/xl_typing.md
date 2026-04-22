@@ -8,25 +8,25 @@ XL-App Protocol Classes.
 
 ## xl_Range_Font
 
-No description available.
+Protocol defining the interface for an Excel range font object.
 
 ---
 
 ## xl_RangeColumns_Protocol
 
-No description available.
+Protocol defining the interface for an Excel range columns collection.
 
 ---
 
 ## xl_CellRange_Protocol
 
-No description available.
+Protocol defining the interface for a single Excel cell range.
 
 ---
 
 ## xl_Range_Protocol
 
-No description available.
+Protocol defining the interface for an Excel range object.
 
 ### Methods
 
@@ -55,7 +55,7 @@ No description available.
 
 ## xl_API_Protocol
 
-No description available.
+Protocol defining the interface for an Excel sheet's native API object.
 
 ### Methods
 
@@ -74,7 +74,7 @@ No description available.
 
 ## xl_Sheet_Protocol
 
-No description available.
+Protocol defining the interface for an Excel worksheet object.
 
 ### Attributes
 
@@ -113,7 +113,7 @@ No description available.
 
 ## xl_Sheets_Protocol
 
-No description available.
+Protocol defining the interface for a collection of Excel worksheets.
 
 ### Methods
 
@@ -129,7 +129,7 @@ No description available.
 
 ## xl_Book_Protocol
 
-No description available.
+Protocol defining the interface for an Excel workbook object.
 
 ### Attributes
 
@@ -142,7 +142,7 @@ No description available.
 
 ## xl_Books_Protocol
 
-No description available.
+Protocol defining the interface for a collection of Excel workbooks.
 
 ### Attributes
 
@@ -164,7 +164,7 @@ No description available.
 
 ## xl_app_Protocol
 
-No description available.
+Protocol defining the interface for an Excel application instance.
 
 ### Methods
 
@@ -174,7 +174,7 @@ No description available.
 
 ## xl_apps_Protocol
 
-No description available.
+Protocol defining the interface for a collection of Excel application instances.
 
 ### Methods
 
@@ -184,7 +184,7 @@ No description available.
 
 ## xl_Framework_Protocol
 
-No description available.
+Protocol defining the interface for the Excel interop framework (e.g., xlwings).
 
 ### Methods
 
