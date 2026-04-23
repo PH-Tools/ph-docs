@@ -1,0 +1,2388 @@
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>PHPP Field Mapping — PHX — PH-Tools Docs</title><script>
+      // Set theme before first paint to prevent flash
+      (function () {
+        try {
+          var t = localStorage.getItem("ph-docs:theme");
+          if (t) document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/_astro/_slug_.BwptHptC.css"></head> <body> <header class="site-header" id="siteHeader"> <a class="site-header__logo" href="/"> <span class="site-header__logo-mark" aria-hidden="true"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"> <path d="M12 2 L22 8 L12 14 L2 8 Z" fill="var(--accent-light)" stroke="var(--accent)"></path> <path d="M2 8 L2 17 L12 23 L12 14 Z" stroke="var(--accent)"></path> <path d="M22 8 L22 17 L12 23 L12 14 Z" stroke="var(--accent-dark)"></path> </svg> </span> <span>PH-TOOLS<span style="color:var(--fg-faint); margin-left:6px;">/ docs</span></span> </a> <nav class="nav-primary" id="primaryNav"> <a href="/honeybee-ph/" class> Honeybee-PH </a><a href="/phx/" class="is-active"> PHX </a><a href="/honeybee-revive/" class> Honeybee-REVIVE </a> <a href="/guides/llm-setup/" class>
+LLM Setup
+</a> </nav> <div class="nav-tools"> <button class="search-btn" id="openSearch" aria-label="Open search"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <span>Search docs…</span> <span class="kbd">⌘K</span> </button> <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme"> <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"> <circle cx="12" cy="12" r="4"></circle> <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path> </svg> <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" style="display:none;"> <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.8 6.8 0 0 0 9.8 9.8Z"></path> </svg> </button> <a class="icon-btn" href="https://github.com/PH-Tools" aria-label="GitHub" title="GitHub"> <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.56 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"></path></svg> </a> </div> </header> <main>  <div class="with-sidebar"> <div class="sidebar-col"> <aside class="sidebar"> <a class="sidebar__label" href="/phx/">
+Library · PHX </a> <ul class="nav-tree"><li class="group">
+        <button aria-expanded="false"><span class="num">01</span>Developer<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/dev/architecture/">Architecture</a></li><li><a class="" href="/phx/dev/exporter-patterns/">Exporter &amp; Importer Patterns</a></li></ul>
+      </li><li class="group is-open">
+        <button aria-expanded="true"><span class="num">02</span>Reference<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/reference/phx-model-reference/">PHX Model Reference</a></li><li><a class="" href="/phx/reference/wufi-xml-schema/">WUFI XML Schema</a></li><li><a class="is-active" href="/phx/reference/phpp-field-mapping/">PHPP Field Mapping</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false"><span class="num">03</span>API Reference<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li class="group">
+        <button aria-expanded="false">Model<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/model/project/">project</a></li><li><a class="" href="/phx/api/model/building/">building</a></li><li><a class="" href="/phx/api/model/spaces/">spaces</a></li><li><a class="" href="/phx/api/model/components/">components</a></li><li><a class="" href="/phx/api/model/geometry/">geometry</a></li><li><a class="" href="/phx/api/model/constructions/">constructions</a></li><li><a class="" href="/phx/api/model/ground/">ground</a></li><li><a class="" href="/phx/api/model/shades/">shades</a></li><li><a class="" href="/phx/api/model/elec_equip/">elec_equip</a></li><li><a class="" href="/phx/api/model/certification/">certification</a></li><li><a class="" href="/phx/api/model/phx_site/">phx_site</a></li><li><a class="" href="/phx/api/model/assembly_pathways/">assembly_pathways</a></li><li><a class="" href="/phx/api/model/utilization_patterns/">utilization_patterns</a></li><li class="group">
+        <button aria-expanded="false">Enums<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/model/enums/building/">building</a></li><li><a class="" href="/phx/api/model/enums/hvac/">hvac</a></li><li><a class="" href="/phx/api/model/enums/foundations/">foundations</a></li><li><a class="" href="/phx/api/model/enums/elec_equip/">elec_equip</a></li><li><a class="" href="/phx/api/model/enums/phx_site/">phx_site</a></li><li><a class="" href="/phx/api/model/enums/phi_certification_phpp_9/">phi_certification_phpp_9</a></li><li><a class="" href="/phx/api/model/enums/phi_certification_phpp_10/">phi_certification_phpp_10</a></li><li><a class="" href="/phx/api/model/enums/phius_certification/">phius_certification</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">HVAC<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/model/hvac/_base/">_base</a></li><li><a class="" href="/phx/api/model/hvac/collection/">collection</a></li><li><a class="" href="/phx/api/model/hvac/ventilation/">ventilation</a></li><li><a class="" href="/phx/api/model/hvac/heating/">heating</a></li><li><a class="" href="/phx/api/model/hvac/heat_pumps/">heat_pumps</a></li><li><a class="" href="/phx/api/model/hvac/water/">water</a></li><li><a class="" href="/phx/api/model/hvac/cooling_params/">cooling_params</a></li><li><a class="" href="/phx/api/model/hvac/renewable_devices/">renewable_devices</a></li><li><a class="" href="/phx/api/model/hvac/piping/">piping</a></li><li><a class="" href="/phx/api/model/hvac/ducting/">ducting</a></li><li><a class="" href="/phx/api/model/hvac/supportive_devices/">supportive_devices</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">Loads<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/model/loads/occupancy/">occupancy</a></li><li><a class="" href="/phx/api/model/loads/lighting/">lighting</a></li><li><a class="" href="/phx/api/model/loads/ventilation/">ventilation</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">Programs<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/model/programs/occupancy/">occupancy</a></li><li><a class="" href="/phx/api/model/programs/lighting/">lighting</a></li><li><a class="" href="/phx/api/model/programs/ventilation/">ventilation</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">Schedules<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/model/schedules/occupancy/">occupancy</a></li><li><a class="" href="/phx/api/model/schedules/lighting/">lighting</a></li><li><a class="" href="/phx/api/model/schedules/ventilation/">ventilation</a></li></ul>
+      </li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">from_HBJSON<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/from_HBJSON/read_HBJSON_file/">read_HBJSON_file</a></li><li><a class="" href="/phx/api/from_HBJSON/create_project/">create_project</a></li><li><a class="" href="/phx/api/from_HBJSON/create_variant/">create_variant</a></li><li><a class="" href="/phx/api/from_HBJSON/create_building/">create_building</a></li><li><a class="" href="/phx/api/from_HBJSON/create_rooms/">create_rooms</a></li><li><a class="" href="/phx/api/from_HBJSON/create_assemblies/">create_assemblies</a></li><li><a class="" href="/phx/api/from_HBJSON/create_geometry/">create_geometry</a></li><li><a class="" href="/phx/api/from_HBJSON/create_schedules/">create_schedules</a></li><li><a class="" href="/phx/api/from_HBJSON/create_shades/">create_shades</a></li><li><a class="" href="/phx/api/from_HBJSON/create_hvac/">create_hvac</a></li><li><a class="" href="/phx/api/from_HBJSON/create_foundations/">create_foundations</a></li><li><a class="" href="/phx/api/from_HBJSON/create_elec_equip/">create_elec_equip</a></li><li><a class="" href="/phx/api/from_HBJSON/create_shw_devices/">create_shw_devices</a></li><li><a class="" href="/phx/api/from_HBJSON/cleanup/">cleanup</a></li><li><a class="" href="/phx/api/from_HBJSON/cleanup_merge_faces/">cleanup_merge_faces</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">from_WUFI_XML<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/from_WUFI_XML/read_WUFI_XML_file/">read_WUFI_XML_file</a></li><li><a class="" href="/phx/api/from_WUFI_XML/phx_converter/">phx_converter</a></li><li><a class="" href="/phx/api/from_WUFI_XML/phx_schemas/">phx_schemas</a></li><li><a class="" href="/phx/api/from_WUFI_XML/wufi_file_schema/">wufi_file_schema</a></li><li><a class="" href="/phx/api/from_WUFI_XML/wufi_file_types/">wufi_file_types</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">to_WUFI_XML<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/to_WUFI_XML/xml_txt_to_file/">xml_txt_to_file</a></li><li><a class="" href="/phx/api/to_WUFI_XML/xml_builder/">xml_builder</a></li><li><a class="" href="/phx/api/to_WUFI_XML/xml_converter/">xml_converter</a></li><li><a class="" href="/phx/api/to_WUFI_XML/xml_schemas/">xml_schemas</a></li><li><a class="" href="/phx/api/to_WUFI_XML/xml_writables/">xml_writables</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">to_PPP<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/to_PPP/ppp_txt_to_file/">ppp_txt_to_file</a></li><li><a class="" href="/phx/api/to_PPP/ppp_builder/">ppp_builder</a></li><li><a class="" href="/phx/api/to_PPP/ppp_schemas/">ppp_schemas</a></li><li><a class="" href="/phx/api/to_PPP/ppp_sections/">ppp_sections</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">to_METr_JSON<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/to_METr_JSON/metr_json_to_file/">metr_json_to_file</a></li><li><a class="" href="/phx/api/to_METr_JSON/metr_builder/">metr_builder</a></li><li><a class="" href="/phx/api/to_METr_JSON/metr_converter/">metr_converter</a></li><li><a class="" href="/phx/api/to_METr_JSON/metr_schemas/">metr_schemas</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">PHPP<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/PHPP/phpp_app/">phpp_app</a></li><li class="group">
+        <button aria-expanded="false">Localization<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/PHPP/phpp_localization/load/">load</a></li><li><a class="" href="/phx/api/PHPP/phpp_localization/shape_model/">shape_model</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">Model<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/PHPP/phpp_model/version/">version</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/climate_entry/">climate_entry</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/areas_data/">areas_data</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/areas_surface/">areas_surface</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/areas_thermal_bridges/">areas_thermal_bridges</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/windows_rows/">windows_rows</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/component_glazing/">component_glazing</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/component_frame/">component_frame</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/component_vent/">component_vent</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/shading_rows/">shading_rows</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/vent_space/">vent_space</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/vent_ducts/">vent_ducts</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/vent_units/">vent_units</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/ventilation_data/">ventilation_data</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/hot_water_tank/">hot_water_tank</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/hot_water_piping/">hot_water_piping</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/uvalues_constructor/">uvalues_constructor</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/electricity_item/">electricity_item</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/elec_non_res/">elec_non_res</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/verification_data/">verification_data</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">Sheet I/O<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/PHPP/sheet_io/io_exceptions/">io_exceptions</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_overview/">io_overview</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_areas/">io_areas</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_climate/">io_climate</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_windows/">io_windows</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_components/">io_components</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_u_values/">io_u_values</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_shading/">io_shading</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_ventilation/">io_ventilation</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_addnl_vent/">io_addnl_vent</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_hot_water/">io_hot_water</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_solar_dhw/">io_solar_dhw</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_solar_pv/">io_solar_pv</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_electricity/">io_electricity</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_elec_non_res/">io_elec_non_res</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_heating_demand/">io_heating_demand</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_heating_peak_load/">io_heating_peak_load</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_cooling_demand/">io_cooling_demand</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_cooling_peak_load/">io_cooling_peak_load</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_cooling_units/">io_cooling_units</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_PER/">io_PER</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_variants/">io_variants</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_ihg_non_res/">io_ihg_non_res</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_use_non_res/">io_use_non_res</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_verification/">io_verification</a></li></ul>
+      </li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">xl<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/xl/xl_app/">xl_app</a></li><li><a class="" href="/phx/api/xl/xl_data/">xl_data</a></li><li><a class="" href="/phx/api/xl/xl_typing/">xl_typing</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">Scripts<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/hbjson_to_wufi_xml/">hbjson_to_wufi_xml</a></li><li><a class="" href="/phx/api/hbjson_to_phpp/">hbjson_to_phpp</a></li><li><a class="" href="/phx/api/hbjson_to_ppp/">hbjson_to_ppp</a></li><li><a class="" href="/phx/api/hbjson_to_metr_json/">hbjson_to_metr_json</a></li></ul>
+      </li></ul>
+      </li></ul> </aside> <script type="module">document.querySelectorAll(".nav-tree .group > button").forEach(e=>{e.addEventListener("click",()=>{const t=e.parentElement.classList.toggle("is-open");e.setAttribute("aria-expanded",String(t))})});</script> <div class="page-toc"><div class="page-toc__label">On This Page</div><ol class="page-toc__list"><li><a href="#verification"><span class="num">01</span>Verification</a></li><li><a href="#variants"><span class="num">02</span>Variants</a></li><li><a href="#climate"><span class="num">03</span>Climate</a></li><li><a href="#u-values"><span class="num">04</span>U-Values</a></li><li><a href="#areas"><span class="num">05</span>Areas</a></li><li><a href="#ground"><span class="num">06</span>Ground</a></li><li><a href="#components"><span class="num">07</span>Components</a></li><li><a href="#windows-1"><span class="num">08</span>Windows</a></li><li><a href="#shading"><span class="num">09</span>Shading</a></li><li><a href="#ventilation-1"><span class="num">10</span>Ventilation</a></li><li><a href="#addl-vent"><span class="num">11</span>Addl vent</a></li><li><a href="#heating"><span class="num">12</span>Heating</a></li><li><a href="#heating-load"><span class="num">13</span>Heating load</a></li><li><a href="#cooling"><span class="num">14</span>Cooling</a></li><li><a href="#cooling-load"><span class="num">15</span>Cooling load</a></li><li><a href="#summvent"><span class="num">16</span>SummVent</a></li><li><a href="#cooling-units"><span class="num">17</span>Cooling units</a></li><li><a href="#dhwdistribution"><span class="num">18</span>DHW+Distribution</a></li><li><a href="#solardhw"><span class="num">19</span>SolarDHW</a></li><li><a href="#pv"><span class="num">20</span>PV</a></li><li><a href="#electricity"><span class="num">21</span>Electricity</a></li><li><a href="#use-non-res"><span class="num">22</span>Use non-res</a></li><li><a href="#electricity-non-res"><span class="num">23</span>Electricity non-res</a></li><li><a href="#aux-electricity"><span class="num">24</span>Aux Electricity</a></li><li><a href="#ihg-non-res"><span class="num">25</span>IHG non-res</a></li><li><a href="#per"><span class="num">26</span>PER</a></li><li><a href="#hp"><span class="num">27</span>HP</a></li><li><a href="#boiler"><span class="num">28</span>Boiler</a></li><li><a href="#data"><span class="num">29</span>Data</a></li><li><a href="#overview"><span class="num">30</span>Overview</a></li><li><a href="#easyph"><span class="num">31</span>easyPH</a></li></ol></div> </div> <div> <!-- Reference page: rich header with metadata grid + FetchCallout -->
+        <header class="ref-head"> <div class="ref-head__crumb">  <span>Reference</span> <span class="sep">&rsaquo;</span>  <span class="current">PHPP Field Mapping</span> </div> <h1 class="ref-head__title">PHPP Field Mapping</h1> <p class="ref-head__desc">Cell-level locator map for reading and writing PHPP 10.6 Excel worksheets via PHX.</p> <div class="ref-head__meta"> <div class="ref-head__meta-item"> <span class="k">schema version</span> <span class="v">PHPP 10.6</span> </div><div class="ref-head__meta-item"> <span class="k">maintainer</span> <span class="v">bldgtyp</span> </div><div class="ref-head__meta-item"> <span class="k">source</span> <span class="v">PHX / docs</span> </div> </div> </header> <div class="fetch-callout"> <div class="fetch-callout__inner"> <div> <div class="fetch-callout__head"> <span class="bullet"></span>
+LLM-ready &middot; Fetch this doc
+</div> <p class="fetch-callout__body">This page is mirrored at a stable URL for programmatic retrieval. Point your LLM tool at the URL below and it will always receive the current canonical schema in plain Markdown.</p> <div class="fetch-callout__url"> <span class="method">GET</span> <span class="fetch-url-text">https://docs.passivehousetools.com/llm/phx/reference/phpp-field-mapping.md</span> </div> </div> <button class="copy-btn" data-copy-url="https://docs.passivehousetools.com/llm/phx/reference/phpp-field-mapping.md"> <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <rect x="9" y="9" width="11" height="11" rx="1.5"></rect><path d="M5 15V5a1 1 0 0 1 1-1h10"></path> </svg>
+Copy URL
+</button> </div> </div> <script type="module">document.querySelectorAll(".copy-btn[data-copy-url]").forEach(e=>{e.addEventListener("click",()=>{const o=e.dataset.copyUrl;o&&navigator.clipboard&&navigator.clipboard.writeText(o);const r=e.innerHTML;e.innerHTML='<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-11"/></svg> Copied',setTimeout(()=>{e.innerHTML=r},1500)})});</script> <article class="article article--ref" data-pagefind-body data-pagefind-meta="library:PHX"> <h1 id="phpp-field-mapping-reference">PHPP Field Mapping Reference</h1>
+<p>Localization map for <strong>PHPP 10.6 (English)</strong>. This document describes how PHX locates and reads/writes cells in each PHPP worksheet.</p>
+<p>!!! note “Locator pattern”
+PHX locates fields by searching for <code>locator_string</code> in <code>locator_col</code>, then reads/writes at <code>input_column</code> offset by <code>input_row_offset</code> rows from the found row.</p>
+<hr>
+<h2 id="verification">Verification</h2>
+<p>Worksheet key: <code>VERIFICATION</code></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field Key</th><th>Label (<code>locator_string</code>)</th><th>Locator Col</th><th>Input Col</th><th>Row Offset</th><th>Unit</th><th>Options</th></tr></thead><tbody><tr><td><code>phi_building_category_type</code></td><td>Building use</td><td>R</td><td>T</td><td>1</td><td></td><td><code>1</code>: 10-Residential building: Residential; <code>2</code>: 12-Residential building: Other; <code>11</code>: 10-Residential building: Residential; <code>12</code>: 12-Residential building: Other</td></tr><tr><td><code>phi_building_use_type</code></td><td>Building use</td><td>R</td><td>T</td><td>1</td><td></td><td><code>10</code>: 10-Residential building: Residential; <code>12</code>: 12-Residential building: Other; <code>20</code>: 20-Non-res building: Office/Administration; <code>21</code>: 21-Non-res building: School half-days (&#x3C; 7 h); <code>22</code>: 22-Non-res building: School full-time (≥ 7 h); <code>23</code>: 23-Non-res.: Other</td></tr><tr><td><code>phi_building_ihg_type</code></td><td>Building use</td><td>R</td><td>T</td><td>4</td><td></td><td><code>2</code>: 2-Standard; <code>3</code>: 3-PHPP-calculation (‘IHG’ worksheet); <code>4</code>: 4-PHPP-calculation (‘IHG non-res’ worksheet)</td></tr><tr><td><code>phi_building_occupancy_type</code></td><td>No. of occupants</td><td>R</td><td>R</td><td>2</td><td></td><td><code>1</code>: <em>(null)</em>; <code>2</code>: <em>(null)</em></td></tr><tr><td><code>phi_certification_type</code></td><td>Planned energy standard</td><td>T</td><td>T</td><td>1</td><td></td><td><code>10</code>: 10-Passive house; <code>21</code>: 21-EnerPHit (Component method); <code>22</code>: 22-EnerPHit (Energy demand method); <code>30</code>: 30-PHI Low Energy Building; <code>40</code>: 40-Other</td></tr><tr><td><code>phi_certification_class</code></td><td>Class</td><td>Primary energy method</td><td>T</td><td>T</td><td>1</td><td></td></tr><tr><td><code>phi_pe_type</code></td><td>Primary energy demand criterion</td><td>T</td><td>T</td><td>1</td><td></td><td><code>1</code>: 1-Standard; <code>2</code>: 2-Project-specific</td></tr><tr><td><code>phi_enerphit_type</code></td><td>New building / Retrofit</td><td>T</td><td>T</td><td>1</td><td></td><td><code>1</code>: 1-New building; <code>2</code>: 2-Retrofit; <code>3</code>: 3-Staged retrofit</td></tr><tr><td><code>phi_retrofit_type</code></td><td>New building / Retrofit</td><td>T</td><td>T</td><td>1</td><td></td><td><code>1</code>: 1-New building; <code>2</code>: 2-Retrofit; <code>3</code>: 3-Staged retrofit</td></tr><tr><td><code>num_of_units</code></td><td>No. of dwelling units:</td><td>E</td><td>F</td><td>0</td><td></td><td></td></tr><tr><td><code>setpoint_winter</code></td><td>Interior temperature winter [°C]:</td><td>J</td><td>K</td><td>0</td><td>C</td><td></td></tr><tr><td><code>setpoint_summer</code></td><td>Interior temp. summer [°C]:</td><td>M</td><td>N</td><td>0</td><td>C</td><td></td></tr><tr><td><code>mechanical_cooling</code></td><td>Mechanical cooling:</td><td>M</td><td>N</td><td>0</td><td></td><td></td></tr></tbody></table>
+<hr>
+<h2 id="variants">Variants</h2>
+<p>Worksheet key: <code>VARIANTS</code></p>
+<p><strong>Configuration:</strong></p>
+<ul>
+<li><code>active_value_column</code>: <code>E</code></li>
+</ul>
+<h3 id="results_header">results_header</h3>
+<ul>
+<li>Header locator: col <code>B</code>, string <code>"Results"</code></li>
+</ul>
+<h3 id="input_header">input_header</h3>
+<ul>
+<li>Header locator: col <code>B</code>, string <code>"Input variables"</code></li>
+</ul>
+<h3 id="assemblies">assemblies</h3>
+<ul>
+<li>
+<p>Header locator: col <code>C</code>, string <code>"Building assembly layers"</code></p>
+</li>
+<li>
+<p><code>input_col</code>: <code>C</code></p>
+</li>
+</ul>
+<h3 id="windows">windows</h3>
+<ul>
+<li>
+<p>Header locator: col <code>C</code>, string <code>"Windows and shading"</code></p>
+</li>
+<li>
+<p><code>input_col</code>: <code>C</code></p>
+</li>
+</ul>
+<h3 id="ventilation">ventilation</h3>
+<ul>
+<li>Header locator: col <code>C</code>, string <code>"Ventilation"</code></li>
+</ul>
+<p><strong>Input item names:</strong></p>
+<ul>
+<li>
+<p><code>vent_type</code>: “Ventilation type”</p>
+</li>
+<li>
+<p><code>air_change_rate</code>: “Air change rate at pressurisation test (n50)”</p>
+</li>
+<li>
+<p><code>design_flow_rate</code>: “Design air flow rate (maximum)”</p>
+</li>
+<li>
+<p><code>install_location</code>: “Installation site ventilation unit”</p>
+</li>
+<li>
+<p><code>ventilator_unit</code>: “Ventilation unit selection”</p>
+</li>
+<li>
+<p><code>input_col</code>: <code>C</code></p>
+</li>
+</ul>
+<hr>
+<h2 id="climate">Climate</h2>
+<p>Worksheet key: <code>CLIMATE</code></p>
+<h3 id="active_dataset">active_dataset</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Column</th></tr></thead><tbody><tr><td><code>country</code></td><td>D</td></tr><tr><td><code>region</code></td><td>D</td></tr><tr><td><code>dataset</code></td><td>D</td></tr><tr><td><code>elevation_override</code></td><td>D</td></tr></tbody></table>
+<h3 id="active_block">active_block</h3>
+<ul>
+<li><code>start_row</code>: <code>26</code></li>
+<li><code>end_row</code>: <code>36</code></li>
+<li><code>start_col</code>: <code>D</code></li>
+<li><code>end_col</code>: <code>U</code></li>
+</ul>
+<h3 id="ud_block">ud_block</h3>
+<ul>
+<li>Header locator: col <code>Name of location</code>, string <code>""</code></li>
+<li><code>start_row</code>: <code>67</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Column</th></tr></thead><tbody><tr><td><code>jan</code></td><td>E</td></tr><tr><td><code>feb</code></td><td>F</td></tr><tr><td><code>mar</code></td><td>G</td></tr><tr><td><code>apr</code></td><td>H</td></tr><tr><td><code>may</code></td><td>I</td></tr><tr><td><code>jun</code></td><td>J</td></tr><tr><td><code>jul</code></td><td>K</td></tr><tr><td><code>aug</code></td><td>L</td></tr><tr><td><code>sep</code></td><td>M</td></tr><tr><td><code>oct</code></td><td>N</td></tr><tr><td><code>nov</code></td><td>O</td></tr><tr><td><code>dec</code></td><td>P</td></tr><tr><td><code>peak_heating_1</code></td><td>Q</td></tr><tr><td><code>peak_heating_2</code></td><td>R</td></tr><tr><td><code>peak_cooling_1</code></td><td>S</td></tr><tr><td><code>peak_cooling_2</code></td><td>T</td></tr><tr><td><code>PER</code></td><td>U</td></tr><tr><td><code>latitude</code></td><td>F</td></tr><tr><td><code>longitude</code></td><td>H</td></tr><tr><td><code>elevation</code></td><td>J</td></tr><tr><td><code>elevation_unit</code></td><td>M</td></tr><tr><td><code>display_name</code></td><td>L</td></tr><tr><td><code>summer_delta_t</code></td><td>N</td></tr><tr><td><code>summer_delta_t_unit</code></td><td>DELTA-C</td></tr><tr><td><code>source</code></td><td>P</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Row</th><th>Unit</th></tr></thead><tbody><tr><td><code>temperature_air</code></td><td>1</td><td>C</td></tr><tr><td><code>radiation_north</code></td><td>2</td><td>KWH/M2</td></tr><tr><td><code>radiation_east</code></td><td>3</td><td>KWH/M2</td></tr><tr><td><code>radiation_south</code></td><td>4</td><td>KWH/M2</td></tr><tr><td><code>radiation_west</code></td><td>5</td><td>KWH/M2</td></tr><tr><td><code>radiation_global</code></td><td>6</td><td>KWH/M2</td></tr><tr><td><code>temperature_dewpoint</code></td><td>7</td><td>C</td></tr><tr><td><code>temperature_sky</code></td><td>8</td><td>C</td></tr></tbody></table>
+<h3 id="named_ranges">named_ranges</h3>
+<ul>
+<li><code>country</code>: <code>Klima_Region</code></li>
+<li><code>region</code>: <code>Klima_Region2</code></li>
+<li><code>data_set</code>: <code>Klima_Standort</code></li>
+</ul>
+<h3 id="defined_ranges">defined_ranges</h3>
+<ul>
+<li><code>climate_zone</code>: <code>D13</code></li>
+<li><code>weather_station_altitude</code>: <code>D17</code></li>
+<li><code>site_altitude</code>: <code>D18</code></li>
+<li><code>latitude</code>: <code>F25</code></li>
+<li><code>longitude</code>: <code>H25</code></li>
+</ul>
+<hr>
+<h2 id="u-values">U-Values</h2>
+<p>Worksheet key: <code>UVALUES</code></p>
+<h3 id="constructor">constructor</h3>
+<ul>
+<li>Header locator: col <code>L</code>, string <code>"Description of building assembly"</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Column</th><th>Unit</th></tr></thead><tbody><tr><td><code>display_name</code></td><td>L</td><td></td></tr><tr><td><code>r_si</code></td><td>M</td><td>M2K/W</td></tr><tr><td><code>r_se</code></td><td>M</td><td>M2K/W</td></tr><tr><td><code>interior_insulation</code></td><td>R</td><td></td></tr><tr><td><code>sec_1_description</code></td><td>L</td><td></td></tr><tr><td><code>sec_1_conductivity</code></td><td>M</td><td>W/MK</td></tr><tr><td><code>sec_2_description</code></td><td>N</td><td></td></tr><tr><td><code>sec_2_conductivity</code></td><td>O</td><td>W/MK</td></tr><tr><td><code>sec_3_description</code></td><td>P</td><td></td></tr><tr><td><code>sec_3_conductivity</code></td><td>Q</td><td>W/MK</td></tr><tr><td><code>thickness</code></td><td>R</td><td>MM</td></tr><tr><td><code>u_val_supplement</code></td><td>R</td><td>W/M2K</td></tr><tr><td><code>variants_layer_name</code></td><td>E</td><td></td></tr><tr><td><code>variants_conductivity</code></td><td>F</td><td></td></tr><tr><td><code>variants_thickness</code></td><td>G</td><td></td></tr><tr><td><code>sec_2_percentage</code></td><td>O</td><td></td></tr><tr><td><code>sec_3_percentage</code></td><td>Q</td><td></td></tr></tbody></table>
+<p><strong>Row offsets within each assembly block:</strong></p>
+<ul>
+<li><code>phpp_id_num_col_offset</code>: <code>5</code></li>
+<li><code>name_row_offset</code>: <code>2</code></li>
+<li><code>rsi_row_offset</code>: <code>4</code></li>
+<li><code>rse_row_offset</code>: <code>5</code></li>
+<li><code>first_layer_row_offset</code>: <code>7</code></li>
+<li><code>last_layer_row_offset</code>: <code>14</code></li>
+<li><code>result_val_row_offset</code>: <code>19</code></li>
+<li><code>result_val_col</code>: <code>R</code></li>
+<li><code>result_val_unit</code>: <code>W/M2K</code></li>
+</ul>
+<hr>
+<h2 id="areas">Areas</h2>
+<p>Worksheet key: <code>AREAS</code></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field Key</th><th>Label (<code>locator_string</code>)</th><th>Locator Col</th><th>Input Col</th><th>Row Offset</th><th>Unit</th><th>Options</th></tr></thead><tbody><tr><td><code>tfa_input</code></td><td>1-Treated floor area</td><td>M</td><td>T</td><td>0</td><td>M2</td><td></td></tr></tbody></table>
+<h3 id="summary_rows">summary_rows</h3>
+<ul>
+<li><code>temp_zones</code>: <code>K</code></li>
+<li><code>area_type</code>: <code>M</code></li>
+<li><code>group_number</code>: <code>N</code></li>
+<li><code>area</code>: <code>L</code></li>
+<li><code>average_u_value</code>: <code>P</code></li>
+</ul>
+<h3 id="surface_rows">surface_rows</h3>
+<ul>
+<li>Header locator: col <code>K</code>, string <code>"Area input"</code></li>
+<li>Entry locator: col <code>K</code>, string <code>"1"</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Column</th><th>Unit</th></tr></thead><tbody><tr><td><code>description</code></td><td>L</td><td></td></tr><tr><td><code>group_number</code></td><td>M</td><td></td></tr><tr><td><code>quantity</code></td><td>N</td><td></td></tr><tr><td><code>area</code></td><td>T</td><td>M2</td></tr><tr><td><code>assembly_id</code></td><td>AA</td><td></td></tr><tr><td><code>orientation</code></td><td>AE</td><td></td></tr><tr><td><code>angle</code></td><td>AF</td><td></td></tr><tr><td><code>shading</code></td><td>AH</td><td></td></tr><tr><td><code>absorptivity</code></td><td>AI</td><td></td></tr><tr><td><code>emissivity</code></td><td>AJ</td><td></td></tr></tbody></table>
+<h3 id="thermal_bridge_rows">thermal_bridge_rows</h3>
+<ul>
+<li>Header locator: col <code>K</code>, string <code>"Thermal bridge input"</code></li>
+<li>Entry locator: col <code>K</code>, string <code>"1"</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Column</th><th>Unit</th></tr></thead><tbody><tr><td><code>description</code></td><td>L</td><td></td></tr><tr><td><code>group_number</code></td><td>M</td><td></td></tr><tr><td><code>quantity</code></td><td>N</td><td></td></tr><tr><td><code>length</code></td><td>P</td><td>M</td></tr><tr><td><code>psi_value</code></td><td>V</td><td>W/MK</td></tr><tr><td><code>fRsi_value</code></td><td>X</td><td></td></tr></tbody></table>
+<h3 id="defined_ranges-1">defined_ranges</h3>
+<hr>
+<h2 id="ground">Ground</h2>
+<p>Worksheet key: <code>GROUND</code></p>
+<hr>
+<h2 id="components">Components</h2>
+<p>Worksheet key: <code>COMPONENTS</code></p>
+<h3 id="glazings">glazings</h3>
+<ul>
+<li><code>entry_column</code>: <code>IH</code></li>
+<li><code>entry_start_row</code>: <code>13</code></li>
+<li><code>header_start_row</code>: <code>8</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Column</th><th>Unit</th></tr></thead><tbody><tr><td><code>id</code></td><td>IH</td><td></td></tr><tr><td><code>description</code></td><td>II</td><td></td></tr><tr><td><code>g_value</code></td><td>IJ</td><td></td></tr><tr><td><code>u_value</code></td><td>IK</td><td>W/M2K</td></tr></tbody></table>
+<h3 id="frames">frames</h3>
+<ul>
+<li>Header locator: col <code>IO</code>, string <code>"Window and door frames"</code></li>
+<li>Entry locator: col <code>IO</code>, string <code>"01ud"</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Column</th><th>Unit</th></tr></thead><tbody><tr><td><code>id</code></td><td>IO</td><td></td></tr><tr><td><code>description</code></td><td>IP</td><td></td></tr><tr><td><code>u_value_left</code></td><td>IU</td><td>W/M2K</td></tr><tr><td><code>u_value_right</code></td><td>IW</td><td>W/M2K</td></tr><tr><td><code>u_value_bottom</code></td><td>JA</td><td>W/M2K</td></tr><tr><td><code>u_value_top</code></td><td>IY</td><td>W/M2K</td></tr><tr><td><code>width_left</code></td><td>IT</td><td>MM</td></tr><tr><td><code>width_right</code></td><td>IV</td><td>MM</td></tr><tr><td><code>width_bottom</code></td><td>IZ</td><td>MM</td></tr><tr><td><code>width_top</code></td><td>IX</td><td>MM</td></tr><tr><td><code>psi_g_left</code></td><td>IR</td><td>W/MK</td></tr><tr><td><code>psi_g_right</code></td><td>IR</td><td>W/MK</td></tr><tr><td><code>psi_g_bottom</code></td><td>IR</td><td>W/MK</td></tr><tr><td><code>psi_g_top</code></td><td>IR</td><td>W/MK</td></tr><tr><td><code>psi_i_left</code></td><td>JZ</td><td>W/MK</td></tr><tr><td><code>psi_i_right</code></td><td>JZ</td><td>W/MK</td></tr><tr><td><code>psi_i_bottom</code></td><td>KB</td><td>W/MK</td></tr><tr><td><code>psi_i_top</code></td><td>KA</td><td>W/MK</td></tr></tbody></table>
+<h3 id="ventilators">ventilators</h3>
+<ul>
+<li>Header locator: col <code>LQ</code>, string <code>"Ventilation units"</code></li>
+<li>Entry locator: col <code>LQ</code>, string <code>"01ud"</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Column</th><th>Unit</th></tr></thead><tbody><tr><td><code>id</code></td><td>LQ</td><td></td></tr><tr><td><code>display_name</code></td><td>LR</td><td></td></tr><tr><td><code>sensible_heat_recovery</code></td><td>LS</td><td></td></tr><tr><td><code>latent_heat_recovery</code></td><td>LT</td><td></td></tr><tr><td><code>electric_efficiency</code></td><td>LW</td><td>WH/M3</td></tr><tr><td><code>min_m3h</code></td><td>LX</td><td>M3/HR</td></tr><tr><td><code>max_m3h</code></td><td>LY</td><td>M3/HR</td></tr><tr><td><code>pa_per_section</code></td><td>LZ</td><td>PA</td></tr><tr><td><code>pa_per_fittings</code></td><td>MA</td><td>PA</td></tr><tr><td><code>frost_protection_reqd</code></td><td>MB</td><td></td></tr><tr><td><code>noise_35DBA</code></td><td>MC</td><td></td></tr><tr><td><code>noise_supply_air</code></td><td>MD</td><td></td></tr><tr><td><code>noise_extract_air</code></td><td>ME</td><td></td></tr><tr><td><code>additional_info</code></td><td>MF</td><td></td></tr></tbody></table>
+<hr>
+<h2 id="windows-1">Windows</h2>
+<p>Worksheet key: <code>WINDOWS</code></p>
+<h3 id="window_rows">window_rows</h3>
+<ul>
+<li>Header locator: col <code>L</code>, string <code>"Windows and entrance doors"</code></li>
+<li>Entry locator: col <code>L</code>, string <code>"Quan-"</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Column</th><th>Unit</th></tr></thead><tbody><tr><td><code>quantity</code></td><td>L</td><td></td></tr><tr><td><code>description</code></td><td>N</td><td></td></tr><tr><td><code>orientation_angle</code></td><td>O</td><td></td></tr><tr><td><code>vertical_angle</code></td><td>P</td><td></td></tr><tr><td><code>orientation_label</code></td><td>Q</td><td></td></tr><tr><td><code>width</code></td><td>R</td><td>M</td></tr><tr><td><code>height</code></td><td>S</td><td>M</td></tr><tr><td><code>host</code></td><td>T</td><td></td></tr><tr><td><code>glazing_id</code></td><td>U</td><td></td></tr><tr><td><code>frame_id</code></td><td>V</td><td></td></tr><tr><td><code>psi_i_left</code></td><td>AN</td><td>W/MK</td></tr><tr><td><code>psi_i_right</code></td><td>AO</td><td>W/MK</td></tr><tr><td><code>psi_i_bottom</code></td><td>AQ</td><td>W/MK</td></tr><tr><td><code>psi_i_top</code></td><td>AP</td><td>W/MK</td></tr><tr><td><code>window_area</code></td><td>AW</td><td>M2</td></tr><tr><td><code>glazing_area</code></td><td>AX</td><td>M2</td></tr><tr><td><code>glazing_fraction</code></td><td>AY</td><td></td></tr><tr><td><code>u_w</code></td><td>AZ</td><td>W/M2K</td></tr><tr><td><code>u_w_installed</code></td><td>BA</td><td>W/M2K</td></tr><tr><td><code>comfort_exempt</code></td><td>EQ</td><td></td></tr><tr><td><code>comfort_temp</code></td><td>EQ</td><td>C</td></tr><tr><td><code>variant_input</code></td><td>F</td><td></td></tr></tbody></table>
+<h3 id="window_rows_end">window_rows_end</h3>
+<ul>
+<li>Header locator: col <code>L</code>, string <code>"Windows and entrance doors"</code></li>
+<li>Entry locator: col <code>L</code>, string <code>"Unhide additional rows"</code></li>
+</ul>
+<hr>
+<h2 id="shading">Shading</h2>
+<p>Worksheet key: <code>SHADING</code></p>
+<h3 id="shading_rows">shading_rows</h3>
+<ul>
+<li>Header locator: col <code>T</code>, string <code>"Calculation of reduction factors for shading"</code></li>
+<li>Entry locator: col <code>T</code>, string <code>"Quan-"</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Column</th><th>Unit</th></tr></thead><tbody><tr><td><code>h_hori</code></td><td>AB</td><td>M</td></tr><tr><td><code>d_hori</code></td><td>AC</td><td>M</td></tr><tr><td><code>o_reveal</code></td><td>AD</td><td>M</td></tr><tr><td><code>d_reveal</code></td><td>AE</td><td>M</td></tr><tr><td><code>o_over</code></td><td>AF</td><td>M</td></tr><tr><td><code>d_over</code></td><td>AG</td><td>M</td></tr><tr><td><code>r_other_winter</code></td><td>AH</td><td></td></tr><tr><td><code>r_other_summer</code></td><td>AI</td><td></td></tr><tr><td><code>temp_z</code></td><td>AJ</td><td></td></tr><tr><td><code>regulated</code></td><td>AK</td><td></td></tr></tbody></table>
+<h3 id="shading_rows_end">shading_rows_end</h3>
+<ul>
+<li>Header locator: col <code>T</code>, string <code>"Shading"</code></li>
+<li>Entry locator: col <code>T</code>, string <code>"Unhide additional rows"</code></li>
+</ul>
+<hr>
+<h2 id="ventilation-1">Ventilation</h2>
+<p>Worksheet key: <code>VENTILATION</code></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field Key</th><th>Label (<code>locator_string</code>)</th><th>Locator Col</th><th>Input Col</th><th>Row Offset</th><th>Unit</th><th>Options</th></tr></thead><tbody><tr><td><code>vent_type</code></td><td>Type of ventilation</td><td>I</td><td>K</td><td></td><td></td><td></td></tr><tr><td><code>wind_coeff_e</code></td><td>Wind protection coefficient, e</td><td>I</td><td>J</td><td></td><td></td><td></td></tr><tr><td><code>wind_coeff_f</code></td><td>Wind protection coefficient, f</td><td>I</td><td>J</td><td></td><td></td><td></td></tr><tr><td><code>airtightness_n50</code></td><td>Air change rate from pressurisation test</td><td>I</td><td>M</td><td></td><td></td><td></td></tr><tr><td><code>airtightness_Vn50</code></td><td>Net air volume for pressurisation test</td><td>I</td><td>M</td><td></td><td>M3</td><td></td></tr><tr><td><code>multi_unit_on</code></td><td>’Addl vent’ worksheet</td><td>I</td><td>K</td><td></td><td></td><td></td></tr></tbody></table>
+<p><strong>Configuration:</strong></p>
+<ul>
+<li><code>variants_col</code>: <code>D</code></li>
+</ul>
+<hr>
+<h2 id="addl-vent">Addl vent</h2>
+<p>Worksheet key: <code>ADDNL_VENT</code></p>
+<h3 id="rooms">rooms</h3>
+<ul>
+<li>Header locator: col <code>C</code>, string <code>"Room"</code></li>
+<li>Entry locator: col <code>C</code>, string <code>"1"</code></li>
+<li><code>last_col</code>: <code>Z</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Column</th><th>Unit</th></tr></thead><tbody><tr><td><code>quantity</code></td><td>D</td><td></td></tr><tr><td><code>display_name</code></td><td>E</td><td></td></tr><tr><td><code>vent_unit_assigned</code></td><td>F</td><td></td></tr><tr><td><code>weighted_floor_area</code></td><td>G</td><td>M2</td></tr><tr><td><code>clear_height</code></td><td>H</td><td>M</td></tr><tr><td><code>V_sup</code></td><td>J</td><td>M3/HR</td></tr><tr><td><code>V_eta</code></td><td>K</td><td>M3/HR</td></tr><tr><td><code>V_trans</code></td><td>L</td><td>M3/HR</td></tr><tr><td><code>operating_hours</code></td><td>N</td><td></td></tr><tr><td><code>operating_days</code></td><td>O</td><td></td></tr><tr><td><code>holiday_days</code></td><td>P</td><td></td></tr><tr><td><code>period_high_speed</code></td><td>Q</td><td></td></tr><tr><td><code>period_high_time</code></td><td>R</td><td></td></tr><tr><td><code>period_standard_speed</code></td><td>S</td><td></td></tr><tr><td><code>period_standard_time</code></td><td>T</td><td></td></tr><tr><td><code>period_minimum_speed</code></td><td>U</td><td></td></tr><tr><td><code>period_minimum_time</code></td><td>V</td><td></td></tr></tbody></table>
+<h3 id="units">units</h3>
+<ul>
+<li>Header locator: col <code>C</code>, string <code>"Venti-"</code></li>
+<li>Entry locator: col <code>C</code>, string <code>"1"</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Column</th><th>Unit</th></tr></thead><tbody><tr><td><code>quantity</code></td><td>D</td><td></td></tr><tr><td><code>display_name</code></td><td>E</td><td></td></tr><tr><td><code>unit_selected</code></td><td>F</td><td></td></tr><tr><td><code>oda_sup_pa</code></td><td>K</td><td>PA</td></tr><tr><td><code>eta_eha_pa</code></td><td>L</td><td>PA</td></tr><tr><td><code>addnl_pa</code></td><td>M</td><td>PA</td></tr><tr><td><code>ext_location</code></td><td>Q</td><td></td></tr><tr><td><code>subsoil_hr</code></td><td>X</td><td></td></tr><tr><td><code>frost_protection_type</code></td><td>Z</td><td></td></tr><tr><td><code>temperature_below_defrost_used</code></td><td>AA</td><td>C</td></tr></tbody></table>
+<h3 id="ducts">ducts</h3>
+<ul>
+<li>Header locator: col <code>E</code>, string <code>"Round"</code></li>
+<li>Entry locator: col <code>D</code>, string <code>"1"</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Column</th><th>Unit</th></tr></thead><tbody><tr><td><code>quantity</code></td><td>D</td><td></td></tr><tr><td><code>diameter</code></td><td>F</td><td>MM</td></tr><tr><td><code>width</code></td><td>F</td><td>MM</td></tr><tr><td><code>height</code></td><td>G</td><td>MM</td></tr><tr><td><code>insul_thickness</code></td><td>H</td><td>MM</td></tr><tr><td><code>insul_conductivity</code></td><td>I</td><td>W/MK</td></tr><tr><td><code>insul_reflective</code></td><td>J</td><td></td></tr><tr><td><code>sup_air_duct_len</code></td><td>L</td><td>M</td></tr><tr><td><code>oda_air_duct_len</code></td><td>M</td><td>M</td></tr><tr><td><code>exh_air_duct_len</code></td><td>N</td><td>M</td></tr><tr><td><code>duct_assign_1</code></td><td>Q</td><td></td></tr><tr><td><code>duct_assign_2</code></td><td>R</td><td></td></tr><tr><td><code>duct_assign_3</code></td><td>S</td><td></td></tr><tr><td><code>duct_assign_4</code></td><td>T</td><td></td></tr><tr><td><code>duct_assign_5</code></td><td>U</td><td></td></tr><tr><td><code>duct_assign_6</code></td><td>V</td><td></td></tr><tr><td><code>duct_assign_7</code></td><td>W</td><td></td></tr><tr><td><code>duct_assign_8</code></td><td>X</td><td></td></tr><tr><td><code>duct_assign_9</code></td><td>Z</td><td></td></tr><tr><td><code>duct_assign_10</code></td><td>Z</td><td></td></tr></tbody></table>
+<hr>
+<h2 id="heating">Heating</h2>
+<p>Worksheet key: <code>HEATING_DEMAND</code></p>
+<p><strong>Configuration:</strong></p>
+<ul>
+<li><code>unit</code>: <code>kWh</code></li>
+<li><code>col_kWh_year</code>: <code>O</code></li>
+<li><code>col_kWh_m2_year</code>: <code>Q</code></li>
+<li><code>row_total_losses_transmission</code>: <code>27</code></li>
+<li><code>row_total_losses_ventilation</code>: <code>43</code></li>
+<li><code>row_total_losses</code>: <code>45</code></li>
+<li><code>row_total_gains_solar</code>: <code>61</code></li>
+<li><code>row_total_gains_internal</code>: <code>65</code></li>
+<li><code>row_utilization_factor</code>: <code>72</code></li>
+<li><code>row_useful_gains</code>: <code>74</code></li>
+<li><code>row_annual_demand</code>: <code>78</code></li>
+</ul>
+<hr>
+<h2 id="heating-load">Heating load</h2>
+<p>Worksheet key: <code>HEATING_PEAK_LOAD</code></p>
+<p><strong>Configuration:</strong></p>
+<ul>
+<li><code>unit</code>: <code>W</code></li>
+<li><code>col_weather_1</code>: <code>P</code></li>
+<li><code>col_weather_2</code>: <code>R</code></li>
+<li><code>row_total_losses_transmission</code>: <code>44</code></li>
+<li><code>row_total_losses_ventilation</code>: <code>57</code></li>
+<li><code>row_total_losses</code>: <code>60</code></li>
+<li><code>row_total_gains_solar</code>: <code>73</code></li>
+<li><code>row_total_gains_internal</code>: <code>77</code></li>
+<li><code>row_total_gains</code>: <code>80</code></li>
+<li><code>row_total_load</code>: <code>88</code></li>
+</ul>
+<hr>
+<h2 id="cooling">Cooling</h2>
+<p>Worksheet key: <code>COOLING_DEMAND</code></p>
+<p><strong>Configuration:</strong></p>
+<ul>
+<li><code>unit</code>: <code>kWh</code></li>
+<li><code>col_kWh_year</code>: <code>O</code></li>
+<li><code>col_kWh_m2_year</code>: <code>Q</code></li>
+<li><code>row_total_losses_transmission</code>: <code>29</code></li>
+<li><code>row_total_losses_ventilation</code>: <code>57</code></li>
+<li><code>row_total_losses</code>: <code>59</code></li>
+<li><code>row_utilization_factor</code>: <code>84</code></li>
+<li><code>row_useful_losses</code>: <code>86</code></li>
+<li><code>row_total_gains_solar</code>: <code>73</code></li>
+<li><code>row_total_gains_internal</code>: <code>77</code></li>
+<li><code>row_total_gains</code>: <code>79</code></li>
+<li><code>row_annual_sensible_demand</code>: <code>88</code></li>
+<li><code>row_annual_latent_demand</code>: <code>94</code></li>
+<li><code>address_specific_latent_cooling_demand</code>: <code>AN176</code></li>
+<li><code>address_tfa</code>: <code>O8</code></li>
+</ul>
+<hr>
+<h2 id="cooling-load">Cooling load</h2>
+<p>Worksheet key: <code>COOLING_PEAK_LOAD</code></p>
+<p><strong>Configuration:</strong></p>
+<ul>
+<li><code>unit</code>: <code>W</code></li>
+<li><code>col_weather_1</code>: <code>P</code></li>
+<li><code>col_weather_2</code>: <code>R</code></li>
+<li><code>row_total_losses_transmission</code>: <code>35</code></li>
+<li><code>row_total_losses_ventilation</code>: <code>43</code></li>
+<li><code>row_total_gains_solar</code>: <code>56</code></li>
+<li><code>row_total_gains_internal</code>: <code>60</code></li>
+<li><code>row_total_sensible_load</code>: <code>64</code></li>
+<li><code>row_total_latent_load</code>: <code>93</code></li>
+</ul>
+<hr>
+<h2 id="summvent">SummVent</h2>
+<p>Worksheet key: <code>SUMM_VENT</code></p>
+<hr>
+<h2 id="cooling-units">Cooling units</h2>
+<p>Worksheet key: <code>COOLING_UNITS</code></p>
+<p><strong>Configuration:</strong></p>
+<ul>
+<li><code>SEER_unit</code>: <code>W/W</code></li>
+</ul>
+<h3 id="supply_air">supply_air</h3>
+<ul>
+<li><code>used</code>: <code>Kuehlgeraete_Zuluft_Kuehlung_Ankreuzen</code></li>
+<li><code>num_units</code>: <code>Kuehlgeraete_Kompressor_Zuluft_Anzahl</code></li>
+<li><code>device_type_name</code>: <code>Kuehlgeraete_Kompressor_Zuluft_Geraet</code></li>
+<li><code>SEER</code>: <code>X32</code></li>
+</ul>
+<h3 id="recirculation_air">recirculation_air</h3>
+<ul>
+<li><code>used</code>: <code>Kuehlgeraete_Umluft_Kuehlung_Ankreuzen</code></li>
+<li><code>num_units</code>: <code>Kuehlgeraete_Kompressor_Umluft_Anzahl</code></li>
+<li><code>device_type_name</code>: <code>Kuehlgeraete_Kompressor_Umluft_Geraet</code></li>
+<li><code>SEER</code>: <code>X50</code></li>
+</ul>
+<h3 id="dehumidification">dehumidification</h3>
+<ul>
+<li><code>used</code>: <code>Kuehlgeraete_Zusaetzliche_Entfeuchtung_Ankreuzen</code></li>
+<li><code>waste_heat_to_room</code>: <code>Kuehlgeraete_Zusaetzliche_Entfeuchtung_Abwaerme</code></li>
+<li><code>SEER</code>: <code>Kuehlgeraete_Zusaetzliche_Entfeuchtung_JAZ</code></li>
+</ul>
+<h3 id="panel">panel</h3>
+<ul>
+<li><code>used</code>: <code>Kuehlgeraete_Flaechenkuehlung_Ankreuzen</code></li>
+<li><code>device_type_name</code>: <code>Kuehlgeraete_Kompressor_Flaechenkuehlung_Geraet</code></li>
+<li><code>SEER</code>: <code>X69</code></li>
+</ul>
+<hr>
+<h2 id="dhwdistribution">DHW+Distribution</h2>
+<p>Worksheet key: <code>DHW</code></p>
+<h3 id="recirc_piping">recirc_piping</h3>
+<ul>
+<li>Header locator: col <code>D</code>, string <code>"DHW distribution"</code></li>
+<li>Entry locator: col <code>E</code>, string <code>"DHW circulation pipes or, for heat interface units, forward and return flows"</code></li>
+<li><code>input_col_start</code>: <code>J</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Row Offset</th><th>Unit</th></tr></thead><tbody><tr><td><code>total_length</code></td><td>2</td><td>M</td></tr><tr><td><code>diameter</code></td><td>3</td><td>MM</td></tr><tr><td><code>insul_thickness</code></td><td>4</td><td>MM</td></tr><tr><td><code>insul_reflective</code></td><td>5</td><td></td></tr><tr><td><code>insul_conductivity</code></td><td>6</td><td>W/MK</td></tr><tr><td><code>daily_period</code></td><td>12</td><td></td></tr><tr><td><code>water_temp</code></td><td>13</td><td>C</td></tr></tbody></table>
+<h3 id="branch_piping">branch_piping</h3>
+<ul>
+<li>Header locator: col <code>D</code>, string <code>"DHW distribution"</code></li>
+<li>Entry locator: col <code>E</code>, string <code>"DHW stub pipes / individual pipes"</code></li>
+<li><code>input_col_start</code>: <code>J</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Row Offset</th><th>Unit</th></tr></thead><tbody><tr><td><code>water_temp</code></td><td>1</td><td>C</td></tr><tr><td><code>diameter</code></td><td>2</td><td>MM</td></tr><tr><td><code>total_length</code></td><td>3</td><td>M</td></tr><tr><td><code>num_taps</code></td><td>4</td><td></td></tr></tbody></table>
+<h3 id="tanks">tanks</h3>
+<ul>
+<li>Header locator: col <code>D</code>, string <code>"Storage heat losses"</code></li>
+<li>Entry locator: col <code>J</code>, string <code>"Storage type 1"</code></li>
+<li><code>entry_row_start</code>: <code>191</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Column</th></tr></thead><tbody><tr><td><code>tank_1</code></td><td>J</td></tr><tr><td><code>tank_2</code></td><td>M</td></tr><tr><td><code>tank_buffer</code></td><td>P</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Row</th><th>Unit</th></tr></thead><tbody><tr><td><code>tank_type</code></td><td>0</td><td></td></tr><tr><td><code>standby_losses</code></td><td>5</td><td>W/K</td></tr><tr><td><code>storage_capacity</code></td><td>6</td><td>L</td></tr><tr><td><code>standby_fraction</code></td><td>7</td><td></td></tr><tr><td><code>tank_location</code></td><td>9</td><td></td></tr><tr><td><code>water_temp</code></td><td>12</td><td>C</td></tr></tbody></table>
+<p><strong>tank_type options:</strong> <code>0</code>: 0-No storage tank; <code>1</code>: 1-DHW and heating; <code>2</code>: 2-DHW only</p>
+<p><strong>tank_location options:</strong> <code>1</code>: 1-Inside; <code>0</code>: 2-Outside</p>
+<hr>
+<h2 id="solardhw">SolarDHW</h2>
+<p>Worksheet key: <code>SOLAR_DHW</code></p>
+<p><strong>Configuration:</strong></p>
+<ul>
+<li><code>footprint_unit</code>: <code>M2</code></li>
+<li><code>energy_unit</code>: <code>KHW</code></li>
+</ul>
+<h3 id="ranges">ranges</h3>
+<ul>
+<li><code>footprint</code>: <code>SolarWW_Kollektorflaeche</code></li>
+<li><code>annual_dhw_contribution</code>: <code>N34</code></li>
+<li><code>annual_dhw_energy</code>: <code>P34</code></li>
+<li><code>annual_heating_contribution</code>: <code>N35</code></li>
+<li><code>annual_heating_energy</code>: <code>P35</code></li>
+</ul>
+<hr>
+<h2 id="pv">PV</h2>
+<p>Worksheet key: <code>SOLAR_PV</code></p>
+<p><strong>Configuration:</strong></p>
+<ul>
+<li><code>footprint_unit</code>: <code>M2</code></li>
+<li><code>energy_unit</code>: <code>KWH</code></li>
+</ul>
+<h3 id="columns">columns</h3>
+<ul>
+<li><code>systems_start</code>: <code>S</code></li>
+<li><code>systems_end</code>: <code>W</code></li>
+</ul>
+<h3 id="rows">rows</h3>
+<ul>
+<li><code>systems_start</code>: <code>10</code></li>
+<li><code>current</code>: <code>20</code></li>
+<li><code>voltage</code>: <code>21</code></li>
+<li><code>num_panels</code>: <code>29</code></li>
+<li><code>footprint</code>: <code>37</code></li>
+<li><code>annual_energy</code>: <code>42</code></li>
+<li><code>systems_end</code>: <code>47</code></li>
+</ul>
+<hr>
+<h2 id="electricity">Electricity</h2>
+<p>Worksheet key: <code>ELECTRICITY</code></p>
+<h3 id="input_columns">input_columns</h3>
+<ul>
+<li><code>selection</code>: <code>E</code></li>
+<li><code>used</code>: <code>E</code></li>
+<li><code>in_conditioned_space</code>: <code>F</code></li>
+<li><code>energy_demand_per_use</code>: <code>N</code></li>
+<li><code>utilization_factor</code>: <code>H</code></li>
+<li><code>frequency</code>: <code>K</code></li>
+<li><code>reference_quantity</code>: <code>I</code></li>
+<li><code>annual_energy_demand</code>: <code>AB</code></li>
+</ul>
+<h3 id="input_rows">input_rows</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Appliance</th><th>Data Row</th><th>Selection Row</th><th>Options</th></tr></thead><tbody><tr><td><code>dishwasher</code></td><td>25</td><td>24</td><td><code>1</code>: 1-DHW connection; <code>2</code>: 2-Cold water connection</td></tr><tr><td><code>clothes_washing</code></td><td>29</td><td>28</td><td><code>1</code>: 1-DHW connection; <code>2</code>: 2-Cold water connection</td></tr><tr><td><code>clothes_drying</code></td><td>33</td><td>32</td><td><code>1</code>: 1-Clothes line; <code>2</code>: 2-Drying closet (cold!); <code>3</code>: 3-Drying closet (cold!) in extract air; <code>4</code>: 4-Condensation dryer; <code>5</code>: 5-Electric exhaust air dryer; <code>6</code>: 6-Gas exhaust air dryer</td></tr><tr><td><code>refrigerator</code></td><td>16</td><td></td><td></td></tr><tr><td><code>freezer</code></td><td>17</td><td></td><td></td></tr><tr><td><code>fridge_freezer</code></td><td>18</td><td></td><td></td></tr><tr><td><code>cooking</code></td><td>21</td><td>20</td><td><code>1</code>: 1-Electricity; <code>2</code>: 2-Natural gas; <code>3</code>: 3-LPG</td></tr><tr><td><code>lighting</code></td><td>37</td><td></td><td></td></tr><tr><td><code>lighting_interior</code></td><td>38</td><td></td><td></td></tr><tr><td><code>lighting_exterior</code></td><td>39</td><td></td><td></td></tr><tr><td><code>consumer_elec</code></td><td>68</td><td></td><td></td></tr><tr><td><code>small_appliances</code></td><td>68</td><td></td><td></td></tr></tbody></table>
+<hr>
+<h2 id="use-non-res">Use non-res</h2>
+<p>Worksheet key: <code>USE_NON_RES</code></p>
+<hr>
+<h2 id="electricity-non-res">Electricity non-res</h2>
+<p>Worksheet key: <code>ELEC_NON_RES</code></p>
+<h3 id="lighting_rows">lighting_rows</h3>
+<ul>
+<li>Header locator: col <code>C</code>, string <code>"Lighting"</code></li>
+<li>Entry locator: col <code>C</code>, string <code>"Room / Zone"</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Column</th><th>Unit</th></tr></thead><tbody><tr><td><code>room_zone_name</code></td><td>C</td><td></td></tr><tr><td><code>net_floor_area</code></td><td>D</td><td></td></tr><tr><td><code>utilization_profile</code></td><td>E</td><td></td></tr><tr><td><code>room_has_window</code></td><td>F</td><td></td></tr><tr><td><code>room_angle_from_north</code></td><td>G</td><td></td></tr><tr><td><code>room_orientation</code></td><td>H</td><td></td></tr><tr><td><code>factor</code></td><td>I</td><td></td></tr><tr><td><code>glazing_light_transmission</code></td><td>J</td><td></td></tr><tr><td><code>room_depth</code></td><td>K</td><td></td></tr><tr><td><code>room_width</code></td><td>L</td><td></td></tr><tr><td><code>room_height</code></td><td>M</td><td></td></tr><tr><td><code>lintel_height</code></td><td>N</td><td></td></tr><tr><td><code>window_width</code></td><td>O</td><td></td></tr><tr><td><code>daily_utilization</code></td><td>P</td><td></td></tr><tr><td><code>nominal_illumination</code></td><td>R</td><td></td></tr><tr><td><code>installed_power</code></td><td>S</td><td>W/M2</td></tr><tr><td><code>lighting_control</code></td><td>V</td><td></td></tr><tr><td><code>motion_detector_used</code></td><td>W</td><td></td></tr><tr><td><code>utilization_hours_year</code></td><td>X</td><td></td></tr><tr><td><code>ud_annual_full_load_hours</code></td><td>Y</td><td></td></tr><tr><td><code>annual_full_load_hours</code></td><td>Z</td><td></td></tr><tr><td><code>daily_full_load_hours</code></td><td>AA</td><td></td></tr><tr><td><code>annual_energy_demand</code></td><td>AC</td><td></td></tr></tbody></table>
+<hr>
+<h2 id="aux-electricity">Aux Electricity</h2>
+<p>Worksheet key: <code>AUX_ELEC</code></p>
+<hr>
+<h2 id="ihg-non-res">IHG non-res</h2>
+<p>Worksheet key: <code>IHG_NON_RES</code></p>
+<hr>
+<h2 id="per">PER</h2>
+<p>Worksheet key: <code>PER</code></p>
+<p><strong>Configuration:</strong></p>
+<ul>
+<li><code>locator_col</code>: <code>P</code></li>
+<li><code>unit</code>: <code>KWH</code></li>
+</ul>
+<h3 id="named_ranges-1">named_ranges</h3>
+<ul>
+<li><code>heating_type_1</code>: <code>PE_Waermeerzeuger_primaer</code></li>
+<li><code>heating_type_2</code>: <code>PE_Waermeerzeuger_sekundaer</code></li>
+</ul>
+<h3 id="columns-1">columns</h3>
+<ul>
+<li><code>calculated_efficiency</code>: <code>Q</code></li>
+<li><code>user_determined_efficiency</code>: <code>R</code></li>
+<li><code>final_energy</code>: <code>T</code></li>
+<li><code>per_energy</code>: <code>V</code></li>
+<li><code>pe_energy</code>: <code>X</code></li>
+<li><code>co2_emissions</code>: <code>Z</code></li>
+</ul>
+<h3 id="addresses">addresses</h3>
+<ul>
+<li><code>tfa</code>: <code>Z7</code></li>
+<li><code>footprint</code>: <code>Z8</code></li>
+</ul>
+<h3 id="heating_types">heating_types</h3>
+<ul>
+<li><code>range_start</code>: <code>P8</code></li>
+<li><code>range_end</code>: <code>T11</code></li>
+</ul>
+<h3 id="heating-1">heating</h3>
+<ul>
+<li><code>locator_string_heading</code>: <code>Heating</code></li>
+<li><code>locator_string_start</code>: <code>Electricity (HP compact unit)</code></li>
+</ul>
+<h3 id="cooling-1">cooling</h3>
+<ul>
+<li><code>locator_string_heading</code>: <code>Cooling and dehumidification</code></li>
+<li><code>locator_string_start</code>: <code>Electricity cooling (HP)</code></li>
+</ul>
+<h3 id="dhw">dhw</h3>
+<ul>
+<li><code>locator_string_heading</code>: <code>DHW generation</code></li>
+<li><code>locator_string_start</code>: <code>Electricity (HP compact unit)</code></li>
+</ul>
+<h3 id="household_electric">household_electric</h3>
+<ul>
+<li><code>locator_string_heading</code>: <code>Occupant electricity + auxiliary electricity (other)</code></li>
+<li><code>locator_string_start</code>: <code>User electricity (lighting, electrical devices, etc.)</code></li>
+</ul>
+<h3 id="additional_gas">additional_gas</h3>
+<ul>
+<li><code>locator_string_heading</code>: <code>Additional gas demand</code></li>
+<li><code>locator_string_start</code>: <code>Drying/Cooking</code></li>
+</ul>
+<h3 id="energy_generation">energy_generation</h3>
+<ul>
+<li><code>locator_string_heading</code>: <code>Energy generation</code></li>
+<li><code>locator_string_start</code>: <code>PV electricity</code></li>
+</ul>
+<hr>
+<h2 id="hp">HP</h2>
+<p>Worksheet key: <code>HP</code></p>
+<hr>
+<h2 id="boiler">Boiler</h2>
+<p>Worksheet key: <code>BOILER</code></p>
+<hr>
+<h2 id="data">Data</h2>
+<p>Worksheet key: <code>DATA</code></p>
+<h3 id="version">version</h3>
+<ul>
+<li>Header locator: col <code>A</code>, string <code>"PHPP Version"</code></li>
+<li>Entry locator: col <code>B</code>, string <code>""</code></li>
+</ul>
+<hr>
+<h2 id="overview">Overview</h2>
+<p>Worksheet key: <code>OVERVIEW</code></p>
+<h3 id="basic_data">basic_data</h3>
+<ul>
+<li><code>address_number_dwellings_res</code>: <code>C27</code></li>
+<li><code>address_number_dwellings_nonres</code>: <code>E27</code></li>
+<li><code>address_number_occupants_res</code>: <code>C28</code></li>
+<li><code>address_number_occupants_nonres</code>: <code>E28</code></li>
+<li><code>address_project_name</code>: <code>C11</code></li>
+</ul>
+<h3 id="building_envelope">building_envelope</h3>
+<ul>
+<li><code>address_area_envelope</code>: col <code>C</code>, row <code>105</code> (M2)</li>
+<li><code>address_area_tfa</code>: col <code>E</code>, row <code>105</code> (M2)</li>
+</ul>
+<h3 id="ventilation-2">ventilation</h3>
+<ul>
+<li><code>vn50</code>: col <code>C</code>, row <code>362</code> (M3)</li>
+</ul>
+<hr>
+<h2 id="easyph">easyPH</h2>
+<p>Worksheet key: <code>EASY_PH</code></p>
+<hr> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
+(function () {
+  // ---------- Modal open / close ----------
+  var scrim = document.getElementById("searchScrim");
+  var input = document.getElementById("searchInput");
+  var resultsEl = document.getElementById("searchResults");
+  var footerEl = document.getElementById("searchFooter");
+  var metaEl = document.getElementById("searchMeta");
+  if (!scrim || !input || !resultsEl || !footerEl || !metaEl) return;
+
+  var focusedIdx = -1;
+
+  function openSearch() {
+    scrim.classList.add("is-open");
+    scrim.setAttribute("aria-hidden", "false");
+    setTimeout(function () { input.focus(); }, 40);
+  }
+  function closeSearch() {
+    scrim.classList.remove("is-open");
+    scrim.setAttribute("aria-hidden", "true");
+    input.value = "";
+    resultsEl.innerHTML = "";
+    footerEl.style.display = "none";
+    focusedIdx = -1;
+  }
+
+  var openBtn = document.getElementById("openSearch");
+  if (openBtn) openBtn.addEventListener("click", openSearch);
+  document.getElementById("closeSearch").addEventListener("click", closeSearch);
+  scrim.addEventListener("click", function (e) {
+    if (e.target === scrim) closeSearch();
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if ((e.key === "k" || e.key === "K") && (e.metaKey || e.ctrlKey)) {
+      e.preventDefault();
+      scrim.classList.contains("is-open") ? closeSearch() : openSearch();
+    }
+    if (e.key === "Escape" && scrim.classList.contains("is-open")) closeSearch();
+  });
+
+  // ---------- Pagefind integration ----------
+  var pagefind = null;
+
+  function loadPagefind() {
+    if (pagefind) return Promise.resolve(pagefind);
+    return import("/pagefind/pagefind.js")
+      .then(function (pf) {
+        pagefind = pf;
+        return pf.init();
+      })
+      .then(function () { return pagefind; })
+      .catch(function () { pagefind = null; return null; });
+  }
+
+  // Debounced search
+  var timer;
+  input.addEventListener("input", function () {
+    clearTimeout(timer);
+    timer = setTimeout(function () { doSearch(input.value.trim()); }, 150);
+  });
+
+  function doSearch(query) {
+    if (!query) {
+      resultsEl.innerHTML = "";
+      footerEl.style.display = "none";
+      return;
+    }
+
+    loadPagefind().then(function (pf) {
+      if (!pf) {
+        resultsEl.innerHTML = '<div style="padding:24px;color:var(--fg-muted);font-size:14px;">Search index not available. Run <code>pnpm build</code> first.</div>';
+        return;
+      }
+      return pf.search(query).then(function (search) {
+        return Promise.all(
+          search.results.slice(0, 20).map(function (r) { return r.data(); })
+        ).then(function (results) {
+          renderResults(results, search.results.length);
+        });
+      });
+    });
+  }
+
+  function renderResults(results, totalCount) {
+    // Group by library
+    var groups = {};
+    var order = [];
+    results.forEach(function (r) {
+      var lib = (r.meta && r.meta.library) || "Other";
+      if (!groups[lib]) { groups[lib] = []; order.push(lib); }
+      groups[lib].push(r);
+    });
+
+    var html = "";
+    var globalIdx = 0;
+    order.forEach(function (lib) {
+      var items = groups[lib];
+      html += '<div class="search-group">';
+      html += '<div class="search-group__head">';
+      html += '<div class="search-group__title"><span class="dot"></span>' + lib + '</div>';
+      html += '<div class="search-group__count">' + items.length + ' result' + (items.length === 1 ? '' : 's') + '</div>';
+      html += '</div>';
+      items.forEach(function (item) {
+        html += '<a class="search-result" href="' + item.url + '" data-idx="' + globalIdx + '">';
+        html += '<div>';
+        html += '<div class="search-result__crumb">' + buildCrumb(item.url) + '</div>';
+        html += '<div class="search-result__title">' + ((item.meta && item.meta.title) || '') + '</div>';
+        html += '<div class="search-result__excerpt">' + (item.excerpt || '') + '</div>';
+        html += '</div>';
+        html += '<div class="search-result__side">';
+        html += '<span class="search-badge">' + abbreviate(lib) + '</span>';
+        html += '<span class="search-result__enter">↵ Open</span>';
+        html += '</div>';
+        html += '</a>';
+        globalIdx++;
+      });
+      html += '</div>';
+    });
+
+    resultsEl.innerHTML = html;
+    focusedIdx = -1;
+
+    metaEl.textContent = totalCount + ' result' + (totalCount === 1 ? '' : 's') + ' across ' + order.length + ' ' + (order.length === 1 ? 'library' : 'libraries');
+    footerEl.style.display = totalCount > 0 ? "" : "none";
+  }
+
+  function buildCrumb(url) {
+    var parts = url.replace(/^\/|\/$/g, "").split("/");
+    return parts.map(function (p, i) {
+      return '<span>' + (i === 0 ? p.toUpperCase() : p) + '</span>';
+    }).join('<span class="tri">›</span>');
+  }
+
+  function abbreviate(lib) {
+    if (lib.length <= 4) return lib.toUpperCase();
+    return lib.split(/[\s-]+/).map(function (w) { return w[0]; }).join("").toUpperCase();
+  }
+
+  // ---------- Keyboard navigation ----------
+  document.addEventListener("keydown", function (e) {
+    if (!scrim.classList.contains("is-open")) return;
+    var items = resultsEl.querySelectorAll(".search-result");
+    if (!items.length) return;
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      focusedIdx = Math.min(focusedIdx + 1, items.length - 1);
+      updateFocus(items);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      focusedIdx = Math.max(focusedIdx - 1, 0);
+      updateFocus(items);
+    } else if (e.key === "Enter" && focusedIdx >= 0) {
+      e.preventDefault();
+      items[focusedIdx].click();
+    }
+  });
+
+  function updateFocus(items) {
+    for (var i = 0; i < items.length; i++) {
+      if (i === focusedIdx) items[i].classList.add("is-focused");
+      else items[i].classList.remove("is-focused");
+    }
+    if (items[focusedIdx]) items[focusedIdx].scrollIntoView({ block: "nearest" });
+  }
+})();
+</script> <script>
+      // Only load Mermaid if the page has mermaid diagrams
+      (function () {
+        if (!document.querySelector('.mermaid')) return;
+        var theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'neutral';
+        var s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js';
+        s.onload = function () {
+          mermaid.initialize({ startOnLoad: true, theme: theme, securityLevel: 'strict' });
+          mermaid.run();
+        };
+        document.head.appendChild(s);
+      })();
+    </script> <script type="module">const o=document.getElementById("themeToggle"),t=o?.querySelector(".icon-sun"),n=o?.querySelector(".icon-moon");function c(e){document.documentElement.setAttribute("data-theme",e);try{localStorage.setItem("ph-docs:theme",e)}catch{}t&&n&&(e==="dark"?(t.style.display="none",n.style.display=""):(t.style.display="",n.style.display="none"))}const d=document.documentElement.getAttribute("data-theme")||"light";c(d);o?.addEventListener("click",()=>{const e=document.documentElement.getAttribute("data-theme");c(e==="dark"?"light":"dark")});</script> </body> </html>

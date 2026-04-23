@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-23T16:23:19Z",
+  "generated": "2026-04-23T16:45:02Z",
   "base_url": "https://docs.passivehousetools.com",
   "llm_nav": {
     "instructions": "/llm-instructions.md",
@@ -14,9 +14,9 @@
       "description": "Grasshopper-native Passive House modeling. Build PH-compliant models inside Rhino using familiar Honeybee components.",
       "pages": [
         {
-          "title": "base",
-          "path": "/honeybee-ph/api/base/",
-          "raw_path": "/llm/honeybee-ph/api/base.md",
+          "title": "_base",
+          "path": "/honeybee-ph/api/_base/",
+          "raw_path": "/llm/honeybee-ph/api/_base.md",
           "section": "API Reference"
         },
         {
@@ -62,9 +62,9 @@
           "section": "API Reference"
         },
         {
-          "title": "base",
-          "path": "/honeybee-ph/api/hvac/base/",
-          "raw_path": "/llm/honeybee-ph/api/hvac/base.md",
+          "title": "_base",
+          "path": "/honeybee-ph/api/hvac/_base/",
+          "raw_path": "/llm/honeybee-ph/api/hvac/_base.md",
           "section": "HVAC"
         },
         {
@@ -126,6 +126,847 @@
           "path": "/honeybee-ph/api/hvac/fuels/",
           "raw_path": "/llm/honeybee-ph/api/hvac/fuels.md",
           "section": "HVAC"
+        }
+      ]
+    },
+    {
+      "id": "phx",
+      "label": "PHX",
+      "description": "Passive House Exchange data model & file I/O. Convert between WUFI XML, PHPP Excel, and Phius report formats.",
+      "pages": [
+        {
+          "title": "Architecture",
+          "path": "/phx/dev/architecture/",
+          "raw_path": "/llm/phx/dev/architecture.md",
+          "section": "Developer",
+          "llm_purpose": "High-level architecture of PHX — module layout, data flow between importers/exporters, and key design decisions",
+          "llm_use_when": "Before making structural changes to PHX, adding a new importer/exporter, or understanding how data flows through the system",
+          "llm_related": [
+            "/llm/phx/reference/phx-model-reference.md",
+            "/llm/phx/dev/exporter-patterns.md"
+          ]
+        },
+        {
+          "title": "Export / Import Patterns",
+          "path": "/phx/dev/exporter-patterns/",
+          "raw_path": "/llm/phx/dev/exporter-patterns.md",
+          "section": "Developer",
+          "llm_purpose": "Patterns and conventions for PHX exporters (to WUFI XML, PHPP, PPP) and importers (from HBJSON, WUFI XML)",
+          "llm_use_when": "Before writing or modifying an exporter/importer, or debugging data conversion between formats",
+          "llm_related": [
+            "/llm/phx/reference/phx-model-reference.md",
+            "/llm/phx/dev/architecture.md"
+          ]
+        },
+        {
+          "title": "PHX Model Reference",
+          "path": "/phx/reference/phx-model-reference/",
+          "raw_path": "/llm/phx/reference/phx-model-reference.md",
+          "section": "Reference",
+          "llm_purpose": "Complete object graph, module map, design patterns, and testing conventions for the PHX in-memory data model",
+          "llm_use_when": "Before navigating, modifying, extending, or testing any PHX model class",
+          "llm_related": [
+            "/llm/phx/reference/wufi-xml-schema.md",
+            "/llm/phx/dev/architecture.md"
+          ]
+        },
+        {
+          "title": "WUFI XML Schema",
+          "path": "/phx/reference/wufi-xml-schema/",
+          "raw_path": "/llm/phx/reference/wufi-xml-schema.md",
+          "section": "Reference",
+          "llm_purpose": "Authoritative field mapping for all WUFI-Passive XML elements — structure map, UI-to-XML dictionary, and SI/IP unit conversions",
+          "llm_use_when": "Before parsing, generating, validating, verifying, or modifying any WUFI-Passive XML file",
+          "llm_related": [
+            "/llm/phx/reference/phx-model-reference.md",
+            "/llm/phx/dev/exporter-patterns.md"
+          ]
+        },
+        {
+          "title": "PHPP Field Mapping",
+          "path": "/phx/reference/phpp-field-mapping/",
+          "raw_path": "/llm/phx/reference/phpp-field-mapping.md",
+          "section": "Reference",
+          "llm_purpose": "Cell-level locator map for reading and writing PHPP 10.6 Excel worksheets via PHX",
+          "llm_use_when": "Before reading, writing, or debugging PHX PHPP export — locating worksheet cells and understanding the locator pattern",
+          "llm_related": [
+            "/llm/phx/reference/phx-model-reference.md",
+            "/llm/phx/dev/exporter-patterns.md"
+          ]
+        },
+        {
+          "title": "project",
+          "path": "/phx/api/model/project/",
+          "raw_path": "/llm/phx/api/model/project.md",
+          "section": "Model"
+        },
+        {
+          "title": "building",
+          "path": "/phx/api/model/building/",
+          "raw_path": "/llm/phx/api/model/building.md",
+          "section": "Model"
+        },
+        {
+          "title": "spaces",
+          "path": "/phx/api/model/spaces/",
+          "raw_path": "/llm/phx/api/model/spaces.md",
+          "section": "Model"
+        },
+        {
+          "title": "components",
+          "path": "/phx/api/model/components/",
+          "raw_path": "/llm/phx/api/model/components.md",
+          "section": "Model"
+        },
+        {
+          "title": "geometry",
+          "path": "/phx/api/model/geometry/",
+          "raw_path": "/llm/phx/api/model/geometry.md",
+          "section": "Model"
+        },
+        {
+          "title": "constructions",
+          "path": "/phx/api/model/constructions/",
+          "raw_path": "/llm/phx/api/model/constructions.md",
+          "section": "Model"
+        },
+        {
+          "title": "ground",
+          "path": "/phx/api/model/ground/",
+          "raw_path": "/llm/phx/api/model/ground.md",
+          "section": "Model"
+        },
+        {
+          "title": "shades",
+          "path": "/phx/api/model/shades/",
+          "raw_path": "/llm/phx/api/model/shades.md",
+          "section": "Model"
+        },
+        {
+          "title": "elec_equip",
+          "path": "/phx/api/model/elec_equip/",
+          "raw_path": "/llm/phx/api/model/elec_equip.md",
+          "section": "Model"
+        },
+        {
+          "title": "certification",
+          "path": "/phx/api/model/certification/",
+          "raw_path": "/llm/phx/api/model/certification.md",
+          "section": "Model"
+        },
+        {
+          "title": "phx_site",
+          "path": "/phx/api/model/phx_site/",
+          "raw_path": "/llm/phx/api/model/phx_site.md",
+          "section": "Model"
+        },
+        {
+          "title": "assembly_pathways",
+          "path": "/phx/api/model/assembly_pathways/",
+          "raw_path": "/llm/phx/api/model/assembly_pathways.md",
+          "section": "Model"
+        },
+        {
+          "title": "utilization_patterns",
+          "path": "/phx/api/model/utilization_patterns/",
+          "raw_path": "/llm/phx/api/model/utilization_patterns.md",
+          "section": "Model"
+        },
+        {
+          "title": "building",
+          "path": "/phx/api/model/enums/building/",
+          "raw_path": "/llm/phx/api/model/enums/building.md",
+          "section": "Enums"
+        },
+        {
+          "title": "hvac",
+          "path": "/phx/api/model/enums/hvac/",
+          "raw_path": "/llm/phx/api/model/enums/hvac.md",
+          "section": "Enums"
+        },
+        {
+          "title": "foundations",
+          "path": "/phx/api/model/enums/foundations/",
+          "raw_path": "/llm/phx/api/model/enums/foundations.md",
+          "section": "Enums"
+        },
+        {
+          "title": "elec_equip",
+          "path": "/phx/api/model/enums/elec_equip/",
+          "raw_path": "/llm/phx/api/model/enums/elec_equip.md",
+          "section": "Enums"
+        },
+        {
+          "title": "phx_site",
+          "path": "/phx/api/model/enums/phx_site/",
+          "raw_path": "/llm/phx/api/model/enums/phx_site.md",
+          "section": "Enums"
+        },
+        {
+          "title": "phi_certification_phpp_9",
+          "path": "/phx/api/model/enums/phi_certification_phpp_9/",
+          "raw_path": "/llm/phx/api/model/enums/phi_certification_phpp_9.md",
+          "section": "Enums"
+        },
+        {
+          "title": "phi_certification_phpp_10",
+          "path": "/phx/api/model/enums/phi_certification_phpp_10/",
+          "raw_path": "/llm/phx/api/model/enums/phi_certification_phpp_10.md",
+          "section": "Enums"
+        },
+        {
+          "title": "phius_certification",
+          "path": "/phx/api/model/enums/phius_certification/",
+          "raw_path": "/llm/phx/api/model/enums/phius_certification.md",
+          "section": "Enums"
+        },
+        {
+          "title": "_base",
+          "path": "/phx/api/model/hvac/_base/",
+          "raw_path": "/llm/phx/api/model/hvac/_base.md",
+          "section": "HVAC"
+        },
+        {
+          "title": "collection",
+          "path": "/phx/api/model/hvac/collection/",
+          "raw_path": "/llm/phx/api/model/hvac/collection.md",
+          "section": "HVAC"
+        },
+        {
+          "title": "ventilation",
+          "path": "/phx/api/model/hvac/ventilation/",
+          "raw_path": "/llm/phx/api/model/hvac/ventilation.md",
+          "section": "HVAC"
+        },
+        {
+          "title": "heating",
+          "path": "/phx/api/model/hvac/heating/",
+          "raw_path": "/llm/phx/api/model/hvac/heating.md",
+          "section": "HVAC"
+        },
+        {
+          "title": "heat_pumps",
+          "path": "/phx/api/model/hvac/heat_pumps/",
+          "raw_path": "/llm/phx/api/model/hvac/heat_pumps.md",
+          "section": "HVAC"
+        },
+        {
+          "title": "water",
+          "path": "/phx/api/model/hvac/water/",
+          "raw_path": "/llm/phx/api/model/hvac/water.md",
+          "section": "HVAC"
+        },
+        {
+          "title": "cooling_params",
+          "path": "/phx/api/model/hvac/cooling_params/",
+          "raw_path": "/llm/phx/api/model/hvac/cooling_params.md",
+          "section": "HVAC"
+        },
+        {
+          "title": "renewable_devices",
+          "path": "/phx/api/model/hvac/renewable_devices/",
+          "raw_path": "/llm/phx/api/model/hvac/renewable_devices.md",
+          "section": "HVAC"
+        },
+        {
+          "title": "piping",
+          "path": "/phx/api/model/hvac/piping/",
+          "raw_path": "/llm/phx/api/model/hvac/piping.md",
+          "section": "HVAC"
+        },
+        {
+          "title": "ducting",
+          "path": "/phx/api/model/hvac/ducting/",
+          "raw_path": "/llm/phx/api/model/hvac/ducting.md",
+          "section": "HVAC"
+        },
+        {
+          "title": "supportive_devices",
+          "path": "/phx/api/model/hvac/supportive_devices/",
+          "raw_path": "/llm/phx/api/model/hvac/supportive_devices.md",
+          "section": "HVAC"
+        },
+        {
+          "title": "occupancy",
+          "path": "/phx/api/model/loads/occupancy/",
+          "raw_path": "/llm/phx/api/model/loads/occupancy.md",
+          "section": "Loads"
+        },
+        {
+          "title": "lighting",
+          "path": "/phx/api/model/loads/lighting/",
+          "raw_path": "/llm/phx/api/model/loads/lighting.md",
+          "section": "Loads"
+        },
+        {
+          "title": "ventilation",
+          "path": "/phx/api/model/loads/ventilation/",
+          "raw_path": "/llm/phx/api/model/loads/ventilation.md",
+          "section": "Loads"
+        },
+        {
+          "title": "occupancy",
+          "path": "/phx/api/model/programs/occupancy/",
+          "raw_path": "/llm/phx/api/model/programs/occupancy.md",
+          "section": "Programs"
+        },
+        {
+          "title": "lighting",
+          "path": "/phx/api/model/programs/lighting/",
+          "raw_path": "/llm/phx/api/model/programs/lighting.md",
+          "section": "Programs"
+        },
+        {
+          "title": "ventilation",
+          "path": "/phx/api/model/programs/ventilation/",
+          "raw_path": "/llm/phx/api/model/programs/ventilation.md",
+          "section": "Programs"
+        },
+        {
+          "title": "occupancy",
+          "path": "/phx/api/model/schedules/occupancy/",
+          "raw_path": "/llm/phx/api/model/schedules/occupancy.md",
+          "section": "Schedules"
+        },
+        {
+          "title": "lighting",
+          "path": "/phx/api/model/schedules/lighting/",
+          "raw_path": "/llm/phx/api/model/schedules/lighting.md",
+          "section": "Schedules"
+        },
+        {
+          "title": "ventilation",
+          "path": "/phx/api/model/schedules/ventilation/",
+          "raw_path": "/llm/phx/api/model/schedules/ventilation.md",
+          "section": "Schedules"
+        },
+        {
+          "title": "read_HBJSON_file",
+          "path": "/phx/api/from_HBJSON/read_HBJSON_file/",
+          "raw_path": "/llm/phx/api/from_HBJSON/read_HBJSON_file.md",
+          "section": "from_HBJSON"
+        },
+        {
+          "title": "create_project",
+          "path": "/phx/api/from_HBJSON/create_project/",
+          "raw_path": "/llm/phx/api/from_HBJSON/create_project.md",
+          "section": "from_HBJSON"
+        },
+        {
+          "title": "create_variant",
+          "path": "/phx/api/from_HBJSON/create_variant/",
+          "raw_path": "/llm/phx/api/from_HBJSON/create_variant.md",
+          "section": "from_HBJSON"
+        },
+        {
+          "title": "create_building",
+          "path": "/phx/api/from_HBJSON/create_building/",
+          "raw_path": "/llm/phx/api/from_HBJSON/create_building.md",
+          "section": "from_HBJSON"
+        },
+        {
+          "title": "create_rooms",
+          "path": "/phx/api/from_HBJSON/create_rooms/",
+          "raw_path": "/llm/phx/api/from_HBJSON/create_rooms.md",
+          "section": "from_HBJSON"
+        },
+        {
+          "title": "create_assemblies",
+          "path": "/phx/api/from_HBJSON/create_assemblies/",
+          "raw_path": "/llm/phx/api/from_HBJSON/create_assemblies.md",
+          "section": "from_HBJSON"
+        },
+        {
+          "title": "create_geometry",
+          "path": "/phx/api/from_HBJSON/create_geometry/",
+          "raw_path": "/llm/phx/api/from_HBJSON/create_geometry.md",
+          "section": "from_HBJSON"
+        },
+        {
+          "title": "create_schedules",
+          "path": "/phx/api/from_HBJSON/create_schedules/",
+          "raw_path": "/llm/phx/api/from_HBJSON/create_schedules.md",
+          "section": "from_HBJSON"
+        },
+        {
+          "title": "create_shades",
+          "path": "/phx/api/from_HBJSON/create_shades/",
+          "raw_path": "/llm/phx/api/from_HBJSON/create_shades.md",
+          "section": "from_HBJSON"
+        },
+        {
+          "title": "create_hvac",
+          "path": "/phx/api/from_HBJSON/create_hvac/",
+          "raw_path": "/llm/phx/api/from_HBJSON/create_hvac.md",
+          "section": "from_HBJSON"
+        },
+        {
+          "title": "create_foundations",
+          "path": "/phx/api/from_HBJSON/create_foundations/",
+          "raw_path": "/llm/phx/api/from_HBJSON/create_foundations.md",
+          "section": "from_HBJSON"
+        },
+        {
+          "title": "create_elec_equip",
+          "path": "/phx/api/from_HBJSON/create_elec_equip/",
+          "raw_path": "/llm/phx/api/from_HBJSON/create_elec_equip.md",
+          "section": "from_HBJSON"
+        },
+        {
+          "title": "create_shw_devices",
+          "path": "/phx/api/from_HBJSON/create_shw_devices/",
+          "raw_path": "/llm/phx/api/from_HBJSON/create_shw_devices.md",
+          "section": "from_HBJSON"
+        },
+        {
+          "title": "cleanup",
+          "path": "/phx/api/from_HBJSON/cleanup/",
+          "raw_path": "/llm/phx/api/from_HBJSON/cleanup.md",
+          "section": "from_HBJSON"
+        },
+        {
+          "title": "cleanup_merge_faces",
+          "path": "/phx/api/from_HBJSON/cleanup_merge_faces/",
+          "raw_path": "/llm/phx/api/from_HBJSON/cleanup_merge_faces.md",
+          "section": "from_HBJSON"
+        },
+        {
+          "title": "read_WUFI_XML_file",
+          "path": "/phx/api/from_WUFI_XML/read_WUFI_XML_file/",
+          "raw_path": "/llm/phx/api/from_WUFI_XML/read_WUFI_XML_file.md",
+          "section": "from_WUFI_XML"
+        },
+        {
+          "title": "phx_converter",
+          "path": "/phx/api/from_WUFI_XML/phx_converter/",
+          "raw_path": "/llm/phx/api/from_WUFI_XML/phx_converter.md",
+          "section": "from_WUFI_XML"
+        },
+        {
+          "title": "phx_schemas",
+          "path": "/phx/api/from_WUFI_XML/phx_schemas/",
+          "raw_path": "/llm/phx/api/from_WUFI_XML/phx_schemas.md",
+          "section": "from_WUFI_XML"
+        },
+        {
+          "title": "wufi_file_schema",
+          "path": "/phx/api/from_WUFI_XML/wufi_file_schema/",
+          "raw_path": "/llm/phx/api/from_WUFI_XML/wufi_file_schema.md",
+          "section": "from_WUFI_XML"
+        },
+        {
+          "title": "wufi_file_types",
+          "path": "/phx/api/from_WUFI_XML/wufi_file_types/",
+          "raw_path": "/llm/phx/api/from_WUFI_XML/wufi_file_types.md",
+          "section": "from_WUFI_XML"
+        },
+        {
+          "title": "xml_txt_to_file",
+          "path": "/phx/api/to_WUFI_XML/xml_txt_to_file/",
+          "raw_path": "/llm/phx/api/to_WUFI_XML/xml_txt_to_file.md",
+          "section": "to_WUFI_XML"
+        },
+        {
+          "title": "xml_builder",
+          "path": "/phx/api/to_WUFI_XML/xml_builder/",
+          "raw_path": "/llm/phx/api/to_WUFI_XML/xml_builder.md",
+          "section": "to_WUFI_XML"
+        },
+        {
+          "title": "xml_converter",
+          "path": "/phx/api/to_WUFI_XML/xml_converter/",
+          "raw_path": "/llm/phx/api/to_WUFI_XML/xml_converter.md",
+          "section": "to_WUFI_XML"
+        },
+        {
+          "title": "xml_schemas",
+          "path": "/phx/api/to_WUFI_XML/xml_schemas/",
+          "raw_path": "/llm/phx/api/to_WUFI_XML/xml_schemas.md",
+          "section": "to_WUFI_XML"
+        },
+        {
+          "title": "xml_writables",
+          "path": "/phx/api/to_WUFI_XML/xml_writables/",
+          "raw_path": "/llm/phx/api/to_WUFI_XML/xml_writables.md",
+          "section": "to_WUFI_XML"
+        },
+        {
+          "title": "ppp_txt_to_file",
+          "path": "/phx/api/to_PPP/ppp_txt_to_file/",
+          "raw_path": "/llm/phx/api/to_PPP/ppp_txt_to_file.md",
+          "section": "to_PPP"
+        },
+        {
+          "title": "ppp_builder",
+          "path": "/phx/api/to_PPP/ppp_builder/",
+          "raw_path": "/llm/phx/api/to_PPP/ppp_builder.md",
+          "section": "to_PPP"
+        },
+        {
+          "title": "ppp_schemas",
+          "path": "/phx/api/to_PPP/ppp_schemas/",
+          "raw_path": "/llm/phx/api/to_PPP/ppp_schemas.md",
+          "section": "to_PPP"
+        },
+        {
+          "title": "ppp_sections",
+          "path": "/phx/api/to_PPP/ppp_sections/",
+          "raw_path": "/llm/phx/api/to_PPP/ppp_sections.md",
+          "section": "to_PPP"
+        },
+        {
+          "title": "metr_json_to_file",
+          "path": "/phx/api/to_METr_JSON/metr_json_to_file/",
+          "raw_path": "/llm/phx/api/to_METr_JSON/metr_json_to_file.md",
+          "section": "to_METr_JSON"
+        },
+        {
+          "title": "metr_builder",
+          "path": "/phx/api/to_METr_JSON/metr_builder/",
+          "raw_path": "/llm/phx/api/to_METr_JSON/metr_builder.md",
+          "section": "to_METr_JSON"
+        },
+        {
+          "title": "metr_converter",
+          "path": "/phx/api/to_METr_JSON/metr_converter/",
+          "raw_path": "/llm/phx/api/to_METr_JSON/metr_converter.md",
+          "section": "to_METr_JSON"
+        },
+        {
+          "title": "metr_schemas",
+          "path": "/phx/api/to_METr_JSON/metr_schemas/",
+          "raw_path": "/llm/phx/api/to_METr_JSON/metr_schemas.md",
+          "section": "to_METr_JSON"
+        },
+        {
+          "title": "phpp_app",
+          "path": "/phx/api/PHPP/phpp_app/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_app.md",
+          "section": "PHPP"
+        },
+        {
+          "title": "load",
+          "path": "/phx/api/PHPP/phpp_localization/load/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_localization/load.md",
+          "section": "Localization"
+        },
+        {
+          "title": "shape_model",
+          "path": "/phx/api/PHPP/phpp_localization/shape_model/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_localization/shape_model.md",
+          "section": "Localization"
+        },
+        {
+          "title": "version",
+          "path": "/phx/api/PHPP/phpp_model/version/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_model/version.md",
+          "section": "Model"
+        },
+        {
+          "title": "climate_entry",
+          "path": "/phx/api/PHPP/phpp_model/climate_entry/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_model/climate_entry.md",
+          "section": "Model"
+        },
+        {
+          "title": "areas_data",
+          "path": "/phx/api/PHPP/phpp_model/areas_data/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_model/areas_data.md",
+          "section": "Model"
+        },
+        {
+          "title": "areas_surface",
+          "path": "/phx/api/PHPP/phpp_model/areas_surface/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_model/areas_surface.md",
+          "section": "Model"
+        },
+        {
+          "title": "areas_thermal_bridges",
+          "path": "/phx/api/PHPP/phpp_model/areas_thermal_bridges/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_model/areas_thermal_bridges.md",
+          "section": "Model"
+        },
+        {
+          "title": "windows_rows",
+          "path": "/phx/api/PHPP/phpp_model/windows_rows/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_model/windows_rows.md",
+          "section": "Model"
+        },
+        {
+          "title": "component_glazing",
+          "path": "/phx/api/PHPP/phpp_model/component_glazing/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_model/component_glazing.md",
+          "section": "Model"
+        },
+        {
+          "title": "component_frame",
+          "path": "/phx/api/PHPP/phpp_model/component_frame/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_model/component_frame.md",
+          "section": "Model"
+        },
+        {
+          "title": "component_vent",
+          "path": "/phx/api/PHPP/phpp_model/component_vent/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_model/component_vent.md",
+          "section": "Model"
+        },
+        {
+          "title": "shading_rows",
+          "path": "/phx/api/PHPP/phpp_model/shading_rows/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_model/shading_rows.md",
+          "section": "Model"
+        },
+        {
+          "title": "vent_space",
+          "path": "/phx/api/PHPP/phpp_model/vent_space/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_model/vent_space.md",
+          "section": "Model"
+        },
+        {
+          "title": "vent_ducts",
+          "path": "/phx/api/PHPP/phpp_model/vent_ducts/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_model/vent_ducts.md",
+          "section": "Model"
+        },
+        {
+          "title": "vent_units",
+          "path": "/phx/api/PHPP/phpp_model/vent_units/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_model/vent_units.md",
+          "section": "Model"
+        },
+        {
+          "title": "ventilation_data",
+          "path": "/phx/api/PHPP/phpp_model/ventilation_data/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_model/ventilation_data.md",
+          "section": "Model"
+        },
+        {
+          "title": "hot_water_tank",
+          "path": "/phx/api/PHPP/phpp_model/hot_water_tank/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_model/hot_water_tank.md",
+          "section": "Model"
+        },
+        {
+          "title": "hot_water_piping",
+          "path": "/phx/api/PHPP/phpp_model/hot_water_piping/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_model/hot_water_piping.md",
+          "section": "Model"
+        },
+        {
+          "title": "uvalues_constructor",
+          "path": "/phx/api/PHPP/phpp_model/uvalues_constructor/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_model/uvalues_constructor.md",
+          "section": "Model"
+        },
+        {
+          "title": "electricity_item",
+          "path": "/phx/api/PHPP/phpp_model/electricity_item/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_model/electricity_item.md",
+          "section": "Model"
+        },
+        {
+          "title": "elec_non_res",
+          "path": "/phx/api/PHPP/phpp_model/elec_non_res/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_model/elec_non_res.md",
+          "section": "Model"
+        },
+        {
+          "title": "verification_data",
+          "path": "/phx/api/PHPP/phpp_model/verification_data/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_model/verification_data.md",
+          "section": "Model"
+        },
+        {
+          "title": "io_exceptions",
+          "path": "/phx/api/PHPP/sheet_io/io_exceptions/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_exceptions.md",
+          "section": "Sheet I/O"
+        },
+        {
+          "title": "io_overview",
+          "path": "/phx/api/PHPP/sheet_io/io_overview/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_overview.md",
+          "section": "Sheet I/O"
+        },
+        {
+          "title": "io_areas",
+          "path": "/phx/api/PHPP/sheet_io/io_areas/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_areas.md",
+          "section": "Sheet I/O"
+        },
+        {
+          "title": "io_climate",
+          "path": "/phx/api/PHPP/sheet_io/io_climate/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_climate.md",
+          "section": "Sheet I/O"
+        },
+        {
+          "title": "io_windows",
+          "path": "/phx/api/PHPP/sheet_io/io_windows/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_windows.md",
+          "section": "Sheet I/O"
+        },
+        {
+          "title": "io_components",
+          "path": "/phx/api/PHPP/sheet_io/io_components/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_components.md",
+          "section": "Sheet I/O"
+        },
+        {
+          "title": "io_u_values",
+          "path": "/phx/api/PHPP/sheet_io/io_u_values/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_u_values.md",
+          "section": "Sheet I/O"
+        },
+        {
+          "title": "io_shading",
+          "path": "/phx/api/PHPP/sheet_io/io_shading/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_shading.md",
+          "section": "Sheet I/O"
+        },
+        {
+          "title": "io_ventilation",
+          "path": "/phx/api/PHPP/sheet_io/io_ventilation/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_ventilation.md",
+          "section": "Sheet I/O"
+        },
+        {
+          "title": "io_addnl_vent",
+          "path": "/phx/api/PHPP/sheet_io/io_addnl_vent/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_addnl_vent.md",
+          "section": "Sheet I/O"
+        },
+        {
+          "title": "io_hot_water",
+          "path": "/phx/api/PHPP/sheet_io/io_hot_water/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_hot_water.md",
+          "section": "Sheet I/O"
+        },
+        {
+          "title": "io_solar_dhw",
+          "path": "/phx/api/PHPP/sheet_io/io_solar_dhw/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_solar_dhw.md",
+          "section": "Sheet I/O"
+        },
+        {
+          "title": "io_solar_pv",
+          "path": "/phx/api/PHPP/sheet_io/io_solar_pv/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_solar_pv.md",
+          "section": "Sheet I/O"
+        },
+        {
+          "title": "io_electricity",
+          "path": "/phx/api/PHPP/sheet_io/io_electricity/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_electricity.md",
+          "section": "Sheet I/O"
+        },
+        {
+          "title": "io_elec_non_res",
+          "path": "/phx/api/PHPP/sheet_io/io_elec_non_res/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_elec_non_res.md",
+          "section": "Sheet I/O"
+        },
+        {
+          "title": "io_heating_demand",
+          "path": "/phx/api/PHPP/sheet_io/io_heating_demand/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_heating_demand.md",
+          "section": "Sheet I/O"
+        },
+        {
+          "title": "io_heating_peak_load",
+          "path": "/phx/api/PHPP/sheet_io/io_heating_peak_load/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_heating_peak_load.md",
+          "section": "Sheet I/O"
+        },
+        {
+          "title": "io_cooling_demand",
+          "path": "/phx/api/PHPP/sheet_io/io_cooling_demand/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_cooling_demand.md",
+          "section": "Sheet I/O"
+        },
+        {
+          "title": "io_cooling_peak_load",
+          "path": "/phx/api/PHPP/sheet_io/io_cooling_peak_load/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_cooling_peak_load.md",
+          "section": "Sheet I/O"
+        },
+        {
+          "title": "io_cooling_units",
+          "path": "/phx/api/PHPP/sheet_io/io_cooling_units/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_cooling_units.md",
+          "section": "Sheet I/O"
+        },
+        {
+          "title": "io_PER",
+          "path": "/phx/api/PHPP/sheet_io/io_PER/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_PER.md",
+          "section": "Sheet I/O"
+        },
+        {
+          "title": "io_variants",
+          "path": "/phx/api/PHPP/sheet_io/io_variants/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_variants.md",
+          "section": "Sheet I/O"
+        },
+        {
+          "title": "io_ihg_non_res",
+          "path": "/phx/api/PHPP/sheet_io/io_ihg_non_res/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_ihg_non_res.md",
+          "section": "Sheet I/O"
+        },
+        {
+          "title": "io_use_non_res",
+          "path": "/phx/api/PHPP/sheet_io/io_use_non_res/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_use_non_res.md",
+          "section": "Sheet I/O"
+        },
+        {
+          "title": "io_verification",
+          "path": "/phx/api/PHPP/sheet_io/io_verification/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_verification.md",
+          "section": "Sheet I/O"
+        },
+        {
+          "title": "xl_app",
+          "path": "/phx/api/xl/xl_app/",
+          "raw_path": "/llm/phx/api/xl/xl_app.md",
+          "section": "xl"
+        },
+        {
+          "title": "xl_data",
+          "path": "/phx/api/xl/xl_data/",
+          "raw_path": "/llm/phx/api/xl/xl_data.md",
+          "section": "xl"
+        },
+        {
+          "title": "xl_typing",
+          "path": "/phx/api/xl/xl_typing/",
+          "raw_path": "/llm/phx/api/xl/xl_typing.md",
+          "section": "xl"
+        },
+        {
+          "title": "hbjson_to_wufi_xml",
+          "path": "/phx/api/hbjson_to_wufi_xml/",
+          "raw_path": "/llm/phx/api/hbjson_to_wufi_xml.md",
+          "section": "Scripts"
+        },
+        {
+          "title": "hbjson_to_phpp",
+          "path": "/phx/api/hbjson_to_phpp/",
+          "raw_path": "/llm/phx/api/hbjson_to_phpp.md",
+          "section": "Scripts"
+        },
+        {
+          "title": "hbjson_to_ppp",
+          "path": "/phx/api/hbjson_to_ppp/",
+          "raw_path": "/llm/phx/api/hbjson_to_ppp.md",
+          "section": "Scripts"
+        },
+        {
+          "title": "hbjson_to_metr_json",
+          "path": "/phx/api/hbjson_to_metr_json/",
+          "raw_path": "/llm/phx/api/hbjson_to_metr_json.md",
+          "section": "Scripts"
         }
       ]
     },
