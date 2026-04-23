@@ -8,6 +8,12 @@ interface Props {
 const { activeLib } = Astro.props;
 const libraries = getLibraries();
 const guides = getGuides();
+
+const libIds = new Set(libraries.map((l) => l.id));
+const guideIds = new Set(guides.map((g) => g.id));
+const activeGroup = activeLib
+  ? libIds.has(activeLib) ? "libraries" : guideIds.has(activeLib) ? "guides" : null
+  : null;
 ---
 
 <header class="site-header" id="siteHeader">
@@ -22,23 +28,57 @@ const guides = getGuides();
     <span>PH-TOOLS<span style="color:var(--fg-faint); margin-left:6px;">/ docs</span></span>
   </a>
 
+  <!-- Desktop grouped nav -->
   <nav class="nav-primary" id="primaryNav">
-    {libraries.map((lib) => (
-      <a
-        href={`/${lib.id}/`}
-        class={activeLib === lib.id ? "is-active" : ""}
+    <div class="nav-group">
+      <button
+        class={`nav-group__trigger ${activeGroup === "libraries" ? "is-active" : ""}`}
+        aria-expanded="false"
+        aria-haspopup="true"
+        data-group="libraries"
       >
-        {lib.label}
-      </a>
-    ))}
-    {guides.map((g) => (
-      <a
-        href={g.href}
-        class={activeLib === g.id ? "is-active" : ""}
+        Libraries
+        <svg class="nav-group__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6l4 4 4-4"/>
+        </svg>
+      </button>
+      <div class="nav-group__dropdown">
+        {libraries.map((lib) => (
+          <a
+            href={`/${lib.id}/`}
+            class={activeLib === lib.id ? "is-active" : ""}
+          >
+            <span class="nav-group__item-label">{lib.label}</span>
+            <span class="nav-group__item-tag">{lib.tag_line}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <button
+        class={`nav-group__trigger ${activeGroup === "guides" ? "is-active" : ""}`}
+        aria-expanded="false"
+        aria-haspopup="true"
+        data-group="guides"
       >
-        {g.label}
-      </a>
-    ))}
+        Guides
+        <svg class="nav-group__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6l4 4 4-4"/>
+        </svg>
+      </button>
+      <div class="nav-group__dropdown">
+        {guides.map((g) => (
+          <a
+            href={g.href}
+            class={activeLib === g.id ? "is-active" : ""}
+          >
+            <span class="nav-group__item-label">{g.label}</span>
+            <span class="nav-group__item-tag">{g.tag_line}</span>
+          </a>
+        ))}
+      </div>
+    </div>
   </nav>
 
   <div class="nav-tools">
@@ -61,5 +101,142 @@ const guides = getGuides();
     <a class="icon-btn" href="https://github.com/PH-Tools" aria-label="GitHub" title="GitHub">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.56 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
     </a>
+
+    <!-- Hamburger (mobile only) -->
+    <button class="nav-hamburger" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg class="hamburger-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </svg>
+      <svg class="hamburger-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="display:none;">
+        <path d="M6 6l12 12M6 18L18 6"/>
+      </svg>
+    </button>
   </div>
 </header>
+
+<!-- Mobile nav panel -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <div class="mobile-nav__inner">
+    <div class="mobile-nav__group">
+      <span class="mobile-nav__label">Libraries</span>
+      {libraries.map((lib) => (
+        <a
+          href={`/${lib.id}/`}
+          class={`mobile-nav__link ${activeLib === lib.id ? "is-active" : ""}`}
+        >
+          <span class="mobile-nav__link-label">{lib.label}</span>
+          <span class="mobile-nav__link-tag">{lib.tag_line}</span>
+        </a>
+      ))}
+    </div>
+    <div class="mobile-nav__group">
+      <span class="mobile-nav__label">Guides</span>
+      {guides.map((g) => (
+        <a
+          href={g.href}
+          class={`mobile-nav__link ${activeLib === g.id ? "is-active" : ""}`}
+        >
+          <span class="mobile-nav__link-label">{g.label}</span>
+          <span class="mobile-nav__link-tag">{g.tag_line}</span>
+        </a>
+      ))}
+    </div>
+
+    <!-- Mobile search shortcut -->
+    <button class="mobile-nav__search" id="mobileOpenSearch" aria-label="Open search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+      </svg>
+      <span>Search docs…</span>
+    </button>
+  </div>
+</div>
+
+<script is:inline>
+(function() {
+  /* ---- Desktop dropdown toggles ---- */
+  const triggers = document.querySelectorAll('.nav-group__trigger');
+
+  function closeAllDropdowns() {
+    triggers.forEach(t => {
+      t.setAttribute('aria-expanded', 'false');
+      t.closest('.nav-group').classList.remove('is-open');
+    });
+  }
+
+  triggers.forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const group = trigger.closest('.nav-group');
+      const isOpen = group.classList.contains('is-open');
+      closeAllDropdowns();
+      if (!isOpen) {
+        group.classList.add('is-open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  /* ---- Mobile hamburger toggle ---- */
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileNav = document.getElementById('mobileNav');
+  const hamburgerOpen = menuToggle.querySelector('.hamburger-open');
+  const hamburgerClose = menuToggle.querySelector('.hamburger-close');
+
+  function closeMobileMenu() {
+    mobileNav.classList.remove('is-open');
+    mobileNav.setAttribute('aria-hidden', 'true');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    hamburgerOpen.style.display = '';
+    hamburgerClose.style.display = 'none';
+    document.body.classList.remove('mobile-nav-open');
+  }
+
+  function openMobileMenu() {
+    mobileNav.classList.add('is-open');
+    mobileNav.setAttribute('aria-hidden', 'false');
+    menuToggle.setAttribute('aria-expanded', 'true');
+    hamburgerOpen.style.display = 'none';
+    hamburgerClose.style.display = '';
+    document.body.classList.add('mobile-nav-open');
+  }
+
+  menuToggle.addEventListener('click', () => {
+    if (mobileNav.classList.contains('is-open')) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  });
+
+  /* ---- Mobile search button ---- */
+  const mobileSearchBtn = document.getElementById('mobileOpenSearch');
+  if (mobileSearchBtn) {
+    mobileSearchBtn.addEventListener('click', () => {
+      closeMobileMenu();
+      document.getElementById('openSearch')?.click();
+    });
+  }
+
+  /* ---- Close on click outside ---- */
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-group')) {
+      closeAllDropdowns();
+    }
+  });
+
+  /* ---- Close on Escape ---- */
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeAllDropdowns();
+      closeMobileMenu();
+    }
+  });
+
+  /* ---- Close mobile menu on resize past breakpoint ---- */
+  const mq = window.matchMedia('(min-width: 901px)');
+  mq.addEventListener('change', (e) => {
+    if (e.matches) closeMobileMenu();
+  });
+})();
+</script>
