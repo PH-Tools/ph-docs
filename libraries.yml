@@ -13,12 +13,17 @@ libraries:
     source_paths:
       - honeybee_ph
       - honeybee_phhvac
+      - honeybee_energy_ph
+      - honeybee_ph_standards
+      - honeybee_ph_utils
     autodoc:
       enabled: true
       exclude_modules:
         - "honeybee_ph/cli"
         - "honeybee_ph/properties"
         - "honeybee_phhvac/properties"
+        - "honeybee_energy_ph/properties"
+        - "honeybee_energy_ph/hvac"
       exclude_patterns:
         - "_*"
         - "test_*"
