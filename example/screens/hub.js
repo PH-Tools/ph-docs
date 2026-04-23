@@ -83,9 +83,9 @@ window.renderHub = function(root) {
         <span class="hero__eyebrow-line"></span>
         <span class="hero__eyebrow-text">Documentation · v2026.1 · Unified Hub</span>
       </div>
-      <h1 class="hero__title">Passive House Tools <em>— Documentation</em></h1>
+      <h1 class="hero__title">Passive House Tools <em>Documentation</em></h1>
       <p class="hero__sub">
-        // Open-source building performance tools by <b style="color:var(--fg); font-weight:400;">bldgtyp, LLC</b><br>
+        // Open-source building performance tools by <b style="color:var(--fg); font-weight:400;"><a href="https://www.bldgtyp.com/">bldgtyp, LLC</a></b><br>
         // Grasshopper · Python · Honeybee · WUFI · PHPP · Phius
       </p>
     </div>
