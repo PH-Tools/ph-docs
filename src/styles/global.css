@@ -1218,17 +1218,17 @@ body.mobile-nav-open { overflow: hidden; }
 [data-theme="dark"] .article .callout--note .callout__title { color: #b3cc4a; }
 
 .article .callout--warning {
-  border-color: #d69e2e;
-  background: linear-gradient(to right, #fefcbf, transparent 80%);
+  border-color: var(--highlight);
+  background: linear-gradient(to right, #fde8e8, transparent 80%);
 }
-.article .callout--warning::before { background: #d69e2e; }
-.article .callout--warning .callout__title { color: #92400e; }
+.article .callout--warning::before { background: var(--highlight); }
+.article .callout--warning .callout__title { color: #991b1b; }
 
 [data-theme="dark"] .article .callout--warning {
-  border-color: #b7791f;
-  background: linear-gradient(to right, rgba(214,158,46,0.12), transparent 80%);
+  border-color: #ef4444;
+  background: linear-gradient(to right, rgba(220,38,38,0.12), transparent 80%);
 }
-[data-theme="dark"] .article .callout--warning .callout__title { color: #ecc94b; }
+[data-theme="dark"] .article .callout--warning .callout__title { color: #f87171; }
 
 .article blockquote {
   margin: 0 0 16px 0;
