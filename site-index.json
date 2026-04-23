@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-23T21:59:17Z",
+  "generated": "2026-04-23T22:52:14Z",
   "base_url": "https://docs.passivehousetools.com",
   "llm_nav": {
     "instructions": "/llm-instructions.md",
@@ -1238,6 +1238,248 @@
           "path": "/honeybee-revive/api/output/resilience_winter_graphs/",
           "raw_path": "/llm/honeybee-revive/api/output/resilience_winter_graphs.md",
           "section": "output"
+        }
+      ]
+    },
+    {
+      "id": "ph-adorb",
+      "label": "PH-ADORB",
+      "description": "Annualized De-carbonization of Retrofits for Buildings. Lifecycle carbon-cost analysis for building retrofit decisions.",
+      "pages": [
+        {
+          "title": "Getting Started",
+          "path": "/ph-adorb/getting-started/",
+          "raw_path": "/llm/ph-adorb/getting-started.md",
+          "section": "Getting Started"
+        },
+        {
+          "title": "Architecture",
+          "path": "/ph-adorb/architecture/",
+          "raw_path": "/llm/ph-adorb/architecture.md",
+          "section": "Developer"
+        },
+        {
+          "title": "ADORB Concepts",
+          "path": "/ph-adorb/concepts/",
+          "raw_path": "/llm/ph-adorb/concepts.md",
+          "section": "Developer"
+        },
+        {
+          "title": "CLI Usage",
+          "path": "/ph-adorb/cli-usage/",
+          "raw_path": "/llm/ph-adorb/cli-usage.md",
+          "section": "Developer"
+        },
+        {
+          "title": "adorb_cost",
+          "path": "/ph-adorb/api/adorb_cost/",
+          "raw_path": "/llm/ph-adorb/api/adorb_cost.md",
+          "section": "API Reference"
+        },
+        {
+          "title": "constructions",
+          "path": "/ph-adorb/api/constructions/",
+          "raw_path": "/llm/ph-adorb/api/constructions.md",
+          "section": "API Reference"
+        },
+        {
+          "title": "ep_sql_file",
+          "path": "/ph-adorb/api/ep_sql_file/",
+          "raw_path": "/llm/ph-adorb/api/ep_sql_file.md",
+          "section": "API Reference"
+        },
+        {
+          "title": "equipment",
+          "path": "/ph-adorb/api/equipment/",
+          "raw_path": "/llm/ph-adorb/api/equipment.md",
+          "section": "API Reference"
+        },
+        {
+          "title": "fuel",
+          "path": "/ph-adorb/api/fuel/",
+          "raw_path": "/llm/ph-adorb/api/fuel.md",
+          "section": "API Reference"
+        },
+        {
+          "title": "grid_region",
+          "path": "/ph-adorb/api/grid_region/",
+          "raw_path": "/llm/ph-adorb/api/grid_region.md",
+          "section": "API Reference"
+        },
+        {
+          "title": "measures",
+          "path": "/ph-adorb/api/measures/",
+          "raw_path": "/llm/ph-adorb/api/measures.md",
+          "section": "API Reference"
+        },
+        {
+          "title": "national_emissions",
+          "path": "/ph-adorb/api/national_emissions/",
+          "raw_path": "/llm/ph-adorb/api/national_emissions.md",
+          "section": "API Reference"
+        },
+        {
+          "title": "variant",
+          "path": "/ph-adorb/api/variant/",
+          "raw_path": "/llm/ph-adorb/api/variant.md",
+          "section": "API Reference"
+        },
+        {
+          "title": "yearly_values",
+          "path": "/ph-adorb/api/yearly_values/",
+          "raw_path": "/llm/ph-adorb/api/yearly_values.md",
+          "section": "API Reference"
+        },
+        {
+          "title": "create_variant",
+          "path": "/ph-adorb/api/from_HBJSON/create_variant/",
+          "raw_path": "/llm/ph-adorb/api/from_HBJSON/create_variant.md",
+          "section": "from_HBJSON"
+        },
+        {
+          "title": "read_HBJSON_file",
+          "path": "/ph-adorb/api/from_HBJSON/read_HBJSON_file/",
+          "raw_path": "/llm/ph-adorb/api/from_HBJSON/read_HBJSON_file.md",
+          "section": "from_HBJSON"
+        },
+        {
+          "title": "calc_HBJSON_ADORB_costs",
+          "path": "/ph-adorb/api/run/calc_HBJSON_ADORB_costs/",
+          "raw_path": "/llm/ph-adorb/api/run/calc_HBJSON_ADORB_costs.md",
+          "section": "run"
+        },
+        {
+          "title": "generate_ADORB_cost_graph",
+          "path": "/ph-adorb/api/run/generate_ADORB_cost_graph/",
+          "raw_path": "/llm/ph-adorb/api/run/generate_ADORB_cost_graph.md",
+          "section": "run"
+        },
+        {
+          "title": "variant",
+          "path": "/ph-adorb/api/tables/variant/",
+          "raw_path": "/llm/ph-adorb/api/tables/variant.md",
+          "section": "tables"
+        }
+      ]
+    },
+    {
+      "id": "ph-units",
+      "label": "PH-Units",
+      "description": "Unit parsing and conversion for Passive House workflows. Convert between SI and IP with type-safe unit handling.",
+      "pages": [
+        {
+          "title": "Getting Started",
+          "path": "/ph-units/getting-started/",
+          "raw_path": "/llm/ph-units/getting-started.md",
+          "section": "Getting Started"
+        },
+        {
+          "title": "Packages",
+          "path": "/ph-units/packages/",
+          "raw_path": "/llm/ph-units/packages.md",
+          "section": "Packages"
+        },
+        {
+          "title": "converter",
+          "path": "/ph-units/api/converter/",
+          "raw_path": "/llm/ph-units/api/converter.md",
+          "section": "API Reference"
+        },
+        {
+          "title": "parser",
+          "path": "/ph-units/api/parser/",
+          "raw_path": "/llm/ph-units/api/parser.md",
+          "section": "API Reference"
+        },
+        {
+          "title": "unit_type",
+          "path": "/ph-units/api/unit_type/",
+          "raw_path": "/llm/ph-units/api/unit_type.md",
+          "section": "API Reference"
+        },
+        {
+          "title": "_base",
+          "path": "/ph-units/api/unit_types/_base/",
+          "raw_path": "/llm/ph-units/api/unit_types/_base.md",
+          "section": "unit_types"
+        },
+        {
+          "title": "area",
+          "path": "/ph-units/api/unit_types/area/",
+          "raw_path": "/llm/ph-units/api/unit_types/area.md",
+          "section": "unit_types"
+        },
+        {
+          "title": "density",
+          "path": "/ph-units/api/unit_types/density/",
+          "raw_path": "/llm/ph-units/api/unit_types/density.md",
+          "section": "unit_types"
+        },
+        {
+          "title": "emissions_factors",
+          "path": "/ph-units/api/unit_types/emissions_factors/",
+          "raw_path": "/llm/ph-units/api/unit_types/emissions_factors.md",
+          "section": "unit_types"
+        },
+        {
+          "title": "energy",
+          "path": "/ph-units/api/unit_types/energy/",
+          "raw_path": "/llm/ph-units/api/unit_types/energy.md",
+          "section": "unit_types"
+        },
+        {
+          "title": "envelope",
+          "path": "/ph-units/api/unit_types/envelope/",
+          "raw_path": "/llm/ph-units/api/unit_types/envelope.md",
+          "section": "unit_types"
+        },
+        {
+          "title": "hvac",
+          "path": "/ph-units/api/unit_types/hvac/",
+          "raw_path": "/llm/ph-units/api/unit_types/hvac.md",
+          "section": "unit_types"
+        },
+        {
+          "title": "length",
+          "path": "/ph-units/api/unit_types/length/",
+          "raw_path": "/llm/ph-units/api/unit_types/length.md",
+          "section": "unit_types"
+        },
+        {
+          "title": "moisture_vapor_resistance",
+          "path": "/ph-units/api/unit_types/moisture_vapor_resistance/",
+          "raw_path": "/llm/ph-units/api/unit_types/moisture_vapor_resistance.md",
+          "section": "unit_types"
+        },
+        {
+          "title": "power",
+          "path": "/ph-units/api/unit_types/power/",
+          "raw_path": "/llm/ph-units/api/unit_types/power.md",
+          "section": "unit_types"
+        },
+        {
+          "title": "speed",
+          "path": "/ph-units/api/unit_types/speed/",
+          "raw_path": "/llm/ph-units/api/unit_types/speed.md",
+          "section": "unit_types"
+        },
+        {
+          "title": "temperature",
+          "path": "/ph-units/api/unit_types/temperature/",
+          "raw_path": "/llm/ph-units/api/unit_types/temperature.md",
+          "section": "unit_types"
+        },
+        {
+          "title": "volume",
+          "path": "/ph-units/api/unit_types/volume/",
+          "raw_path": "/llm/ph-units/api/unit_types/volume.md",
+          "section": "unit_types"
+        },
+        {
+          "title": "volume_flow",
+          "path": "/ph-units/api/unit_types/volume_flow/",
+          "raw_path": "/llm/ph-units/api/unit_types/volume_flow.md",
+          "section": "unit_types"
         }
       ]
     }

@@ -37,3 +37,5 @@ All content is sourced from library repos and rebuilt automatically on every pus
 - **Honeybee-PH** — Grasshopper-native Passive House modeling. Build PH-compliant models inside Rhino using familiar Honeybee components. (50 pages)
 - **PHX** — Passive House Exchange data model & file I/O. Convert between WUFI XML, PHPP Excel, and Phius report formats. (137 pages)
 - **Honeybee-REVIVE** — Carbon & energy analysis for building design. Resilience & embodied-carbon workflows for Phius REVIVE. (10 pages)
+- **PH-ADORB** — Annualized De-carbonization of Retrofits for Buildings. Lifecycle carbon-cost analysis for building retrofit decisions. (19 pages)
+- **PH-Units** — Unit parsing and conversion for Passive House workflows. Convert between SI and IP with type-safe unit handling. (19 pages)
