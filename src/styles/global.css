@@ -1003,6 +1003,58 @@ button { font-family: inherit; }
   height: auto;
 }
 
+/* Admonition callouts (!!! note / !!! warning) */
+.article .callout {
+  margin: 16px 0 20px 0;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+.article .callout::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+}
+.article .callout__title {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 14px 20px 0 20px;
+}
+.article .callout__body {
+  padding: 8px 20px 14px 20px;
+}
+.article .callout__body p { margin-bottom: 0; }
+
+.article .callout--note {
+  border-color: var(--accent);
+  background: linear-gradient(to right, var(--accent-light), transparent 80%);
+}
+.article .callout--note::before { background: var(--accent); }
+.article .callout--note .callout__title { color: var(--accent-dark); }
+
+[data-theme="dark"] .article .callout--note {
+  background: linear-gradient(to right, rgba(122,148,36,0.14), transparent 80%);
+}
+[data-theme="dark"] .article .callout--note .callout__title { color: #b3cc4a; }
+
+.article .callout--warning {
+  border-color: #d69e2e;
+  background: linear-gradient(to right, #fefcbf, transparent 80%);
+}
+.article .callout--warning::before { background: #d69e2e; }
+.article .callout--warning .callout__title { color: #92400e; }
+
+[data-theme="dark"] .article .callout--warning {
+  border-color: #b7791f;
+  background: linear-gradient(to right, rgba(214,158,46,0.12), transparent 80%);
+}
+[data-theme="dark"] .article .callout--warning .callout__title { color: #ecc94b; }
+
 .article blockquote {
   margin: 0 0 16px 0;
   padding: 12px 20px;
