@@ -283,12 +283,14 @@ button { font-family: inherit; }
 /* ---------- Sidebar ---------- */
 .sidebar {
   border-right: 1px solid var(--border);
-  padding: 36px 0 36px 0;
+  padding: 36px 6px 36px 0;
   background: var(--bg);
   position: sticky;
   top: 64px;
   height: calc(100vh - 64px);
-  overflow-y: auto;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
 }
 .sidebar__section { padding: 0 24px 20px 32px; }
 .sidebar__label {
@@ -461,8 +463,8 @@ button { font-family: inherit; }
 .gap-s { gap: 12px; } .gap-m { gap: 20px; } .gap-l { gap: 32px; }
 
 /* Scrollbar */
-.sidebar::-webkit-scrollbar { width: 8px; }
-.sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 .sidebar::-webkit-scrollbar-track { background: transparent; }
 
 /* Sidebar column wrapper — holds sidebar + optional On This Page ToC */
@@ -471,9 +473,12 @@ button { font-family: inherit; }
   position: sticky;
   top: 64px;
   height: calc(100vh - 64px);
-  overflow-y: auto;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
 }
 .sidebar-col .sidebar {
   border-right: 0;
@@ -482,8 +487,8 @@ button { font-family: inherit; }
   overflow-y: visible;
   flex-shrink: 0;
 }
-.sidebar-col::-webkit-scrollbar { width: 8px; }
-.sidebar-col::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+.sidebar-col::-webkit-scrollbar { width: 4px; }
+.sidebar-col::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 .sidebar-col::-webkit-scrollbar-track { background: transparent; }
 
 /* On This Page — in-page ToC shown below sidebar nav */
