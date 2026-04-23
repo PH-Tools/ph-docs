@@ -32,7 +32,6 @@ Grasshopper-native Passive House modeling. Build PH-compliant models inside Rhin
 
 ## PHX
 Passive House Exchange data model & file I/O. Convert between WUFI XML, PHPP Excel, and Phius report formats.
-- [PHX](https://docs.passivehousetools.com/llm/phx/index.md)
 - [Developer: Architecture](https://docs.passivehousetools.com/llm/phx/dev/architecture.md)
 - [Developer: Export / Import Patterns](https://docs.passivehousetools.com/llm/phx/dev/exporter-patterns.md)
 - [Reference: PHX Model Reference](https://docs.passivehousetools.com/llm/phx/reference/phx-model-reference.md)
