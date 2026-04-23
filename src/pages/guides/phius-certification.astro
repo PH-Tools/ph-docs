@@ -11,41 +11,173 @@ import FetchCallout from "../../components/FetchCallout.astro";
         <span class="sep">&rsaquo;</span>
         <span class="current">Phius Certification</span>
       </div>
-      <h1 class="guide-head__title">Managing Phius Passive House Certifications</h1>
+      <h1 class="guide-head__title">Managing Phius Certification with AI Tools</h1>
       <p class="guide-head__desc">
-        Phius certification is an iterative review process that requires managing a complex folder structure,
-        parsing multi-sheet Excel feedback forms, and cross-referencing dozens of technical documents. This page
-        explains the certification workflow and provides reference material for navigating projects, understanding
-        review status, and responding to feedback items.
+        A guide to using AI coding assistants for Phius passive house certification projects.
+        Covers the certification workflow, project folder structure, and the Feedback Form &mdash;
+        the central Excel workbook that drives the entire review process.
       </p>
     </header>
 
     <article class="article guide-article">
-      <h2 id="reference-docs">Phius Certification Reference Documents</h2>
+
+      <!-- ─── SECTION 1: BACKGROUND ─── -->
+
+      <h2 id="what-is-phius-certification">What is Phius Certification?</h2>
       <p>
-        We maintain two reference documents specifically formatted for AI tools and certification workflows.
-        These are plain markdown files — no HTML, no front-matter — containing folder maps, Feedback Form
-        parsing rules, and review status interpretation.
+        <a href="https://www.phius.org/" target="_blank" rel="noopener">Phius</a> (Passive House Institute US)
+        certifies buildings that meet strict energy performance standards. A
+        <strong>CPHC</strong> (Certified Passive House Consultant) submits a
+        <a href="https://wufi.de/en/software/wufi-passive/" target="_blank" rel="noopener">WUFI-Passive</a>
+        energy model along with supporting documentation &mdash; drawings, product datasheets,
+        thermal bridge calculations, and engineering specs &mdash; and a Phius reviewer checks every
+        input against that documentation.
       </p>
       <p>
-        These docs are hosted at stable URLs on this site. When we update the folder structure or form version
-        guidance, anyone using these URLs gets the current version automatically.
+        The review happens in <strong>rounds</strong> (R1, R2, R3&hellip;). Each round, the reviewer
+        writes comments in a shared Excel workbook called the <strong>Feedback Form</strong>. The CPHC
+        responds to each comment, referencing specific files and values. This back-and-forth repeats
+        &mdash; typically 4&ndash;6 rounds &mdash; until every item is resolved and the project achieves
+        certification.
+      </p>
+
+      <h2 id="why-ai-tools">Why Use AI Tools for This?</h2>
+      <p>
+        A typical certification project has <strong>hundreds of files</strong> across a deeply nested
+        folder structure, and the Feedback Form itself can have <strong>500+ rows</strong> of review items
+        spanning multiple Excel worksheets. Common tasks that AI tools handle well:
+      </p>
+      <ul>
+        <li>Parsing the Feedback Form to summarize what's resolved, pending, or needs a response</li>
+        <li>Locating specific files &mdash; "find the ERV datasheet for unit 1-3"</li>
+        <li>Cross-referencing file paths cited in feedback against actual files in the project folder</li>
+        <li>Reading PDFs (datasheets, thermal calculations) to extract specific values</li>
+        <li>Drafting CPHC responses that cite the correct documents and file paths</li>
+      </ul>
+      <p>
+        The reference documents below give an AI tool the <strong>structural knowledge</strong> it needs
+        to do these tasks: where files live, how the Feedback Form is laid out, what status codes mean,
+        and how to parse each sheet.
+      </p>
+
+      <!-- ─── SECTION 2: KEY CONCEPTS ─── -->
+
+      <h2 id="two-folder-architecture">Key Concept: Two-Folder Architecture</h2>
+      <p>
+        Every Phius project has <strong>two separate Dropbox folders</strong>. Understanding which
+        one you're in is critical &mdash; file paths in the Feedback Form reference the certification
+        folder, not the working folder.
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Folder</th>
+            <th>Location</th>
+            <th>Contains</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Working Folder</strong></td>
+            <td><code>~/Dropbox/bldgtyp/&lt;project&gt;/</code></td>
+            <td>CPHC's internal files &mdash; Rhino models, PHPP/WUFI working copies, admin, contracts, scripts</td>
+          </tr>
+          <tr>
+            <td><strong>Certification Folder</strong></td>
+            <td><code>~/Dropbox/&lt;project&gt;/</code></td>
+            <td>Phius-shared folder &mdash; final WUFI model, report PDFs, datasheets, drawings, and the Feedback Form</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        The certification folder name typically follows the pattern
+        <code>{'{'}ProjectNum{'}'}-{'{'}ProjectName{'}'}_{'{'}ConsultantName{'}'}</code>
+        (e.g., <code>2441-Arverne East (Building D)_Edwin May</code>). It lives at the Dropbox root &mdash;
+        <em>not</em> inside <code>bldgtyp/</code>. When using AI tools for certification work,
+        you'll typically have the certification folder open as your workspace.
+      </p>
+
+      <h2 id="feedback-form">Key Concept: The Feedback Form</h2>
+      <p>
+        The Feedback Form is a large <code>.xlsx</code> workbook in the
+        <code>- Feedback Forms/</code> folder (the leading dash sorts it to the top of the directory).
+        It is the <strong>single source of truth</strong> for the entire review &mdash; if something
+        isn't in the Feedback Form, it doesn't exist for certification purposes.
+      </p>
+      <p>
+        The main sheet has a consistent column layout:
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Column</th>
+            <th>Contains</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>B</strong></td>
+            <td>Major section (e.g., "Wall Components", "Systems", "Ventilation / Rooms")</td>
+          </tr>
+          <tr>
+            <td><strong>C</strong></td>
+            <td>Sub-section (e.g., "Assembly", "Parameters")</td>
+          </tr>
+          <tr>
+            <td><strong>D</strong></td>
+            <td>Item identifier (assembly type like RT-01, WT-04.E, or a device name)</td>
+          </tr>
+          <tr>
+            <td><strong>E</strong></td>
+            <td>Parameter category (e.g., "Geometry", "Basic Parameters")</td>
+          </tr>
+          <tr>
+            <td><strong>F</strong></td>
+            <td>Specific field being reviewed (e.g., "U-glass:", "Framing:")</td>
+          </tr>
+          <tr>
+            <td><strong>G onward</strong></td>
+            <td>Alternating <em>Certifier Comments</em> / <em>CPHC Response</em> columns &mdash; one pair per review round</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        The workbook also contains supporting worksheets (Thermal Bridges, Win Rev, ERVs,
+        DHW Pipe Lengths, and others) that vary by form version. The reference doc below covers
+        both older (V4.8) and current (V5.6+) layouts.
+      </p>
+
+      <hr />
+
+      <!-- ─── SECTION 3: REFERENCE DOCS ─── -->
+
+      <h2 id="reference-docs">Reference Documents</h2>
+      <p>
+        We maintain two reference documents formatted specifically for AI tools. These are plain
+        markdown files &mdash; no HTML, no front-matter &mdash; containing the complete folder hierarchy
+        and Feedback Form parsing rules. They are hosted at stable URLs, so when we update the
+        guidance (new form versions, folder changes), anyone using these URLs gets the current
+        version automatically.
       </p>
 
       <FetchCallout
         url="https://docs.passivehousetools.com/llm/guides/phius-certification/folder-map.md"
-        description="Phius project folder structure — standard hierarchy, file naming conventions, and what each folder contains."
+        description="Phius project folder structure — the full directory tree, file naming conventions (YYMMDD dates, _Archive folders), and what each folder contains (WUFI model, drawings, datasheets, calculations, on-site verification)."
       />
 
       <FetchCallout
         url="https://docs.passivehousetools.com/llm/guides/phius-certification/feedback-form-guide.md"
-        description="Feedback Form parsing guide — workbook structure, sheet names, column layout, status interpretation, and file path resolution."
+        description="Feedback Form parsing guide — how to detect the form version, identify the active sheet, locate review round columns, interpret status codes (Ok, Pending, dashes, ditto marks), parse row-by-row with Python/openpyxl, and resolve Dropbox file path cross-references."
       />
+
+      <!-- ─── SECTION 4: USING WITH ANY TOOL ─── -->
 
       <h2 id="using-with-any-tool">Using These Docs with Any AI Tool</h2>
       <p>
-        The reference docs above work with any AI tool that can read a URL or accept pasted text.
-        Here are some common approaches:
+        The reference docs work with any AI tool that can read a URL or accept pasted text.
+        The key idea: give the AI the reference material <em>before</em> asking it to work with
+        your Phius project. Think of it like handing someone the project template and the current
+        feedback sheet before asking them to work on a certification round.
       </p>
       <table>
         <thead>
@@ -57,7 +189,7 @@ import FetchCallout from "../../components/FetchCallout.astro";
         <tbody>
           <tr>
             <td><strong>ChatGPT</strong></td>
-            <td>Paste the reference doc URL into your prompt — ChatGPT will fetch and read it. Or copy the markdown content directly into your message.</td>
+            <td>Paste the reference doc URL into your prompt &mdash; ChatGPT will fetch and read it. Or copy the markdown content directly into your message.</td>
           </tr>
           <tr>
             <td><strong>Cursor / Windsurf</strong></td>
@@ -77,58 +209,81 @@ import FetchCallout from "../../components/FetchCallout.astro";
           </tr>
         </tbody>
       </table>
+
+      <!-- ─── SECTION 5: EXAMPLE WORKFLOWS ─── -->
+
+      <h2 id="example-workflows">Example Workflows</h2>
       <p>
-        The key idea is the same regardless of tool: give the AI the reference material <em>before</em>
-        asking it to work with your Phius project, parse the Feedback Form, or navigate certification documents.
-        Think of it like handing someone the project template and the current feedback sheet before asking them
-        to work on a certification round.
+        Once your AI tool has the reference docs loaded, here are typical tasks you might ask for help with:
       </p>
 
-      <h2 id="common-workflows">Common Certification Workflows</h2>
+      <h3>Summarize review status</h3>
       <p>
-        Here are typical tasks you might ask an AI tool to help with using these reference docs:
+        <em>"Parse the Feedback Form and tell me which sections have open items."</em><br />
+        The AI reads the Excel file with <code>openpyxl</code>, finds the latest review round columns,
+        and classifies each row as resolved (starts with "Ok"), pending, or action-needed.
       </p>
-      <ul>
-        <li><strong>Summarize review status</strong> — "Parse the Feedback Form and tell me which sections have open items"</li>
-        <li><strong>Find specific files</strong> — "Where's the ERV datasheet for unit 1-1?" (locating files by type and unit number)</li>
-        <li><strong>Cross-reference feedback items</strong> — "The feedback says 'see .../2. Datasheets & Specs/...' — verify the file exists and extract the relevant value"</li>
-        <li><strong>Draft responses</strong> — "For assembly type RT-01, the reviewer asked about U-value. Read the thermal calculation PDF and draft a response citing the right file path."</li>
-        <li><strong>Track changes between rounds</strong> — "Compare the R3 and R4 feedback forms and summarize what's changed"</li>
-      </ul>
+
+      <h3>Locate a specific file</h3>
+      <p>
+        <em>"Where's the ERV datasheet for unit 1-1?"</em><br />
+        Using the folder map, the AI knows to look in
+        <code>2. Datasheets &amp; Specs/1. HVAC/2. Ventilation/</code> and can search for matching filenames.
+      </p>
+
+      <h3>Cross-reference a feedback item</h3>
+      <p>
+        <em>"The reviewer cited '.../2. Datasheets &amp; Specs/4. Insulation/1. Rigid/...' &mdash;
+        verify the file exists and extract the R-value."</em><br />
+        The AI strips the Dropbox prefix, resolves the path relative to the certification folder,
+        confirms the file exists, and reads the PDF to extract the value.
+      </p>
+
+      <h3>Draft a response</h3>
+      <p>
+        <em>"For assembly type RT-01, the reviewer asked about the U-value. Read the thermal
+        calculation PDF and draft a response citing the correct file path."</em><br />
+        The AI finds the Flixo result PDF in <code>3. Calculations/2b. Flixo [2D]/</code>,
+        reads it, extracts the U-value, and drafts a response in the format the reviewer expects.
+      </p>
 
       <hr />
 
-      <h2 id="claude-code-skills">Claude Code Skills</h2>
+      <!-- ─── SECTION 6: CLAUDE CODE SKILLS ─── -->
+
+      <h2 id="claude-code-skills">Claude Code: Automated Skill</h2>
       <p>
         If you use <a href="https://docs.anthropic.com/en/docs/claude-code/overview" target="_blank" rel="noopener">Claude Code</a>,
-        you can install <a href="https://docs.anthropic.com/en/docs/claude-code/skills" target="_blank" rel="noopener"><strong>skills</strong></a>
-        that automatically load the right reference docs when a Phius certification task comes up.
-        This section is Claude Code&ndash;specific — if you use a different AI tool, the
+        you can install a
+        <a href="https://docs.anthropic.com/en/docs/claude-code/skills" target="_blank" rel="noopener"><strong>skill</strong></a>
+        that automatically loads the reference docs whenever a Phius certification task comes up.
+        This section is Claude Code&ndash;specific &mdash; if you use a different tool, the
         <a href="#reference-docs">reference docs</a> and <a href="#using-with-any-tool">general guidance</a> above
         are all you need.
       </p>
 
-      <h3 id="how-skills-work">How Skills Work</h3>
+      <h3 id="how-it-works">How It Works</h3>
       <p>
-        A <a href="https://docs.anthropic.com/en/docs/claude-code/skills" target="_blank" rel="noopener">skill</a>
-        is a markdown file that Claude Code loads when a task matches its trigger description.
-        Each skill contains a compact instruction set plus <code>WebFetch</code> commands that pull the
-        full reference docs from this site at runtime.
+        A skill is a markdown file (<code>SKILL.md</code>) that Claude Code loads when a task matches
+        its trigger description. The <code>phius-certification</code> skill triggers on keywords like
+        "feedback form", "certification", "datasheets", assembly type codes (RT-01, WT-04), or when
+        the workspace looks like a Phius project folder (numbered folders like
+        <code>0. WUFI-Passive Energy Model/</code>).
       </p>
-      <p>The flow looks like this:</p>
+      <p>When triggered, the flow is:</p>
       <ol>
-        <li>You ask Claude about a Phius certification task</li>
-        <li>Claude loads the skill's <code>SKILL.md</code> — a ~100-line instruction set with quick-reference tables</li>
-        <li>The skill tells Claude to <code>WebFetch</code> the full reference docs from <code>docs.passivehousetools.com/llm/guides/phius-certification/...</code></li>
-        <li>Claude now has the complete project structure and parsing rules in context for the rest of the task</li>
+        <li>Claude loads the skill &mdash; a compact instruction set with quick-reference tables</li>
+        <li>The skill tells Claude to <code>WebFetch</code> both reference docs from this site</li>
+        <li>Claude now has the complete folder structure and Feedback Form parsing rules in context</li>
+        <li>You ask your question and Claude can navigate the project, parse the Excel file, locate files, etc.</li>
       </ol>
       <p>
-        Because the reference docs are hosted here, they stay current — when we update the folder structure
-        or Feedback Form version guidance, every skill user gets the update on their next task. No reinstall,
-        no version mismatch.
+        Because the reference docs are hosted here, they stay current &mdash; when we update folder
+        guidance or add support for a new form version, every skill user gets the update automatically
+        on their next task. No reinstall needed.
       </p>
 
-      <h3 id="available-skills">Available Skills</h3>
+      <h3 id="available-skills">Available Skill</h3>
 
       <div class="skill-cards">
         <div class="skill-card">
@@ -138,8 +293,8 @@ import FetchCallout from "../../components/FetchCallout.astro";
           </div>
           <p class="skill-card__desc">
             Navigate Phius certification project folders, parse the Feedback Form, track review status,
-            and cross-reference documentation. Use when working on certification review cycles, managing
-            feedback items, or locating supporting documents.
+            and cross-reference documentation. Triggers automatically when working in a Phius project
+            folder or when you mention certification, feedback forms, or assembly types.
           </p>
           <div class="skill-card__meta">
             <span>Fetches:</span>
@@ -149,44 +304,55 @@ import FetchCallout from "../../components/FetchCallout.astro";
       </div>
 
       <h3 id="installation">Installation</h3>
-      <p>
-        Skills live in your
-        <a href="https://docs.anthropic.com/en/docs/claude-code/skills" target="_blank" rel="noopener">Claude Code skills directory</a>.
-        Each skill is a folder containing a <code>SKILL.md</code> file.
-      </p>
 
-      <h4>Option A: Manual download</h4>
-      <ol>
-        <li>Download the skill file using the link above</li>
-        <li>Create the skill directory: <code>mkdir -p ~/.claude/skills/phius-certification</code></li>
-        <li>Move the downloaded file: <code>mv phius-certification.md ~/.claude/skills/phius-certification/SKILL.md</code></li>
-      </ol>
-
-      <h4>Option B: One-liner</h4>
-      <pre><code># Install phius-certification skill
-mkdir -p ~/.claude/skills/phius-certification && \
+      <h4>Option A: One-liner (recommended)</h4>
+      <p>Run this in your terminal:</p>
+      <pre><code>mkdir -p ~/.claude/skills/phius-certification && \
   curl -sL https://docs.passivehousetools.com/skills/phius-certification.md \
   -o ~/.claude/skills/phius-certification/SKILL.md</code></pre>
 
-      <h4>Verify</h4>
+      <h4>Option B: Manual download</h4>
+      <ol>
+        <li>Click <a href="/skills/phius-certification.md" download>"Download SKILL.md"</a> above</li>
+        <li>Create the skill directory: <code>mkdir -p ~/.claude/skills/phius-certification</code></li>
+        <li>Move the downloaded file into it: <code>mv phius-certification.md ~/.claude/skills/phius-certification/SKILL.md</code></li>
+      </ol>
+
+      <h4>Verify installation</h4>
       <p>
-        After installation, the skill should appear in Claude Code's skill list. You can verify by running
-        <code>ls ~/.claude/skills/</code> — you should see the phius-certification directory.
+        Run <code>ls ~/.claude/skills/phius-certification/</code> &mdash; you should see <code>SKILL.md</code>.
+        Then start a Claude Code session in a Phius certification folder and try:
       </p>
+      <ul>
+        <li><em>"Summarize the open items in the latest Feedback Form"</em></li>
+        <li><em>"Where's the ventilation datasheet for ERV 1-1?"</em></li>
+      </ul>
       <p>
-        To test, start a Claude Code session in a Phius project folder and ask it to "summarize the open items
-        in the latest Feedback Form" or "where's the ventilation datasheet?" It should automatically load the
-        skill, fetch the reference docs, and help with the task.
+        Claude should automatically load the skill, fetch the reference docs, and help with the task.
       </p>
+
+      <!-- ─── SECTION 7: RELATED ─── -->
 
       <h2 id="related-skills">Related Skills</h2>
       <p>
-        The <code>phius-certification</code> skill works well alongside these other skills for complete certification workflows:
+        The <code>phius-certification</code> skill works well alongside these other skills
+        for complete certification workflows:
       </p>
       <ul>
-        <li><strong>wufi-xml</strong> — Verify values in the WUFI-Passive energy model against feedback items</li>
-        <li><strong>pdf</strong> — Extract data from cut-sheets, datasheets, and drawings referenced in the Feedback Form</li>
-        <li><strong>xlsx</strong> — Parse the Feedback Form Excel workbook and build summaries</li>
+        <li>
+          <strong><a href="/guides/llm-setup/#available-skills">wufi-xml</a></strong> &mdash;
+          Verify values in the WUFI-Passive energy model (<code>.xml</code>) against feedback items.
+          Useful when the reviewer questions a model input and you need to confirm the XML value.
+        </li>
+        <li>
+          <strong>pdf</strong> &mdash; Extract data from product cut-sheets, datasheets, and drawings
+          referenced in the Feedback Form. Especially useful for reading R-values, U-values, and
+          equipment specs from manufacturer submittals.
+        </li>
+        <li>
+          <strong>xlsx</strong> &mdash; Read and write Excel workbooks. Used under the hood when
+          parsing the Feedback Form, Phius calculators, and DHW pipe length takeoffs.
+        </li>
       </ul>
     </article>
 
