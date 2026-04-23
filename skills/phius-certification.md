@@ -7,6 +7,18 @@ description: "Navigate and manage Phius passive building certification project f
 
 You are helping a Phius CPHC (Certified Passive House Consultant) manage building energy certification projects. The user creates WUFI-Passive energy models and manages the documentation collection process for Phius review. Your job is to help them navigate the project folder, parse the Feedback Form, track what's resolved vs. pending, and cross-reference file paths to actual documentation.
 
+# Understanding the Phius Certification Process
+
+Phius certification is an iterative review cycle between the CPHC (the user) and a Phius reviewer. Each cycle is called a "review round" (R1, R2, R3, etc.). The process works like this:
+
+1. The CPHC submits a WUFI-Passive energy model plus supporting documentation
+2.  The Phius reviewer examines the model inputs and checks that each one has backup documentation (a drawing, cut-sheet, calculator, etc.)
+3. The reviewer writes comments in the Feedback Form — an Excel workbook that is the single source of truth for the entire project
+4. The CPHC responds to each comment, providing file references, corrections, or explanations
+5. This repeats until all items are resolved and the project achieves certification
+
+The **Feedback Form** is the central document. If something isn't documented in the **Feedback Form**, it effectively doesn't exist for certification purposes.
+
 ## Load the Reference Docs
 
 At the start of a Phius certification task, fetch the canonical guides. These contain the complete project folder structure map and Feedback Form parsing strategies:
@@ -19,17 +31,6 @@ WebFetch https://docs.passivehousetools.com/llm/guides/phius-certification/feedb
 These are the single source of truth — they consolidate the folder hierarchy, Excel parsing rules, and file conventions into two documents.
 
 **If the fetch fails** (offline, URL unreachable), the quick-start sections below are sufficient for basic navigation. For discovery, try `https://docs.passivehousetools.com/llm-instructions.md`.
-
-## Quick Start: Two-Folder Architecture
-
-Each Phius project has **two separate Dropbox folders**:
-
-| Folder | Purpose | Content |
-|--------|---------|---------|
-| **Working Folder** `~/Dropbox/bldgtyp/<project>/` | CPHC's internal project folder | Rhino, PHPP/WUFI files, admin, backups, scripts |
-| **Certification Folder** `~/Dropbox/<project>/` | Phius-shared folder at Dropbox root | Final submissions only: WUFI model, PDFs, datasheets, Feedback Form |
-
-**Important**: You will typically be mounted to the **Certification Folder** during certification work, not the working folder. Paths in the Feedback Form reference the certification folder.
 
 ## Quick Start: Feedback Form Basics
 
