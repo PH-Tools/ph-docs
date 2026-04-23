@@ -3,7 +3,8 @@ node_modules/
 dist/
 .astro/
 src/content/docs/
-public/llm/
+public/llm/*
+!public/llm/guides/
 public/llms.txt
 public/site-index.json
 public/llm-instructions.md

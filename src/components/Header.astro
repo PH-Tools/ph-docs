@@ -34,7 +34,7 @@ const guides = getGuides();
     {guides.map((g) => (
       <a
         href={g.href}
-        class={activeLib === "guides" ? "is-active" : ""}
+        class={activeLib === g.id ? "is-active" : ""}
       >
         {g.label}
       </a>

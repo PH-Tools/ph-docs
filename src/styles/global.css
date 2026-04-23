@@ -1185,7 +1185,10 @@ button { font-family: inherit; }
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 24px;
-  align-items: center;
+  align-items: start;
+}
+.fetch-callout__inner > :first-child {
+  min-width: 0;
 }
 .fetch-callout__head {
   font-family: var(--font-mono);
@@ -1221,7 +1224,11 @@ button { font-family: inherit; }
   font-size: 12.5px;
   font-weight: 400;
   color: var(--fg);
-  max-width: fit-content;
+  max-width: 100%;
+}
+.fetch-callout__url .fetch-url-text {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 .fetch-callout__url .method {
   padding: 2px 8px;
