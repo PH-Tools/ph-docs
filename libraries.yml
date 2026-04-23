@@ -112,3 +112,14 @@ guides:
     description: "Using AI coding tools with PH-Tools documentation.
                   Configure Claude, Cursor, or other LLM agents to
                   reference these docs automatically."
+
+  - id:          phius-certification
+    label:       Phius Certification
+    href:        /guides/phius-certification/
+    enabled:     true
+    index:       "02"
+    tag_line:    "CERTIFICATION · WORKFLOW"
+    category:    "Guide"
+    description: "Managing Phius passive house certification projects.
+                  Navigate project folders, parse Feedback Forms, track
+                  review status, and cross-reference documentation."

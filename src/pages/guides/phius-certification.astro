@@ -1,0 +1,204 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FetchCallout from "../../components/FetchCallout.astro";
+---
+
+<BaseLayout title="Phius Certification Guide — PH-Tools Docs" activeLib="guides">
+  <div class="guide-page">
+    <header class="guide-head">
+      <div class="guide-head__crumb">
+        <span>Guides</span>
+        <span class="sep">&rsaquo;</span>
+        <span class="current">Phius Certification</span>
+      </div>
+      <h1 class="guide-head__title">Managing Phius Passive House Certifications</h1>
+      <p class="guide-head__desc">
+        Phius certification is an iterative review process that requires managing a complex folder structure,
+        parsing multi-sheet Excel feedback forms, and cross-referencing dozens of technical documents. This page
+        explains the certification workflow and provides reference material for navigating projects, understanding
+        review status, and responding to feedback items.
+      </p>
+    </header>
+
+    <article class="article guide-article">
+      <h2 id="reference-docs">Phius Certification Reference Documents</h2>
+      <p>
+        We maintain two reference documents specifically formatted for AI tools and certification workflows.
+        These are plain markdown files — no HTML, no front-matter — containing folder maps, Feedback Form
+        parsing rules, and review status interpretation.
+      </p>
+      <p>
+        These docs are hosted at stable URLs on this site. When we update the folder structure or form version
+        guidance, anyone using these URLs gets the current version automatically.
+      </p>
+
+      <FetchCallout
+        url="https://docs.passivehousetools.com/llm/guides/phius-certification/folder-map.md"
+        description="Phius project folder structure — standard hierarchy, file naming conventions, and what each folder contains."
+      />
+
+      <FetchCallout
+        url="https://docs.passivehousetools.com/llm/guides/phius-certification/feedback-form-guide.md"
+        description="Feedback Form parsing guide — workbook structure, sheet names, column layout, status interpretation, and file path resolution."
+      />
+
+      <h2 id="using-with-any-tool">Using These Docs with Any AI Tool</h2>
+      <p>
+        The reference docs above work with any AI tool that can read a URL or accept pasted text.
+        Here are some common approaches:
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>How to use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>ChatGPT</strong></td>
+            <td>Paste the reference doc URL into your prompt — ChatGPT will fetch and read it. Or copy the markdown content directly into your message.</td>
+          </tr>
+          <tr>
+            <td><strong>Cursor / Windsurf</strong></td>
+            <td>Add the reference doc URL as context using <code>@URL</code>, or save the markdown file locally and add it with <code>@file</code>.</td>
+          </tr>
+          <tr>
+            <td><strong>GitHub Copilot Chat</strong></td>
+            <td>Paste the reference doc content into the chat, or save it locally in your project and reference it.</td>
+          </tr>
+          <tr>
+            <td><strong>Claude Code</strong></td>
+            <td>Use <code>WebFetch</code> to pull the doc into context, or install a pre-built skill (see <a href="#claude-code-skills">below</a>) that does this automatically.</td>
+          </tr>
+          <tr>
+            <td><strong>Any other tool</strong></td>
+            <td>Copy the markdown content from the URL and paste it into your AI conversation as context.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        The key idea is the same regardless of tool: give the AI the reference material <em>before</em>
+        asking it to work with your Phius project, parse the Feedback Form, or navigate certification documents.
+        Think of it like handing someone the project template and the current feedback sheet before asking them
+        to work on a certification round.
+      </p>
+
+      <h2 id="common-workflows">Common Certification Workflows</h2>
+      <p>
+        Here are typical tasks you might ask an AI tool to help with using these reference docs:
+      </p>
+      <ul>
+        <li><strong>Summarize review status</strong> — "Parse the Feedback Form and tell me which sections have open items"</li>
+        <li><strong>Find specific files</strong> — "Where's the ERV datasheet for unit 1-1?" (locating files by type and unit number)</li>
+        <li><strong>Cross-reference feedback items</strong> — "The feedback says 'see .../2. Datasheets & Specs/...' — verify the file exists and extract the relevant value"</li>
+        <li><strong>Draft responses</strong> — "For assembly type RT-01, the reviewer asked about U-value. Read the thermal calculation PDF and draft a response citing the right file path."</li>
+        <li><strong>Track changes between rounds</strong> — "Compare the R3 and R4 feedback forms and summarize what's changed"</li>
+      </ul>
+
+      <hr />
+
+      <h2 id="claude-code-skills">Claude Code Skills</h2>
+      <p>
+        If you use <a href="https://docs.anthropic.com/en/docs/claude-code/overview" target="_blank" rel="noopener">Claude Code</a>,
+        you can install <a href="https://docs.anthropic.com/en/docs/claude-code/skills" target="_blank" rel="noopener"><strong>skills</strong></a>
+        that automatically load the right reference docs when a Phius certification task comes up.
+        This section is Claude Code&ndash;specific — if you use a different AI tool, the
+        <a href="#reference-docs">reference docs</a> and <a href="#using-with-any-tool">general guidance</a> above
+        are all you need.
+      </p>
+
+      <h3 id="how-skills-work">How Skills Work</h3>
+      <p>
+        A <a href="https://docs.anthropic.com/en/docs/claude-code/skills" target="_blank" rel="noopener">skill</a>
+        is a markdown file that Claude Code loads when a task matches its trigger description.
+        Each skill contains a compact instruction set plus <code>WebFetch</code> commands that pull the
+        full reference docs from this site at runtime.
+      </p>
+      <p>The flow looks like this:</p>
+      <ol>
+        <li>You ask Claude about a Phius certification task</li>
+        <li>Claude loads the skill's <code>SKILL.md</code> — a ~100-line instruction set with quick-reference tables</li>
+        <li>The skill tells Claude to <code>WebFetch</code> the full reference docs from <code>docs.passivehousetools.com/llm/guides/phius-certification/...</code></li>
+        <li>Claude now has the complete project structure and parsing rules in context for the rest of the task</li>
+      </ol>
+      <p>
+        Because the reference docs are hosted here, they stay current — when we update the folder structure
+        or Feedback Form version guidance, every skill user gets the update on their next task. No reinstall,
+        no version mismatch.
+      </p>
+
+      <h3 id="available-skills">Available Skills</h3>
+
+      <div class="skill-cards">
+        <div class="skill-card">
+          <div class="skill-card__head">
+            <span class="skill-card__name">phius-certification</span>
+            <a class="skill-card__dl" href="/skills/phius-certification.md" download>Download SKILL.md</a>
+          </div>
+          <p class="skill-card__desc">
+            Navigate Phius certification project folders, parse the Feedback Form, track review status,
+            and cross-reference documentation. Use when working on certification review cycles, managing
+            feedback items, or locating supporting documents.
+          </p>
+          <div class="skill-card__meta">
+            <span>Fetches:</span>
+            <code>folder-map.md</code>, <code>feedback-form-guide.md</code>
+          </div>
+        </div>
+      </div>
+
+      <h3 id="installation">Installation</h3>
+      <p>
+        Skills live in your
+        <a href="https://docs.anthropic.com/en/docs/claude-code/skills" target="_blank" rel="noopener">Claude Code skills directory</a>.
+        Each skill is a folder containing a <code>SKILL.md</code> file.
+      </p>
+
+      <h4>Option A: Manual download</h4>
+      <ol>
+        <li>Download the skill file using the link above</li>
+        <li>Create the skill directory: <code>mkdir -p ~/.claude/skills/phius-certification</code></li>
+        <li>Move the downloaded file: <code>mv phius-certification.md ~/.claude/skills/phius-certification/SKILL.md</code></li>
+      </ol>
+
+      <h4>Option B: One-liner</h4>
+      <pre><code># Install phius-certification skill
+mkdir -p ~/.claude/skills/phius-certification && \
+  curl -sL https://docs.passivehousetools.com/skills/phius-certification.md \
+  -o ~/.claude/skills/phius-certification/SKILL.md</code></pre>
+
+      <h4>Verify</h4>
+      <p>
+        After installation, the skill should appear in Claude Code's skill list. You can verify by running
+        <code>ls ~/.claude/skills/</code> — you should see the phius-certification directory.
+      </p>
+      <p>
+        To test, start a Claude Code session in a Phius project folder and ask it to "summarize the open items
+        in the latest Feedback Form" or "where's the ventilation datasheet?" It should automatically load the
+        skill, fetch the reference docs, and help with the task.
+      </p>
+
+      <h2 id="related-skills">Related Skills</h2>
+      <p>
+        The <code>phius-certification</code> skill works well alongside these other skills for complete certification workflows:
+      </p>
+      <ul>
+        <li><strong>wufi-xml</strong> — Verify values in the WUFI-Passive energy model against feedback items</li>
+        <li><strong>pdf</strong> — Extract data from cut-sheets, datasheets, and drawings referenced in the Feedback Form</li>
+        <li><strong>xlsx</strong> — Parse the Feedback Form Excel workbook and build summaries</li>
+      </ul>
+    </article>
+
+    <footer class="site-footer">
+      <div class="site-footer__left">
+        <span>PH-TOOLS</span>
+        <span>&middot;</span>
+        <a href="https://github.com/PH-Tools">GitHub</a>
+      </div>
+      <div class="site-footer__right">
+        <span>docs.passivehousetools.com</span>
+      </div>
+    </footer>
+  </div>
+</BaseLayout>

@@ -180,6 +180,22 @@ import FetchCallout from "../../components/FetchCallout.astro";
             <code>phx-model-reference.md</code>
           </div>
         </div>
+
+        <div class="skill-card">
+          <div class="skill-card__head">
+            <span class="skill-card__name">phius-certification</span>
+            <a class="skill-card__dl" href="/skills/phius-certification.md" download>Download SKILL.md</a>
+          </div>
+          <p class="skill-card__desc">
+            Navigate Phius certification project folders, parse the Feedback Form, track review status,
+            and cross-reference documentation. Use when managing certification review cycles or locating
+            supporting documents.
+          </p>
+          <div class="skill-card__meta">
+            <span>Fetches:</span>
+            <code>folder-map.md</code>, <code>feedback-form-guide.md</code>
+          </div>
+        </div>
       </div>
 
       <h3 id="installation">Installation</h3>
@@ -206,7 +222,12 @@ mkdir -p ~/.claude/skills/wufi-xml && \
 # Install phx-model skill
 mkdir -p ~/.claude/skills/phx-model && \
   curl -sL https://docs.passivehousetools.com/skills/phx-model.md \
-  -o ~/.claude/skills/phx-model/SKILL.md</code></pre>
+  -o ~/.claude/skills/phx-model/SKILL.md
+
+# Install phius-certification skill
+mkdir -p ~/.claude/skills/phius-certification && \
+  curl -sL https://docs.passivehousetools.com/skills/phius-certification.md \
+  -o ~/.claude/skills/phius-certification/SKILL.md</code></pre>
 
       <h4>Verify</h4>
       <p>
