@@ -10,6 +10,8 @@
 
 ## Honeybee-PH
 Grasshopper-native Passive House modeling. Build PH-compliant models inside Rhino using familiar Honeybee components.
+- [Getting Started: Getting Started](https://docs.passivehousetools.com/llm/honeybee-ph/getting-started.md)
+- [Packages: Packages](https://docs.passivehousetools.com/llm/honeybee-ph/packages.md)
 - [API Reference: _base](https://docs.passivehousetools.com/llm/honeybee-ph/api/_base.md)
 - [API Reference: bldg_segment](https://docs.passivehousetools.com/llm/honeybee-ph/api/bldg_segment.md)
 - [API Reference: foundations](https://docs.passivehousetools.com/llm/honeybee-ph/api/foundations.md)

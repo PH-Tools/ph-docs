@@ -6,7 +6,7 @@
           if (t) document.documentElement.setAttribute("data-theme", t);
         } catch (e) {}
       })();
-    </script><link rel="stylesheet" href="/_astro/_slug_.ByQQYal6.css"></head> <body> <header class="site-header" id="siteHeader"> <a class="site-header__logo" href="/"> <span class="site-header__logo-mark" aria-hidden="true"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"> <path d="M12 2 L22 8 L12 14 L2 8 Z" fill="var(--accent-light)" stroke="var(--accent)"></path> <path d="M2 8 L2 17 L12 23 L12 14 Z" stroke="var(--accent)"></path> <path d="M22 8 L22 17 L12 23 L12 14 Z" stroke="var(--accent-dark)"></path> </svg> </span> <span>PH-TOOLS<span style="color:var(--fg-faint); margin-left:6px;">/ docs</span></span> </a> <nav class="nav-primary" id="primaryNav"> <a href="/honeybee-ph/" class> Honeybee-PH </a><a href="/phx/" class="is-active"> PHX </a><a href="/honeybee-revive/" class> Honeybee-REVIVE </a> <a href="/guides/llm-setup/" class>
+    </script><link rel="stylesheet" href="/_astro/_slug_.D-BJ7CMo.css"></head> <body> <header class="site-header" id="siteHeader"> <a class="site-header__logo" href="/"> <span class="site-header__logo-mark" aria-hidden="true"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"> <path d="M12 2 L22 8 L12 14 L2 8 Z" fill="var(--accent-light)" stroke="var(--accent)"></path> <path d="M2 8 L2 17 L12 23 L12 14 Z" stroke="var(--accent)"></path> <path d="M22 8 L22 17 L12 23 L12 14 Z" stroke="var(--accent-dark)"></path> </svg> </span> <span>PH-TOOLS<span style="color:var(--fg-faint); margin-left:6px;">/ docs</span></span> </a> <nav class="nav-primary" id="primaryNav"> <a href="/honeybee-ph/" class> Honeybee-PH </a><a href="/phx/" class="is-active"> PHX </a><a href="/honeybee-revive/" class> Honeybee-REVIVE </a> <a href="/guides/llm-setup/" class>
 LLM Setup
 </a> </nav> <div class="nav-tools"> <button class="search-btn" id="openSearch" aria-label="Open search"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <span>Search docs…</span> <span class="kbd">⌘K</span> </button> <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme"> <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"> <circle cx="12" cy="12" r="4"></circle> <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path> </svg> <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" style="display:none;"> <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.8 6.8 0 0 0 9.8 9.8Z"></path> </svg> </button> <a class="icon-btn" href="https://github.com/PH-Tools" aria-label="GitHub" title="GitHub"> <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.56 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"></path></svg> </a> </div> </header> <main>  <div class="with-sidebar"> <div class="sidebar-col"> <aside class="sidebar"> <a class="sidebar__label" href="/phx/">
 Library · PHX </a> <ul class="nav-tree"><li class="group">
@@ -148,8 +148,9 @@ graph LR
 <span class="line"><span>├── Assemblies (opaque construction types — see below)</span></span>
 <span class="line"><span>├── WindowTypes (window construction types — see below)</span></span>
 <span class="line"><span>└── SolarProtectionTypes (shading device types)</span></span></code></pre>
-<p>!!! note “Variants wrapper”
-Building, HVAC, PassivehouseData, and ClimateLocation are all <strong>inside</strong> <code>Variants > Variant</code>, not at the root level. Assemblies, WindowTypes, and SolarProtectionTypes are at the root level, shared across all variants.</p>
+<div class="callout callout--note"><div class="callout__title">Note</div><div class="callout__body">
+<p>Building, HVAC, PassivehouseData, and ClimateLocation are all <strong>inside</strong> <code>Variants > Variant</code>, not at the root level. Assemblies, WindowTypes, and SolarProtectionTypes are at the root level, shared across all variants.</p>
+</div></div>
 <h4 id="schedules">Schedules</h4>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>UtilisationPatternsVentilation</span></span>
 <span class="line"><span>└── UtilizationPatternVent</span></span>
@@ -169,8 +170,9 @@ Building, HVAC, PassivehouseData, and ClimateLocation are all <strong>inside</st
 <span class="line"><span>    ├── IlluminationLevel [lux]</span></span>
 <span class="line"><span>    ├── RelativeAbsenteeism</span></span>
 <span class="line"><span>    └── PartUseFactorPeriodForLighting</span></span></code></pre>
-<p>!!! note “Spelling”
-The ventilation schedule list uses British spelling <code>UtilisationPatternsVentilation</code> (with an ‘s’), while the child elements use American spelling <code>UtilizationPatternVent</code>. This is intentional and matches WUFI’s own inconsistency.</p>
+<div class="callout callout--note"><div class="callout__title">Note</div><div class="callout__body">
+<p>The ventilation schedule list uses British spelling <code>UtilisationPatternsVentilation</code> (with an ‘s’), while the child elements use American spelling <code>UtilizationPatternVent</code>. This is intentional and matches WUFI’s own inconsistency.</p>
+</div></div>
 <h4 id="variant">Variant</h4>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Variant</span></span>
 <span class="line"><span>├── IdentNr, Name, Remarks</span></span>
@@ -185,8 +187,9 @@ The ventilation schedule list uses British spelling <code>UtilisationPatternsVen
 <span class="line"><span>├── ClimateLocation (see ClimateLocation below)</span></span>
 <span class="line"><span>├── PassivehouseData (see PassivehouseData below)</span></span>
 <span class="line"><span>└── HVAC (see HVAC below)</span></span></code></pre>
-<p>!!! warning “Components are under Building, not Zone”
-Components and Zones are <strong>siblings</strong> under <code>Building</code>. An LLM navigating the XML should look for <code>Variant > Building > Components</code> for surface data, and <code>Variant > Building > Zones</code> for zone-level data like thermal bridges, ventilation rooms, and electrical equipment.</p>
+<div class="callout callout--warning"><div class="callout__title">Warning</div><div class="callout__body">
+<p>Components and Zones are <strong>siblings</strong> under <code>Building</code>. An LLM navigating the XML should look for <code>Variant > Building > Components</code> for surface data, and <code>Variant > Building > Zones</code> for zone-level data like thermal bridges, ventilation rooms, and electrical equipment.</p>
+</div></div>
 <h4 id="components-under-building">Components (under Building)</h4>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Component (opaque — Type=1)</span></span>
 <span class="line"><span>├── IdentNr, Name, Visual</span></span>
@@ -932,8 +935,9 @@ Components and Zones are <strong>siblings</strong> under <code>Building</code>. 
 
 
 <table><thead><tr><th>WUFI UI Label</th><th>XML Element</th><th>XML Location</th><th>Units in XML</th></tr></thead><tbody><tr><td>Storage capacity</td><td><code>&#x3C;SolarThermalStorageCapacity></code></td><td>Device > PH_Parameters</td><td>liters</td></tr><tr><td>Standby losses</td><td><code>&#x3C;StorageLossesStandby></code></td><td>Device > PH_Parameters</td><td>W/K</td></tr><tr><td>Input option</td><td><code>&#x3C;InputOption></code></td><td>Device > PH_Parameters</td><td>enum</td></tr><tr><td>Average heat release</td><td><code>&#x3C;AverageHeatReleaseStorage></code></td><td>Device > PH_Parameters</td><td>W</td></tr><tr><td>Tank room temperature</td><td><code>&#x3C;TankRoomTemp></code></td><td>Device > PH_Parameters</td><td>°C</td></tr><tr><td>Storage water temperature</td><td><code>&#x3C;TypicalStorageWaterTemperature></code></td><td>Device > PH_Parameters</td><td>°C</td></tr><tr><td>Quantity</td><td><code>&#x3C;QauntityWS></code></td><td>Device > PH_Parameters</td><td>count</td></tr></tbody></table>
-<p>!!! note “Spelling”
-<code>QauntityWS</code> is intentionally misspelled to match WUFI’s own XML element naming.</p>
+<div class="callout callout--note"><div class="callout__title">Note</div><div class="callout__body">
+<p><code>QauntityWS</code> is intentionally misspelled to match WUFI’s own XML element naming.</p>
+</div></div>
 <h3 id="pv--renewables">PV / Renewables</h3>
 
 
@@ -1197,8 +1201,9 @@ Components and Zones are <strong>siblings</strong> under <code>Building</code>. 
 
 
 <table><thead><tr><th>WUFI UI Label</th><th>XML Element</th><th>XML Location</th><th>Units in XML</th></tr></thead><tbody><tr><td>Depth of window reveal</td><td><code>&#x3C;DepthWindowReveal></code></td><td>Component (Type=2)</td><td>m</td></tr><tr><td>Distance from glazing edge to reveal</td><td><code>&#x3C;DistanceDaylightOpeningToReveal></code></td><td>Component (Type=2)</td><td>m</td></tr><tr><td>Default correction factor (mean month shading)</td><td><code>&#x3C;DefaultCorrectionShadingMonth></code></td><td>Component (Type=2)</td><td>fraction (0-1)</td></tr><tr><td>Solar protection device assignment</td><td><code>&#x3C;IdentNrSolarProtection></code></td><td>Component (Type=2)</td><td>ID ref (-1=none)</td></tr><tr><td>Overhang assignment</td><td><code>&#x3C;IdentNrOverhang></code></td><td>Component (Type=2)</td><td>ID ref (-1=none)</td></tr><tr><td>Window type assignment</td><td><code>&#x3C;IdentNrWindowType></code></td><td>Component (Type=2)</td><td>ID ref</td></tr></tbody></table>
-<p>!!! warning “Shading factors are multiplicative”
-WUFI applies shading from reveal geometry, overhang, solar protection, and the Default correction factor as separate multiplicative factors. The <code>DefaultCorrectionShadingMonth</code> should contain only its intended correction — WUFI independently computes reveal-depth shading from <code>DepthWindowReveal</code>. What this field represents varies by project; always check the project’s methodology documentation.</p>
+<div class="callout callout--warning"><div class="callout__title">Warning</div><div class="callout__body">
+<p>WUFI applies shading from reveal geometry, overhang, solar protection, and the Default correction factor as separate multiplicative factors. The <code>DefaultCorrectionShadingMonth</code> should contain only its intended correction — WUFI independently computes reveal-depth shading from <code>DepthWindowReveal</code>. What this field represents varies by project; always check the project’s methodology documentation.</p>
+</div></div>
 <h3 id="thermal-bridges">Thermal Bridges</h3>
 
 

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-23T17:40:27Z",
+  "generated": "2026-04-23T19:02:27Z",
   "base_url": "https://docs.passivehousetools.com",
   "llm_nav": {
     "instructions": "/llm-instructions.md",
@@ -13,6 +13,18 @@
       "label": "Honeybee-PH",
       "description": "Grasshopper-native Passive House modeling. Build PH-compliant models inside Rhino using familiar Honeybee components.",
       "pages": [
+        {
+          "title": "Getting Started",
+          "path": "/honeybee-ph/getting-started/",
+          "raw_path": "/llm/honeybee-ph/getting-started.md",
+          "section": "Getting Started"
+        },
+        {
+          "title": "Packages",
+          "path": "/honeybee-ph/packages/",
+          "raw_path": "/llm/honeybee-ph/packages.md",
+          "section": "Packages"
+        },
         {
           "title": "_base",
           "path": "/honeybee-ph/api/_base/",
