@@ -21,19 +21,9 @@ All content is sourced from library repos and rebuilt automatically on every pus
 
 ## Direct access — common tasks
 
-- **Before making structural changes to PHX, adding a new importer/exporter, or understanding how data flows through the system**
-  `https://docs.passivehousetools.com/llm/phx/dev/architecture.md`
-- **Before writing or modifying an exporter/importer, or debugging data conversion between formats**
-  `https://docs.passivehousetools.com/llm/phx/dev/exporter-patterns.md`
-- **Before navigating, modifying, extending, or testing any PHX model class**
-  `https://docs.passivehousetools.com/llm/phx/reference/phx-model-reference.md`
-- **Before parsing, generating, validating, verifying, or modifying any WUFI-Passive XML file**
-  `https://docs.passivehousetools.com/llm/phx/reference/wufi-xml-schema.md`
-- **Before reading, writing, or debugging PHX PHPP export — locating worksheet cells and understanding the locator pattern**
-  `https://docs.passivehousetools.com/llm/phx/reference/phpp-field-mapping.md`
+No pages have `llm_use_when` metadata yet.
 
 ## Available libraries
 
 - **Honeybee-PH** — Grasshopper-native Passive House modeling. Build PH-compliant models inside Rhino using familiar Honeybee components. (19 pages)
-- **PHX** — Passive House Exchange data model & file I/O. Convert between WUFI XML, PHPP Excel, and Phius report formats. (134 pages)
 - **Honeybee-REVIVE** — Carbon & energy analysis for building design. Resilience & embodied-carbon workflows for Phius REVIVE. (7 pages)
