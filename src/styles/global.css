@@ -300,7 +300,13 @@ button { font-family: inherit; }
   color: var(--fg-faint);
   padding: 14px 0 10px 0;
   display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color .15s var(--ease);
 }
+.sidebar__label:hover { color: var(--fg-muted); }
+.sidebar__label.is-active { color: var(--accent); font-weight: 500; }
+[data-theme="dark"] .sidebar__label.is-active { color: #b3cc4a; }
 .sidebar__label::before {
   content: '';
   width: 14px; height: 1px;
@@ -458,6 +464,74 @@ button { font-family: inherit; }
 .sidebar::-webkit-scrollbar { width: 8px; }
 .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 .sidebar::-webkit-scrollbar-track { background: transparent; }
+
+/* Sidebar column wrapper — holds sidebar + optional On This Page ToC */
+.sidebar-col {
+  border-right: 1px solid var(--border);
+  position: sticky;
+  top: 64px;
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar-col .sidebar {
+  border-right: 0;
+  position: static;
+  height: auto;
+  overflow-y: visible;
+  flex-shrink: 0;
+}
+.sidebar-col::-webkit-scrollbar { width: 8px; }
+.sidebar-col::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+.sidebar-col::-webkit-scrollbar-track { background: transparent; }
+
+/* On This Page — in-page ToC shown below sidebar nav */
+.page-toc {
+  padding: 12px 24px 36px 32px;
+  border-top: 1px solid var(--border);
+}
+.page-toc__label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  padding: 14px 0 10px 0;
+  display: flex; align-items: center; gap: 10px;
+}
+.page-toc__label::before {
+  content: '';
+  width: 14px; height: 1px;
+  background: currentColor;
+  opacity: .6;
+}
+.page-toc__list {
+  list-style: none;
+  padding: 0; margin: 0;
+}
+.page-toc__list li a {
+  display: flex; align-items: center; gap: 10px;
+  padding: 5px 12px 5px 14px;
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 13px;
+  color: var(--fg-muted);
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all .15s var(--ease);
+}
+.page-toc__list li a:hover {
+  color: var(--fg);
+  background: var(--bg-elev);
+}
+.page-toc__list .num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--fg-faint);
+  min-width: 18px;
+}
 
 /* ============================================================
    SCREEN 1 — HUB LANDING
@@ -855,6 +929,8 @@ button { font-family: inherit; }
   letter-spacing: -0.02em; line-height: 1.1;
   margin: 0 0 24px 0;
 }
+/* Hide the first h1 in reference articles — title is in ref-head */
+.article--ref > h1:first-child { display: none; }
 .article h2 {
   font-weight: 600; font-size: 24px;
   letter-spacing: -0.01em; line-height: 1.2;
@@ -1359,15 +1435,125 @@ button { font-family: inherit; }
   border-radius: 2px; color: var(--fg-muted);
 }
 
+/* ============================================================
+   GUIDE PAGES
+   ============================================================ */
+
+.guide-page {
+  max-width: 860px;
+  margin: 0 auto;
+}
+.guide-head {
+  padding: 56px 72px 40px 72px;
+  border-bottom: 1px solid var(--border);
+}
+.guide-head__crumb {
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 300;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-bottom: 22px;
+  display: flex; align-items: center; gap: 10px;
+}
+.guide-head__crumb .sep { color: var(--border-strong); }
+.guide-head__crumb .current { color: var(--accent); }
+[data-theme="dark"] .guide-head__crumb .current { color: #b3cc4a; }
+.guide-head__title {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 44px;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  margin: 0 0 20px 0;
+}
+.guide-head__desc {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 16.5px;
+  line-height: 1.6;
+  color: var(--fg-muted);
+  max-width: 60ch;
+  margin: 0;
+}
+.guide-article {
+  max-width: none;
+}
+
+/* Skill cards */
+.skill-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  margin: 24px 0 32px 0;
+}
+.skill-card {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 22px 24px;
+  background: var(--bg);
+  transition: border-color .15s var(--ease);
+}
+.skill-card:hover { border-color: var(--accent); }
+.skill-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.skill-card__name {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--fg);
+}
+.skill-card__dl {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  text-decoration: none;
+  padding: 4px 10px;
+  border: 1px solid var(--accent);
+  border-radius: 3px;
+  transition: all .15s var(--ease);
+}
+.skill-card__dl:hover {
+  background: var(--accent);
+  color: #fff;
+}
+[data-theme="dark"] .skill-card__dl { color: #b3cc4a; border-color: #b3cc4a; }
+[data-theme="dark"] .skill-card__dl:hover { background: #b3cc4a; color: #111; }
+.skill-card__desc {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--fg-muted);
+  margin: 0 0 12px 0;
+}
+.skill-card__meta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--fg-faint);
+}
+.skill-card__meta code {
+  color: var(--accent);
+  font-size: 12px;
+}
+[data-theme="dark"] .skill-card__meta code { color: #b3cc4a; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .lib-grid { grid-template-columns: 1fr; }
   .quick-strip { grid-template-columns: repeat(2, 1fr); }
   .with-sidebar { grid-template-columns: 1fr; }
   .sidebar { position: static; height: auto; }
+  .sidebar-col { position: static; height: auto; border-right: 0; }
+  .page-toc { display: none; }
   .f-grid { grid-template-columns: 1fr; }
-  .main, .lib-head, .quick-links, .feature-grid, .content-head, .article, .ref-head, .fetch-callout, .schema-section {
+  .main, .lib-head, .quick-links, .feature-grid, .content-head, .article, .ref-head, .fetch-callout, .schema-section, .guide-head {
     padding-left: 28px; padding-right: 28px;
   }
+  .skill-cards { grid-template-columns: 1fr; }
   .hero__meta { display: none; }
 }

@@ -11,6 +11,9 @@ interface Props {
 
 const { libId, libLabel, navTree, currentPath } = Astro.props;
 
+// Card view (index.md) is reached via the library label, not a numbered sidebar item
+const isLandingPage = currentPath === "index.md";
+
 // Sequential numbering for top-level items only
 let counter = 0;
 
@@ -38,11 +41,11 @@ function groupContainsPath(children: NavTree, current: string | undefined): bool
 function renderItems(items: NavTree, depth: number): string {
   return items.map((item) => {
     if (isLeaf(item)) {
+      // index.md is the card/landing view — accessible via the library label above
+      if (depth === 0 && item.path === "index.md") return "";
       const num = depth === 0 ? `<span class="num">${nextNum()}</span>` : "";
       const isActive = currentPath === item.path;
-      const href = item.path === "index.md"
-        ? `/${libId}/`
-        : `/${libId}/${item.path.replace(/\.md$/, "/")}`;
+      const href = `/${libId}/${item.path.replace(/\.md$/, "/")}`;
       return `<li><a class="${isActive ? "is-active" : ""}" href="${href}">${num}${esc(item.label)}</a></li>`;
     }
     if (isGroup(item)) {
@@ -60,7 +63,9 @@ function renderItems(items: NavTree, depth: number): string {
 ---
 
 <aside class="sidebar">
-  <div class="sidebar__label">Library · {libLabel}</div>
+  <a class={`sidebar__label${isLandingPage ? " is-active" : ""}`} href={`/${libId}/`}>
+    Library · {libLabel}
+  </a>
   <ul class="nav-tree" set:html={renderItems(navTree, 0)} />
 </aside>
 

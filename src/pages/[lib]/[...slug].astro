@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Sidebar from "../../components/Sidebar.astro";
+import FetchCallout from "../../components/FetchCallout.astro";
+import PageToc from "../../components/PageToc.astro";
 import { getLibraries, type LibraryMeta } from "../../lib/libraries";
 import { getNavTree, getAllLeafPaths, findParentGroupLabel } from "../../lib/nav";
 import { getEntry, render } from "astro:content";
@@ -45,9 +47,28 @@ const groupLabel = findParentGroupLabel(navTree, leafPath);
 const entry = await getEntry("docs", `${lib.id}/${slug}`);
 const rendered = entry ? await render(entry) : null;
 const Content = rendered?.Content;
-const pageTitle =
-  (entry?.data as Record<string, unknown>)?.title as string | undefined ??
-  leafLabel;
+const headings = rendered?.headings ?? [];
+const data = (entry?.data ?? {}) as Record<string, unknown>;
+
+const pageTitle = (data.title as string | undefined) ?? leafLabel;
+const description = data.description as string | undefined;
+
+// Reference page detection: has ref_meta in front-matter
+const refMeta = data.ref_meta as Record<string, string> | undefined;
+const isRefPage = !!refMeta;
+
+// Build LLM fetch URL for reference pages
+const llmUrl = isRefPage
+  ? `https://docs.passivehousetools.com/llm/${lib.id}/${slug}.md`
+  : undefined;
+
+// Build metadata items from ref_meta
+const metaItems = refMeta
+  ? Object.entries(refMeta).map(([key, value]) => ({
+      label: key.replace(/_/g, " "),
+      value,
+    }))
+  : [];
 ---
 
 <BaseLayout
@@ -56,27 +77,64 @@ const pageTitle =
   hideFooter
 >
   <div class="with-sidebar">
-    <Sidebar
-      libId={lib.id}
-      libLabel={lib.label}
-      navTree={navTree}
-      currentPath={leafPath}
-    />
+    <div class="sidebar-col">
+      <Sidebar
+        libId={lib.id}
+        libLabel={lib.label}
+        navTree={navTree}
+        currentPath={leafPath}
+      />
+      {isRefPage && headings.length > 0 && (
+        <PageToc headings={headings} />
+      )}
+    </div>
 
     <div>
-      <header class="content-head">
-        <div class="content-head__crumb">
-          {groupLabel && (
-            <>
-              <span>{groupLabel}</span>
-              <span class="sep">&rsaquo;</span>
-            </>
+      {isRefPage ? (
+        <!-- Reference page: rich header with metadata grid + FetchCallout -->
+        <header class="ref-head">
+          <div class="ref-head__crumb">
+            {groupLabel && (
+              <>
+                <span>{groupLabel}</span>
+                <span class="sep">&rsaquo;</span>
+              </>
+            )}
+            <span class="current">{leafLabel}</span>
+          </div>
+          <h1 class="ref-head__title">{pageTitle}</h1>
+          {description && <p class="ref-head__desc">{description}</p>}
+          {metaItems.length > 0 && (
+            <div class="ref-head__meta">
+              {metaItems.map((item) => (
+                <div class="ref-head__meta-item">
+                  <span class="k">{item.label}</span>
+                  <span class="v">{item.value}</span>
+                </div>
+              ))}
+            </div>
           )}
-          <span class="current">{leafLabel}</span>
-        </div>
-      </header>
+        </header>
+      ) : (
+        <!-- Regular content page: simple breadcrumb header -->
+        <header class="content-head">
+          <div class="content-head__crumb">
+            {groupLabel && (
+              <>
+                <span>{groupLabel}</span>
+                <span class="sep">&rsaquo;</span>
+              </>
+            )}
+            <span class="current">{leafLabel}</span>
+          </div>
+        </header>
+      )}
 
-      <article class="article" data-pagefind-body data-pagefind-meta={`library:${lib.label}`}>
+      {isRefPage && llmUrl && (
+        <FetchCallout url={llmUrl} />
+      )}
+
+      <article class={`article${isRefPage ? " article--ref" : ""}`} data-pagefind-body data-pagefind-meta={`library:${lib.label}`}>
         {Content ? <Content /> : <p>Content not found.</p>}
       </article>
 

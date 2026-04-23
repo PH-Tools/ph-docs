@@ -1,0 +1,32 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+}
+
+const { headings } = Astro.props;
+
+// Only show h2 headings in the ToC
+const tocItems = headings.filter((h) => h.depth === 2);
+---
+
+{tocItems.length > 0 && (
+  <div class="page-toc">
+    <div class="page-toc__label">On This Page</div>
+    <ol class="page-toc__list">
+      {tocItems.map((item, i) => (
+        <li>
+          <a href={`#${item.slug}`}>
+            <span class="num">{String(i + 1).padStart(2, "0")}</span>
+            {item.text}
+          </a>
+        </li>
+      ))}
+    </ol>
+  </div>
+)}

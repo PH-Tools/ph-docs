@@ -793,7 +793,6 @@ def render_module_md(module: ModuleInfo, is_first_file: bool) -> str:
     if is_first_file:
         lines.append("card_title: API Reference")
         lines.append('card_description: "Auto-generated reference for the public API."')
-        lines.append('card_index: "99"')
     lines.append("---")
     lines.append("")
 
