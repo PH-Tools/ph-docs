@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-23T04:43:17Z",
+  "generated": "2026-04-23T15:54:54Z",
   "base_url": "https://docs.passivehousetools.com",
   "llm_nav": {
     "instructions": "/llm-instructions.md",
@@ -13,12 +13,6 @@
       "label": "Honeybee-PH",
       "description": "Grasshopper-native Passive House modeling. Build PH-compliant models inside Rhino using familiar Honeybee components.",
       "pages": [
-        {
-          "title": "Overview",
-          "path": "/honeybee-ph/",
-          "raw_path": "/llm/honeybee-ph/index.md",
-          "section": null
-        },
         {
           "title": "base",
           "path": "/honeybee-ph/api/base/",
@@ -987,12 +981,6 @@
       "label": "Honeybee-REVIVE",
       "description": "Carbon & energy analysis for building design. Resilience & embodied-carbon workflows for Phius REVIVE.",
       "pages": [
-        {
-          "title": "Overview",
-          "path": "/honeybee-revive/",
-          "raw_path": "/llm/honeybee-revive/index.md",
-          "section": null
-        },
         {
           "title": "CO2_measures",
           "path": "/honeybee-revive/api/CO2_measures/",

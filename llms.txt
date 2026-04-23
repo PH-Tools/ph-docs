@@ -10,7 +10,6 @@
 
 ## Honeybee-PH
 Grasshopper-native Passive House modeling. Build PH-compliant models inside Rhino using familiar Honeybee components.
-- [Overview](https://docs.passivehousetools.com/llm/honeybee-ph/index.md)
 - [API Reference: base](https://docs.passivehousetools.com/llm/honeybee-ph/api/base.md)
 - [API Reference: space](https://docs.passivehousetools.com/llm/honeybee-ph/api/space.md)
 - [API Reference: foundations](https://docs.passivehousetools.com/llm/honeybee-ph/api/foundations.md)
@@ -171,7 +170,6 @@ Passive House Exchange data model & file I/O. Convert between WUFI XML, PHPP Exc
 
 ## Honeybee-REVIVE
 Carbon & energy analysis for building design. Resilience & embodied-carbon workflows for Phius REVIVE.
-- [Overview](https://docs.passivehousetools.com/llm/honeybee-revive/index.md)
 - [API Reference: CO2_measures](https://docs.passivehousetools.com/llm/honeybee-revive/api/CO2_measures.md)
 - [API Reference: fuels](https://docs.passivehousetools.com/llm/honeybee-revive/api/fuels.md)
 - [API Reference: grid_region](https://docs.passivehousetools.com/llm/honeybee-revive/api/grid_region.md)
