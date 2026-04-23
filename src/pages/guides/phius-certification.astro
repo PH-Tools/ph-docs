@@ -66,41 +66,6 @@ import FetchCallout from "../../components/FetchCallout.astro";
 
       <!-- ─── SECTION 2: KEY CONCEPTS ─── -->
 
-      <h2 id="two-folder-architecture">Key Concept: Two-Folder Architecture</h2>
-      <p>
-        Every Phius project has <strong>two separate Dropbox folders</strong>. Understanding which
-        one you're in is critical &mdash; file paths in the Feedback Form reference the certification
-        folder, not the working folder.
-      </p>
-      <table>
-        <thead>
-          <tr>
-            <th>Folder</th>
-            <th>Location</th>
-            <th>Contains</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Working Folder</strong></td>
-            <td><code>~/Dropbox/bldgtyp/&lt;project&gt;/</code></td>
-            <td>CPHC's internal files &mdash; Rhino models, PHPP/WUFI working copies, admin, contracts, scripts</td>
-          </tr>
-          <tr>
-            <td><strong>Certification Folder</strong></td>
-            <td><code>~/Dropbox/&lt;project&gt;/</code></td>
-            <td>Phius-shared folder &mdash; final WUFI model, report PDFs, datasheets, drawings, and the Feedback Form</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>
-        The certification folder name typically follows the pattern
-        <code>{'{'}ProjectNum{'}'}-{'{'}ProjectName{'}'}_{'{'}ConsultantName{'}'}</code>
-        (e.g., <code>2441-Arverne East (Building D)_Edwin May</code>). It lives at the Dropbox root &mdash;
-        <em>not</em> inside <code>bldgtyp/</code>. When using AI tools for certification work,
-        you'll typically have the certification folder open as your workspace.
-      </p>
-
       <h2 id="feedback-form">Key Concept: The Feedback Form</h2>
       <p>
         The Feedback Form is a large <code>.xlsx</code> workbook in the
