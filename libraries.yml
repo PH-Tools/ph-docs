@@ -106,6 +106,70 @@ libraries:
         - "ToString"
       output_dir: "api"
 
+  - id:          ph-adorb
+    repo:        PH-Tools/PH_ADORB
+    label:       PH-ADORB
+    docs_path:   docs/
+    branch:      main
+    enabled:     true
+    index:       "04"
+    tag_line:    "PYTHON · ANALYSIS"
+    category:    "Analysis"
+    description: "Annualized De-carbonization of Retrofits for Buildings.
+                  Lifecycle carbon-cost analysis for building retrofit decisions."
+    source_paths:
+      - ph_adorb
+    autodoc:
+      enabled: true
+      exclude_modules: []
+      exclude_patterns:
+        - "_*"
+        - "test_*"
+      include_patterns:
+        - "_base.py"
+      skip_methods:
+        - "to_dict"
+        - "from_dict"
+        - "duplicate"
+        - "__copy__"
+        - "__str__"
+        - "__repr__"
+        - "__hash__"
+        - "ToString"
+      output_dir: "api"
+
+  - id:          ph-units
+    repo:        PH-Tools/PH_units
+    label:       PH-Units
+    docs_path:   docs/
+    branch:      main
+    enabled:     true
+    index:       "05"
+    tag_line:    "PYTHON · UTILITIES"
+    category:    "Utilities"
+    description: "Unit parsing and conversion for Passive House workflows.
+                  Convert between SI and IP with type-safe unit handling."
+    source_paths:
+      - ph_units
+    autodoc:
+      enabled: true
+      exclude_modules: []
+      exclude_patterns:
+        - "_*"
+        - "test_*"
+      include_patterns:
+        - "_base.py"
+      skip_methods:
+        - "to_dict"
+        - "from_dict"
+        - "duplicate"
+        - "__copy__"
+        - "__str__"
+        - "__repr__"
+        - "__hash__"
+        - "ToString"
+      output_dir: "api"
+
 guides:
   - id:          llm-setup
     label:       LLM Setup
