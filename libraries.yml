@@ -100,3 +100,15 @@ libraries:
         - "__hash__"
         - "ToString"
       output_dir: "api"
+
+guides:
+  - id:          llm-setup
+    label:       LLM Setup
+    href:        /guides/llm-setup/
+    enabled:     true
+    index:       "01"
+    tag_line:    "AI · INTEGRATION"
+    category:    "Guide"
+    description: "Using AI coding tools with PH-Tools documentation.
+                  Configure Claude, Cursor, or other LLM agents to
+                  reference these docs automatically."

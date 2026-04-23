@@ -1,12 +1,18 @@
 ---
-import type { LibraryMeta } from "../lib/libraries";
+interface Props {
+  id: string;
+  label: string;
+  index: string;
+  tag_line: string;
+  category: string;
+  description: string;
+  href?: string;
+}
 
-type Props = LibraryMeta;
-
-const { id, index, tag_line, category, label, description } = Astro.props;
+const { id, index, tag_line, category, label, description, href } = Astro.props;
 ---
 
-<a class="lib-card graph-paper-subtle" href={`/${id}/`}>
+<a class="lib-card graph-paper-subtle" href={href ?? `/${id}/`}>
   <div class="lib-card__idx">
     <span class="lib-card__idx-num">{index}</span>
     <span class="lib-card__idx-dash"></span>

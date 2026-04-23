@@ -1,5 +1,5 @@
 ---
-import { getLibraries } from "../lib/libraries";
+import { getLibraries, getGuides } from "../lib/libraries";
 
 interface Props {
   activeLib?: string;
@@ -7,6 +7,7 @@ interface Props {
 
 const { activeLib } = Astro.props;
 const libraries = getLibraries();
+const guides = getGuides();
 ---
 
 <header class="site-header" id="siteHeader">
@@ -30,12 +31,14 @@ const libraries = getLibraries();
         {lib.label}
       </a>
     ))}
-    <a
-      href="/guides/llm-setup/"
-      class={activeLib === "guides" ? "is-active" : ""}
-    >
-      LLM Setup
-    </a>
+    {guides.map((g) => (
+      <a
+        href={g.href}
+        class={activeLib === "guides" ? "is-active" : ""}
+      >
+        {g.label}
+      </a>
+    ))}
   </nav>
 
   <div class="nav-tools">

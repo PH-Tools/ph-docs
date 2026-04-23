@@ -1,9 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import LibraryCard from "../components/LibraryCard.astro";
-import { getLibraries } from "../lib/libraries";
+import { getLibraries, getGuides } from "../lib/libraries";
 
 const libraries = getLibraries();
+const guides = getGuides();
 ---
 
 <BaseLayout title="PH-Tools Documentation Hub">
@@ -132,6 +133,22 @@ const libraries = getLibraries();
       {libraries.map((lib) => <LibraryCard {...lib} />)}
     </div>
   </section>
+
+  <!-- Guide cards -->
+  {guides.length > 0 && (
+    <section class="libraries guides-section">
+      <div class="libraries__head">
+        <h2>Guides &amp; Resources</h2>
+        <span class="count"
+          >{String(guides.length).padStart(2, "0")} / GUIDES</span
+        >
+      </div>
+
+      <div class="lib-grid">
+        {guides.map((g) => <LibraryCard {...g} />)}
+      </div>
+    </section>
+  )}
 
   <!-- Quick strip -->
   <section class="quick-strip">
