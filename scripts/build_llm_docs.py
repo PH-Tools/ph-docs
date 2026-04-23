@@ -83,9 +83,15 @@ def main() -> None:
         print("[LLM] No content dir found — run fetch_spokes.py first.")
         return
 
-    # Clean slate
+    # Clean slate — remove spoke-generated content but preserve hand-authored guides
     if LLM_DIR.exists():
-        shutil.rmtree(LLM_DIR)
+        for child in LLM_DIR.iterdir():
+            if child.name == "guides":
+                continue
+            if child.is_dir():
+                shutil.rmtree(child)
+            else:
+                child.unlink()
 
     count = 0
     for md_file in sorted(CONTENT_DIR.rglob("*.md")):
