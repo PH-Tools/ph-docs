@@ -575,7 +575,9 @@ def extract_module(
 ) -> ModuleInfo | None:
     """Parse a .py file and extract all public classes.
 
-    Returns None if the module has no public classes.
+    Returns None only on read/parse failure. Modules with no public classes
+    still get a page (showing module docstring and source path) so that
+    nav.yml entries always resolve to a content collection entry.
     """
     try:
         source = file_path.read_text(encoding="utf-8")
@@ -606,9 +608,6 @@ def extract_module(
             module_path=f"{source_path}/{file_path.name}",
         )
         classes.append(cls_info)
-
-    if not classes:
-        return None
 
     return ModuleInfo(
         name=module_name,

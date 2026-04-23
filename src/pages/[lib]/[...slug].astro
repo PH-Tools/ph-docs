@@ -44,7 +44,10 @@ const navTree = getNavTree(lib.id);
 const groupLabel = findParentGroupLabel(navTree, leafPath);
 
 // Render markdown via content collection
-const entry = await getEntry("docs", `${lib.id}/${slug}`);
+// Astro's glob loader lowercases entry IDs (via github-slugger), so we must
+// lowercase the lookup key to match, even though file paths preserve case.
+const entryId = `${lib.id}/${slug}`.toLowerCase();
+const entry = await getEntry("docs", entryId);
 const rendered = entry ? await render(entry) : null;
 const Content = rendered?.Content;
 const headings = rendered?.headings ?? [];
