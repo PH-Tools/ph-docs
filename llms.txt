@@ -34,6 +34,8 @@ Grasshopper-native Passive House modeling. Build PH-compliant models inside Rhin
 
 ## PHX
 Passive House Exchange data model & file I/O. Convert between WUFI XML, PHPP Excel, and Phius report formats.
+- [Getting Started: Getting Started](https://docs.passivehousetools.com/llm/phx/getting-started.md)
+- [Packages: Packages](https://docs.passivehousetools.com/llm/phx/packages.md)
 - [Developer: Architecture](https://docs.passivehousetools.com/llm/phx/dev/architecture.md)
 - [Developer: Export / Import Patterns](https://docs.passivehousetools.com/llm/phx/dev/exporter-patterns.md)
 - [Reference: PHX Model Reference](https://docs.passivehousetools.com/llm/phx/reference/phx-model-reference.md)
@@ -172,6 +174,8 @@ Passive House Exchange data model & file I/O. Convert between WUFI XML, PHPP Exc
 
 ## Honeybee-REVIVE
 Carbon & energy analysis for building design. Resilience & embodied-carbon workflows for Phius REVIVE.
+- [Getting Started: Getting Started](https://docs.passivehousetools.com/llm/honeybee-revive/getting-started.md)
+- [Packages: Packages](https://docs.passivehousetools.com/llm/honeybee-revive/packages.md)
 - [API Reference: CO2_measures](https://docs.passivehousetools.com/llm/honeybee-revive/api/CO2_measures.md)
 - [API Reference: fuels](https://docs.passivehousetools.com/llm/honeybee-revive/api/fuels.md)
 - [API Reference: grid_region](https://docs.passivehousetools.com/llm/honeybee-revive/api/grid_region.md)

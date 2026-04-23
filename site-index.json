@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-23T19:02:27Z",
+  "generated": "2026-04-23T19:16:26Z",
   "base_url": "https://docs.passivehousetools.com",
   "llm_nav": {
     "instructions": "/llm-instructions.md",
@@ -146,6 +146,18 @@
       "label": "PHX",
       "description": "Passive House Exchange data model & file I/O. Convert between WUFI XML, PHPP Excel, and Phius report formats.",
       "pages": [
+        {
+          "title": "Getting Started",
+          "path": "/phx/getting-started/",
+          "raw_path": "/llm/phx/getting-started.md",
+          "section": "Getting Started"
+        },
+        {
+          "title": "Packages",
+          "path": "/phx/packages/",
+          "raw_path": "/llm/phx/packages.md",
+          "section": "Packages"
+        },
         {
           "title": "Architecture",
           "path": "/phx/dev/architecture/",
@@ -993,6 +1005,18 @@
       "label": "Honeybee-REVIVE",
       "description": "Carbon & energy analysis for building design. Resilience & embodied-carbon workflows for Phius REVIVE.",
       "pages": [
+        {
+          "title": "Getting Started",
+          "path": "/honeybee-revive/getting-started/",
+          "raw_path": "/llm/honeybee-revive/getting-started.md",
+          "section": "Getting Started"
+        },
+        {
+          "title": "Packages",
+          "path": "/honeybee-revive/packages/",
+          "raw_path": "/llm/honeybee-revive/packages.md",
+          "section": "Packages"
+        },
         {
           "title": "CO2_measures",
           "path": "/honeybee-revive/api/CO2_measures/",
