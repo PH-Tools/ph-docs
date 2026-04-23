@@ -1,0 +1,1971 @@
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>WUFI XML Schema — PHX — PH-Tools Docs</title><script>
+      // Set theme before first paint to prevent flash
+      (function () {
+        try {
+          var t = localStorage.getItem("ph-docs:theme");
+          if (t) document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/_astro/_slug_.BwptHptC.css"></head> <body> <header class="site-header" id="siteHeader"> <a class="site-header__logo" href="/"> <span class="site-header__logo-mark" aria-hidden="true"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"> <path d="M12 2 L22 8 L12 14 L2 8 Z" fill="var(--accent-light)" stroke="var(--accent)"></path> <path d="M2 8 L2 17 L12 23 L12 14 Z" stroke="var(--accent)"></path> <path d="M22 8 L22 17 L12 23 L12 14 Z" stroke="var(--accent-dark)"></path> </svg> </span> <span>PH-TOOLS<span style="color:var(--fg-faint); margin-left:6px;">/ docs</span></span> </a> <nav class="nav-primary" id="primaryNav"> <a href="/honeybee-ph/" class> Honeybee-PH </a><a href="/phx/" class="is-active"> PHX </a><a href="/honeybee-revive/" class> Honeybee-REVIVE </a> <a href="/guides/llm-setup/" class>
+LLM Setup
+</a> </nav> <div class="nav-tools"> <button class="search-btn" id="openSearch" aria-label="Open search"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <span>Search docs…</span> <span class="kbd">⌘K</span> </button> <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme"> <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"> <circle cx="12" cy="12" r="4"></circle> <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path> </svg> <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" style="display:none;"> <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.8 6.8 0 0 0 9.8 9.8Z"></path> </svg> </button> <a class="icon-btn" href="https://github.com/PH-Tools" aria-label="GitHub" title="GitHub"> <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.56 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"></path></svg> </a> </div> </header> <main>  <div class="with-sidebar"> <div class="sidebar-col"> <aside class="sidebar"> <a class="sidebar__label" href="/phx/">
+Library · PHX </a> <ul class="nav-tree"><li class="group">
+        <button aria-expanded="false"><span class="num">01</span>Developer<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/dev/architecture/">Architecture</a></li><li><a class="" href="/phx/dev/exporter-patterns/">Exporter &amp; Importer Patterns</a></li></ul>
+      </li><li class="group is-open">
+        <button aria-expanded="true"><span class="num">02</span>Reference<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/reference/phx-model-reference/">PHX Model Reference</a></li><li><a class="is-active" href="/phx/reference/wufi-xml-schema/">WUFI XML Schema</a></li><li><a class="" href="/phx/reference/phpp-field-mapping/">PHPP Field Mapping</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false"><span class="num">03</span>API Reference<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/hbjson_to_metr_json/">hbjson_to_metr_json</a></li><li><a class="" href="/phx/api/hbjson_to_phpp/">hbjson_to_phpp</a></li><li><a class="" href="/phx/api/hbjson_to_ppp/">hbjson_to_ppp</a></li><li><a class="" href="/phx/api/hbjson_to_wufi_xml/">hbjson_to_wufi_xml</a></li><li><a class="" href="/phx/api/run/">run</a></li><li class="group">
+        <button aria-expanded="false">PHPP<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/PHPP/phpp_app/">phpp_app</a></li><li class="group">
+        <button aria-expanded="false">phpp_localization<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/PHPP/phpp_localization/load/">load</a></li><li><a class="" href="/phx/api/PHPP/phpp_localization/shape_model/">shape_model</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">phpp_model<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/PHPP/phpp_model/areas_data/">areas_data</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/areas_surface/">areas_surface</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/areas_thermal_bridges/">areas_thermal_bridges</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/climate_entry/">climate_entry</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/component_frame/">component_frame</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/component_glazing/">component_glazing</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/component_vent/">component_vent</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/elec_non_res/">elec_non_res</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/electricity_item/">electricity_item</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/hot_water_piping/">hot_water_piping</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/hot_water_tank/">hot_water_tank</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/shading_rows/">shading_rows</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/uvalues_constructor/">uvalues_constructor</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/vent_ducts/">vent_ducts</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/vent_space/">vent_space</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/vent_units/">vent_units</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/ventilation_data/">ventilation_data</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/verification_data/">verification_data</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/version/">version</a></li><li><a class="" href="/phx/api/PHPP/phpp_model/windows_rows/">windows_rows</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">sheet_io<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/PHPP/sheet_io/io_PER/">io_PER</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_addnl_vent/">io_addnl_vent</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_areas/">io_areas</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_climate/">io_climate</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_components/">io_components</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_cooling_demand/">io_cooling_demand</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_cooling_peak_load/">io_cooling_peak_load</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_cooling_units/">io_cooling_units</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_elec_non_res/">io_elec_non_res</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_electricity/">io_electricity</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_exceptions/">io_exceptions</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_heating_demand/">io_heating_demand</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_heating_peak_load/">io_heating_peak_load</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_hot_water/">io_hot_water</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_ihg_non_res/">io_ihg_non_res</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_overview/">io_overview</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_shading/">io_shading</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_solar_dhw/">io_solar_dhw</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_solar_pv/">io_solar_pv</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_u_values/">io_u_values</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_use_non_res/">io_use_non_res</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_variants/">io_variants</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_ventilation/">io_ventilation</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_verification/">io_verification</a></li><li><a class="" href="/phx/api/PHPP/sheet_io/io_windows/">io_windows</a></li></ul>
+      </li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">from_HBJSON<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/from_HBJSON/cleanup/">cleanup</a></li><li><a class="" href="/phx/api/from_HBJSON/cleanup_merge_faces/">cleanup_merge_faces</a></li><li><a class="" href="/phx/api/from_HBJSON/create_assemblies/">create_assemblies</a></li><li><a class="" href="/phx/api/from_HBJSON/create_building/">create_building</a></li><li><a class="" href="/phx/api/from_HBJSON/create_elec_equip/">create_elec_equip</a></li><li><a class="" href="/phx/api/from_HBJSON/create_foundations/">create_foundations</a></li><li><a class="" href="/phx/api/from_HBJSON/create_geometry/">create_geometry</a></li><li><a class="" href="/phx/api/from_HBJSON/create_hvac/">create_hvac</a></li><li><a class="" href="/phx/api/from_HBJSON/create_project/">create_project</a></li><li><a class="" href="/phx/api/from_HBJSON/create_rooms/">create_rooms</a></li><li><a class="" href="/phx/api/from_HBJSON/create_schedules/">create_schedules</a></li><li><a class="" href="/phx/api/from_HBJSON/create_shades/">create_shades</a></li><li><a class="" href="/phx/api/from_HBJSON/create_shw_devices/">create_shw_devices</a></li><li><a class="" href="/phx/api/from_HBJSON/create_variant/">create_variant</a></li><li><a class="" href="/phx/api/from_HBJSON/read_HBJSON_file/">read_HBJSON_file</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">from_WUFI_XML<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/from_WUFI_XML/phx_converter/">phx_converter</a></li><li><a class="" href="/phx/api/from_WUFI_XML/phx_schemas/">phx_schemas</a></li><li><a class="" href="/phx/api/from_WUFI_XML/read_WUFI_XML_file/">read_WUFI_XML_file</a></li><li><a class="" href="/phx/api/from_WUFI_XML/wufi_file_schema/">wufi_file_schema</a></li><li><a class="" href="/phx/api/from_WUFI_XML/wufi_file_types/">wufi_file_types</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">model<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/model/assembly_pathways/">assembly_pathways</a></li><li><a class="" href="/phx/api/model/building/">building</a></li><li><a class="" href="/phx/api/model/certification/">certification</a></li><li><a class="" href="/phx/api/model/components/">components</a></li><li><a class="" href="/phx/api/model/constructions/">constructions</a></li><li><a class="" href="/phx/api/model/elec_equip/">elec_equip</a></li><li><a class="" href="/phx/api/model/geometry/">geometry</a></li><li><a class="" href="/phx/api/model/ground/">ground</a></li><li><a class="" href="/phx/api/model/phx_site/">phx_site</a></li><li><a class="" href="/phx/api/model/project/">project</a></li><li><a class="" href="/phx/api/model/shades/">shades</a></li><li><a class="" href="/phx/api/model/spaces/">spaces</a></li><li><a class="" href="/phx/api/model/utilization_patterns/">utilization_patterns</a></li><li class="group">
+        <button aria-expanded="false">enums<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/model/enums/building/">building</a></li><li><a class="" href="/phx/api/model/enums/elec_equip/">elec_equip</a></li><li><a class="" href="/phx/api/model/enums/foundations/">foundations</a></li><li><a class="" href="/phx/api/model/enums/hvac/">hvac</a></li><li><a class="" href="/phx/api/model/enums/phi_certification_phpp_10/">phi_certification_phpp_10</a></li><li><a class="" href="/phx/api/model/enums/phi_certification_phpp_9/">phi_certification_phpp_9</a></li><li><a class="" href="/phx/api/model/enums/phius_certification/">phius_certification</a></li><li><a class="" href="/phx/api/model/enums/phx_site/">phx_site</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">hvac<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/model/hvac/_base/">_base</a></li><li><a class="" href="/phx/api/model/hvac/collection/">collection</a></li><li><a class="" href="/phx/api/model/hvac/cooling_params/">cooling_params</a></li><li><a class="" href="/phx/api/model/hvac/ducting/">ducting</a></li><li><a class="" href="/phx/api/model/hvac/heat_pumps/">heat_pumps</a></li><li><a class="" href="/phx/api/model/hvac/heating/">heating</a></li><li><a class="" href="/phx/api/model/hvac/piping/">piping</a></li><li><a class="" href="/phx/api/model/hvac/renewable_devices/">renewable_devices</a></li><li><a class="" href="/phx/api/model/hvac/supportive_devices/">supportive_devices</a></li><li><a class="" href="/phx/api/model/hvac/ventilation/">ventilation</a></li><li><a class="" href="/phx/api/model/hvac/water/">water</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">loads<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/model/loads/lighting/">lighting</a></li><li><a class="" href="/phx/api/model/loads/occupancy/">occupancy</a></li><li><a class="" href="/phx/api/model/loads/ventilation/">ventilation</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">programs<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/model/programs/lighting/">lighting</a></li><li><a class="" href="/phx/api/model/programs/occupancy/">occupancy</a></li><li><a class="" href="/phx/api/model/programs/ventilation/">ventilation</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">schedules<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/model/schedules/lighting/">lighting</a></li><li><a class="" href="/phx/api/model/schedules/occupancy/">occupancy</a></li><li><a class="" href="/phx/api/model/schedules/ventilation/">ventilation</a></li></ul>
+      </li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">to_METr_JSON<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/to_METr_JSON/metr_builder/">metr_builder</a></li><li><a class="" href="/phx/api/to_METr_JSON/metr_converter/">metr_converter</a></li><li><a class="" href="/phx/api/to_METr_JSON/metr_json_to_file/">metr_json_to_file</a></li><li><a class="" href="/phx/api/to_METr_JSON/metr_schemas/">metr_schemas</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">to_PPP<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/to_PPP/ppp_builder/">ppp_builder</a></li><li><a class="" href="/phx/api/to_PPP/ppp_schemas/">ppp_schemas</a></li><li><a class="" href="/phx/api/to_PPP/ppp_sections/">ppp_sections</a></li><li><a class="" href="/phx/api/to_PPP/ppp_txt_to_file/">ppp_txt_to_file</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">to_WUFI_XML<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/to_WUFI_XML/xml_builder/">xml_builder</a></li><li><a class="" href="/phx/api/to_WUFI_XML/xml_converter/">xml_converter</a></li><li><a class="" href="/phx/api/to_WUFI_XML/xml_schemas/">xml_schemas</a></li><li><a class="" href="/phx/api/to_WUFI_XML/xml_txt_to_file/">xml_txt_to_file</a></li><li><a class="" href="/phx/api/to_WUFI_XML/xml_writables/">xml_writables</a></li></ul>
+      </li><li class="group">
+        <button aria-expanded="false">xl<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/xl/xl_app/">xl_app</a></li><li><a class="" href="/phx/api/xl/xl_data/">xl_data</a></li><li><a class="" href="/phx/api/xl/xl_typing/">xl_typing</a></li></ul>
+      </li></ul>
+      </li></ul> </aside> <script type="module">document.querySelectorAll(".nav-tree .group > button").forEach(e=>{e.addEventListener("click",()=>{const t=e.parentElement.classList.toggle("is-open");e.setAttribute("aria-expanded",String(t))})});</script> <div class="page-toc"><div class="page-toc__label">On This Page</div><ol class="page-toc__list"><li><a href="#xml-structure-map"><span class="num">01</span>XML Structure Map</a></li><li><a href="#quick-lookup-table"><span class="num">02</span>Quick Lookup Table</a></li><li><a href="#field-dictionary"><span class="num">03</span>Field Dictionary</a></li><li><a href="#unit-conversions"><span class="num">04</span>Unit Conversions</a></li><li><a href="#key-gotchas"><span class="num">05</span>Key Gotchas</a></li></ol></div> </div> <div> <!-- Reference page: rich header with metadata grid + FetchCallout -->
+        <header class="ref-head"> <div class="ref-head__crumb">  <span>Reference</span> <span class="sep">&rsaquo;</span>  <span class="current">WUFI XML Schema</span> </div> <h1 class="ref-head__title">WUFI XML Schema</h1> <p class="ref-head__desc">A canonical map of the WUFI-Passive project XML as produced and consumed by PHX. Written for human engineers cross-walking between WUFI-Passive, PHPP, and Phius models, and LLM agents resolving field definitions at runtime via a stable URL.</p> <div class="ref-head__meta"> <div class="ref-head__meta-item"> <span class="k">schema version</span> <span class="v">WUFI-Passive 3.3.x</span> </div><div class="ref-head__meta-item"> <span class="k">data version</span> <span class="v">48+</span> </div><div class="ref-head__meta-item"> <span class="k">maintainer</span> <span class="v">bldgtyp</span> </div><div class="ref-head__meta-item"> <span class="k">source</span> <span class="v">PHX / docs</span> </div> </div> </header> <div class="fetch-callout"> <div class="fetch-callout__inner"> <div> <div class="fetch-callout__head"> <span class="bullet"></span>
+LLM-ready &middot; Fetch this doc
+</div> <p class="fetch-callout__body">This page is mirrored at a stable URL for programmatic retrieval. Point your LLM tool at the URL below and it will always receive the current canonical schema in plain Markdown.</p> <div class="fetch-callout__url"> <span class="method">GET</span> <span class="fetch-url-text">https://docs.passivehousetools.com/llm/phx/reference/wufi-xml-schema.md</span> </div> </div> <button class="copy-btn" data-copy-url="https://docs.passivehousetools.com/llm/phx/reference/wufi-xml-schema.md"> <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <rect x="9" y="9" width="11" height="11" rx="1.5"></rect><path d="M5 15V5a1 1 0 0 1 1-1h10"></path> </svg>
+Copy URL
+</button> </div> </div> <script type="module">document.querySelectorAll(".copy-btn[data-copy-url]").forEach(e=>{e.addEventListener("click",()=>{const o=e.dataset.copyUrl;o&&navigator.clipboard&&navigator.clipboard.writeText(o);const r=e.innerHTML;e.innerHTML='<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-11"/></svg> Copied',setTimeout(()=>{e.innerHTML=r},1500)})});</script> <article class="article article--ref" data-pagefind-body data-pagefind-meta="library:PHX"> <h1 id="wufi-passive-xml-schema-reference">WUFI-Passive XML Schema Reference</h1>
+<p>WUFI-Passive XML files are the primary data exchange format for Passive House energy models. They can be 30,000-100,000+ lines and contain the complete building model: geometry, constructions, windows, HVAC, DHW, renewables, and certification parameters.</p>
+<hr>
+<h2 id="xml-structure-map">XML Structure Map</h2>
+<p>Format version 3.x, Data Version 48+. Section order is consistent across projects; line numbers vary by project size.</p>
+<h3 id="top-level-overview">Top-Level Overview</h3>
+<p>The XML has two structural tiers: <strong>root-level sections</strong> shared across all variants, and <strong>per-variant data</strong> containing the building model. Assemblies, WindowTypes, and SolarProtectionTypes are root-level type libraries — components inside each variant reference them by <code>IdentNr</code>.</p>
+<h4 id="document-root">Document Root</h4>
+<div class="mermaid" data-pagefind-ignore="">
+graph LR
+    ROOT["WUFIplusProject"]:::root
+
+    ROOT --> META["Root Metadata"]:::meta
+    ROOT --> PD["ProjectData"]:::meta
+    ROOT --> SCHED["Schedules"]:::meta
+    ROOT --> ASM["Assemblies"]:::lib
+    ROOT --> WT["WindowTypes"]:::lib
+    ROOT --> SPT["SolarProtectionTypes"]:::lib
+    ROOT --> VAR["Variants › Variant"]:::variant
+
+    classDef root fill:#2d3748,color:#e2e8f0,stroke:#4a5568,font-weight:bold
+    classDef meta fill:#edf2f7,color:#2d3748,stroke:#a0aec0
+    classDef lib fill:#fefcbf,color:#744210,stroke:#d69e2e
+    classDef variant fill:#bee3f8,color:#2a4365,stroke:#3182ce,stroke-width:2px,font-weight:bold
+</div>
+<h4 id="inside-a-variant">Inside a Variant</h4>
+<p>Each Variant contains five branches. Note that Components and Zones are <strong>siblings</strong> under Building, not nested.</p>
+<div class="mermaid" data-pagefind-ignore="">
+graph LR
+    V["Variant"]:::variant
+
+    V --> G3D["Graphics_3D"]:::geo
+    V --> BLDG["Building"]:::env
+    V --> CLIM["ClimateLocation"]:::clim
+    V --> PHD["PassivehouseData"]:::cert
+    V --> HVAC_["HVAC"]:::mech
+
+    BLDG --> COMP["Components\nopaque · aperture · shade"]:::env
+    BLDG --> Z["Zones\nrooms · TBs · equipment"]:::env
+
+    PHD --> TARG["Certification Targets"]:::cert
+    PHD --> PHB["PH_Buildings\nairtightness · foundations"]:::cert
+
+    HVAC_ --> SYS["Systems"]:::mech
+    SYS --> DEV["Devices\nERV · HP · PV · Tank"]:::mech
+    SYS --> DIST["PHDistribution\nDHW · cooling · ducts"]:::mech
+
+    classDef variant fill:#bee3f8,color:#2a4365,stroke:#3182ce,stroke-width:2px,font-weight:bold
+    classDef geo fill:#e2e8f0,color:#2d3748,stroke:#a0aec0
+    classDef env fill:#c6f6d5,color:#22543d,stroke:#48bb78
+    classDef clim fill:#e2e8f0,color:#2d3748,stroke:#a0aec0
+    classDef cert fill:#e9d8fd,color:#44337a,stroke:#9f7aea
+    classDef mech fill:#fed7e2,color:#702459,stroke:#ed64a6
+</div>
+<h3 id="detailed-element-trees">Detailed Element Trees</h3>
+<h4 id="root--project-metadata">Root &#x26; Project Metadata</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>WUFIplusProject</span></span>
+<span class="line"><span>├── DataVersion (e.g. 48)</span></span>
+<span class="line"><span>├── UnitSystem (0=SI, 1=IP)</span></span>
+<span class="line"><span>├── ProgramVersion (e.g. "3.2.0.1")</span></span>
+<span class="line"><span>├── Scope</span></span>
+<span class="line"><span>├── DimensionsVisualizedGeometry</span></span>
+<span class="line"><span>├── ProjectData</span></span>
+<span class="line"><span>│   ├── Year_Construction</span></span>
+<span class="line"><span>│   ├── OwnerIsClient</span></span>
+<span class="line"><span>│   ├── Date_Project (Year, Month, Day, Hour, Minutes)</span></span>
+<span class="line"><span>│   ├── WhiteBackgroundPictureBuilding</span></span>
+<span class="line"><span>│   ├── Customer_{Name,Street,Locality,PostalCode,Tel,Email}</span></span>
+<span class="line"><span>│   ├── Building_{Name,Street,Locality,PostalCode}</span></span>
+<span class="line"><span>│   ├── Owner_{Name,Street,Locality,PostalCode}</span></span>
+<span class="line"><span>│   └── Responsible_{Name,Street,Locality,PostalCode,Tel,LicenseNr,Email}</span></span>
+<span class="line"><span>├── UtilisationPatternsVentilation (ventilation schedule collection)</span></span>
+<span class="line"><span>├── UtilizationPatternsPH (occupancy schedule collection)</span></span>
+<span class="line"><span>├── Variants (contains one or more Variant — see below)</span></span>
+<span class="line"><span>├── Assemblies (opaque construction types — see below)</span></span>
+<span class="line"><span>├── WindowTypes (window construction types — see below)</span></span>
+<span class="line"><span>└── SolarProtectionTypes (shading device types)</span></span></code></pre>
+<p>!!! note “Variants wrapper”
+Building, HVAC, PassivehouseData, and ClimateLocation are all <strong>inside</strong> <code>Variants > Variant</code>, not at the root level. Assemblies, WindowTypes, and SolarProtectionTypes are at the root level, shared across all variants.</p>
+<h4 id="schedules">Schedules</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>UtilisationPatternsVentilation</span></span>
+<span class="line"><span>└── UtilizationPatternVent</span></span>
+<span class="line"><span>    ├── Name, IdentNr</span></span>
+<span class="line"><span>    ├── OperatingDays (days/week), OperatingWeeks (weeks/year)</span></span>
+<span class="line"><span>    ├── Maximum_DOS, Maximum_PDF (high-speed period: hours, speed fraction)</span></span>
+<span class="line"><span>    ├── Standard_DOS, Standard_PDF</span></span>
+<span class="line"><span>    ├── Basic_DOS, Basic_PDF</span></span>
+<span class="line"><span>    └── Minimum_DOS, Minimum_PDF</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>UtilizationPatternsPH</span></span>
+<span class="line"><span>└── UtilizationPattern</span></span>
+<span class="line"><span>    ├── IdentNr, Name</span></span>
+<span class="line"><span>    ├── HeightUtilizationLevel</span></span>
+<span class="line"><span>    ├── BeginUtilization, EndUtilization (hours)</span></span>
+<span class="line"><span>    ├── AnnualUtilizationDays</span></span>
+<span class="line"><span>    ├── IlluminationLevel [lux]</span></span>
+<span class="line"><span>    ├── RelativeAbsenteeism</span></span>
+<span class="line"><span>    └── PartUseFactorPeriodForLighting</span></span></code></pre>
+<p>!!! note “Spelling”
+The ventilation schedule list uses British spelling <code>UtilisationPatternsVentilation</code> (with an ‘s’), while the child elements use American spelling <code>UtilizationPatternVent</code>. This is intentional and matches WUFI’s own inconsistency.</p>
+<h4 id="variant">Variant</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Variant</span></span>
+<span class="line"><span>├── IdentNr, Name, Remarks</span></span>
+<span class="line"><span>├── Graphics_3D (geometry data)</span></span>
+<span class="line"><span>│   ├── Vertices > Vertix (IdentNr, X, Y, Z)</span></span>
+<span class="line"><span>│   └── Polygons > Polygon (IdentNr, NormalVector{X,Y,Z}, IdentNrPoints, IdentNrPolygonsInside)</span></span>
+<span class="line"><span>├── Building</span></span>
+<span class="line"><span>│   ├── Components (ALL opaque + aperture + shade surfaces for the building)</span></span>
+<span class="line"><span>│   │   └── Component (see Component details below)</span></span>
+<span class="line"><span>│   └── Zones (zone definitions)</span></span>
+<span class="line"><span>│       └── Zone (see Zone details below)</span></span>
+<span class="line"><span>├── ClimateLocation (see ClimateLocation below)</span></span>
+<span class="line"><span>├── PassivehouseData (see PassivehouseData below)</span></span>
+<span class="line"><span>└── HVAC (see HVAC below)</span></span></code></pre>
+<p>!!! warning “Components are under Building, not Zone”
+Components and Zones are <strong>siblings</strong> under <code>Building</code>. An LLM navigating the XML should look for <code>Variant > Building > Components</code> for surface data, and <code>Variant > Building > Zones</code> for zone-level data like thermal bridges, ventilation rooms, and electrical equipment.</p>
+<h4 id="components-under-building">Components (under Building)</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Component (opaque — Type=1)</span></span>
+<span class="line"><span>├── IdentNr, Name, Visual</span></span>
+<span class="line"><span>├── Type (1=opaque)</span></span>
+<span class="line"><span>├── IdentNrColorI, IdentNrColorE (interior/exterior color IDs)</span></span>
+<span class="line"><span>├── InnerAttachment (1=zone interior, -1=not attached)</span></span>
+<span class="line"><span>├── OuterAttachment (-1=exterior/ambient, -2=ground)</span></span>
+<span class="line"><span>├── IdentNr_ComponentInnerSurface (-1 or zone surface ID)</span></span>
+<span class="line"><span>├── IdentNrAssembly (links to Assembly)</span></span>
+<span class="line"><span>├── IdentNrWindowType (-1 for opaque)</span></span>
+<span class="line"><span>└── IdentNrPolygons (list of polygon IDs)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Component (aperture — Type=2)</span></span>
+<span class="line"><span>├── (same base fields as opaque, but IdentNrAssembly=-1)</span></span>
+<span class="line"><span>├── IdentNrWindowType (links to WindowType)</span></span>
+<span class="line"><span>├── DepthWindowReveal [m]</span></span>
+<span class="line"><span>├── DistanceDaylightOpeningToReveal [m]</span></span>
+<span class="line"><span>├── IdentNrSolarProtection (ID ref, -1=none)</span></span>
+<span class="line"><span>├── IdentNrOverhang (ID ref, -1=none)</span></span>
+<span class="line"><span>└── DefaultCorrectionShadingMonth (fraction 0-1)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Component (shade surface — Type=1, special case)</span></span>
+<span class="line"><span>├── Type=1 (same as opaque)</span></span>
+<span class="line"><span>├── InnerAttachment=-1, OuterAttachment=-1 (neither attached)</span></span>
+<span class="line"><span>├── IdentNrAssembly=-1 (no assembly)</span></span>
+<span class="line"><span>└── IdentNrWindowType=-1</span></span></code></pre>
+<h4 id="zones">Zones</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Zone</span></span>
+<span class="line"><span>├── Name, IdentNr</span></span>
+<span class="line"><span>├── KindZone (1=conditioned, etc.)</span></span>
+<span class="line"><span>├── KindAttachedZone</span></span>
+<span class="line"><span>├── TemperatureReductionFactorUserDefined</span></span>
+<span class="line"><span>├── RoomsVentilation (ventilation spaces)</span></span>
+<span class="line"><span>│   └── Room</span></span>
+<span class="line"><span>│       ├── Name, Type (room type code, 99=user-defined)</span></span>
+<span class="line"><span>│       ├── IdentNrUtilizationPatternVent (links to ventilation schedule)</span></span>
+<span class="line"><span>│       ├── IdentNrVentilationUnit (links to ventilation device)</span></span>
+<span class="line"><span>│       ├── Quantity</span></span>
+<span class="line"><span>│       ├── AreaRoom [m²]</span></span>
+<span class="line"><span>│       ├── ClearRoomHeight [m]</span></span>
+<span class="line"><span>│       ├── DesignVolumeFlowRateSupply [m³/h]</span></span>
+<span class="line"><span>│       └── DesignVolumeFlowRateExhaust [m³/h]</span></span>
+<span class="line"><span>├── LoadsPersonsPH (occupancy loads per space)</span></span>
+<span class="line"><span>│   └── LoadPerson</span></span>
+<span class="line"><span>│       ├── Name, IdentNrUtilizationPattern</span></span>
+<span class="line"><span>│       ├── ChoiceActivityPersons</span></span>
+<span class="line"><span>│       ├── NumberOccupants</span></span>
+<span class="line"><span>│       └── FloorAreaUtilizationZone [m²]</span></span>
+<span class="line"><span>├── LoadsLightingsPH (lighting loads per space)</span></span>
+<span class="line"><span>│   └── LoadsLighting</span></span>
+<span class="line"><span>│       ├── Name, RoomCategory</span></span>
+<span class="line"><span>│       ├── InstalledLightingPower [W/m²]</span></span>
+<span class="line"><span>│       └── LightingFullLoadHours [hrs/yr]</span></span>
+<span class="line"><span>├── GrossVolume_Selection, GrossVolume [m³]</span></span>
+<span class="line"><span>├── NetVolume_Selection, NetVolume [m³]</span></span>
+<span class="line"><span>├── FloorArea_Selection, FloorArea [m²] (iCFA)</span></span>
+<span class="line"><span>├── ClearanceHeight_Selection, ClearanceHeight [m]</span></span>
+<span class="line"><span>├── SpecificHeatCapacity_Selection, SpecificHeatCapacity [Wh/m²K]</span></span>
+<span class="line"><span>├── IdentNrPH_Building</span></span>
+<span class="line"><span>├── OccupantQuantityUserDef</span></span>
+<span class="line"><span>├── NumberBedrooms</span></span>
+<span class="line"><span>├── HomeDevice (electrical equipment — appliances, lighting, MEL)</span></span>
+<span class="line"><span>│   └── Device</span></span>
+<span class="line"><span>│       ├── Comment, ReferenceQuantity, Quantity</span></span>
+<span class="line"><span>│       ├── InConditionedSpace</span></span>
+<span class="line"><span>│       ├── ReferenceEnergyDemandNorm, EnergyDemandNorm</span></span>
+<span class="line"><span>│       ├── EnergyDemandNormUse, CEF_CombinedEnergyFactor</span></span>
+<span class="line"><span>│       ├── IHG_UtilizationFactor</span></span>
+<span class="line"><span>│       ├── Type (1=dishwasher, 2=clothes washer, 3=dryer, 7=cooktop,</span></span>
+<span class="line"><span>│       │         13=MEL, 14=interior lighting, 15=exterior lighting, etc.)</span></span>
+<span class="line"><span>│       └── (type-specific fields: Connection, CookingWith, FractionHightEfficiency, etc.)</span></span>
+<span class="line"><span>├── ExhaustVents (exhaust-only ventilation devices)</span></span>
+<span class="line"><span>│   └── ExhaustVent</span></span>
+<span class="line"><span>│       ├── Name, Type (1=dryer, 2=kitchen hood)</span></span>
+<span class="line"><span>│       ├── ExhaustVolumeFlowRate [m³/h]</span></span>
+<span class="line"><span>│       └── RunTimePerYear [minutes]</span></span>
+<span class="line"><span>├── ThermalBridges</span></span>
+<span class="line"><span>│   └── ThermalBridge</span></span>
+<span class="line"><span>│       ├── Name, Type (negative group number)</span></span>
+<span class="line"><span>│       ├── Length [m], PsiValue [W/mK]</span></span>
+<span class="line"><span>│       └── IdentNrOptionalClimate</span></span>
+<span class="line"><span>├── SummerNaturalVentilationDay [1/hr]</span></span>
+<span class="line"><span>└── SummerNaturalVentilationNight [1/hr]</span></span></code></pre>
+<h4 id="climatelocation">ClimateLocation</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>ClimateLocation</span></span>
+<span class="line"><span>├── Selection</span></span>
+<span class="line"><span>├── Latitude_DB, Longitude_DB, HeightNN_DB, dUTC_DB</span></span>
+<span class="line"><span>├── Albedo, GroundReflShort, GroundReflLong, GroundEmission</span></span>
+<span class="line"><span>├── CloudIndex, CO2concenration, Unit_CO2concentration</span></span>
+<span class="line"><span>└── PH_ClimateLocation</span></span>
+<span class="line"><span>    ├── Selection</span></span>
+<span class="line"><span>    ├── DailyTemperatureSwingSummer, AverageWindSpeed</span></span>
+<span class="line"><span>    ├── Latitude, Longitude, HeightNNWeatherStation, dUTC</span></span>
+<span class="line"><span>    ├── HeightNNBuilding, ClimateZone</span></span>
+<span class="line"><span>    ├── GroundThermalConductivity, GroundHeatCapacitiy, GroundDensity</span></span>
+<span class="line"><span>    ├── DepthGroundwater, FlowRateGroundwater</span></span>
+<span class="line"><span>    ├── TemperatureMonthly (12 Items)</span></span>
+<span class="line"><span>    ├── DewPointTemperatureMonthly (12 Items)</span></span>
+<span class="line"><span>    ├── SkyTemperatureMonthly (12 Items)</span></span>
+<span class="line"><span>    ├── {North,East,South,West,Global}SolarRadiationMonthly (12 Items each)</span></span>
+<span class="line"><span>    ├── Peak Heating 1: Temperature, {N,E,S,W,Global}SolarRadiation</span></span>
+<span class="line"><span>    ├── Peak Heating 2: Temperature, {N,E,S,W,Global}SolarRadiation</span></span>
+<span class="line"><span>    ├── Peak Cooling 1: Temperature, {N,E,S,W,Global}SolarRadiation</span></span>
+<span class="line"><span>    ├── Peak Cooling 2: Temperature, {N,E,S,W,Global}SolarRadiation</span></span>
+<span class="line"><span>    ├── SelectionPECO2Factor</span></span>
+<span class="line"><span>    ├── PEFactorsUserDef (16 fuel-type PE factors, kWh/kWh)</span></span>
+<span class="line"><span>    └── CO2FactorsUserDef (16 fuel-type CO2 factors, g/kWh)</span></span></code></pre>
+<h4 id="passivehousedata">PassivehouseData</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>PassivehouseData</span></span>
+<span class="line"><span>├── PH_CertificateCriteria (certification program enum)</span></span>
+<span class="line"><span>├── PH_SelectionTargetData (2=user-defined targets)</span></span>
+<span class="line"><span>├── AnnualHeatingDemand [kWh/m²a]</span></span>
+<span class="line"><span>├── AnnualCoolingDemand [kWh/m²a]</span></span>
+<span class="line"><span>├── PeakHeatingLoad [W/m²]</span></span>
+<span class="line"><span>├── PeakCoolingLoad [W/m²]</span></span>
+<span class="line"><span>├── PH_Buildings</span></span>
+<span class="line"><span>│   └── PH_Building</span></span>
+<span class="line"><span>│       ├── IdentNr</span></span>
+<span class="line"><span>│       ├── BuildingCategory (1=residential, etc.)</span></span>
+<span class="line"><span>│       ├── OccupancyTypeResidential</span></span>
+<span class="line"><span>│       ├── BuildingStatus (1=new, 2=retrofit)</span></span>
+<span class="line"><span>│       ├── BuildingType</span></span>
+<span class="line"><span>│       ├── OccupancySettingMethod (2=user-defined)</span></span>
+<span class="line"><span>│       ├── NumberUnits, CountStories</span></span>
+<span class="line"><span>│       ├── EnvelopeAirtightnessCoefficient [1/h] (q50 or n50)</span></span>
+<span class="line"><span>│       ├── SummerHRVHumidityRecovery (bypass mode)</span></span>
+<span class="line"><span>│       ├── BuildingWindExposure</span></span>
+<span class="line"><span>│       ├── FoundationInterfaces</span></span>
+<span class="line"><span>│       │   └── FoundationInterface</span></span>
+<span class="line"><span>│       │       ├── Name</span></span>
+<span class="line"><span>│       │       ├── SettingFloorSlabType (6=user-defined)</span></span>
+<span class="line"><span>│       │       ├── FloorSlabType (3=slab-on-grade, etc.)</span></span>
+<span class="line"><span>│       │       └── (type-specific fields: areas, perimeters, U-values,</span></span>
+<span class="line"><span>│       │            perimeter insulation properties)</span></span>
+<span class="line"><span>│       ├── InternalGainsAdditionalData</span></span>
+<span class="line"><span>│       │   ├── EvaporationHeatPerPerson [W]</span></span>
+<span class="line"><span>│       │   ├── HeatLossFluschingWC, QuantityWCs</span></span>
+<span class="line"><span>│       │   └── RoomCategory, UseDefaultValuesSchool</span></span>
+<span class="line"><span>│       ├── MechanicalRoomTemperature [°C]</span></span>
+<span class="line"><span>│       ├── IndoorTemperature [°C] (heating setpoint)</span></span>
+<span class="line"><span>│       ├── OverheatingTemperatureThreshold [°C] (cooling setpoint)</span></span>
+<span class="line"><span>│       └── NonCombustibleMaterials (boolean)</span></span>
+<span class="line"><span>└── UseWUFIMeanMonthShading (true/false)</span></span></code></pre>
+<h4 id="hvac">HVAC</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>HVAC</span></span>
+<span class="line"><span>└── Systems</span></span>
+<span class="line"><span>    └── System</span></span>
+<span class="line"><span>        ├── Name, Type, IdentNr</span></span>
+<span class="line"><span>        ├── ZonesCoverage</span></span>
+<span class="line"><span>        │   └── ZoneCoverage</span></span>
+<span class="line"><span>        │       ├── IdentNrZone</span></span>
+<span class="line"><span>        │       └── Coverage{Heating,Cooling,Ventilation,Humidification,Dehumidification}</span></span>
+<span class="line"><span>        ├── Devices</span></span>
+<span class="line"><span>        │   └── Device</span></span>
+<span class="line"><span>        │       ├── Name, IdentNr</span></span>
+<span class="line"><span>        │       ├── SystemType, TypeDevice (see Device Type table)</span></span>
+<span class="line"><span>        │       ├── UsedFor_{Heating,DHW,Cooling,Ventilation,Humidification,Dehumidification}</span></span>
+<span class="line"><span>        │       ├── (ventilation devices only:)</span></span>
+<span class="line"><span>        │       │   ├── UseOptionalClimate, IdentNr_OptionalClimate</span></span>
+<span class="line"><span>        │       │   ├── HeatRecovery, MoistureRecovery</span></span>
+<span class="line"><span>        │       │   └── PH_Parameters (Quantity, HumidityRecoveryEfficiency,</span></span>
+<span class="line"><span>        │       │       ElectricEfficiency, DefrostRequired, FrostProtection,</span></span>
+<span class="line"><span>        │       │       TemperatureBelowDefrostUsed, InConditionedSpace, NoSummerBypass)</span></span>
+<span class="line"><span>        │       ├── (heat pump devices only:)</span></span>
+<span class="line"><span>        │       │   ├── PH_Parameters (AuxiliaryEnergy, AuxiliaryEnergyDHW,</span></span>
+<span class="line"><span>        │       │   │   InConditionedSpace, HPType,</span></span>
+<span class="line"><span>        │       │   │   RatedCOP1/2, AmbientTemperature1/2 — monthly type,</span></span>
+<span class="line"><span>        │       │   │   AnnualCOP, HPWH_EF — annual/hot-water type)</span></span>
+<span class="line"><span>        │       │   ├── DHW_Parameters (CoverageWithinSystem, Unit, Selection)</span></span>
+<span class="line"><span>        │       │   ├── Heating_Parameters (CoverageWithinSystem, Unit, Selection)</span></span>
+<span class="line"><span>        │       │   └── Cooling_Parameters (CoverageWithinSystem, Unit, Selection)</span></span>
+<span class="line"><span>        │       ├── (water storage devices only:)</span></span>
+<span class="line"><span>        │       │   └── PH_Parameters (SolarThermalStorageCapacity,</span></span>
+<span class="line"><span>        │       │       StorageLossesStandby, InputOption, QauntityWS,</span></span>
+<span class="line"><span>        │       │       TankRoomTemp, TypicalStorageWaterTemperature, etc.)</span></span>
+<span class="line"><span>        │       └── (PV devices only:)</span></span>
+<span class="line"><span>        │           └── PH_Parameters (SelectionLocation, ArraySizePV,</span></span>
+<span class="line"><span>        │               PhotovoltaicRenewableEnergy, OnsiteUtilization, etc.)</span></span>
+<span class="line"><span>        └── PHDistribution</span></span>
+<span class="line"><span>            ├── DistributionDHW</span></span>
+<span class="line"><span>            │   ├── CalculationMethodIndividualPipes</span></span>
+<span class="line"><span>            │   ├── DemandRecirculation, SelectionhotWaterFixtureEff</span></span>
+<span class="line"><span>            │   ├── NumberOfBathrooms, AllPipesAreInsulated</span></span>
+<span class="line"><span>            │   ├── SelectionUnitsOrFloors, PipeMaterialSimplifiedMethod</span></span>
+<span class="line"><span>            │   ├── PipeDiameterSimplifiedMethod</span></span>
+<span class="line"><span>            │   ├── TemperatureRoom_WR, DesignFlowTemperature_WR</span></span>
+<span class="line"><span>            │   ├── DailyRunningHoursCirculation_WR</span></span>
+<span class="line"><span>            │   ├── LengthCirculationPipes_WR, HeatLossCoefficient_WR</span></span>
+<span class="line"><span>            │   ├── LengthIndividualPipes_WR, ExteriorPipeDiameter_WR</span></span>
+<span class="line"><span>            │   └── Truncs > Trunc</span></span>
+<span class="line"><span>            │       ├── Name, IdentNr, PipingLength, PipeMaterial, PipingDiameter</span></span>
+<span class="line"><span>            │       ├── CountUnitsOrFloors, DemandRecirculation</span></span>
+<span class="line"><span>            │       └── Branches > Branch</span></span>
+<span class="line"><span>            │           ├── Name, IdentNr, PipingLength, PipeMaterial, PipingDiameter</span></span>
+<span class="line"><span>            │           └── Twigs > Twig</span></span>
+<span class="line"><span>            │               └── Name, IdentNr, PipingLength, PipeMaterial, PipingDiameter</span></span>
+<span class="line"><span>            ├── DistributionCooling (if cooling devices present)</span></span>
+<span class="line"><span>            │   ├── CoolingViaVentilationAir, CoolingViaRecirculation</span></span>
+<span class="line"><span>            │   ├── Dehumidification, PanelCooling</span></span>
+<span class="line"><span>            │   ├── (recirculation:) RecirculatingAirOnOff, MaxRecirculationAirCoolingPower,</span></span>
+<span class="line"><span>            │   │   MinTempCoolingCoilRecirculatingAir, RecirculationCoolingCOP,</span></span>
+<span class="line"><span>            │   │   RecirculationAirVolume, ControlledRecirculationVolumeFlow</span></span>
+<span class="line"><span>            │   └── (dehumidification:) DehumdificationCOP, SEER, EER</span></span>
+<span class="line"><span>            ├── DistributionVentilation</span></span>
+<span class="line"><span>            │   └── Duct</span></span>
+<span class="line"><span>            │       ├── Name, IdentNr</span></span>
+<span class="line"><span>            │       ├── DuctDiameter [mm], DuctShapeHeight [mm], DuctShapeWidth [mm]</span></span>
+<span class="line"><span>            │       ├── DuctLength [m]</span></span>
+<span class="line"><span>            │       ├── InsulationThickness [mm], ThermalConductivity [W/mK]</span></span>
+<span class="line"><span>            │       ├── Quantity</span></span>
+<span class="line"><span>            │       ├── DuctType (1=supply, 2=extract)</span></span>
+<span class="line"><span>            │       ├── DuctShape (1=round, 2=rectangular)</span></span>
+<span class="line"><span>            │       ├── IsReflective</span></span>
+<span class="line"><span>            │       └── AssignedVentUnits > IdentNrVentUnit</span></span>
+<span class="line"><span>            ├── UseDefaultValues, DeviceInConditionedSpace</span></span>
+<span class="line"><span>            └── SupportiveDevices</span></span>
+<span class="line"><span>                └── SupportiveDevice</span></span>
+<span class="line"><span>                    ├── Name, Type, Quantity</span></span>
+<span class="line"><span>                    ├── InConditionedSpace</span></span>
+<span class="line"><span>                    ├── NormEnergyDemand [W]</span></span>
+<span class="line"><span>                    └── PeriodOperation [khrs]</span></span></code></pre>
+<h4 id="assemblies">Assemblies</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Assemblies</span></span>
+<span class="line"><span>└── Assembly</span></span>
+<span class="line"><span>    ├── IdentNr, Name</span></span>
+<span class="line"><span>    ├── Order_Layers (2=outside-to-inside)</span></span>
+<span class="line"><span>    ├── Grid_Kind (2=standard)</span></span>
+<span class="line"><span>    ├── Layers</span></span>
+<span class="line"><span>    │   └── Layer</span></span>
+<span class="line"><span>    │       ├── Thickness [m]</span></span>
+<span class="line"><span>    │       ├── Material</span></span>
+<span class="line"><span>    │       │   ├── Name, ThermalConductivity [W/mK]</span></span>
+<span class="line"><span>    │       │   ├── BulkDensity [kg/m³], Porosity</span></span>
+<span class="line"><span>    │       │   ├── HeatCapacity [J/kgK]</span></span>
+<span class="line"><span>    │       │   ├── WaterVaporResistance, ReferenceWaterContent</span></span>
+<span class="line"><span>    │       │   └── Color (Alpha, Red, Green, Blue)</span></span>
+<span class="line"><span>    │       ├── ExchangeDivisionHorizontal (column widths for inhomogeneous layers)</span></span>
+<span class="line"><span>    │       ├── ExchangeDivisionVertical (row heights for inhomogeneous layers)</span></span>
+<span class="line"><span>    │       └── ExchangeMaterialIdentNrs (material IDs for divided cells)</span></span>
+<span class="line"><span>    └── ExchangeMaterials (alternate materials for inhomogeneous layers)</span></span>
+<span class="line"><span>        └── ExchangeMaterial</span></span>
+<span class="line"><span>            ├── IdentNr, Name</span></span>
+<span class="line"><span>            ├── ThermalConductivity [W/mK], BulkDensity [kg/m³]</span></span>
+<span class="line"><span>            ├── HeatCapacity [J/kgK]</span></span>
+<span class="line"><span>            └── Color (Alpha, Red, Green, Blue)</span></span></code></pre>
+<h4 id="windowtypes">WindowTypes</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>WindowTypes</span></span>
+<span class="line"><span>└── WindowType</span></span>
+<span class="line"><span>    ├── IdentNr, Name</span></span>
+<span class="line"><span>    ├── Uw_Detailed (true/false — use detailed U-value calculation)</span></span>
+<span class="line"><span>    ├── GlazingFrameDetailed (true/false — use per-edge frame data)</span></span>
+<span class="line"><span>    ├── FrameFactor (glass fraction, 0-1)</span></span>
+<span class="line"><span>    ├── U_Value [W/m²K] (overall window U-value)</span></span>
+<span class="line"><span>    ├── U_Value_Glazing [W/m²K]</span></span>
+<span class="line"><span>    ├── MeanEmissivity (glazing emissivity)</span></span>
+<span class="line"><span>    ├── g_Value / SHGC_Hemispherical (solar heat gain)</span></span>
+<span class="line"><span>    ├── U_Value_Frame [W/m²K] (overall frame U-value)</span></span>
+<span class="line"><span>    ├── Frame_Width_{Left,Right,Top,Bottom} [m]</span></span>
+<span class="line"><span>    ├── Frame_Psi_{Left,Right,Top,Bottom} [W/mK] (install psi)</span></span>
+<span class="line"><span>    ├── Frame_U_{Left,Right,Top,Bottom} [W/m²K]</span></span>
+<span class="line"><span>    └── Glazing_Psi_{Left,Right,Top,Bottom} [W/mK] (spacer psi)</span></span></code></pre>
+<h4 id="solarprotectiontypes">SolarProtectionTypes</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>SolarProtectionTypes</span></span>
+<span class="line"><span>└── SolarProtectionType</span></span>
+<span class="line"><span>    ├── IdentNr, Name</span></span>
+<span class="line"><span>    ├── OperationMode</span></span>
+<span class="line"><span>    ├── MaxRedFactorRadiation (reduction factor)</span></span>
+<span class="line"><span>    ├── ExternalEmissivity, EquivalentAbsorptivity</span></span>
+<span class="line"><span>    ├── ThermalResistanceSupplement, ThermalResistanceCavity</span></span>
+<span class="line"><span>    ├── RadiationLimitValue</span></span>
+<span class="line"><span>    └── ExcludeWeekends</span></span></code></pre>
+<h3 id="device-type-identification">Device Type Identification</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>SystemType</th><th>TypeDevice</th><th>What it is</th></tr></thead><tbody><tr><td>1</td><td>1</td><td>Mechanical ventilation (ERV/HRV/NERV)</td></tr><tr><td>2</td><td>2</td><td>Direct electric heater</td></tr><tr><td>3</td><td>3</td><td>Boiler (fossil fuel or wood)</td></tr><tr><td>4</td><td>4</td><td>District heat</td></tr><tr><td>5</td><td>5</td><td>Heat pump (heating, cooling, and/or DHW)</td></tr><tr><td>8</td><td>8</td><td>Hot water storage tank</td></tr><tr><td>10</td><td>10</td><td>Photovoltaic / renewable</td></tr></tbody></table>
+<p>The <code>UsedFor_*</code> boolean fields further distinguish purpose (heating, DHW, cooling, ventilation, humidification, dehumidification).</p>
+<p>Heat pump <code>HPType</code> sub-types (in <code>PH_Parameters</code>):</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HPType</th><th>Description</th><th>Key fields</th></tr></thead><tbody><tr><td>2</td><td>Combined</td><td>(minimal params)</td></tr><tr><td>3</td><td>Annual COP</td><td><code>AnnualCOP</code>, <code>TotalSystemPerformanceRatioHeatGenerator</code></td></tr><tr><td>4</td><td>Monthly (two-point)</td><td><code>RatedCOP1</code>, <code>RatedCOP2</code>, <code>AmbientTemperature1</code>, <code>AmbientTemperature2</code></td></tr><tr><td>5</td><td>Hot water only</td><td><code>AnnualCOP</code>, <code>HPWH_EF</code>, <code>TotalSystemPerformanceRatioHeatGenerator</code></td></tr></tbody></table>
+<h3 id="section-size-estimates-typical-large-multifamily-78000-lines">Section Size Estimates (typical large multifamily, ~78,000 lines)</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Section</th><th>Typical line range</th><th>Typical size</th></tr></thead><tbody><tr><td>Zone Components (geometry)</td><td>1,000-55,000</td><td>50,000+ lines</td></tr><tr><td>Zone Rooms (ventilation spaces)</td><td>55,000-58,000</td><td>2,000-5,000 lines</td></tr><tr><td>Thermal Bridges</td><td>72,000-73,000</td><td>~200 lines</td></tr><tr><td>PassivehouseData</td><td>73,000-73,130</td><td>~130 lines</td></tr><tr><td>HVAC Devices</td><td>73,130-73,950</td><td>~800 lines</td></tr><tr><td>DHW Piping</td><td>73,950-74,450</td><td>~500 lines</td></tr><tr><td>Ducts</td><td>74,450-75,300</td><td>~900 lines</td></tr><tr><td>Assemblies</td><td>75,600-76,400</td><td>~800 lines</td></tr><tr><td>WindowTypes</td><td>76,400-78,200</td><td>~1,800 lines</td></tr></tbody></table>
+<h3 id="navigating-efficiently">Navigating Efficiently</h3>
+<p>For files over 50,000 lines:</p>
+<ol>
+<li><strong>grep first</strong> — <code>grep -n "SearchTerm" model.xml</code> to find line numbers</li>
+<li><strong>Read targeted ranges</strong> — once you know a device is at line 73200, read lines 73190-73260 to get the full element</li>
+<li><strong>Use XML element names</strong> — searching for <code>&#x3C;HeatRecovery></code> or <code>&#x3C;InsulationThickness></code> is often faster than searching for device names</li>
+<li><strong>Assemblies and WindowTypes are near the end</strong> — typically the last 2,000-3,000 lines of the file</li>
+<li><strong>Devices are clustered</strong> — all devices for a system are sequential, so once you find one, the others are nearby</li>
+</ol>
+<hr>
+<h2 id="quick-lookup-table">Quick Lookup Table</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>You want to find…</th><th>Look in…</th></tr></thead><tbody><tr><td>Ventilation units (ERV/HRV)</td><td><code>Variant > HVAC > Systems > System > Devices</code> (SystemType=1)</td></tr><tr><td>Heat pumps, heaters</td><td><code>Variant > HVAC > Systems > System > Devices</code> (SystemType=2, 3, 4, or 5)</td></tr><tr><td>DHW water heaters</td><td><code>Variant > HVAC > Systems > System > Devices</code> (UsedFor_DHW=true)</td></tr><tr><td>Hot water storage tanks</td><td><code>Variant > HVAC > Systems > System > Devices</code> (SystemType=8)</td></tr><tr><td>PV / renewables</td><td><code>Variant > HVAC > Systems > System > Devices</code> (SystemType=10)</td></tr><tr><td>Ducts</td><td><code>Variant > HVAC > Systems > System > PHDistribution > DistributionVentilation > Duct</code></td></tr><tr><td>DHW piping</td><td><code>Variant > HVAC > Systems > System > PHDistribution > DistributionDHW > Truncs</code></td></tr><tr><td>Cooling distribution</td><td><code>Variant > HVAC > Systems > System > PHDistribution > DistributionCooling</code></td></tr><tr><td>Supportive devices</td><td><code>Variant > HVAC > Systems > System > PHDistribution > SupportiveDevices</code></td></tr><tr><td>Thermal bridges</td><td><code>Variant > Building > Zones > Zone > ThermalBridges</code></td></tr><tr><td>Window types (thermal props)</td><td><code>WindowTypes > WindowType</code> (root level, near end of file)</td></tr><tr><td>Window components (shading)</td><td><code>Variant > Building > Components > Component</code> (Type=2)</td></tr><tr><td>Opaque assemblies</td><td><code>Assemblies > Assembly</code> (root level, near end of file)</td></tr><tr><td>Solar protection types</td><td><code>SolarProtectionTypes > SolarProtectionType</code> (root level, end of file)</td></tr><tr><td>Certification targets</td><td><code>Variant > PassivehouseData</code></td></tr><tr><td>Airtightness, foundations</td><td><code>Variant > PassivehouseData > PH_Buildings > PH_Building</code></td></tr><tr><td>Space ventilation airflows</td><td><code>Variant > Building > Zones > Zone > RoomsVentilation > Room</code></td></tr><tr><td>Electrical equipment</td><td><code>Variant > Building > Zones > Zone > HomeDevice > Device</code></td></tr><tr><td>Exhaust ventilators</td><td><code>Variant > Building > Zones > Zone > ExhaustVents > ExhaustVent</code></td></tr><tr><td>Occupancy / person loads</td><td><code>Variant > Building > Zones > Zone > LoadsPersonsPH > LoadPerson</code></td></tr><tr><td>Lighting loads</td><td><code>Variant > Building > Zones > Zone > LoadsLightingsPH > LoadsLighting</code></td></tr><tr><td>Climate / location</td><td><code>Variant > ClimateLocation > PH_ClimateLocation</code></td></tr><tr><td>Ventilation schedules</td><td><code>UtilisationPatternsVentilation > UtilizationPatternVent</code> (root level)</td></tr><tr><td>Occupancy schedules</td><td><code>UtilizationPatternsPH > UtilizationPattern</code> (root level)</td></tr><tr><td>3D geometry</td><td><code>Variant > Graphics_3D > Vertices / Polygons</code></td></tr></tbody></table>
+<hr>
+<h2 id="field-dictionary">Field Dictionary</h2>
+<p>Maps WUFI-Passive UI labels to their XML element names.</p>
+<h3 id="ventilation-devices">Ventilation Devices</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>WUFI UI Label</th><th>XML Element</th><th>XML Location</th><th>Units in XML</th></tr></thead><tbody><tr><td>Heat recovery efficiency / SRE</td><td><code>&#x3C;HeatRecovery></code></td><td>Device</td><td>fraction (0-1)</td></tr><tr><td>Moisture recovery efficiency</td><td><code>&#x3C;MoistureRecovery></code></td><td>Device</td><td>fraction (0-1)</td></tr><tr><td>Humidity recovery efficiency</td><td><code>&#x3C;HumidityRecoveryEfficiency></code></td><td>Device > PH_Parameters</td><td>fraction (0-1)</td></tr><tr><td>Electric efficiency</td><td><code>&#x3C;ElectricEfficiency></code></td><td>Device > PH_Parameters</td><td>Wh/m³</td></tr><tr><td>Quantity</td><td><code>&#x3C;Quantity></code></td><td>Device > PH_Parameters</td><td>count</td></tr><tr><td>Frost protection required</td><td><code>&#x3C;DefrostRequired></code></td><td>Device > PH_Parameters</td><td>boolean</td></tr><tr><td>Temperature below which defrost is used</td><td><code>&#x3C;TemperatureBelowDefrostUsed></code></td><td>Device > PH_Parameters</td><td>°C</td></tr><tr><td>No summer bypass</td><td><code>&#x3C;NoSummerBypass></code></td><td>Device > PH_Parameters</td><td>boolean</td></tr><tr><td>In conditioned space</td><td><code>&#x3C;InConditionedSpace></code></td><td>Device > PH_Parameters</td><td>boolean</td></tr></tbody></table>
+<h3 id="heat-pumps">Heat Pumps</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>WUFI UI Label</th><th>XML Element</th><th>XML Location</th><th>Units in XML</th></tr></thead><tbody><tr><td>HP type</td><td><code>&#x3C;HPType></code></td><td>Device > PH_Parameters</td><td>enum (2,3,4,5)</td></tr><tr><td>COP at test point 1</td><td><code>&#x3C;RatedCOP1></code></td><td>Device > PH_Parameters</td><td>dimensionless</td></tr><tr><td>COP at test point 2</td><td><code>&#x3C;RatedCOP2></code></td><td>Device > PH_Parameters</td><td>dimensionless</td></tr><tr><td>Ambient temp at test point 1</td><td><code>&#x3C;AmbientTemperature1></code></td><td>Device > PH_Parameters</td><td>°C</td></tr><tr><td>Ambient temp at test point 2</td><td><code>&#x3C;AmbientTemperature2></code></td><td>Device > PH_Parameters</td><td>°C</td></tr><tr><td>Annual COP</td><td><code>&#x3C;AnnualCOP></code></td><td>Device > PH_Parameters</td><td>dimensionless</td></tr><tr><td>HPWH Energy Factor</td><td><code>&#x3C;HPWH_EF></code></td><td>Device > PH_Parameters</td><td>dimensionless</td></tr><tr><td>Total system performance ratio</td><td><code>&#x3C;TotalSystemPerformanceRatioHeatGenerator></code></td><td>Device > PH_Parameters</td><td>fraction</td></tr><tr><td>Auxiliary energy</td><td><code>&#x3C;AuxiliaryEnergy></code></td><td>Device > PH_Parameters</td><td>W</td></tr><tr><td>Auxiliary energy DHW</td><td><code>&#x3C;AuxiliaryEnergyDHW></code></td><td>Device > PH_Parameters</td><td>W</td></tr><tr><td>Heating coverage</td><td><code>&#x3C;CoverageWithinSystem></code></td><td>Heating_Parameters</td><td>fraction (0-1)</td></tr><tr><td>DHW coverage</td><td><code>&#x3C;CoverageWithinSystem></code></td><td>DHW_Parameters</td><td>fraction (0-1)</td></tr><tr><td>Cooling coverage</td><td><code>&#x3C;CoverageWithinSystem></code></td><td>Cooling_Parameters</td><td>fraction (0-1)</td></tr></tbody></table>
+<h3 id="hot-water-storage-tanks">Hot Water Storage Tanks</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>WUFI UI Label</th><th>XML Element</th><th>XML Location</th><th>Units in XML</th></tr></thead><tbody><tr><td>Storage capacity</td><td><code>&#x3C;SolarThermalStorageCapacity></code></td><td>Device > PH_Parameters</td><td>liters</td></tr><tr><td>Standby losses</td><td><code>&#x3C;StorageLossesStandby></code></td><td>Device > PH_Parameters</td><td>W/K</td></tr><tr><td>Input option</td><td><code>&#x3C;InputOption></code></td><td>Device > PH_Parameters</td><td>enum</td></tr><tr><td>Average heat release</td><td><code>&#x3C;AverageHeatReleaseStorage></code></td><td>Device > PH_Parameters</td><td>W</td></tr><tr><td>Tank room temperature</td><td><code>&#x3C;TankRoomTemp></code></td><td>Device > PH_Parameters</td><td>°C</td></tr><tr><td>Storage water temperature</td><td><code>&#x3C;TypicalStorageWaterTemperature></code></td><td>Device > PH_Parameters</td><td>°C</td></tr><tr><td>Quantity</td><td><code>&#x3C;QauntityWS></code></td><td>Device > PH_Parameters</td><td>count</td></tr></tbody></table>
+<p>!!! note “Spelling”
+<code>QauntityWS</code> is intentionally misspelled to match WUFI’s own XML element naming.</p>
+<h3 id="pv--renewables">PV / Renewables</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>WUFI UI Label</th><th>XML Element</th><th>XML Location</th><th>Units in XML</th></tr></thead><tbody><tr><td>Array size</td><td><code>&#x3C;ArraySizePV></code></td><td>Device > PH_Parameters</td><td>kW</td></tr><tr><td>Annual PV energy</td><td><code>&#x3C;PhotovoltaicRenewableEnergy></code></td><td>Device > PH_Parameters</td><td>kWh/yr</td></tr><tr><td>On-site utilization</td><td><code>&#x3C;OnsiteUtilization></code></td><td>Device > PH_Parameters</td><td>fraction (0-1)</td></tr><tr><td>Location selection</td><td><code>&#x3C;SelectionLocation></code></td><td>Device > PH_Parameters</td><td>enum</td></tr><tr><td>On-site utilization type</td><td><code>&#x3C;SelectionOnSiteUtilization></code></td><td>Device > PH_Parameters</td><td>enum</td></tr><tr><td>Utilization type</td><td><code>&#x3C;SelectionUtilization></code></td><td>Device > PH_Parameters</td><td>enum</td></tr></tbody></table>
+<h3 id="ducts">Ducts</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>WUFI UI Label</th><th>XML Element</th><th>XML Location</th><th>Units in XML</th></tr></thead><tbody><tr><td>Duct length</td><td><code>&#x3C;DuctLength></code></td><td>Duct</td><td>m</td></tr><tr><td>Insulation thickness</td><td><code>&#x3C;InsulationThickness></code></td><td>Duct</td><td>mm</td></tr><tr><td>Thermal conductivity of insulation</td><td><code>&#x3C;ThermalConductivity></code></td><td>Duct</td><td>W/mK</td></tr><tr><td>Duct diameter</td><td><code>&#x3C;DuctDiameter></code></td><td>Duct</td><td>mm</td></tr><tr><td>Duct shape (round/rectangular)</td><td><code>&#x3C;DuctShape></code></td><td>Duct</td><td>1=round, 2=rect</td></tr><tr><td>Duct type (supply/extract)</td><td><code>&#x3C;DuctType></code></td><td>Duct</td><td>1=supply, 2=extract</td></tr><tr><td>Reflective insulation</td><td><code>&#x3C;IsReflective></code></td><td>Duct</td><td>boolean</td></tr><tr><td>Rectangular height</td><td><code>&#x3C;DuctShapeHeight></code></td><td>Duct</td><td>mm</td></tr><tr><td>Rectangular width</td><td><code>&#x3C;DuctShapeWidth></code></td><td>Duct</td><td>mm</td></tr><tr><td>Quantity</td><td><code>&#x3C;Quantity></code></td><td>Duct</td><td>count</td></tr><tr><td>Assigned ventilation units</td><td><code>&#x3C;AssignedVentUnits></code></td><td>Duct</td><td>list of IdentNrVentUnit</td></tr></tbody></table>
+<h3 id="windows--windowtype-definition">Windows — WindowType Definition</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>WUFI UI Label</th><th>XML Element</th><th>XML Location</th><th>Units in XML</th></tr></thead><tbody><tr><td>Use detailed Uw</td><td><code>&#x3C;Uw_Detailed></code></td><td>WindowType</td><td>boolean</td></tr><tr><td>Use detailed frame</td><td><code>&#x3C;GlazingFrameDetailed></code></td><td>WindowType</td><td>boolean</td></tr><tr><td>Frame factor (glass fraction)</td><td><code>&#x3C;FrameFactor></code></td><td>WindowType</td><td>fraction (0-1)</td></tr><tr><td>Window U-value (overall)</td><td><code>&#x3C;U_Value></code></td><td>WindowType</td><td>W/m²K</td></tr><tr><td>Glazing U-value</td><td><code>&#x3C;U_Value_Glazing></code></td><td>WindowType</td><td>W/m²K</td></tr><tr><td>Mean emissivity</td><td><code>&#x3C;MeanEmissivity></code></td><td>WindowType</td><td>fraction</td></tr><tr><td>g-value / SHGC</td><td><code>&#x3C;g_Value></code> or <code>&#x3C;SHGC_Hemispherical></code></td><td>WindowType</td><td>fraction (0-1)</td></tr><tr><td>Frame U-value (overall)</td><td><code>&#x3C;U_Value_Frame></code></td><td>WindowType</td><td>W/m²K</td></tr><tr><td>Frame width (per edge)</td><td><code>&#x3C;Frame_Width_{Left,Right,Top,Bottom}></code></td><td>WindowType</td><td>m</td></tr><tr><td>Frame U-value (per edge)</td><td><code>&#x3C;Frame_U_{Left,Right,Top,Bottom}></code></td><td>WindowType</td><td>W/m²K</td></tr><tr><td>Frame psi-install (per edge)</td><td><code>&#x3C;Frame_Psi_{Left,Right,Top,Bottom}></code></td><td>WindowType</td><td>W/mK</td></tr><tr><td>Glazing psi-spacer (per edge)</td><td><code>&#x3C;Glazing_Psi_{Left,Right,Top,Bottom}></code></td><td>WindowType</td><td>W/mK</td></tr></tbody></table>
+<h3 id="windows--component--aperture-shading">Windows — Component / Aperture Shading</h3>
+<p>These fields live on the aperture Component entries in the Building, NOT on the WindowType.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>WUFI UI Label</th><th>XML Element</th><th>XML Location</th><th>Units in XML</th></tr></thead><tbody><tr><td>Depth of window reveal</td><td><code>&#x3C;DepthWindowReveal></code></td><td>Component (Type=2)</td><td>m</td></tr><tr><td>Distance from glazing edge to reveal</td><td><code>&#x3C;DistanceDaylightOpeningToReveal></code></td><td>Component (Type=2)</td><td>m</td></tr><tr><td>Default correction factor (mean month shading)</td><td><code>&#x3C;DefaultCorrectionShadingMonth></code></td><td>Component (Type=2)</td><td>fraction (0-1)</td></tr><tr><td>Solar protection device assignment</td><td><code>&#x3C;IdentNrSolarProtection></code></td><td>Component (Type=2)</td><td>ID ref (-1=none)</td></tr><tr><td>Overhang assignment</td><td><code>&#x3C;IdentNrOverhang></code></td><td>Component (Type=2)</td><td>ID ref (-1=none)</td></tr><tr><td>Window type assignment</td><td><code>&#x3C;IdentNrWindowType></code></td><td>Component (Type=2)</td><td>ID ref</td></tr></tbody></table>
+<p>!!! warning “Shading factors are multiplicative”
+WUFI applies shading from reveal geometry, overhang, solar protection, and the Default correction factor as separate multiplicative factors. The <code>DefaultCorrectionShadingMonth</code> should contain only its intended correction — WUFI independently computes reveal-depth shading from <code>DepthWindowReveal</code>. What this field represents varies by project; always check the project’s methodology documentation.</p>
+<h3 id="thermal-bridges">Thermal Bridges</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>WUFI UI Label</th><th>XML Element</th><th>XML Location</th><th>Units in XML</th></tr></thead><tbody><tr><td>Psi value</td><td><code>&#x3C;PsiValue></code></td><td>ThermalBridge</td><td>W/mK</td></tr><tr><td>Length</td><td><code>&#x3C;Length></code></td><td>ThermalBridge</td><td>m</td></tr><tr><td>Type</td><td><code>&#x3C;Type></code></td><td>ThermalBridge</td><td>negative group number</td></tr><tr><td>Optional climate ID</td><td><code>&#x3C;IdentNrOptionalClimate></code></td><td>ThermalBridge</td><td>ID ref (-1=none)</td></tr></tbody></table>
+<h3 id="assemblies-1">Assemblies</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>WUFI UI Label</th><th>XML Element</th><th>XML Location</th><th>Units in XML</th></tr></thead><tbody><tr><td>Layer order</td><td><code>&#x3C;Order_Layers></code></td><td>Assembly</td><td>2=outside-to-inside</td></tr><tr><td>Grid kind</td><td><code>&#x3C;Grid_Kind></code></td><td>Assembly</td><td>2=standard</td></tr><tr><td>Layer thickness</td><td><code>&#x3C;Thickness></code></td><td>Layer</td><td>m</td></tr><tr><td>Material thermal conductivity</td><td><code>&#x3C;ThermalConductivity></code></td><td>Material</td><td>W/mK</td></tr><tr><td>Material density</td><td><code>&#x3C;BulkDensity></code></td><td>Material</td><td>kg/m³</td></tr><tr><td>Material heat capacity</td><td><code>&#x3C;HeatCapacity></code></td><td>Material</td><td>J/kgK</td></tr><tr><td>Material porosity</td><td><code>&#x3C;Porosity></code></td><td>Material</td><td>fraction</td></tr><tr><td>Material vapor resistance</td><td><code>&#x3C;WaterVaporResistance></code></td><td>Material</td><td>dimensionless</td></tr><tr><td>Material ref water content</td><td><code>&#x3C;ReferenceWaterContent></code></td><td>Material</td><td>kg/m³</td></tr></tbody></table>
+<h3 id="certification--passivehousedata">Certification / PassivehouseData</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>WUFI UI Label</th><th>XML Element</th><th>XML Location</th><th>Units in XML</th></tr></thead><tbody><tr><td>Annual heating demand target</td><td><code>&#x3C;AnnualHeatingDemand></code></td><td>PassivehouseData</td><td>kWh/m²a</td></tr><tr><td>Annual cooling demand target</td><td><code>&#x3C;AnnualCoolingDemand></code></td><td>PassivehouseData</td><td>kWh/m²a</td></tr><tr><td>Peak heating load target</td><td><code>&#x3C;PeakHeatingLoad></code></td><td>PassivehouseData</td><td>W/m²</td></tr><tr><td>Peak cooling load target</td><td><code>&#x3C;PeakCoolingLoad></code></td><td>PassivehouseData</td><td>W/m²</td></tr><tr><td>Certification criteria selection</td><td><code>&#x3C;PH_CertificateCriteria></code></td><td>PassivehouseData</td><td>enum</td></tr><tr><td>Target data selection</td><td><code>&#x3C;PH_SelectionTargetData></code></td><td>PassivehouseData</td><td>enum (2=user)</td></tr><tr><td>Building category</td><td><code>&#x3C;BuildingCategory></code></td><td>PH_Building</td><td>enum (1=residential)</td></tr><tr><td>Building status</td><td><code>&#x3C;BuildingStatus></code></td><td>PH_Building</td><td>enum (1=new, 2=retrofit)</td></tr><tr><td>Airtightness (q50)</td><td><code>&#x3C;EnvelopeAirtightnessCoefficient></code></td><td>PH_Building</td><td>1/h</td></tr><tr><td>Number of units</td><td><code>&#x3C;NumberUnits></code></td><td>PH_Building</td><td>count</td></tr><tr><td>Number of stories</td><td><code>&#x3C;CountStories></code></td><td>PH_Building</td><td>count</td></tr><tr><td>Indoor temperature (heating)</td><td><code>&#x3C;IndoorTemperature></code></td><td>PH_Building</td><td>°C</td></tr><tr><td>Overheating threshold (cooling)</td><td><code>&#x3C;OverheatingTemperatureThreshold></code></td><td>PH_Building</td><td>°C</td></tr><tr><td>Mechanical room temperature</td><td><code>&#x3C;MechanicalRoomTemperature></code></td><td>PH_Building</td><td>°C</td></tr><tr><td>Summer bypass mode</td><td><code>&#x3C;SummerHRVHumidityRecovery></code></td><td>PH_Building</td><td>enum</td></tr><tr><td>Wind exposure</td><td><code>&#x3C;BuildingWindExposure></code></td><td>PH_Building</td><td>enum</td></tr></tbody></table>
+<h3 id="ventilation-spaces-rooms">Ventilation Spaces (Rooms)</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>WUFI UI Label</th><th>XML Element</th><th>XML Location</th><th>Units in XML</th></tr></thead><tbody><tr><td>Room/space name</td><td><code>&#x3C;Name></code></td><td>Room</td><td>text</td></tr><tr><td>Room type</td><td><code>&#x3C;Type></code></td><td>Room</td><td>enum (99=user-defined)</td></tr><tr><td>Floor area</td><td><code>&#x3C;AreaRoom></code></td><td>Room</td><td>m²</td></tr><tr><td>Clear height</td><td><code>&#x3C;ClearRoomHeight></code></td><td>Room</td><td>m</td></tr><tr><td>Design supply airflow</td><td><code>&#x3C;DesignVolumeFlowRateSupply></code></td><td>Room</td><td>m³/h</td></tr><tr><td>Design exhaust airflow</td><td><code>&#x3C;DesignVolumeFlowRateExhaust></code></td><td>Room</td><td>m³/h</td></tr><tr><td>Ventilation unit assignment</td><td><code>&#x3C;IdentNrVentilationUnit></code></td><td>Room</td><td>ID ref</td></tr><tr><td>Ventilation schedule assignment</td><td><code>&#x3C;IdentNrUtilizationPatternVent></code></td><td>Room</td><td>ID ref</td></tr><tr><td>Quantity</td><td><code>&#x3C;Quantity></code></td><td>Room</td><td>count</td></tr></tbody></table>
+<h3 id="exhaust-ventilators">Exhaust Ventilators</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>WUFI UI Label</th><th>XML Element</th><th>XML Location</th><th>Units in XML</th></tr></thead><tbody><tr><td>Name</td><td><code>&#x3C;Name></code></td><td>ExhaustVent</td><td>text</td></tr><tr><td>Type</td><td><code>&#x3C;Type></code></td><td>ExhaustVent</td><td>enum (1=dryer, 2=kitchen hood)</td></tr><tr><td>Exhaust flow rate</td><td><code>&#x3C;ExhaustVolumeFlowRate></code></td><td>ExhaustVent</td><td>m³/h</td></tr><tr><td>Annual runtime</td><td><code>&#x3C;RunTimePerYear></code></td><td>ExhaustVent</td><td>minutes</td></tr></tbody></table>
+<h3 id="supportive-devices">Supportive Devices</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>WUFI UI Label</th><th>XML Element</th><th>XML Location</th><th>Units in XML</th></tr></thead><tbody><tr><td>Name</td><td><code>&#x3C;Name></code></td><td>SupportiveDevice</td><td>text</td></tr><tr><td>Type</td><td><code>&#x3C;Type></code></td><td>SupportiveDevice</td><td>enum</td></tr><tr><td>Quantity</td><td><code>&#x3C;Quantity></code></td><td>SupportiveDevice</td><td>count</td></tr><tr><td>In conditioned space</td><td><code>&#x3C;InConditionedSpace></code></td><td>SupportiveDevice</td><td>boolean</td></tr><tr><td>Nominal energy demand</td><td><code>&#x3C;NormEnergyDemand></code></td><td>SupportiveDevice</td><td>W</td></tr><tr><td>Annual operating period</td><td><code>&#x3C;PeriodOperation></code></td><td>SupportiveDevice</td><td>khrs</td></tr></tbody></table>
+<hr>
+<h2 id="unit-conversions">Unit Conversions</h2>
+<p>WUFI-Passive XML stores all values in SI units regardless of the project’s display unit system.</p>
+<h3 id="ventilation">Ventilation</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>From (IP)</th><th>To (SI/XML)</th><th>Factor</th><th>Notes</th></tr></thead><tbody><tr><td>CFM</td><td>m³/h</td><td>x 1.69901</td><td><code>CFM x 1.69901 = m³/h</code></td></tr><tr><td>W/cfm</td><td>Wh/m³</td><td>/ 1.69901</td><td><code>(W/cfm) / 1.69901 = Wh/m³</code></td></tr></tbody></table>
+<p>The factor 1.69901 appears in both airflow and electric efficiency conversions because both involve cubic feet per minute to cubic meters per hour. To verify a W/cfm value, multiply the XML Wh/m³ value by 1.69901 and see if you recover the expected W/cfm.</p>
+<h3 id="thermal-performance">Thermal Performance</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>From (IP)</th><th>To (SI/XML)</th><th>Factor</th></tr></thead><tbody><tr><td>Btu/hr-ft²-F</td><td>W/m²K</td><td>x 5.6783</td></tr><tr><td>W/m²K</td><td>Btu/hr-ft²-F</td><td>x 0.17611</td></tr><tr><td>Btu/hr-ft-F</td><td>W/mK (linear, psi)</td><td>x 1.7307</td></tr><tr><td>W/mK</td><td>Btu/hr-ft-F (linear, psi)</td><td>x 0.57782</td></tr></tbody></table>
+<h3 id="energy-demand--load">Energy Demand / Load</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>From (IP)</th><th>To (SI/XML)</th><th>Factor</th></tr></thead><tbody><tr><td>kBtu/ft²-yr</td><td>kWh/m²-yr</td><td>x 3.1546</td></tr><tr><td>kWh/m²-yr</td><td>kBtu/ft²-yr</td><td>x 0.31700</td></tr><tr><td>Btu/hr-ft²</td><td>W/m²</td><td>x 3.1546</td></tr><tr><td>W/m²</td><td>Btu/hr-ft²</td><td>x 0.31700</td></tr></tbody></table>
+<p>The demand (kBtu/ft²-yr to kWh/m²-yr) and load (Btu/hr-ft² to W/m²) conversions use the same factor because they are dimensionally equivalent for the area-normalized quantities WUFI uses.</p>
+<h3 id="length--thickness">Length / Thickness</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>From (IP)</th><th>To (SI/XML)</th><th>Factor</th></tr></thead><tbody><tr><td>inches</td><td>meters</td><td>x 0.0254</td></tr><tr><td>inches</td><td>millimeters</td><td>x 25.4</td></tr><tr><td>feet</td><td>meters</td><td>x 0.3048</td></tr></tbody></table>
+<p>Common duct insulation thicknesses: 1” = 25.4 mm, 1.5” = 38.1 mm, 1.875” = 47.625 mm, 2” = 50.8 mm.</p>
+<h3 id="r-value--conductivity">R-value / Conductivity</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>From (IP)</th><th>To (SI/XML)</th><th>Formula</th></tr></thead><tbody><tr><td>R/inch (hr-ft²-F/Btu-in)</td><td>W/mK</td><td><code>k = 0.14423 / (R_per_inch)</code></td></tr><tr><td>W/mK</td><td>R/inch</td><td><code>R_per_inch = 0.14423 / k</code></td></tr></tbody></table>
+<p>Example: Composite duct insulation at R-6.5/inch -> k = 0.14423 / 6.5 = 0.02219 W/mK.</p>
+<h3 id="temperature">Temperature</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>From (IP)</th><th>To (SI/XML)</th><th>Formula</th></tr></thead><tbody><tr><td>°F</td><td>°C</td><td><code>(°F - 32) / 1.8</code></td></tr><tr><td>delta-F</td><td>delta-C</td><td><code>delta-F / 1.8</code></td></tr></tbody></table>
+<h3 id="area--volume">Area / Volume</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>From (IP)</th><th>To (SI/XML)</th><th>Factor</th></tr></thead><tbody><tr><td>ft²</td><td>m²</td><td>x 0.09290</td></tr><tr><td>ft³</td><td>m³</td><td>x 0.02832</td></tr></tbody></table>
+<h3 id="common-verification-patterns">Common Verification Patterns</h3>
+<p><strong>ERV/HRV heat recovery:</strong>
+XML: <code>&#x3C;HeatRecovery>0.857&#x3C;/HeatRecovery></code> — dimensionless fraction (0-1). No conversion needed. Compare directly against datasheet SRE/ATRE values.</p>
+<p><strong>ERV/HRV electric efficiency:</strong>
+XML: <code>&#x3C;ElectricEfficiency>0.333723600693&#x3C;/ElectricEfficiency></code> (Wh/m³).
+To verify against a W/cfm spec: <code>0.3337 x 1.69901 = 0.567 W/cfm</code>.</p>
+<p><strong>Duct insulation:</strong>
+XML: <code>&#x3C;InsulationThickness>47.625&#x3C;/InsulationThickness></code> (mm) and <code>&#x3C;ThermalConductivity>0.02219&#x3C;/ThermalConductivity></code> (W/mK).
+To verify: 47.625 mm = 1.875 inches. k = 0.02219 -> R/inch = 0.14423 / 0.02219 = 6.5.</p>
+<p><strong>Certification target:</strong>
+XML: <code>&#x3C;AnnualHeatingDemand>11.357&#x3C;/AnnualHeatingDemand></code> (kWh/m²).
+To verify against kBtu/ft²: <code>11.357 x 0.31700 = 3.60 kBtu/ft²</code>.</p>
+<p><strong>Thermal bridge psi:</strong>
+XML: <code>&#x3C;PsiValue>0.4344&#x3C;/PsiValue></code> (W/mK).
+To verify against Btu/hr-ft-F: <code>0.4344 / 1.7307 = 0.251 Btu/hr-ft-F</code>.</p>
+<p><strong>Window reveal depth:</strong>
+XML: <code>&#x3C;DepthWindowReveal>0.15875&#x3C;/DepthWindowReveal></code> (m).
+To verify: <code>0.15875 / 0.0254 = 6.25 inches</code>.</p>
+<hr>
+<h2 id="key-gotchas">Key Gotchas</h2>
+<p><strong>Variants wrapper.</strong> Building data, HVAC, PassivehouseData, and ClimateLocation are all nested inside <code>Variants > Variant</code>, NOT at the root level. Only Assemblies, WindowTypes, and SolarProtectionTypes live at the root. An LLM looking for zones or devices must navigate through the Variant first.</p>
+<p><strong>Components are siblings of Zones, not children.</strong> Both <code>Components</code> and <code>Zones</code> are children of <code>Building</code>. Components hold the geometry and assembly/window-type links; Zones hold rooms, thermal bridges, and electrical equipment. Don’t look for components inside a zone.</p>
+<p><strong>RoomsVentilation, not Rooms.</strong> The ventilation room list element is <code>&#x3C;RoomsVentilation></code>, not <code>&#x3C;Rooms></code>. Each child is a <code>&#x3C;Room></code>.</p>
+<p><strong>UtilisationPatternsVentilation spelling.</strong> The ventilation schedule list uses British spelling (<code>UtilisationPatterns...</code> with ‘s’), while child elements and the occupancy list use American spelling (<code>UtilizationPattern...</code> with ‘z’). This matches WUFI’s own inconsistency.</p>
+<p><strong>FrameFactor vs DefaultCorrectionShadingMonth.</strong> <code>FrameFactor</code> on the WindowType is the glass-to-total area ratio for thermal calculation. <code>DefaultCorrectionShadingMonth</code> on the aperture Component (Type=2) is a separate solar correction factor. Don’t confuse them. On some projects, WindowType may have FrameFactor near 1.0 with near-zero frame widths because the U-value was pre-calculated externally.</p>
+<p><strong>ElectricEfficiency is in Wh/m³, not W/cfm.</strong> Divide by 1.69901 to get W/cfm, or multiply W/cfm by 0.58856 to predict the XML value.</p>
+<p><strong>Order_Layers on assemblies matters.</strong> <code>Order_Layers=2</code> means layers are listed outside-to-inside. For floor assemblies over ground, “outside” = ground side.</p>
+<p><strong>Airflows are in m³/h, not CFM.</strong> Divide by 1.69901 to convert to CFM.</p>
+<p><strong>Thermal conductivity for ducts is composite.</strong> If duct insulation has multiple layers, the XML stores a single equivalent conductivity.</p>
+<p><strong>PsiValue on thermal bridges is in W/mK.</strong> Divide by 1.7307 to convert to Btu/hr-ft-F.</p>
+<p><strong>InternalGainsAdditionalData and Foundations are under PH_Building.</strong> These are nested inside <code>PassivehouseData > PH_Buildings > PH_Building</code>, not under Zone. Don’t look for foundation data at the zone level.</p>
+<p><strong>QauntityWS is intentionally misspelled.</strong> The hot water tank quantity field is <code>&#x3C;QauntityWS></code>, matching WUFI’s own XML naming. Do not “correct” this to <code>QuantityWS</code>.</p>
+<p><strong>Shade surfaces look like opaque components.</strong> Shade/overhang surfaces appear as Components with <code>Type=1</code> (opaque) but with <code>InnerAttachment=-1</code> and <code>OuterAttachment=-1</code>, and <code>IdentNrAssembly=-1</code>. They have geometry but no thermal properties.</p>
+<p><strong>OuterAttachment values.</strong> <code>-1</code> = exterior (ambient), <code>-2</code> = ground. This distinguishes above-grade walls from below-grade/ground-contact surfaces.</p>
+<p><strong>g_Value and SHGC_Hemispherical are the same value.</strong> Both elements are written with the same glass solar heat gain value. Either can be used for verification.</p> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
+(function () {
+  // ---------- Modal open / close ----------
+  var scrim = document.getElementById("searchScrim");
+  var input = document.getElementById("searchInput");
+  var resultsEl = document.getElementById("searchResults");
+  var footerEl = document.getElementById("searchFooter");
+  var metaEl = document.getElementById("searchMeta");
+  if (!scrim || !input || !resultsEl || !footerEl || !metaEl) return;
+
+  var focusedIdx = -1;
+
+  function openSearch() {
+    scrim.classList.add("is-open");
+    scrim.setAttribute("aria-hidden", "false");
+    setTimeout(function () { input.focus(); }, 40);
+  }
+  function closeSearch() {
+    scrim.classList.remove("is-open");
+    scrim.setAttribute("aria-hidden", "true");
+    input.value = "";
+    resultsEl.innerHTML = "";
+    footerEl.style.display = "none";
+    focusedIdx = -1;
+  }
+
+  var openBtn = document.getElementById("openSearch");
+  if (openBtn) openBtn.addEventListener("click", openSearch);
+  document.getElementById("closeSearch").addEventListener("click", closeSearch);
+  scrim.addEventListener("click", function (e) {
+    if (e.target === scrim) closeSearch();
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if ((e.key === "k" || e.key === "K") && (e.metaKey || e.ctrlKey)) {
+      e.preventDefault();
+      scrim.classList.contains("is-open") ? closeSearch() : openSearch();
+    }
+    if (e.key === "Escape" && scrim.classList.contains("is-open")) closeSearch();
+  });
+
+  // ---------- Pagefind integration ----------
+  var pagefind = null;
+
+  function loadPagefind() {
+    if (pagefind) return Promise.resolve(pagefind);
+    return import("/pagefind/pagefind.js")
+      .then(function (pf) {
+        pagefind = pf;
+        return pf.init();
+      })
+      .then(function () { return pagefind; })
+      .catch(function () { pagefind = null; return null; });
+  }
+
+  // Debounced search
+  var timer;
+  input.addEventListener("input", function () {
+    clearTimeout(timer);
+    timer = setTimeout(function () { doSearch(input.value.trim()); }, 150);
+  });
+
+  function doSearch(query) {
+    if (!query) {
+      resultsEl.innerHTML = "";
+      footerEl.style.display = "none";
+      return;
+    }
+
+    loadPagefind().then(function (pf) {
+      if (!pf) {
+        resultsEl.innerHTML = '<div style="padding:24px;color:var(--fg-muted);font-size:14px;">Search index not available. Run <code>pnpm build</code> first.</div>';
+        return;
+      }
+      return pf.search(query).then(function (search) {
+        return Promise.all(
+          search.results.slice(0, 20).map(function (r) { return r.data(); })
+        ).then(function (results) {
+          renderResults(results, search.results.length);
+        });
+      });
+    });
+  }
+
+  function renderResults(results, totalCount) {
+    // Group by library
+    var groups = {};
+    var order = [];
+    results.forEach(function (r) {
+      var lib = (r.meta && r.meta.library) || "Other";
+      if (!groups[lib]) { groups[lib] = []; order.push(lib); }
+      groups[lib].push(r);
+    });
+
+    var html = "";
+    var globalIdx = 0;
+    order.forEach(function (lib) {
+      var items = groups[lib];
+      html += '<div class="search-group">';
+      html += '<div class="search-group__head">';
+      html += '<div class="search-group__title"><span class="dot"></span>' + lib + '</div>';
+      html += '<div class="search-group__count">' + items.length + ' result' + (items.length === 1 ? '' : 's') + '</div>';
+      html += '</div>';
+      items.forEach(function (item) {
+        html += '<a class="search-result" href="' + item.url + '" data-idx="' + globalIdx + '">';
+        html += '<div>';
+        html += '<div class="search-result__crumb">' + buildCrumb(item.url) + '</div>';
+        html += '<div class="search-result__title">' + ((item.meta && item.meta.title) || '') + '</div>';
+        html += '<div class="search-result__excerpt">' + (item.excerpt || '') + '</div>';
+        html += '</div>';
+        html += '<div class="search-result__side">';
+        html += '<span class="search-badge">' + abbreviate(lib) + '</span>';
+        html += '<span class="search-result__enter">↵ Open</span>';
+        html += '</div>';
+        html += '</a>';
+        globalIdx++;
+      });
+      html += '</div>';
+    });
+
+    resultsEl.innerHTML = html;
+    focusedIdx = -1;
+
+    metaEl.textContent = totalCount + ' result' + (totalCount === 1 ? '' : 's') + ' across ' + order.length + ' ' + (order.length === 1 ? 'library' : 'libraries');
+    footerEl.style.display = totalCount > 0 ? "" : "none";
+  }
+
+  function buildCrumb(url) {
+    var parts = url.replace(/^\/|\/$/g, "").split("/");
+    return parts.map(function (p, i) {
+      return '<span>' + (i === 0 ? p.toUpperCase() : p) + '</span>';
+    }).join('<span class="tri">›</span>');
+  }
+
+  function abbreviate(lib) {
+    if (lib.length <= 4) return lib.toUpperCase();
+    return lib.split(/[\s-]+/).map(function (w) { return w[0]; }).join("").toUpperCase();
+  }
+
+  // ---------- Keyboard navigation ----------
+  document.addEventListener("keydown", function (e) {
+    if (!scrim.classList.contains("is-open")) return;
+    var items = resultsEl.querySelectorAll(".search-result");
+    if (!items.length) return;
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      focusedIdx = Math.min(focusedIdx + 1, items.length - 1);
+      updateFocus(items);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      focusedIdx = Math.max(focusedIdx - 1, 0);
+      updateFocus(items);
+    } else if (e.key === "Enter" && focusedIdx >= 0) {
+      e.preventDefault();
+      items[focusedIdx].click();
+    }
+  });
+
+  function updateFocus(items) {
+    for (var i = 0; i < items.length; i++) {
+      if (i === focusedIdx) items[i].classList.add("is-focused");
+      else items[i].classList.remove("is-focused");
+    }
+    if (items[focusedIdx]) items[focusedIdx].scrollIntoView({ block: "nearest" });
+  }
+})();
+</script> <script>
+      // Only load Mermaid if the page has mermaid diagrams
+      (function () {
+        if (!document.querySelector('.mermaid')) return;
+        var theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'neutral';
+        var s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js';
+        s.onload = function () {
+          mermaid.initialize({ startOnLoad: true, theme: theme, securityLevel: 'strict' });
+          mermaid.run();
+        };
+        document.head.appendChild(s);
+      })();
+    </script> <script type="module">const o=document.getElementById("themeToggle"),t=o?.querySelector(".icon-sun"),n=o?.querySelector(".icon-moon");function c(e){document.documentElement.setAttribute("data-theme",e);try{localStorage.setItem("ph-docs:theme",e)}catch{}t&&n&&(e==="dark"?(t.style.display="none",n.style.display=""):(t.style.display="",n.style.display="none"))}const d=document.documentElement.getAttribute("data-theme")||"light";c(d);o?.addEventListener("click",()=>{const e=document.documentElement.getAttribute("data-theme");c(e==="dark"?"light":"dark")});</script> </body> </html>

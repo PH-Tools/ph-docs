@@ -1,0 +1,1112 @@
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>hot_water_piping — Honeybee-PH — PH-Tools Docs</title><script>
+      // Set theme before first paint to prevent flash
+      (function () {
+        try {
+          var t = localStorage.getItem("ph-docs:theme");
+          if (t) document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/_astro/_slug_.BwptHptC.css"></head> <body> <header class="site-header" id="siteHeader"> <a class="site-header__logo" href="/"> <span class="site-header__logo-mark" aria-hidden="true"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"> <path d="M12 2 L22 8 L12 14 L2 8 Z" fill="var(--accent-light)" stroke="var(--accent)"></path> <path d="M2 8 L2 17 L12 23 L12 14 Z" stroke="var(--accent)"></path> <path d="M22 8 L22 17 L12 23 L12 14 Z" stroke="var(--accent-dark)"></path> </svg> </span> <span>PH-TOOLS<span style="color:var(--fg-faint); margin-left:6px;">/ docs</span></span> </a> <nav class="nav-primary" id="primaryNav"> <a href="/honeybee-ph/" class="is-active"> Honeybee-PH </a><a href="/phx/" class> PHX </a><a href="/honeybee-revive/" class> Honeybee-REVIVE </a> <a href="/guides/llm-setup/" class>
+LLM Setup
+</a> </nav> <div class="nav-tools"> <button class="search-btn" id="openSearch" aria-label="Open search"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <span>Search docs…</span> <span class="kbd">⌘K</span> </button> <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme"> <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"> <circle cx="12" cy="12" r="4"></circle> <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path> </svg> <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" style="display:none;"> <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.8 6.8 0 0 0 9.8 9.8Z"></path> </svg> </button> <a class="icon-btn" href="https://github.com/PH-Tools" aria-label="GitHub" title="GitHub"> <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.56 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"></path></svg> </a> </div> </header> <main>  <div class="with-sidebar"> <div class="sidebar-col"> <aside class="sidebar"> <a class="sidebar__label" href="/honeybee-ph/">
+Library · Honeybee-PH </a> <ul class="nav-tree"><li class="group is-open">
+        <button aria-expanded="true"><span class="num">01</span>API Reference<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/honeybee-ph/api/_base/">_base</a></li><li><a class="" href="/honeybee-ph/api/bldg_segment/">bldg_segment</a></li><li><a class="" href="/honeybee-ph/api/foundations/">foundations</a></li><li><a class="" href="/honeybee-ph/api/phi/">phi</a></li><li><a class="" href="/honeybee-ph/api/phius/">phius</a></li><li><a class="" href="/honeybee-ph/api/site/">site</a></li><li><a class="" href="/honeybee-ph/api/space/">space</a></li><li><a class="" href="/honeybee-ph/api/team/">team</a></li><li class="group is-open">
+        <button aria-expanded="true">hvac<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/honeybee-ph/api/hvac/_base/">_base</a></li><li><a class="" href="/honeybee-ph/api/hvac/ducting/">ducting</a></li><li><a class="" href="/honeybee-ph/api/hvac/fuels/">fuels</a></li><li><a class="" href="/honeybee-ph/api/hvac/heat_pumps/">heat_pumps</a></li><li><a class="" href="/honeybee-ph/api/hvac/heating/">heating</a></li><li><a class="" href="/honeybee-ph/api/hvac/hot_water_devices/">hot_water_devices</a></li><li><a class="is-active" href="/honeybee-ph/api/hvac/hot_water_piping/">hot_water_piping</a></li><li><a class="" href="/honeybee-ph/api/hvac/hot_water_system/">hot_water_system</a></li><li><a class="" href="/honeybee-ph/api/hvac/renewable_devices/">renewable_devices</a></li><li><a class="" href="/honeybee-ph/api/hvac/supportive_device/">supportive_device</a></li><li><a class="" href="/honeybee-ph/api/hvac/ventilation/">ventilation</a></li></ul>
+      </li></ul>
+      </li></ul> </aside> <script type="module">document.querySelectorAll(".nav-tree .group > button").forEach(e=>{e.addEventListener("click",()=>{const t=e.parentElement.classList.toggle("is-open");e.setAttribute("aria-expanded",String(t))})});</script>  </div> <div> <!-- Regular content page: simple breadcrumb header -->
+        <header class="content-head"> <div class="content-head__crumb">  <span>API Reference</span> <span class="sep">&rsaquo;</span>  <span class="current">hot_water_piping</span> </div> </header>  <article class="article" data-pagefind-body data-pagefind-meta="library:Honeybee-PH"> <h1 id="hot_water_piping">hot_water_piping</h1>
+<p>Honeybee-PH-HVAC: Hot Water Piping.</p>
+<p><strong>Source</strong>: <code>honeybee_phhvac/hot_water_piping.py</code></p>
+<hr>
+<h2 id="phhvacpipematerial">PhHvacPipeMaterial</h2>
+<p>Enumeration of allowable pipe material types.</p>
+<p><strong>Inherits from</strong>: <code>enumerables.CustomEnum</code></p>
+<h3 id="values">Values</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Value</th><th>Meaning</th></tr></thead><tbody><tr><td><code>"1-COPPER_M"</code></td><td>Copper type M.</td></tr><tr><td><code>"2-COPPER_L"</code></td><td>Copper type L (default).</td></tr><tr><td><code>"3-COPPER_K"</code></td><td>Copper type K.</td></tr><tr><td><code>"4-CPVC_CTS_SDR"</code></td><td>CPVC CTS SDR.</td></tr><tr><td><code>"5-CPVC_SCH_40"</code></td><td>CPVC Schedule 40.</td></tr><tr><td><code>"6-PEX"</code></td><td>PEX tubing.</td></tr><tr><td><code>"7-PE"</code></td><td>Polyethylene tubing.</td></tr><tr><td><code>"8-PEX_CTS_SDR"</code></td><td>PEX CTS SDR.</td></tr></tbody></table>
+<hr>
+<h2 id="phhvacpipesegment">PhHvacPipeSegment</h2>
+<p>A single pipe segment (linear) with geometry and a diameter.</p>
+<p><strong>Inherits from</strong>: <code>_base._PhHVACBase</code></p>
+<h3 id="attributes">Attributes</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>geometry</code></td><td>—</td><td>The 3D line segment geometry of the pipe.</td></tr><tr><td><code>diameter_mm</code></td><td>—</td><td>The pipe diameter in millimeters.</td></tr><tr><td><code>insulation_thickness_mm</code></td><td>—</td><td>The insulation thickness in millimeters.</td></tr><tr><td><code>insulation_conductivity</code></td><td>—</td><td>The insulation thermal conductivity (W/m-K).</td></tr><tr><td><code>insulation_reflective</code></td><td>—</td><td>True if the insulation has a reflective surface.</td></tr><tr><td><code>insulation_quality</code></td><td>—</td><td>Reserved for future use.</td></tr><tr><td><code>daily_period</code></td><td>—</td><td>Hours per day the pipe is in use.</td></tr><tr><td><code>water_temp_c</code></td><td>—</td><td>The water temperature in degrees Celsius.</td></tr><tr><td><code>material</code></td><td><code>PhHvacPipeMaterial</code></td><td>The pipe material type.</td></tr></tbody></table>
+<h3 id="properties">Properties</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>length</code></td><td><code>float</code></td><td>Return the length of the pipe segment in model-units.</td></tr><tr><td><code>diameter_m</code></td><td><code>float</code></td><td>Return the diameter of the pipe segment in meters.</td></tr><tr><td><code>insulation_thickness_m</code></td><td><code>float</code></td><td>Return the insulation thickness of the pipe segment in meters.</td></tr></tbody></table>
+<h3 id="methods">Methods</h3>
+<h4 id="movemoving_vec3d">move(moving_vec3D)</h4>
+<p>Move the pipe’s geometry along a vector.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td><code>Vector3D</code></td><td>A vector with the direction and distance to move.</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>PhHvacPipeSegment</code></p>
+<h4 id="rotateaxis_3d-angle_degrees-origin_pt3d">rotate(axis_3D, angle_degrees, origin_pt3D)</h4>
+<p>Rotate the pipe’s geometry by a certain angle around an axis and origin.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_3D</code></td><td><code>Vector3D</code></td><td>A vector representing the axis of rotation.</td></tr><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>An angle for rotation in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>The origin around which the object will be rotated.</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>PhHvacPipeSegment</code></p>
+<h4 id="rotate_xyangle_degrees-origin_pt3d">rotate_xy(angle_degrees, origin_pt3D)</h4>
+<p>Rotate the pipe’s geometry counterclockwise in the XY plane by a certain angle.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>An angle in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>The origin around which the object will be rotated.</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>PhHvacPipeSegment</code></p>
+<h4 id="reflectnormal_vec3d-origin_pt3d">reflect(normal_vec3D, origin_pt3D)</h4>
+<p>Reflect the pipe’s geometry across a plane with the input normal vector and origin.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td><code>Vector3D</code></td><td>The normal vector for the reflection plane. THIS VECTOR MUST BE NORMALIZED.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>The origin from which to reflect.</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>PhHvacPipeSegment</code></p>
+<h4 id="scalescale_factor-origin_pt3d">scale(scale_factor, origin_pt3D)</h4>
+<p>Scale the pipe’s geometry by a factor from an origin point.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>scale_factor</code></td><td><code>float</code></td><td>How much the line segment should be scaled.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Union[None</code></td><td>The origin from which to scale. If None, it will be scaled from the World origin (0, 0, 0).</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>PhHvacPipeSegment</code></p>
+<hr>
+<h2 id="phhvacpipeelement">PhHvacPipeElement</h2>
+<p>A Pipe Element (Fixture) made up of one or more individual Pipe Segments.</p>
+<p><strong>Inherits from</strong>: <code>_base._PhHVACBase</code></p>
+<h3 id="properties-1">Properties</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>segments</code></td><td><code>List[PhHvacPipeSegment]</code></td><td>Return a list of all the Pipe-Segments in the Pipe-Element.</td></tr><tr><td><code>length</code></td><td><code>float</code></td><td>Return the total length of the pipe element in model-units.</td></tr><tr><td><code>diameter_mm</code></td><td><code>float</code></td><td>Return the length-weighted average diameter of all the pipe segments</td></tr><tr><td><code>water_temp_c</code></td><td><code>float</code></td><td>Return the length-weighted average water temperature of all the pipe segments</td></tr><tr><td><code>daily_period</code></td><td><code>float</code></td><td>Return the length-weighted average daily period of all the pipe segments</td></tr><tr><td><code>segment_names</code></td><td><code>List[str]</code></td><td>Return a list of the names of all the PipeSegments in the PipeElement.</td></tr><tr><td><code>material_name</code></td><td><code>str</code></td><td>Return the material name of the pipe element.</td></tr></tbody></table>
+<h3 id="methods-1">Methods</h3>
+<h4 id="add_segment_segment">add_segment(_segment)</h4>
+<p>Add a new Pipe Segment to the Pipe Element.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_segment</code></td><td><code>PhHvacPipeSegment</code></td><td>The pipe segment to add.</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>None</code></p>
+<h4 id="clear_segments">clear_segments()</h4>
+<p>Clear all the segments from the pipe element.</p>
+<p><strong>Returns</strong>: <code>None</code></p>
+<h4 id="movemoving_vec3d-1">move(moving_vec3D)</h4>
+<p>Move the pipe’s segments along a vector.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td><code>Vector3D</code></td><td>A vector with the direction and distance to move.</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>PhHvacPipeElement</code></p>
+<h4 id="rotateaxis_3d-angle_degrees-origin_pt3d-1">rotate(axis_3D, angle_degrees, origin_pt3D)</h4>
+<p>Rotate the pipe’s segments by a certain angle around an axis and origin.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_3D</code></td><td><code>Vector3D</code></td><td>A vector representing the axis of rotation.</td></tr><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>An angle for rotation in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>The origin around which the object will be rotated.</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>PhHvacPipeElement</code></p>
+<h4 id="rotate_xyangle_degrees-origin_pt3d-1">rotate_xy(angle_degrees, origin_pt3D)</h4>
+<p>Rotate the pipe’s segments counterclockwise in the XY plane by a certain angle.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>An angle in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>The origin around which the object will be rotated.</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>PhHvacPipeElement</code></p>
+<h4 id="reflectnormal_vec3d-origin_pt3d-1">reflect(normal_vec3D, origin_pt3D)</h4>
+<p>Reflect the pipe’s segments across a plane with the input normal vector and origin.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td><code>Vector3D</code></td><td>The normal vector for the reflection plane. THIS VECTOR MUST BE NORMALIZED.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>The origin from which to reflect.</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>PhHvacPipeElement</code></p>
+<h4 id="scalefactor-origin_pt3d">scale(factor, origin_pt3D)</h4>
+<p>Scale the pipe’s segments by a factor from an origin point.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>factor</code></td><td><code>float</code></td><td>How much the segments should be scaled.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Optional[Point3D]</code></td><td>The origin from which to scale. If None, it will be scaled from the World origin (0, 0, 0).</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>PhHvacPipeElement</code></p>
+<hr>
+<h2 id="phhvacpipebranch">PhHvacPipeBranch</h2>
+<p>A ‘Branch’ Pipe which has geometry, and serves one or more ‘Fixture’ (Twig) pipe elements.</p>
+<p><strong>Inherits from</strong>: <code>_base._PhHVACBase</code></p>
+<h3 id="attributes-1">Attributes</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>pipe_element</code></td><td><code>PhHvacPipeElement</code></td><td>The pipe element representing the branch geometry.</td></tr><tr><td><code>fixtures</code></td><td><code>(List[PhHvacPipeElement])</code></td><td>The fixture (twig) pipe elements connected to this branch.</td></tr></tbody></table>
+<h3 id="properties-2">Properties</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>material_name</code></td><td><code>str</code></td><td>Return the material name of the pipe element.</td></tr><tr><td><code>diameter_mm</code></td><td><code>float</code></td><td>Return the length-weighted diameter (MM) of the pipe element.</td></tr><tr><td><code>twigs</code></td><td>—</td><td>Alias for the ‘fixtures’ to better match Phius terminology.</td></tr><tr><td><code>segments</code></td><td>—</td><td>Return a list of all the Pipe-Segments in the Branch.</td></tr><tr><td><code>length</code></td><td><code>float</code></td><td>Return the total length of the branch itself in model-units.</td></tr><tr><td><code>water_temp_c</code></td><td><code>float</code></td><td>Return the length-weighted average water temperature of all the pipe segments.</td></tr><tr><td><code>daily_period</code></td><td><code>float</code></td><td>Return the length-weighted average daily period of all the pipe segments.</td></tr><tr><td><code>num_fixtures</code></td><td><code>int</code></td><td>Return the number of fixtures connected to the branch.</td></tr><tr><td><code>total_length</code></td><td><code>float</code></td><td>Return the total length of the branch PLUS all fixture pipes in model-units.</td></tr><tr><td><code>total_home_run_fixture_length</code></td><td><code>float</code></td><td>Return the total length (in model-units) of all fixture pipes as measured from end to end.</td></tr></tbody></table>
+<h3 id="methods-2">Methods</h3>
+<h4 id="add_fixture_fixture">add_fixture(_fixture)</h4>
+<p>Add a new fixture (twig) pipe element to the branch.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_fixture</code></td><td><code>PhHvacPipeElement</code></td><td>The fixture pipe element to add.</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>None</code></p>
+<h4 id="movemoving_vec3d-2">move(moving_vec3D)</h4>
+<p>Move the pipe’s elements along a vector.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td><code>Vector3D</code></td><td>A vector with the direction and distance to move.</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>PhHvacPipeBranch</code></p>
+<h4 id="rotateaxis_3d-angle_degrees-origin_pt3d-2">rotate(axis_3D, angle_degrees, origin_pt3D)</h4>
+<p>Rotate the pipe’s elements by a certain angle around an axis and origin.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_3D</code></td><td><code>Vector3D</code></td><td>A vector representing the axis of rotation.</td></tr><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>An angle for rotation in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>The origin around which the object will be rotated.</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>PhHvacPipeBranch</code></p>
+<h4 id="rotate_xyangle_degrees-origin_pt3d-2">rotate_xy(angle_degrees, origin_pt3D)</h4>
+<p>Rotate the pipe’s elements counterclockwise in the XY plane by a certain angle.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>An angle in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>The origin around which the object will be rotated.</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>PhHvacPipeBranch</code></p>
+<h4 id="reflectnormal_vec3d-origin_pt3d-2">reflect(normal_vec3D, origin_pt3D)</h4>
+<p>Reflect the pipe’s elements across a plane with the input normal vector and origin.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td><code>Vector3D</code></td><td>The normal vector for the reflection plane. THIS VECTOR MUST BE NORMALIZED.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>The origin from which to reflect.</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>PhHvacPipeBranch</code></p>
+<h4 id="scalefactor-origin_pt3d-1">scale(factor, origin_pt3D)</h4>
+<p>Scale the pipe’s elements by a factor from an origin point.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>factor</code></td><td><code>float</code></td><td>How much the elements should be scaled.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Optional[Point3D]</code></td><td>The origin from which to scale. If None, it will be scaled from the World origin (0, 0, 0).</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>PhHvacPipeBranch</code></p>
+<hr>
+<h2 id="phhvacpipetrunk">PhHvacPipeTrunk</h2>
+<p>A ‘Trunk’ Pipe which has geometry, and serves one or more ‘Branches’.</p>
+<p><strong>Inherits from</strong>: <code>_base._PhHVACBase</code></p>
+<h3 id="attributes-2">Attributes</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>pipe_element</code></td><td><code>PhHvacPipeElement</code></td><td>The pipe element representing the trunk geometry.</td></tr><tr><td><code>multiplier</code></td><td><code>int</code></td><td>A multiplier applied to the trunk for identical risers.</td></tr><tr><td><code>branches</code></td><td><code>(List[PhHvacPipeBranch])</code></td><td>The branch pipes connected to this trunk.</td></tr><tr><td><code>demand_recirculation</code></td><td><code>bool</code></td><td>True if the trunk uses demand recirculation.</td></tr></tbody></table>
+<h3 id="properties-3">Properties</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>material_name</code></td><td><code>str</code></td><td>Return the material name of the pipe element.</td></tr><tr><td><code>diameter_mm</code></td><td><code>float</code></td><td>Return the length-weighted diameter (MM) name of the pipe element.</td></tr><tr><td><code>segments</code></td><td>—</td><td>Return a list of all the Pipe-Segments in the Trunk.</td></tr><tr><td><code>length</code></td><td><code>float</code></td><td>Return the total length of the trunk itself in model-units.</td></tr><tr><td><code>water_temp_c</code></td><td><code>float</code></td><td>Return the length-weighted average water temperature (deg-C) of all the pipe segments.</td></tr><tr><td><code>daily_period</code></td><td><code>float</code></td><td>Return the length-weighted average daily period of all the pipe segments.</td></tr><tr><td><code>num_fixtures</code></td><td><code>int</code></td><td>Return the number of fixtures connected to the trunk.</td></tr><tr><td><code>total_length</code></td><td><code>float</code></td><td>Return the total length (in model-units) of the trunk PLUS all branches and fixture pipes in model-units.</td></tr><tr><td><code>total_home_run_fixture_length</code></td><td><code>float</code></td><td>Return the total length (in model-units) of all fixture pipes as measured from end to end.</td></tr></tbody></table>
+<h3 id="methods-3">Methods</h3>
+<h4 id="add_branch_branch">add_branch(_branch)</h4>
+<p>Add a new branch pipe to the trunk.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_branch</code></td><td><code>PhHvacPipeBranch</code></td><td>The branch pipe to add.</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>None</code></p>
+<h4 id="movemoving_vec3d-3">move(moving_vec3D)</h4>
+<p>Move the pipe’s elements along a vector.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td><code>Vector3D</code></td><td>A vector with the direction and distance to move.</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>PhHvacPipeTrunk</code></p>
+<h4 id="rotateaxis_3d-angle_degrees-origin_pt3d-3">rotate(axis_3D, angle_degrees, origin_pt3D)</h4>
+<p>Rotate the pipe’s elements by a certain angle around an axis and origin.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_3D</code></td><td><code>Vector3D</code></td><td>A vector representing the axis of rotation.</td></tr><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>An angle for rotation in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>The origin around which the object will be rotated.</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>PhHvacPipeTrunk</code></p>
+<h4 id="rotate_xyangle_degrees-origin_pt3d-3">rotate_xy(angle_degrees, origin_pt3D)</h4>
+<p>Rotate the pipe’s elements counterclockwise in the XY plane by a certain angle.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>An angle in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>The origin around which the object will be rotated.</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>PhHvacPipeTrunk</code></p>
+<h4 id="reflectnormal_vec3d-origin_pt3d-3">reflect(normal_vec3D, origin_pt3D)</h4>
+<p>Reflect the pipe’s elements across a plane with the input normal vector and origin.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>normal_vec3D</code></td><td>—</td><td>The normal vector for the reflection plane. THIS VECTOR MUST BE NORMALIZED.</td></tr><tr><td><code>origin_pt3D</code></td><td>—</td><td>The origin from which to reflect.</td></tr></tbody></table>
+<h4 id="scalefactor-origin_pt3d-2">scale(factor, origin_pt3D)</h4>
+<p>Scale the pipe’s elements by a factor from an origin point.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>factor</code></td><td><code>float</code></td><td>How much the elements should be scaled.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Optional[Point3D]</code></td><td>The origin from which to scale. If None, it will be scaled from the World origin (0, 0, 0).</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>PhHvacPipeTrunk</code></p>
+<hr> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/honeybee_ph">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/honeybee_ph/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
+(function () {
+  // ---------- Modal open / close ----------
+  var scrim = document.getElementById("searchScrim");
+  var input = document.getElementById("searchInput");
+  var resultsEl = document.getElementById("searchResults");
+  var footerEl = document.getElementById("searchFooter");
+  var metaEl = document.getElementById("searchMeta");
+  if (!scrim || !input || !resultsEl || !footerEl || !metaEl) return;
+
+  var focusedIdx = -1;
+
+  function openSearch() {
+    scrim.classList.add("is-open");
+    scrim.setAttribute("aria-hidden", "false");
+    setTimeout(function () { input.focus(); }, 40);
+  }
+  function closeSearch() {
+    scrim.classList.remove("is-open");
+    scrim.setAttribute("aria-hidden", "true");
+    input.value = "";
+    resultsEl.innerHTML = "";
+    footerEl.style.display = "none";
+    focusedIdx = -1;
+  }
+
+  var openBtn = document.getElementById("openSearch");
+  if (openBtn) openBtn.addEventListener("click", openSearch);
+  document.getElementById("closeSearch").addEventListener("click", closeSearch);
+  scrim.addEventListener("click", function (e) {
+    if (e.target === scrim) closeSearch();
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if ((e.key === "k" || e.key === "K") && (e.metaKey || e.ctrlKey)) {
+      e.preventDefault();
+      scrim.classList.contains("is-open") ? closeSearch() : openSearch();
+    }
+    if (e.key === "Escape" && scrim.classList.contains("is-open")) closeSearch();
+  });
+
+  // ---------- Pagefind integration ----------
+  var pagefind = null;
+
+  function loadPagefind() {
+    if (pagefind) return Promise.resolve(pagefind);
+    return import("/pagefind/pagefind.js")
+      .then(function (pf) {
+        pagefind = pf;
+        return pf.init();
+      })
+      .then(function () { return pagefind; })
+      .catch(function () { pagefind = null; return null; });
+  }
+
+  // Debounced search
+  var timer;
+  input.addEventListener("input", function () {
+    clearTimeout(timer);
+    timer = setTimeout(function () { doSearch(input.value.trim()); }, 150);
+  });
+
+  function doSearch(query) {
+    if (!query) {
+      resultsEl.innerHTML = "";
+      footerEl.style.display = "none";
+      return;
+    }
+
+    loadPagefind().then(function (pf) {
+      if (!pf) {
+        resultsEl.innerHTML = '<div style="padding:24px;color:var(--fg-muted);font-size:14px;">Search index not available. Run <code>pnpm build</code> first.</div>';
+        return;
+      }
+      return pf.search(query).then(function (search) {
+        return Promise.all(
+          search.results.slice(0, 20).map(function (r) { return r.data(); })
+        ).then(function (results) {
+          renderResults(results, search.results.length);
+        });
+      });
+    });
+  }
+
+  function renderResults(results, totalCount) {
+    // Group by library
+    var groups = {};
+    var order = [];
+    results.forEach(function (r) {
+      var lib = (r.meta && r.meta.library) || "Other";
+      if (!groups[lib]) { groups[lib] = []; order.push(lib); }
+      groups[lib].push(r);
+    });
+
+    var html = "";
+    var globalIdx = 0;
+    order.forEach(function (lib) {
+      var items = groups[lib];
+      html += '<div class="search-group">';
+      html += '<div class="search-group__head">';
+      html += '<div class="search-group__title"><span class="dot"></span>' + lib + '</div>';
+      html += '<div class="search-group__count">' + items.length + ' result' + (items.length === 1 ? '' : 's') + '</div>';
+      html += '</div>';
+      items.forEach(function (item) {
+        html += '<a class="search-result" href="' + item.url + '" data-idx="' + globalIdx + '">';
+        html += '<div>';
+        html += '<div class="search-result__crumb">' + buildCrumb(item.url) + '</div>';
+        html += '<div class="search-result__title">' + ((item.meta && item.meta.title) || '') + '</div>';
+        html += '<div class="search-result__excerpt">' + (item.excerpt || '') + '</div>';
+        html += '</div>';
+        html += '<div class="search-result__side">';
+        html += '<span class="search-badge">' + abbreviate(lib) + '</span>';
+        html += '<span class="search-result__enter">↵ Open</span>';
+        html += '</div>';
+        html += '</a>';
+        globalIdx++;
+      });
+      html += '</div>';
+    });
+
+    resultsEl.innerHTML = html;
+    focusedIdx = -1;
+
+    metaEl.textContent = totalCount + ' result' + (totalCount === 1 ? '' : 's') + ' across ' + order.length + ' ' + (order.length === 1 ? 'library' : 'libraries');
+    footerEl.style.display = totalCount > 0 ? "" : "none";
+  }
+
+  function buildCrumb(url) {
+    var parts = url.replace(/^\/|\/$/g, "").split("/");
+    return parts.map(function (p, i) {
+      return '<span>' + (i === 0 ? p.toUpperCase() : p) + '</span>';
+    }).join('<span class="tri">›</span>');
+  }
+
+  function abbreviate(lib) {
+    if (lib.length <= 4) return lib.toUpperCase();
+    return lib.split(/[\s-]+/).map(function (w) { return w[0]; }).join("").toUpperCase();
+  }
+
+  // ---------- Keyboard navigation ----------
+  document.addEventListener("keydown", function (e) {
+    if (!scrim.classList.contains("is-open")) return;
+    var items = resultsEl.querySelectorAll(".search-result");
+    if (!items.length) return;
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      focusedIdx = Math.min(focusedIdx + 1, items.length - 1);
+      updateFocus(items);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      focusedIdx = Math.max(focusedIdx - 1, 0);
+      updateFocus(items);
+    } else if (e.key === "Enter" && focusedIdx >= 0) {
+      e.preventDefault();
+      items[focusedIdx].click();
+    }
+  });
+
+  function updateFocus(items) {
+    for (var i = 0; i < items.length; i++) {
+      if (i === focusedIdx) items[i].classList.add("is-focused");
+      else items[i].classList.remove("is-focused");
+    }
+    if (items[focusedIdx]) items[focusedIdx].scrollIntoView({ block: "nearest" });
+  }
+})();
+</script> <script>
+      // Only load Mermaid if the page has mermaid diagrams
+      (function () {
+        if (!document.querySelector('.mermaid')) return;
+        var theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'neutral';
+        var s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js';
+        s.onload = function () {
+          mermaid.initialize({ startOnLoad: true, theme: theme, securityLevel: 'strict' });
+          mermaid.run();
+        };
+        document.head.appendChild(s);
+      })();
+    </script> <script type="module">const o=document.getElementById("themeToggle"),t=o?.querySelector(".icon-sun"),n=o?.querySelector(".icon-moon");function c(e){document.documentElement.setAttribute("data-theme",e);try{localStorage.setItem("ph-docs:theme",e)}catch{}t&&n&&(e==="dark"?(t.style.display="none",n.style.display=""):(t.style.display="",n.style.display="none"))}const d=document.documentElement.getAttribute("data-theme")||"light";c(d);o?.addEventListener("click",()=>{const e=document.documentElement.getAttribute("data-theme");c(e==="dark"?"light":"dark")});</script> </body> </html>

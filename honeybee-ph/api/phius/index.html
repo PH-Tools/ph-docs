@@ -1,0 +1,598 @@
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>phius — Honeybee-PH — PH-Tools Docs</title><script>
+      // Set theme before first paint to prevent flash
+      (function () {
+        try {
+          var t = localStorage.getItem("ph-docs:theme");
+          if (t) document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/_astro/_slug_.BwptHptC.css"></head> <body> <header class="site-header" id="siteHeader"> <a class="site-header__logo" href="/"> <span class="site-header__logo-mark" aria-hidden="true"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"> <path d="M12 2 L22 8 L12 14 L2 8 Z" fill="var(--accent-light)" stroke="var(--accent)"></path> <path d="M2 8 L2 17 L12 23 L12 14 Z" stroke="var(--accent)"></path> <path d="M22 8 L22 17 L12 23 L12 14 Z" stroke="var(--accent-dark)"></path> </svg> </span> <span>PH-TOOLS<span style="color:var(--fg-faint); margin-left:6px;">/ docs</span></span> </a> <nav class="nav-primary" id="primaryNav"> <a href="/honeybee-ph/" class="is-active"> Honeybee-PH </a><a href="/phx/" class> PHX </a><a href="/honeybee-revive/" class> Honeybee-REVIVE </a> <a href="/guides/llm-setup/" class>
+LLM Setup
+</a> </nav> <div class="nav-tools"> <button class="search-btn" id="openSearch" aria-label="Open search"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <span>Search docs…</span> <span class="kbd">⌘K</span> </button> <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme"> <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"> <circle cx="12" cy="12" r="4"></circle> <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path> </svg> <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" style="display:none;"> <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.8 6.8 0 0 0 9.8 9.8Z"></path> </svg> </button> <a class="icon-btn" href="https://github.com/PH-Tools" aria-label="GitHub" title="GitHub"> <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.56 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"></path></svg> </a> </div> </header> <main>  <div class="with-sidebar"> <div class="sidebar-col"> <aside class="sidebar"> <a class="sidebar__label" href="/honeybee-ph/">
+Library · Honeybee-PH </a> <ul class="nav-tree"><li class="group is-open">
+        <button aria-expanded="true"><span class="num">01</span>API Reference<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/honeybee-ph/api/_base/">_base</a></li><li><a class="" href="/honeybee-ph/api/bldg_segment/">bldg_segment</a></li><li><a class="" href="/honeybee-ph/api/foundations/">foundations</a></li><li><a class="" href="/honeybee-ph/api/phi/">phi</a></li><li><a class="is-active" href="/honeybee-ph/api/phius/">phius</a></li><li><a class="" href="/honeybee-ph/api/site/">site</a></li><li><a class="" href="/honeybee-ph/api/space/">space</a></li><li><a class="" href="/honeybee-ph/api/team/">team</a></li><li class="group">
+        <button aria-expanded="false">hvac<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/honeybee-ph/api/hvac/_base/">_base</a></li><li><a class="" href="/honeybee-ph/api/hvac/ducting/">ducting</a></li><li><a class="" href="/honeybee-ph/api/hvac/fuels/">fuels</a></li><li><a class="" href="/honeybee-ph/api/hvac/heat_pumps/">heat_pumps</a></li><li><a class="" href="/honeybee-ph/api/hvac/heating/">heating</a></li><li><a class="" href="/honeybee-ph/api/hvac/hot_water_devices/">hot_water_devices</a></li><li><a class="" href="/honeybee-ph/api/hvac/hot_water_piping/">hot_water_piping</a></li><li><a class="" href="/honeybee-ph/api/hvac/hot_water_system/">hot_water_system</a></li><li><a class="" href="/honeybee-ph/api/hvac/renewable_devices/">renewable_devices</a></li><li><a class="" href="/honeybee-ph/api/hvac/supportive_device/">supportive_device</a></li><li><a class="" href="/honeybee-ph/api/hvac/ventilation/">ventilation</a></li></ul>
+      </li></ul>
+      </li></ul> </aside> <script type="module">document.querySelectorAll(".nav-tree .group > button").forEach(e=>{e.addEventListener("click",()=>{const t=e.parentElement.classList.toggle("is-open");e.setAttribute("aria-expanded",String(t))})});</script>  </div> <div> <!-- Regular content page: simple breadcrumb header -->
+        <header class="content-head"> <div class="content-head__crumb">  <span>API Reference</span> <span class="sep">&rsaquo;</span>  <span class="current">phius</span> </div> </header>  <article class="article" data-pagefind-body data-pagefind-meta="library:Honeybee-PH"> <h1 id="phius">phius</h1>
+<p>Phius Certification Data Class</p>
+<p><strong>Source</strong>: <code>honeybee_ph/phius.py</code></p>
+<hr>
+<h2 id="phiusbuildingcertificationprogram">PhiusBuildingCertificationProgram</h2>
+<p>Phius building certification program type enumeration.</p>
+<p><strong>Inherits from</strong>: <code>enumerables.CustomEnum</code></p>
+<h3 id="values">Values</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Value</th><th>Meaning</th></tr></thead><tbody><tr><td><code>"1-Default"</code></td><td>Default (unspecified) certification program.</td></tr><tr><td><code>"2-PHIUS 2015"</code></td><td>—</td></tr><tr><td><code>"3-PHIUS 2018"</code></td><td>—</td></tr><tr><td><code>"4-Italian"</code></td><td>Italian certification standard.</td></tr><tr><td><code>"5-PHIUS 2018 CORE"</code></td><td>—</td></tr><tr><td><code>"6-PHIUS 2018 ZERO"</code></td><td>—</td></tr><tr><td><code>"7-PHIUS 2021 CORE"</code></td><td>—</td></tr><tr><td><code>"8-PHIUS 2021 ZERO"</code></td><td>—</td></tr></tbody></table>
+<hr>
+<h2 id="phiusbuildingcategorytype">PhiusBuildingCategoryType</h2>
+<p>Phius building category type enumeration.</p>
+<p><strong>Inherits from</strong>: <code>enumerables.CustomEnum</code></p>
+<h3 id="values-1">Values</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Value</th><th>Meaning</th></tr></thead><tbody><tr><td><code>"1-RESIDENTIAL BUILDING"</code></td><td>—</td></tr><tr><td><code>"2-NON-RESIDENTIAL BUILDING"</code></td><td>—</td></tr></tbody></table>
+<hr>
+<h2 id="phiusbuildingusetype">PhiusBuildingUseType</h2>
+<p>Phius building use type enumeration.</p>
+<p><strong>Inherits from</strong>: <code>enumerables.CustomEnum</code></p>
+<h3 id="values-2">Values</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Value</th><th>Meaning</th></tr></thead><tbody><tr><td><code>"1-RESIDENTIAL"</code></td><td>Residential use.</td></tr><tr><td><code>""</code></td><td>—</td></tr><tr><td><code>""</code></td><td>—</td></tr><tr><td><code>"4-OFFICE/ADMINISTRATIVE BUILDING"</code></td><td>—</td></tr><tr><td><code>"5-SCHOOL"</code></td><td>School use.</td></tr><tr><td><code>"6-OTHER"</code></td><td>Other use type.</td></tr><tr><td><code>"7-UNDEFINED/UNFINISHED"</code></td><td>Undefined or unfinished use type.</td></tr></tbody></table>
+<hr>
+<h2 id="phiusbuildingstatus">PhiusBuildingStatus</h2>
+<p>Phius building status enumeration.</p>
+<p><strong>Inherits from</strong>: <code>enumerables.CustomEnum</code></p>
+<h3 id="values-3">Values</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Value</th><th>Meaning</th></tr></thead><tbody><tr><td><code>"1-IN_PLANNING"</code></td><td>Building is in the planning phase.</td></tr><tr><td><code>"2-UNDER_CONSTRUCTION"</code></td><td>Building is under construction.</td></tr><tr><td><code>"3-COMPLETE"</code></td><td>Building is complete.</td></tr></tbody></table>
+<hr>
+<h2 id="phiusbuildingtype">PhiusBuildingType</h2>
+<p>Phius building type enumeration.</p>
+<p><strong>Inherits from</strong>: <code>enumerables.CustomEnum</code></p>
+<h3 id="values-4">Values</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Value</th><th>Meaning</th></tr></thead><tbody><tr><td><code>"1-NEW_CONSTRUCTION"</code></td><td>New construction project.</td></tr><tr><td><code>"2-RETROFIT"</code></td><td>Retrofit of an existing building.</td></tr><tr><td><code>"3-MIXED"</code></td><td>Mixed new construction and retrofit.</td></tr></tbody></table>
+<hr>
+<h2 id="phiuscertification">PhiusCertification</h2>
+<p>Phius certification configuration and performance targets for a building.</p>
+<p><strong>Inherits from</strong>: <code>_base._Base</code></p>
+<h3 id="attributes">Attributes</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>localization_selection_type</code></td><td><code>int</code></td><td>Localization selection type identifier.</td></tr><tr><td><code>PHIUS2021_heating_demand</code></td><td><code>float</code></td><td>PHIUS 2021 heating demand target (kBtu/ft2/yr).</td></tr><tr><td><code>PHIUS2021_cooling_demand</code></td><td><code>float</code></td><td>PHIUS 2021 cooling demand target (kBtu/ft2/yr).</td></tr><tr><td><code>PHIUS2021_heating_load</code></td><td><code>float</code></td><td>PHIUS 2021 heating load target (Btu/h/ft2).</td></tr><tr><td><code>PHIUS2021_cooling_load</code></td><td><code>float</code></td><td>PHIUS 2021 cooling load target (Btu/h/ft2).</td></tr><tr><td><code>int_gains_evap_per_person</code></td><td><code>int</code></td><td>Evaporative internal gains per person (W/person).</td></tr><tr><td><code>int_gains_flush_heat_loss</code></td><td><code>bool</code></td><td>Whether to account for flush heat loss.</td></tr><tr><td><code>int_gains_num_toilets</code></td><td><code>int</code></td><td>Number of toilets in the building.</td></tr><tr><td><code>int_gains_toilet_room_util_pat</code></td><td><code>Optional[unknown]</code></td><td>Toilet room utilization pattern name.</td></tr><tr><td><code>int_gains_use_school_defaults</code></td><td><code>bool</code></td><td>Whether to use school default internal gains.</td></tr><tr><td><code>int_gains_dhw_marginal_perf_ratio</code></td><td><code>Optional[unknown]</code></td><td>DHW marginal performance ratio.</td></tr><tr><td><code>icfa_override</code></td><td>`float</td><td>None`</td></tr></tbody></table>
+<h3 id="properties">Properties</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>certification_program</code></td><td><code>PhiusBuildingCertificationProgram</code></td><td>The Phius certification program for this building.</td></tr><tr><td><code>building_category_type</code></td><td><code>PhiusBuildingCategoryType</code></td><td>The Phius building category type (residential or non-residential).</td></tr><tr><td><code>building_use_type</code></td><td><code>PhiusBuildingUseType</code></td><td>The Phius building use type (residential, school, office, etc.).</td></tr><tr><td><code>building_status</code></td><td><code>PhiusBuildingStatus</code></td><td>The Phius building status (planning, construction, or complete).</td></tr><tr><td><code>building_type</code></td><td><code>PhiusBuildingType</code></td><td>The Phius building type (new construction, retrofit, or mixed).</td></tr></tbody></table>
+<h3 id="methods">Methods</h3>
+<h4 id="movemoving_vec3d">move(moving_vec3D)</h4>
+<p>Move the Phius Certification Object along a vector.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>moving_vec3D</code></td><td><code>Vector3D</code></td><td>A Vector3D with the direction and distance to move the ray.</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>PhiusCertification</code></p>
+<h4 id="rotateaxis_vec3d-angle_degrees-origin_pt3d">rotate(axis_vec3D, angle_degrees, origin_pt3D)</h4>
+<p>Rotate the Phius Certification Object by a certain angle around an axis and origin.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>axis_vec3D</code></td><td><code>Vector3D</code></td><td>A Vector3D axis representing the axis of rotation.</td></tr><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>An angle for rotation in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>A Point3D for the origin around which the object will be rotated.</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>PhiusCertification</code></p>
+<h4 id="rotate_xyangle_degrees-origin_pt3d">rotate_xy(angle_degrees, origin_pt3D)</h4>
+<p>Rotate the Phius Certification Object counterclockwise in the XY plane by a certain angle.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>angle_degrees</code></td><td><code>float</code></td><td>An angle in degrees.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Point3D</code></td><td>A Point3D for the origin around which the object will be rotated.</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>PhiusCertification</code></p>
+<h4 id="reflectplane">reflect(plane)</h4>
+<p>Reflect the Phius Certification Object across a plane.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>plane</code></td><td><code>Plane</code></td><td>A Plane representing the plane across which to reflect.</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>PhiusCertification</code></p>
+<h4 id="scalescale_factor-origin_pt3d">scale(scale_factor, origin_pt3D)</h4>
+<p>Scale the Phius Certification Object by a factor from an origin point.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>scale_factor</code></td><td><code>float</code></td><td>A number representing how much the object should be scaled.</td></tr><tr><td><code>origin_pt3D</code></td><td><code>Optional[Point3D]</code></td><td>A Point3D representing the origin from which to scale. If None, it will be scaled from the World origin (0, 0, 0).</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>PhiusCertification</code></p>
+<hr> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/honeybee_ph">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/honeybee_ph/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
+(function () {
+  // ---------- Modal open / close ----------
+  var scrim = document.getElementById("searchScrim");
+  var input = document.getElementById("searchInput");
+  var resultsEl = document.getElementById("searchResults");
+  var footerEl = document.getElementById("searchFooter");
+  var metaEl = document.getElementById("searchMeta");
+  if (!scrim || !input || !resultsEl || !footerEl || !metaEl) return;
+
+  var focusedIdx = -1;
+
+  function openSearch() {
+    scrim.classList.add("is-open");
+    scrim.setAttribute("aria-hidden", "false");
+    setTimeout(function () { input.focus(); }, 40);
+  }
+  function closeSearch() {
+    scrim.classList.remove("is-open");
+    scrim.setAttribute("aria-hidden", "true");
+    input.value = "";
+    resultsEl.innerHTML = "";
+    footerEl.style.display = "none";
+    focusedIdx = -1;
+  }
+
+  var openBtn = document.getElementById("openSearch");
+  if (openBtn) openBtn.addEventListener("click", openSearch);
+  document.getElementById("closeSearch").addEventListener("click", closeSearch);
+  scrim.addEventListener("click", function (e) {
+    if (e.target === scrim) closeSearch();
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if ((e.key === "k" || e.key === "K") && (e.metaKey || e.ctrlKey)) {
+      e.preventDefault();
+      scrim.classList.contains("is-open") ? closeSearch() : openSearch();
+    }
+    if (e.key === "Escape" && scrim.classList.contains("is-open")) closeSearch();
+  });
+
+  // ---------- Pagefind integration ----------
+  var pagefind = null;
+
+  function loadPagefind() {
+    if (pagefind) return Promise.resolve(pagefind);
+    return import("/pagefind/pagefind.js")
+      .then(function (pf) {
+        pagefind = pf;
+        return pf.init();
+      })
+      .then(function () { return pagefind; })
+      .catch(function () { pagefind = null; return null; });
+  }
+
+  // Debounced search
+  var timer;
+  input.addEventListener("input", function () {
+    clearTimeout(timer);
+    timer = setTimeout(function () { doSearch(input.value.trim()); }, 150);
+  });
+
+  function doSearch(query) {
+    if (!query) {
+      resultsEl.innerHTML = "";
+      footerEl.style.display = "none";
+      return;
+    }
+
+    loadPagefind().then(function (pf) {
+      if (!pf) {
+        resultsEl.innerHTML = '<div style="padding:24px;color:var(--fg-muted);font-size:14px;">Search index not available. Run <code>pnpm build</code> first.</div>';
+        return;
+      }
+      return pf.search(query).then(function (search) {
+        return Promise.all(
+          search.results.slice(0, 20).map(function (r) { return r.data(); })
+        ).then(function (results) {
+          renderResults(results, search.results.length);
+        });
+      });
+    });
+  }
+
+  function renderResults(results, totalCount) {
+    // Group by library
+    var groups = {};
+    var order = [];
+    results.forEach(function (r) {
+      var lib = (r.meta && r.meta.library) || "Other";
+      if (!groups[lib]) { groups[lib] = []; order.push(lib); }
+      groups[lib].push(r);
+    });
+
+    var html = "";
+    var globalIdx = 0;
+    order.forEach(function (lib) {
+      var items = groups[lib];
+      html += '<div class="search-group">';
+      html += '<div class="search-group__head">';
+      html += '<div class="search-group__title"><span class="dot"></span>' + lib + '</div>';
+      html += '<div class="search-group__count">' + items.length + ' result' + (items.length === 1 ? '' : 's') + '</div>';
+      html += '</div>';
+      items.forEach(function (item) {
+        html += '<a class="search-result" href="' + item.url + '" data-idx="' + globalIdx + '">';
+        html += '<div>';
+        html += '<div class="search-result__crumb">' + buildCrumb(item.url) + '</div>';
+        html += '<div class="search-result__title">' + ((item.meta && item.meta.title) || '') + '</div>';
+        html += '<div class="search-result__excerpt">' + (item.excerpt || '') + '</div>';
+        html += '</div>';
+        html += '<div class="search-result__side">';
+        html += '<span class="search-badge">' + abbreviate(lib) + '</span>';
+        html += '<span class="search-result__enter">↵ Open</span>';
+        html += '</div>';
+        html += '</a>';
+        globalIdx++;
+      });
+      html += '</div>';
+    });
+
+    resultsEl.innerHTML = html;
+    focusedIdx = -1;
+
+    metaEl.textContent = totalCount + ' result' + (totalCount === 1 ? '' : 's') + ' across ' + order.length + ' ' + (order.length === 1 ? 'library' : 'libraries');
+    footerEl.style.display = totalCount > 0 ? "" : "none";
+  }
+
+  function buildCrumb(url) {
+    var parts = url.replace(/^\/|\/$/g, "").split("/");
+    return parts.map(function (p, i) {
+      return '<span>' + (i === 0 ? p.toUpperCase() : p) + '</span>';
+    }).join('<span class="tri">›</span>');
+  }
+
+  function abbreviate(lib) {
+    if (lib.length <= 4) return lib.toUpperCase();
+    return lib.split(/[\s-]+/).map(function (w) { return w[0]; }).join("").toUpperCase();
+  }
+
+  // ---------- Keyboard navigation ----------
+  document.addEventListener("keydown", function (e) {
+    if (!scrim.classList.contains("is-open")) return;
+    var items = resultsEl.querySelectorAll(".search-result");
+    if (!items.length) return;
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      focusedIdx = Math.min(focusedIdx + 1, items.length - 1);
+      updateFocus(items);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      focusedIdx = Math.max(focusedIdx - 1, 0);
+      updateFocus(items);
+    } else if (e.key === "Enter" && focusedIdx >= 0) {
+      e.preventDefault();
+      items[focusedIdx].click();
+    }
+  });
+
+  function updateFocus(items) {
+    for (var i = 0; i < items.length; i++) {
+      if (i === focusedIdx) items[i].classList.add("is-focused");
+      else items[i].classList.remove("is-focused");
+    }
+    if (items[focusedIdx]) items[focusedIdx].scrollIntoView({ block: "nearest" });
+  }
+})();
+</script> <script>
+      // Only load Mermaid if the page has mermaid diagrams
+      (function () {
+        if (!document.querySelector('.mermaid')) return;
+        var theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'neutral';
+        var s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js';
+        s.onload = function () {
+          mermaid.initialize({ startOnLoad: true, theme: theme, securityLevel: 'strict' });
+          mermaid.run();
+        };
+        document.head.appendChild(s);
+      })();
+    </script> <script type="module">const o=document.getElementById("themeToggle"),t=o?.querySelector(".icon-sun"),n=o?.querySelector(".icon-moon");function c(e){document.documentElement.setAttribute("data-theme",e);try{localStorage.setItem("ph-docs:theme",e)}catch{}t&&n&&(e==="dark"?(t.style.display="none",n.style.display=""):(t.style.display="",n.style.display="none"))}const d=document.documentElement.getAttribute("data-theme")||"light";c(d);o?.addEventListener("click",()=>{const e=document.documentElement.getAttribute("data-theme");c(e==="dark"?"light":"dark")});</script> </body> </html>
