@@ -108,7 +108,7 @@ class ClassInfo:
     properties: list[PropertyInfo] = field(default_factory=list)
     methods: list[MethodInfo] = field(default_factory=list)
     is_enum: bool = False
-    enum_values: list[tuple[str, str]] = field(default_factory=list)
+    enum_values: list[tuple[str, str, str]] = field(default_factory=list)
 
 
 @dataclass
@@ -372,7 +372,7 @@ def is_enum_class(class_node: ast.ClassDef) -> bool:
 
 
 def extract_enum_values(class_node: ast.ClassDef) -> list[str]:
-    """Extract the 'allowed' list values from an enum class."""
+    """Extract the 'allowed' list values from a CustomEnum class."""
     for item in class_node.body:
         if isinstance(item, ast.Assign):
             for target in item.targets:
@@ -384,6 +384,33 @@ def extract_enum_values(class_node: ast.ClassDef) -> list[str]:
                                 values.append(elt.value)
                         return values
     return []
+
+
+def extract_standard_enum_members(class_node: ast.ClassDef) -> list[tuple[str, str]]:
+    """Extract member assignments from a standard Python Enum class.
+
+    Looks for class-body assignments like ``NAME = 1`` where the value is a
+    literal constant. Skips private/dunder names and the ``allowed`` attribute.
+
+    Returns a list of (member_name, value_repr) tuples, e.g. [("WALL", "1")].
+    """
+    members: list[tuple[str, str]] = []
+    for item in class_node.body:
+        if not isinstance(item, ast.Assign):
+            continue
+        for target in item.targets:
+            if not isinstance(target, ast.Name):
+                continue
+            name = target.id
+            if name.startswith("_") or name == "allowed":
+                continue
+            if isinstance(item.value, ast.Constant):
+                members.append((name, repr(item.value.value)))
+            elif isinstance(item.value, ast.UnaryOp) and isinstance(item.value.op, ast.USub):
+                # Handle negative literals like EXTERIOR = -1
+                if isinstance(item.value.operand, ast.Constant):
+                    members.append((name, repr(-item.value.operand.value)))
+    return members
 
 
 def extract_init_attributes(
@@ -554,7 +581,13 @@ def extract_class(
     if enum:
         raw_values = extract_enum_values(class_node)
         value_descs = parse_enum_values_section(docstring)
-        info.enum_values = [(v, value_descs.get(v, "")) for v in raw_values]
+        if raw_values:
+            # CustomEnum with allowed = [...] list
+            info.enum_values = [(v, "", value_descs.get(v, "")) for v in raw_values]
+        else:
+            # Standard Python Enum with NAME = value members
+            members = extract_standard_enum_members(class_node)
+            info.enum_values = [(name, val, value_descs.get(name, "")) for name, val in members]
     else:
         # Attribute descriptions from class docstring
         attr_descs = parse_docstring_section(docstring, "Attributes")
@@ -709,12 +742,21 @@ def render_class_md(cls: ClassInfo) -> str:
 
     # Enum values table
     if cls.is_enum and cls.enum_values:
+        has_raw_values = any(v[1] for v in cls.enum_values)
         lines.append("### Values")
         lines.append("")
-        lines.append("| Value | Meaning |")
-        lines.append("|-------|---------|")
-        for value, desc in cls.enum_values:
-            lines.append(f"| `\"{value}\"` | {desc or '—'} |")
+        if has_raw_values:
+            # Standard Enum: show member name, assigned value, and description
+            lines.append("| Member | Value | Meaning |")
+            lines.append("|--------|-------|---------|")
+            for name, val, desc in cls.enum_values:
+                lines.append(f"| `{name}` | `{val}` | {desc or '—'} |")
+        else:
+            # CustomEnum: show allowed string values and description
+            lines.append("| Value | Meaning |")
+            lines.append("|-------|---------|")
+            for name, _, desc in cls.enum_values:
+                lines.append(f"| `\"{name}\"` | {desc or '—'} |")
         lines.append("")
 
     # Attributes table

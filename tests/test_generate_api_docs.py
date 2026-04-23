@@ -29,6 +29,7 @@ from generate_api_docs import (
     extract_methods,
     extract_module,
     extract_properties,
+    extract_standard_enum_members,
     get_first_line,
     get_output_subdir,
     infer_type_from_value,
@@ -286,6 +287,15 @@ class TestIsEnumClass:
         cls = parse_first_class(source)
         assert is_enum_class(cls) is True
 
+    def test_standard_enum_base(self):
+        source = textwrap.dedent("""\
+            class FaceType(Enum):
+                WALL = 1
+                FLOOR = 2
+        """)
+        cls = parse_first_class(source)
+        assert is_enum_class(cls) is True
+
     def test_normal_class(self):
         source = textwrap.dedent("""\
             class Foo(object):
@@ -309,6 +319,46 @@ class TestExtractEnumValues:
         source = "class Foo(object): pass"
         cls = parse_first_class(source)
         assert extract_enum_values(cls) == []
+
+
+class TestExtractStandardEnumMembers:
+    def test_integer_members(self):
+        source = textwrap.dedent("""\
+            class FaceType(Enum):
+                NONE = 0
+                WALL = 1
+                FLOOR = 2
+        """)
+        cls = parse_first_class(source)
+        members = extract_standard_enum_members(cls)
+        assert members == [("NONE", "0"), ("WALL", "1"), ("FLOOR", "2")]
+
+    def test_negative_members(self):
+        source = textwrap.dedent("""\
+            class Exposure(Enum):
+                NONE = 0
+                EXTERIOR = -1
+                GROUND = -2
+        """)
+        cls = parse_first_class(source)
+        members = extract_standard_enum_members(cls)
+        assert members == [("NONE", "0"), ("EXTERIOR", "-1"), ("GROUND", "-2")]
+
+    def test_skips_private_and_dunder(self):
+        source = textwrap.dedent("""\
+            class MyEnum(Enum):
+                GOOD = 1
+                _PRIVATE = 2
+                __DUNDER = 3
+        """)
+        cls = parse_first_class(source)
+        members = extract_standard_enum_members(cls)
+        assert members == [("GOOD", "1")]
+
+    def test_no_members(self):
+        source = "class Foo(object): pass"
+        cls = parse_first_class(source)
+        assert extract_standard_enum_members(cls) == []
 
 
 class TestExtractInitAttributes:
@@ -573,20 +623,38 @@ class TestRenderClassMd:
         assert "`_Base`" in md
         assert "| `name` | `str` | The name. |" in md
 
-    def test_enum_class(self):
+    def test_custom_enum_class(self):
         cls = ClassInfo(
             name="FoundationType",
             is_enum=True,
             enum_values=[
-                ("1-HEATED", "Heated basement."),
-                ("2-SLAB", "Slab on grade."),
+                ("1-HEATED", "", "Heated basement."),
+                ("2-SLAB", "", "Slab on grade."),
             ],
             docstring="Foundation types.",
         )
         md = render_class_md(cls)
         assert "### Values" in md
+        assert "| Value | Meaning |" in md
         assert '`"1-HEATED"`' in md
         assert "Heated basement." in md
+
+    def test_standard_enum_class(self):
+        cls = ClassInfo(
+            name="FaceType",
+            bases=["Enum"],
+            is_enum=True,
+            enum_values=[
+                ("NONE", "0", "Unclassified face type."),
+                ("WALL", "1", "Vertical wall surface."),
+            ],
+            docstring="Face orientations.",
+        )
+        md = render_class_md(cls)
+        assert "### Values" in md
+        assert "| Member | Value | Meaning |" in md
+        assert "| `NONE` | `0` | Unclassified face type. |" in md
+        assert "| `WALL` | `1` | Vertical wall surface. |" in md
 
     def test_class_with_methods(self):
         cls = ClassInfo(
@@ -738,7 +806,7 @@ class TestExtractModule:
         enum_cls = next(c for c in module.classes if c.name == "PhFoundationType")
         assert enum_cls.is_enum is True
         assert len(enum_cls.enum_values) == 3
-        assert enum_cls.enum_values[0] == ("1-HEATED_BASEMENT", "Heated basement.")
+        assert enum_cls.enum_values[0] == ("1-HEATED_BASEMENT", "", "Heated basement.")
 
         # Check regular class
         found_cls = next(c for c in module.classes if c.name == "PhFoundation")
@@ -762,6 +830,70 @@ class TestExtractModule:
         assert found_cls.methods[0].return_type == "None"
         assert found_cls.methods[0].args[0].name == "segment"
         assert found_cls.methods[0].args[0].type_str == "Any"
+
+    def test_standard_enum_extraction(self, tmp_path):
+        """Standard Python Enum members should be extracted with values."""
+        source = textwrap.dedent('''\
+            """Building enums."""
+
+            from enum import Enum
+
+            class FaceType(Enum):
+                """Classification of face orientations.
+
+                Values:
+                    NONE: Unclassified face type.
+                    WALL: Vertical wall surface.
+                    FLOOR: Horizontal floor surface.
+                """
+                NONE = 0
+                WALL = 1
+                FLOOR = 2
+        ''')
+        py_file = tmp_path / "building.py"
+        py_file.write_text(source)
+
+        module = extract_module(py_file, "PHX", skip_methods=[])
+        assert module is not None
+
+        cls = module.classes[0]
+        assert cls.name == "FaceType"
+        assert cls.is_enum is True
+        assert len(cls.enum_values) == 3
+        assert cls.enum_values[0] == ("NONE", "0", "Unclassified face type.")
+        assert cls.enum_values[1] == ("WALL", "1", "Vertical wall surface.")
+        assert cls.enum_values[2] == ("FLOOR", "2", "Horizontal floor surface.")
+
+        # Should not have attributes/properties/methods
+        assert cls.attributes == []
+        assert cls.properties == []
+        assert cls.methods == []
+
+    def test_standard_enum_negative_values(self, tmp_path):
+        """Standard Enum with negative values should extract correctly."""
+        source = textwrap.dedent('''\
+            """Exposure enums."""
+
+            from enum import Enum
+
+            class Exposure(Enum):
+                """Exterior exposure.
+
+                Values:
+                    NONE: No exposure.
+                    EXTERIOR: Outdoor air.
+                """
+                NONE = 0
+                EXTERIOR = -1
+        ''')
+        py_file = tmp_path / "exposure.py"
+        py_file.write_text(source)
+
+        module = extract_module(py_file, "PHX", skip_methods=[])
+        assert module is not None
+
+        cls = module.classes[0]
+        assert cls.enum_values[1] == ("EXTERIOR", "-1", "Outdoor air.")
 
     def test_syntax_error_returns_none(self, tmp_path):
         """A file with a syntax error should return None, not crash."""
