@@ -11,18 +11,127 @@ import FetchCallout from "../../components/FetchCallout.astro";
         <span class="sep">&rsaquo;</span>
         <span class="current">LLM Setup</span>
       </div>
-      <h1 class="guide-head__title">LLM Skill Setup</h1>
+      <h1 class="guide-head__title">Using AI Tools with PH-Tools Docs</h1>
       <p class="guide-head__desc">
-        Use Claude Code skills to give your LLM structured knowledge about WUFI-Passive XML files,
-        PHX model classes, and PHPP field mappings. Skills fetch reference docs from this site at
-        task start — no local files to maintain.
+        AI coding assistants (ChatGPT, Cursor, Claude Code, Copilot, etc.) work better when they have
+        domain-specific reference material — the same way you'd hand a new team member the WUFI manual
+        before asking them to QC a model. This page explains how to give your AI tool structured knowledge
+        about WUFI-Passive XML files, PHX model classes, and PHPP field mappings.
       </p>
     </header>
 
     <article class="article guide-article">
-      <h2 id="how-it-works">How It Works</h2>
+      <h2 id="reference-docs">LLM-Ready Reference Documents</h2>
       <p>
-        A <strong>skill</strong> is a markdown file that Claude Code loads when a task matches its description.
+        We maintain a set of reference documents formatted specifically for AI tools. These are
+        plain markdown files — no HTML, no front-matter — containing schema maps, field dictionaries,
+        and code references that help an AI understand PH-Tools data structures.
+      </p>
+      <p>
+        These docs are hosted at stable URLs on this site. When we update a schema map or fix a
+        field mapping, anyone using these URLs gets the current version automatically.
+      </p>
+
+      <FetchCallout
+        url="https://docs.passivehousetools.com/llm/phx/reference/wufi-xml-schema.md"
+        description="WUFI-Passive XML schema reference — structure map, field dictionary, and unit conversions."
+      />
+
+      <FetchCallout
+        url="https://docs.passivehousetools.com/llm/phx/reference/phx-model-reference.md"
+        description="PHX model reference — object graph, module map, design patterns, and testing conventions."
+      />
+
+      <FetchCallout
+        url="https://docs.passivehousetools.com/llm/phx/reference/phpp-field-mapping.md"
+        description="PHPP field mapping — cell-level locator map for reading and writing PHPP 10.6 worksheets."
+      />
+
+      <h2 id="using-with-any-tool">Using These Docs with Any AI Tool</h2>
+      <p>
+        The reference docs above work with any AI tool that can read a URL or accept pasted text.
+        Here are some common approaches:
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>How to use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>ChatGPT</strong></td>
+            <td>Paste the reference doc URL into your prompt — ChatGPT will fetch and read it. Or copy the markdown content directly into your message.</td>
+          </tr>
+          <tr>
+            <td><strong>Cursor / Windsurf</strong></td>
+            <td>Add the reference doc URL as context using <code>@URL</code>, or save the markdown file locally and add it with <code>@file</code>.</td>
+          </tr>
+          <tr>
+            <td><strong>GitHub Copilot Chat</strong></td>
+            <td>Paste the reference doc content into the chat, or save it locally in your project and reference it.</td>
+          </tr>
+          <tr>
+            <td><strong>Claude Code</strong></td>
+            <td>Use <code>WebFetch</code> to pull the doc into context, or install a pre-built skill (see <a href="#claude-code-skills">below</a>) that does this automatically.</td>
+          </tr>
+          <tr>
+            <td><strong>Any other tool</strong></td>
+            <td>Copy the markdown content from the URL and paste it into your AI conversation as context.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        The key idea is the same regardless of tool: give the AI the reference material <em>before</em>
+        asking it to work with your WUFI XML, PHX code, or PHPP data. Think of it like handing
+        someone the spec sheet before asking them to review a submittal.
+      </p>
+
+      <h2 id="discovery">Discovery Endpoints</h2>
+      <p>
+        If you want to explore what reference docs are available, or point an AI tool at a
+        starting index, these entry points help:
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>URL</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>/llm-instructions.md</code></td>
+            <td>Navigation guide — URL patterns, direct links to common docs</td>
+          </tr>
+          <tr>
+            <td><code>/llms.txt</code></td>
+            <td>Standard LLM site index (<a href="https://llmstxt.org/" target="_blank" rel="noopener">llms.txt convention</a>)</td>
+          </tr>
+          <tr>
+            <td><code>/site-index.json</code></td>
+            <td>Structured catalog of all pages with metadata and <code>llm_use_when</code> fields</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr />
+
+      <h2 id="claude-code-skills">Claude Code Skills</h2>
+      <p>
+        If you use <a href="https://docs.anthropic.com/en/docs/claude-code/overview" target="_blank" rel="noopener">Claude Code</a>,
+        you can install <a href="https://docs.anthropic.com/en/docs/claude-code/skills" target="_blank" rel="noopener"><strong>skills</strong></a>
+        that automatically load the right reference doc when a relevant task comes up.
+        This section is Claude Code&ndash;specific — if you use a different AI tool, the
+        <a href="#reference-docs">reference docs</a> and <a href="#using-with-any-tool">general guidance</a> above
+        are all you need.
+      </p>
+
+      <h3 id="how-skills-work">How Skills Work</h3>
+      <p>
+        A <a href="https://docs.anthropic.com/en/docs/claude-code/skills" target="_blank" rel="noopener">skill</a>
+        is a markdown file that Claude Code loads when a task matches its trigger description.
         Each skill contains a compact instruction set plus a <code>WebFetch</code> command that pulls the
         full reference doc from this site at runtime.
       </p>
@@ -39,7 +148,7 @@ import FetchCallout from "../../components/FetchCallout.astro";
         version mismatch.
       </p>
 
-      <h2 id="available-skills">Available Skills</h2>
+      <h3 id="available-skills">Available Skills</h3>
 
       <div class="skill-cards">
         <div class="skill-card">
@@ -73,13 +182,14 @@ import FetchCallout from "../../components/FetchCallout.astro";
         </div>
       </div>
 
-      <h2 id="installation">Installation</h2>
+      <h3 id="installation">Installation</h3>
       <p>
-        Skills live in your Claude Code skills directory. Each skill is a folder containing a
-        <code>SKILL.md</code> file.
+        Skills live in your
+        <a href="https://docs.anthropic.com/en/docs/claude-code/skills" target="_blank" rel="noopener">Claude Code skills directory</a>.
+        Each skill is a folder containing a <code>SKILL.md</code> file.
       </p>
 
-      <h3>Option A: Manual download</h3>
+      <h4>Option A: Manual download</h4>
       <ol>
         <li>Download the skill file using the link above (or from the URLs below)</li>
         <li>Create the skill directory: <code>mkdir -p ~/.claude/skills/wufi-xml</code></li>
@@ -87,7 +197,7 @@ import FetchCallout from "../../components/FetchCallout.astro";
         <li>Repeat for each skill you want</li>
       </ol>
 
-      <h3>Option B: One-liner</h3>
+      <h4>Option B: One-liner</h4>
       <pre><code># Install wufi-xml skill
 mkdir -p ~/.claude/skills/wufi-xml && \
   curl -sL https://docs.passivehousetools.com/skills/wufi-xml.md \
@@ -98,7 +208,7 @@ mkdir -p ~/.claude/skills/phx-model && \
   curl -sL https://docs.passivehousetools.com/skills/phx-model.md \
   -o ~/.claude/skills/phx-model/SKILL.md</code></pre>
 
-      <h3>Verify</h3>
+      <h4>Verify</h4>
       <p>
         After installation, the skill should appear in Claude Code's skill list. You can verify by
         running <code>ls ~/.claude/skills/</code> — you should see the skill directories.
@@ -107,56 +217,6 @@ mkdir -p ~/.claude/skills/phx-model && \
         To test, start a Claude Code session and ask it to look at a WUFI XML file or describe a
         PHX model class. It should automatically load the skill and fetch the reference doc.
       </p>
-
-      <h2 id="reference-urls">Reference Doc URLs</h2>
-      <p>
-        Skills fetch these docs automatically, but you can also access them directly. The
-        <code>/llm/</code> versions are clean markdown with front-matter stripped — optimized for
-        LLM context windows.
-      </p>
-
-      <FetchCallout
-        url="https://docs.passivehousetools.com/llm/phx/reference/wufi-xml-schema.md"
-        description="WUFI-Passive XML schema reference — structure map, field dictionary, and unit conversions."
-      />
-
-      <FetchCallout
-        url="https://docs.passivehousetools.com/llm/phx/reference/phx-model-reference.md"
-        description="PHX model reference — object graph, module map, design patterns, and testing conventions."
-      />
-
-      <FetchCallout
-        url="https://docs.passivehousetools.com/llm/phx/reference/phpp-field-mapping.md"
-        description="PHPP field mapping — cell-level locator map for reading and writing PHPP 10.6 worksheets."
-      />
-
-      <h2 id="discovery">Discovery</h2>
-      <p>
-        If you're building your own skill or want to explore what's available, these entry points
-        help LLMs discover content on this site:
-      </p>
-      <table>
-        <thead>
-          <tr>
-            <th>URL</th>
-            <th>Purpose</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><code>/llm-instructions.md</code></td>
-            <td>Navigation guide — URL patterns, direct links to common docs</td>
-          </tr>
-          <tr>
-            <td><code>/llms.txt</code></td>
-            <td>Standard LLM site index (llms.txt convention)</td>
-          </tr>
-          <tr>
-            <td><code>/site-index.json</code></td>
-            <td>Structured catalog of all pages with metadata and <code>llm_use_when</code> fields</td>
-          </tr>
-        </tbody>
-      </table>
     </article>
 
     <footer class="site-footer">
