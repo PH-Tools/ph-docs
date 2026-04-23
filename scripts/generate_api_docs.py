@@ -848,6 +848,82 @@ def get_output_path(
 
 
 # ---------------------------------------------------------------------------
+# Nav merging
+# ---------------------------------------------------------------------------
+
+def build_api_nav_tree(file_paths: list[str], output_dir: str) -> list:
+    """Build a nested MkDocs-style nav tree from generated file paths.
+
+    Groups files by subdirectory structure under output_dir.
+
+    Example:
+        Input:  ["api/_base.md", "api/hvac/ducting.md"]
+        Output: [{"_base": "api/_base.md"}, {"hvac": [{"ducting": "api/hvac/ducting.md"}]}]
+    """
+    leaves: list[dict[str, str]] = []
+    groups: dict[str, list[str]] = {}
+
+    for fp in sorted(file_paths):
+        rel = Path(fp).relative_to(output_dir)
+        parts = rel.parts
+
+        if len(parts) == 1:
+            leaves.append({rel.stem: fp})
+        else:
+            group_name = parts[0]
+            if group_name not in groups:
+                groups[group_name] = []
+            groups[group_name].append(fp)
+
+    result: list = leaves.copy()
+    for group_name in sorted(groups.keys()):
+        sub_prefix = str(Path(output_dir) / group_name)
+        children = build_api_nav_tree(groups[group_name], sub_prefix)
+        result.append({group_name: children})
+
+    return result
+
+
+def merge_api_nav(
+    lib_id: str,
+    generated_files: list[str],
+    output_dir: str,
+    verbose: bool = False,
+) -> None:
+    """Merge an 'API Reference' group into the library's nav.yml.
+
+    Reads the existing nav.yml (written by fetch_spokes.py from the spoke),
+    removes any prior 'API Reference' group, appends one built from the
+    generated file list, and writes the result back.
+    """
+    nav_path = CONTENT_DIR / lib_id / "nav.yml"
+
+    if nav_path.exists():
+        with open(nav_path) as f:
+            data = yaml.safe_load(f) or {}
+    else:
+        data = {}
+
+    nav_items: list = data.get("nav") or []
+
+    # Strip any existing API Reference group (idempotent)
+    nav_items = [
+        item for item in nav_items
+        if not (isinstance(item, dict) and "API Reference" in item)
+    ]
+
+    api_children = build_api_nav_tree(generated_files, output_dir)
+    nav_items.append({"API Reference": api_children})
+
+    data["nav"] = nav_items
+    with open(nav_path, "w") as f:
+        yaml.dump(data, f, default_flow_style=False, sort_keys=False, allow_unicode=True)
+
+    if verbose:
+        print(f"  [NAV]   Merged {len(generated_files)} API entries into {nav_path}")
+
+
+# ---------------------------------------------------------------------------
 # Main generation pipeline
 # ---------------------------------------------------------------------------
 
@@ -940,15 +1016,18 @@ def generate_library(
         manifest_path.parent.mkdir(parents=True, exist_ok=True)
         manifest_path.write_text("\n".join(generated_files) + "\n", encoding="utf-8")
 
-    # Write nav fragment
+    # Write nav fragment (kept as debug reference)
     if not dry_run and generated_files:
-        nav_lines = ["# Auto-generated nav fragment for API Reference", "# Copy relevant entries into your spoke's docs/nav.yml", ""]
+        nav_lines = ["# Auto-generated nav fragment for API Reference", ""]
         for gf in generated_files:
-            # Strip output_dir prefix for the nav path
             label = Path(gf).stem
             nav_lines.append(f"    - {label}: {gf}")
         fragment_path = output_base / "_nav_fragment.yml"
         fragment_path.write_text("\n".join(nav_lines) + "\n", encoding="utf-8")
+
+    # Merge API Reference group into nav.yml
+    if not dry_run and generated_files:
+        merge_api_nav(lib_id, generated_files, config["output_dir"], verbose)
 
     return modules_processed, classes_documented, files_skipped
 
