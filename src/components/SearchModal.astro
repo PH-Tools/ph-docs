@@ -102,7 +102,7 @@
 
     loadPagefind().then(function (pf) {
       if (!pf) {
-        resultsEl.innerHTML = '<div style="padding:24px;color:var(--fg-muted);font-size:14px;">Search index not available. Run <code>pnpm build</code> first.</div>';
+        resultsEl.innerHTML = '<div style="padding:24px;color:var(--text-secondary);font-size:14px;">Search index not available. Run <code>pnpm build</code> first.</div>';
         return;
       }
       return pf.search(query).then(function (search) {

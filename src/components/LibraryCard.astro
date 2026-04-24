@@ -12,16 +12,16 @@ interface Props {
 const { id, index, tag_line, category, label, description, href } = Astro.props;
 ---
 
-<a class="lib-card graph-paper-subtle" href={href ?? `/${id}/`}>
-  <div class="lib-card__idx">
-    <span class="lib-card__idx-num">{index}</span>
-    <span class="lib-card__idx-dash"></span>
+<a class="doc-card" href={href ?? `/${id}/`}>
+  <div class="doc-card__idx">
+    <span class="doc-card__idx-num">{index}</span>
+    <span class="doc-card__idx-dash"></span>
     <span>{tag_line}</span>
   </div>
-  <div class="lib-card__tag">{category}</div>
-  <h3 class="lib-card__name">{label}</h3>
-  <p class="lib-card__desc">{description}</p>
-  <div class="lib-card__footer">
-    <span class="lib-card__cta">→ View Docs <span class="arr">↗</span></span>
+  <div class="doc-card__tag">{category}</div>
+  <h3 class="doc-card__name">{label}</h3>
+  <p class="doc-card__desc">{description}</p>
+  <div class="doc-card__footer">
+    <span class="doc-card__cta">→ View Docs <span class="arr">↗</span></span>
   </div>
 </a>
