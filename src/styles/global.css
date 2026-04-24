@@ -12,7 +12,7 @@
 /* ---------- Docs-specific tokens (not in brand system) ---------- */
 :root {
   --sidebar-width: 260px;
-  --header-height: 56px;
+  --header-height: 64px;
   --content-max-width: 820px;
 }
 
