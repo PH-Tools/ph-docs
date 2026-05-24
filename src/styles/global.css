@@ -5,8 +5,8 @@
    CDN tokens imported for parity with bldgtyp.com.
    ============================================ */
 
-@import url('https://bldgtyp.github.io/branding/tokens/tokens.css');
-@import url('https://bldgtyp.github.io/branding/tokens/components.css');
+@import url('https://bldgtyp.github.io/bt-branding/tokens/tokens.css');
+@import url('https://bldgtyp.github.io/bt-branding/tokens/components.css');
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400&display=swap');
 
 /* ---------- Docs-specific tokens (not in brand system) ---------- */

@@ -266,7 +266,7 @@ src/
 `src/styles/global.css` imports the bldgtyp CDN tokens and defines the full design system:
 
 ```css
-@import url('https://bldgtyp.github.io/branding/tokens/tokens.css');  /* CDN */
+@import url('https://bldgtyp.github.io/bt-branding/tokens/tokens.css');  /* CDN */
 @import url('https://fonts.googleapis.com/...');                       /* Outfit + JetBrains Mono */
 ```
 

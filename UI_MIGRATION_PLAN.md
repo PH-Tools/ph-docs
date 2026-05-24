@@ -5,9 +5,9 @@
 **Scope**: UI/UX only — no content changes. Structural Astro components (routing, content collections, Pagefind search) stay unchanged.
 
 **Key references**:
-- Brand tokens CDN: `https://bldgtyp.github.io/branding/tokens/tokens.css`
-- Brand components CDN: `https://bldgtyp.github.io/branding/tokens/components.css`
-- Brand guidelines: https://bldgtyp.github.io/branding/
+- Brand tokens CDN: `https://bldgtyp.github.io/bt-branding/tokens/tokens.css`
+- Brand components CDN: `https://bldgtyp.github.io/bt-branding/tokens/components.css`
+- Brand guidelines: https://bldgtyp.github.io/bt-branding/
 - Reference implementation: https://passivehousetools.com/
 
 ---

@@ -316,7 +316,7 @@ The site uses the **bldgtyp design system** — a fully tokenized system already
 `src/styles/global.css` imports the CDN token file and defines the full site design system, ported directly from the Claude Design mockup (April 2026):
 
 ```css
-@import url('https://bldgtyp.github.io/branding/tokens/tokens.css');
+@import url('https://bldgtyp.github.io/bt-branding/tokens/tokens.css');
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;600&family=JetBrains+Mono:wght@300;400&display=swap');
 ```
 
@@ -379,7 +379,7 @@ Key properties:
 | Search | Pagefind | Build-time, zero-config, grouped results |
 | CI/CD | GitHub Actions | Native to GitHub; no external services |
 | Hosting | GitHub Pages | Free, reliable, custom domain support |
-| Branding | bldgtyp/branding CDN | Already published; imported via URL |
+| Branding | bldgtyp/bt-branding CDN | Already published; imported via URL |
 | Content fetch | Python (fetch_spokes.py) | Simple, maintainable, language-agnostic |
 | API doc gen | — (deferred) | Out of scope for v1 |
 

@@ -285,7 +285,7 @@ type NavTree  = NavItem[];
 All styles are ported directly from the mockup (`styles.css` + `screens.css`). Structure in `src/styles/global.css`:
 
 ```css
-@import url('https://bldgtyp.github.io/branding/tokens/tokens.css'); /* bldgtyp CDN */
+@import url('https://bldgtyp.github.io/bt-branding/tokens/tokens.css'); /* bldgtyp CDN */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;600&family=JetBrains+Mono:wght@300;400&display=swap');
 
 /* CSS custom properties (light + dark) */
