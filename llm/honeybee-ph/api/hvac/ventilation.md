@@ -39,6 +39,8 @@ A Passive House ventilation heat-recovery unit (ERV/HRV).
 | `frost_protection_reqd` | `bool` | Whether frost protection is required. |
 | `temperature_below_defrost_used` | `float` | Temperature threshold for defrost activation (C). |
 | `in_conditioned_space` | `bool` | Whether the unit is located in conditioned space. |
+| `subsoil_heat_exchange_efficiency` | `Optional[float]` | Ground-loop effectiveness coefficient (0-1). |
+| `preheated_intake_temperature_c` | `Optional[float]` | Intake-air temperature after subsoil heat exchange (C). |
 
 ---
 

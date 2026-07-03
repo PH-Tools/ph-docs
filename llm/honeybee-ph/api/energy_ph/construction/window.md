@@ -21,6 +21,8 @@ One side of a PH window frame (top, right, bottom, or left).
 | `psi_glazing` | `float` | Glazing-edge psi-value (W/mK). Default: 0.04. |
 | `psi_install` | `float` | Installation psi-value (W/mK). Default: 0.04. |
 | `chi_value` | `float` | Point thermal bridge chi-value (W/K). Default: 0.0. |
+| `solar_absorptance` | `float` | Exterior-surface solar absorptance of the frame (fraction, 0.0-1.0). Used by PHPP's window-frame radiation balance (Areas!AI40 -> Windows!O18). Default: 0.25 (PHPP default). |
+| `thermal_emissivity` | `float` | Exterior-surface long-wave thermal emissivity of the frame (fraction, 0.0-1.0). Used by PHPP's window-frame radiation balance (Areas!AJ40 -> Windows!O19). Default: 0.9 (PHPP default). |
 
 ---
 

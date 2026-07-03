@@ -181,7 +181,17 @@ Library · Honeybee-PH </a> <ul class="nav-tree"><li class="group">
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>width</code></td><td><code>float</code></td><td>Frame element width (m). Default: 0.1.</td></tr><tr><td><code>u_factor</code></td><td><code>float</code></td><td>Frame U-value (W/m2K). Default: 1.0.</td></tr><tr><td><code>psi_glazing</code></td><td><code>float</code></td><td>Glazing-edge psi-value (W/mK). Default: 0.04.</td></tr><tr><td><code>psi_install</code></td><td><code>float</code></td><td>Installation psi-value (W/mK). Default: 0.04.</td></tr><tr><td><code>chi_value</code></td><td><code>float</code></td><td>Point thermal bridge chi-value (W/K). Default: 0.0.</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>width</code></td><td><code>float</code></td><td>Frame element width (m). Default: 0.1.</td></tr><tr><td><code>u_factor</code></td><td><code>float</code></td><td>Frame U-value (W/m2K). Default: 1.0.</td></tr><tr><td><code>psi_glazing</code></td><td><code>float</code></td><td>Glazing-edge psi-value (W/mK). Default: 0.04.</td></tr><tr><td><code>psi_install</code></td><td><code>float</code></td><td>Installation psi-value (W/mK). Default: 0.04.</td></tr><tr><td><code>chi_value</code></td><td><code>float</code></td><td>Point thermal bridge chi-value (W/K). Default: 0.0.</td></tr><tr><td><code>solar_absorptance</code></td><td><code>float</code></td><td>Exterior-surface solar absorptance of the frame (fraction, 0.0-1.0). Used by PHPP’s window-frame radiation balance (Areas!AI40 -> Windows!O18). Default: 0.25 (PHPP default).</td></tr><tr><td><code>thermal_emissivity</code></td><td><code>float</code></td><td>Exterior-surface long-wave thermal emissivity of the frame (fraction, 0.0-1.0). Used by PHPP’s window-frame radiation balance (Areas!AJ40 -> Windows!O19). Default: 0.9 (PHPP default).</td></tr></tbody></table>
 <hr>
 <h2 id="phwindowframe">PhWindowFrame</h2>
 <p>A complete PH window frame with four side elements.</p>

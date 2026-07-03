@@ -268,7 +268,12 @@ Library · Honeybee-PH </a> <ul class="nav-tree"><li class="group">
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>geometry</code></td><td>—</td><td>The 3D line geometry.</td></tr><tr><td><code>display_name</code></td><td><code>str</code></td><td>—</td></tr><tr><td><code>quantity</code></td><td><code>float</code></td><td>Number of identical bridges. Default: 1.0.</td></tr><tr><td><code>psi_value</code></td><td><code>float</code></td><td>Linear thermal transmittance (W/mK). Default: 0.1.</td></tr><tr><td><code>fRsi_value</code></td><td><code>float</code></td><td>Temperature factor at the interior surface. Default: 0.75.</td></tr></tbody></table>
+
+
+
+
+
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>geometry</code></td><td>—</td><td>The 3D line geometry.</td></tr><tr><td><code>display_name</code></td><td><code>str</code></td><td>—</td></tr><tr><td><code>quantity</code></td><td><code>float</code></td><td>Number of identical bridges. Default: 1.0.</td></tr><tr><td><code>psi_value</code></td><td><code>float</code></td><td>Linear thermal transmittance (W/mK). Default: 0.1.</td></tr><tr><td><code>fRsi_value</code></td><td><code>float</code></td><td>Temperature factor at the interior surface. Default: 0.75.</td></tr><tr><td><code>is_interior_pipe</code></td><td><code>bool</code></td><td>True if this bridge represents interior drain/vent pipes (PHPP Areas row 145). When True, the bridge is still counted in the transmission heat-loss total but is excluded from the thermal-bridge radiative/convective conductance corrections and thermal-bridge solar gain. Orthogonal to <code>group_type</code> (an interior pipe keeps its normal group). Default: False.</td></tr></tbody></table>
 <h3 id="properties">Properties</h3>
 
 

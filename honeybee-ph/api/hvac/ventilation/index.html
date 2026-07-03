@@ -222,7 +222,17 @@ Library · Honeybee-PH </a> <ul class="nav-tree"><li class="group">
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td><code>str</code></td><td>User-facing name for the ventilator.</td></tr><tr><td><code>id_num</code></td><td><code>int</code></td><td>Numeric identifier for the ventilator.</td></tr><tr><td><code>quantity</code></td><td><code>int</code></td><td>Number of identical units.</td></tr><tr><td><code>sensible_heat_recovery</code></td><td><code>float</code></td><td>Sensible heat recovery efficiency (0-1).</td></tr><tr><td><code>latent_heat_recovery</code></td><td><code>float</code></td><td>Latent heat recovery efficiency (0-1).</td></tr><tr><td><code>electric_efficiency</code></td><td><code>float</code></td><td>Specific electric power in Wh/m3.</td></tr><tr><td><code>frost_protection_reqd</code></td><td><code>bool</code></td><td>Whether frost protection is required.</td></tr><tr><td><code>temperature_below_defrost_used</code></td><td><code>float</code></td><td>Temperature threshold for defrost activation (C).</td></tr><tr><td><code>in_conditioned_space</code></td><td><code>bool</code></td><td>Whether the unit is located in conditioned space.</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td><code>str</code></td><td>User-facing name for the ventilator.</td></tr><tr><td><code>id_num</code></td><td><code>int</code></td><td>Numeric identifier for the ventilator.</td></tr><tr><td><code>quantity</code></td><td><code>int</code></td><td>Number of identical units.</td></tr><tr><td><code>sensible_heat_recovery</code></td><td><code>float</code></td><td>Sensible heat recovery efficiency (0-1).</td></tr><tr><td><code>latent_heat_recovery</code></td><td><code>float</code></td><td>Latent heat recovery efficiency (0-1).</td></tr><tr><td><code>electric_efficiency</code></td><td><code>float</code></td><td>Specific electric power in Wh/m3.</td></tr><tr><td><code>frost_protection_reqd</code></td><td><code>bool</code></td><td>Whether frost protection is required.</td></tr><tr><td><code>temperature_below_defrost_used</code></td><td><code>float</code></td><td>Temperature threshold for defrost activation (C).</td></tr><tr><td><code>in_conditioned_space</code></td><td><code>bool</code></td><td>Whether the unit is located in conditioned space.</td></tr><tr><td><code>subsoil_heat_exchange_efficiency</code></td><td><code>Optional[float]</code></td><td>Ground-loop effectiveness coefficient (0-1).</td></tr><tr><td><code>preheated_intake_temperature_c</code></td><td><code>Optional[float]</code></td><td>Intake-air temperature after subsoil heat exchange (C).</td></tr></tbody></table>
 <hr>
 <h2 id="phventilationsystem">PhVentilationSystem</h2>
 <p>Passive House Fresh-Air Ventilation System.</p>

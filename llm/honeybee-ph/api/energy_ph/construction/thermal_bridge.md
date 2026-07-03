@@ -52,6 +52,7 @@ A linear thermal bridge with 3D geometry and PH thermal properties.
 | `quantity` | `float` | Number of identical bridges. Default: 1.0. |
 | `psi_value` | `float` | Linear thermal transmittance (W/mK). Default: 0.1. |
 | `fRsi_value` | `float` | Temperature factor at the interior surface. Default: 0.75. |
+| `is_interior_pipe` | `bool` | True if this bridge represents interior drain/vent pipes (PHPP Areas row 145). When True, the bridge is still counted in the transmission heat-loss total but is excluded from the thermal-bridge radiative/convective conductance corrections and thermal-bridge solar gain. Orthogonal to `group_type` (an interior pipe keeps its normal group). Default: False. |
 
 ### Properties
 

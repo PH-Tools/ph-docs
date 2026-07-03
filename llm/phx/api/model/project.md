@@ -26,6 +26,8 @@ A single design variant within a PHX project.
 | `graphics3D` | — | Collects all of the geometry (Polygons, Vertices) in the Project. |
 | `phi_certification_major_version` | — | Return the PHI Certification Version Number. |
 | `zones` | — | Return a list of all the PHX Zones in the variant.building |
+| `window_frame_solar_absorptance` | — | Frame-area-weighted exterior solar absorptance across all apertures (PHPP Areas!AI40). |
+| `window_frame_thermal_emissivity` | — | Frame-area-weighted exterior thermal emissivity across all apertures (PHPP Areas!AJ40). |
 
 ### Methods
 

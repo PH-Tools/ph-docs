@@ -131,6 +131,7 @@ A single sash or glazing unit within an aperture component.
 | `area` | — | Return the area of the element's polygon. |
 | `width` | — | Width of the element's polygon, or perimeter/4 as fallback for non-rectangular shapes. |
 | `height` | — | Height of the element's polygon, or perimeter/4 as fallback for non-rectangular shapes. |
+| `frame_element_areas` | — | Return the (frame-element, area) pairs for the four sides of the Aperture Element. |
 | `frame_area` | — | Return the area of the frame in the Aperture Element. |
 | `frame_factor` | — | Return the % of the Aperture Element which is frame (as opposed to glazing). |
 | `glazing_area` | — | Return the area of the glazing in the Aperture Element. |
