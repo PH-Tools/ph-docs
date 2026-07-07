@@ -27,6 +27,22 @@ Enumeration of allowable pipe material types.
 
 ---
 
+## PhHvacPipeInsulationQuality
+
+Enumeration of allowable pipe-mounting/fixing insulation-quality types.
+
+**Inherits from**: `enumerables.CustomEnum`
+
+### Values
+
+| Value | Meaning |
+|-------|---------|
+| `"1-NONE"` | — |
+| `"2-MODERATE"` | — |
+| `"3-GOOD"` | — |
+
+---
+
 ## PhHvacPipeSegment
 
 A single pipe segment (linear) with geometry and a diameter.
@@ -42,7 +58,7 @@ A single pipe segment (linear) with geometry and a diameter.
 | `insulation_thickness_mm` | — | The insulation thickness in millimeters. |
 | `insulation_conductivity` | — | The insulation thermal conductivity (W/m-K). |
 | `insulation_reflective` | — | True if the insulation has a reflective surface. |
-| `insulation_quality` | — | Reserved for future use. |
+| `insulation_quality` | `PhHvacPipeInsulationQuality` | The quality-level of pipe insulation at fixings, mountings, and junctions. |
 | `daily_period` | — | Hours per day the pipe is in use. |
 | `water_temp_c` | — | The water temperature in degrees Celsius. |
 | `material` | `PhHvacPipeMaterial` | The pipe material type. |

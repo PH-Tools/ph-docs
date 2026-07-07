@@ -138,6 +138,22 @@ Material type for hot water distribution piping.
 
 ---
 
+## PhxHowWaterPipingInsulationQuality
+
+The quality-level of the pipe insulation at mounting/fixing/junction points.
+
+**Inherits from**: `Enum`
+
+### Values
+
+| Member | Value | Meaning |
+|--------|-------|---------|
+| `NONE` | `1` | — |
+| `MODERATE` | `2` | — |
+| `GOOD` | `3` | — |
+
+---
+
 ## PhxHotWaterPipingInchDiameterType
 
 Nominal pipe diameter in inches for hot water piping.

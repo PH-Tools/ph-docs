@@ -32,6 +32,7 @@ Performance parameters for a balanced ventilation unit (HRV/ERV).
 | `temperature_below_defrost_used` | — | — |
 | `subsoil_heat_exchange_efficiency` | — | — |
 | `preheated_intake_temperature_c` | — | — |
+| `sys_type` | — | — |
 
 ---
 

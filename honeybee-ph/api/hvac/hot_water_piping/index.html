@@ -189,6 +189,33 @@ Library · Honeybee-PH </a> <ul class="nav-tree"><li class="group">
 
 <table><thead><tr><th>Value</th><th>Meaning</th></tr></thead><tbody><tr><td><code>"1-COPPER_M"</code></td><td>Copper type M.</td></tr><tr><td><code>"2-COPPER_L"</code></td><td>Copper type L (default).</td></tr><tr><td><code>"3-COPPER_K"</code></td><td>Copper type K.</td></tr><tr><td><code>"4-CPVC_CTS_SDR"</code></td><td>CPVC CTS SDR.</td></tr><tr><td><code>"5-CPVC_SCH_40"</code></td><td>CPVC Schedule 40.</td></tr><tr><td><code>"6-PEX"</code></td><td>PEX tubing.</td></tr><tr><td><code>"7-PE"</code></td><td>Polyethylene tubing.</td></tr><tr><td><code>"8-PEX_CTS_SDR"</code></td><td>PEX CTS SDR.</td></tr></tbody></table>
 <hr>
+<h2 id="phhvacpipeinsulationquality">PhHvacPipeInsulationQuality</h2>
+<p>Enumeration of allowable pipe-mounting/fixing insulation-quality types.</p>
+<p><strong>Inherits from</strong>: <code>enumerables.CustomEnum</code></p>
+<h3 id="values-1">Values</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Value</th><th>Meaning</th></tr></thead><tbody><tr><td><code>"1-NONE"</code></td><td>—</td></tr><tr><td><code>"2-MODERATE"</code></td><td>—</td></tr><tr><td><code>"3-GOOD"</code></td><td>—</td></tr></tbody></table>
+<hr>
 <h2 id="phhvacpipesegment">PhHvacPipeSegment</h2>
 <p>A single pipe segment (linear) with geometry and a diameter.</p>
 <p><strong>Inherits from</strong>: <code>_base._PhHVACBase</code></p>
@@ -248,7 +275,7 @@ Library · Honeybee-PH </a> <ul class="nav-tree"><li class="group">
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>geometry</code></td><td>—</td><td>The 3D line segment geometry of the pipe.</td></tr><tr><td><code>diameter_mm</code></td><td>—</td><td>The pipe diameter in millimeters.</td></tr><tr><td><code>insulation_thickness_mm</code></td><td>—</td><td>The insulation thickness in millimeters.</td></tr><tr><td><code>insulation_conductivity</code></td><td>—</td><td>The insulation thermal conductivity (W/m-K).</td></tr><tr><td><code>insulation_reflective</code></td><td>—</td><td>True if the insulation has a reflective surface.</td></tr><tr><td><code>insulation_quality</code></td><td>—</td><td>Reserved for future use.</td></tr><tr><td><code>daily_period</code></td><td>—</td><td>Hours per day the pipe is in use.</td></tr><tr><td><code>water_temp_c</code></td><td>—</td><td>The water temperature in degrees Celsius.</td></tr><tr><td><code>material</code></td><td><code>PhHvacPipeMaterial</code></td><td>The pipe material type.</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>geometry</code></td><td>—</td><td>The 3D line segment geometry of the pipe.</td></tr><tr><td><code>diameter_mm</code></td><td>—</td><td>The pipe diameter in millimeters.</td></tr><tr><td><code>insulation_thickness_mm</code></td><td>—</td><td>The insulation thickness in millimeters.</td></tr><tr><td><code>insulation_conductivity</code></td><td>—</td><td>The insulation thermal conductivity (W/m-K).</td></tr><tr><td><code>insulation_reflective</code></td><td>—</td><td>True if the insulation has a reflective surface.</td></tr><tr><td><code>insulation_quality</code></td><td><code>PhHvacPipeInsulationQuality</code></td><td>The quality-level of pipe insulation at fixings, mountings, and junctions.</td></tr><tr><td><code>daily_period</code></td><td>—</td><td>Hours per day the pipe is in use.</td></tr><tr><td><code>water_temp_c</code></td><td>—</td><td>The water temperature in degrees Celsius.</td></tr><tr><td><code>material</code></td><td><code>PhHvacPipeMaterial</code></td><td>The pipe material type.</td></tr></tbody></table>
 <h3 id="properties">Properties</h3>
 
 

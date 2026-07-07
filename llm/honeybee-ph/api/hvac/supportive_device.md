@@ -24,6 +24,12 @@ Auxiliary energy supportive device for Passive House HVAC systems.
 | `annual_period_operation_khrs` | `float` | Annual operating period in thousands of hours. |
 | `ihg_utilization_factor` | `float` | Fraction of energy that becomes internal heat gain inside the envelope (0.0-1.0). |
 
+### Properties
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `device_type` | `int` | — |
+
 ### Methods
 
 #### base_attrs_from_dict(_input_dict)
