@@ -395,6 +395,7 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
 </li>
 <li>
 <p><strong>PHPP data models</strong> (<code>phpp_model/</code>) are dataclasses that generate <code>XlItem</code> objects. <code>XlItem</code> (defined in <code>PHX/xl/xl_data.py</code>) carries a sheet name, cell address, write value, optional SI/IP unit conversion, and optional cell/font color.</p>
+<p><strong>Write batching:</strong> interop round trips are expensive (especially on macOS), so section row-writers do not write cell-by-cell. <code>xl_data.merge_xl_item_rows()</code> merges each row’s <code>XlItem</code>s into contiguous column-groups and stacks uniform consecutive rows into 2D-valued block items — one interop write per section column-group. Colored items and irregular rows fall back to per-item writes. Any change to this write path must keep the record/replay invariant green (<code>tests/test_xl_replay/</code>): the final written cell-state must match the recorded golden exactly.</p>
 </li>
 <li>
 <p><strong>Localization</strong> (<code>phpp_localization/</code>) provides shape-file JSON that maps logical field names to cell addresses for a given PHPP version. Currently ships with <strong>English-only</strong> shape files for PHPP v9 (9.6A, 9.7IP) and v10 (10.3, 10.4A, 10.4IP, 10.6, 10.6IP). The version detection code recognizes German (DE) and Spanish (ES) worksheet names for navigation, but no DE/ES shape files are provided.</p>

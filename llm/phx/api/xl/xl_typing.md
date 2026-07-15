@@ -28,6 +28,12 @@ Protocol defining the interface for a single Excel cell range.
 
 Protocol defining the interface for an Excel range object.
 
+### Properties
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `raw_value` | — | The range's value, bypassing the converter layer (maps onto 'value' here). |
+
 ### Methods
 
 #### end(*args, **kwargs)

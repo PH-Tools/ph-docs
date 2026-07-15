@@ -98,7 +98,7 @@ An Excel connection Facade / Interface.
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `worksheet_names` | — | — |
+| `worksheet_names` | — | Cached set of the Workbook's worksheet names, upper-cased. |
 | `excel_running` | — | Returns True if Excel is currently running, False if not |
 | `apps` | — | Return the xl framework 'apps' object. |
 | `books` | — | Return the xl framework 'books' object. |
