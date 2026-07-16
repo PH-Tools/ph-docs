@@ -26,6 +26,7 @@ A single XLItem which can be written out to a specific XL Range.
 
 | Property | Type | Description |
 |----------|------|-------------|
+| `xl_anchor_cell` | — | The range's top-left (anchor) cell. ie: 'A1:D10' -> 'A1', 'L41' -> 'L41'. |
 | `xl_row_number` | — | — |
 | `xl_col_number` | — | — |
 | `xl_col_alpha` | — | — |
