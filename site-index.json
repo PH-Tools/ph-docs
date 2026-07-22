@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-21T04:57:35Z",
+  "generated": "2026-07-22T04:57:17Z",
   "base_url": "https://docs.passivehousetools.com",
   "llm_nav": {
     "instructions": "/llm-instructions.md",
@@ -77,6 +77,12 @@
           "title": "boundarycondition",
           "path": "/honeybee-ph/api/energy_ph/boundarycondition/",
           "raw_path": "/llm/honeybee-ph/api/energy_ph/boundarycondition.md",
+          "section": "energy_ph"
+        },
+        {
+          "title": "dwellings",
+          "path": "/honeybee-ph/api/energy_ph/dwellings/",
+          "raw_path": "/llm/honeybee-ph/api/energy_ph/dwellings.md",
           "section": "energy_ph"
         },
         {
@@ -1228,6 +1234,12 @@
           "section": "output"
         },
         {
+          "title": "resilience_set_data",
+          "path": "/honeybee-revive/api/output/resilience_set_data/",
+          "raw_path": "/llm/honeybee-revive/api/output/resilience_set_data.md",
+          "section": "output"
+        },
+        {
           "title": "resilience_summer_graphs",
           "path": "/honeybee-revive/api/output/resilience_summer_graphs/",
           "raw_path": "/llm/honeybee-revive/api/output/resilience_summer_graphs.md",
@@ -1237,6 +1249,12 @@
           "title": "resilience_winter_graphs",
           "path": "/honeybee-revive/api/output/resilience_winter_graphs/",
           "raw_path": "/llm/honeybee-revive/api/output/resilience_winter_graphs.md",
+          "section": "output"
+        },
+        {
+          "title": "set_calculator",
+          "path": "/honeybee-revive/api/output/set_calculator/",
+          "raw_path": "/llm/honeybee-revive/api/output/set_calculator.md",
           "section": "output"
         }
       ]

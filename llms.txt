@@ -21,6 +21,7 @@ Grasshopper-native Passive House modeling. Build PH-compliant models inside Rhin
 - [API Reference: space](https://docs.passivehousetools.com/llm/honeybee-ph/api/space.md)
 - [API Reference: team](https://docs.passivehousetools.com/llm/honeybee-ph/api/team.md)
 - [energy_ph: boundarycondition](https://docs.passivehousetools.com/llm/honeybee-ph/api/energy_ph/boundarycondition.md)
+- [energy_ph: dwellings](https://docs.passivehousetools.com/llm/honeybee-ph/api/energy_ph/dwellings.md)
 - [construction: _base](https://docs.passivehousetools.com/llm/honeybee-ph/api/energy_ph/construction/_base.md)
 - [construction: thermal_bridge](https://docs.passivehousetools.com/llm/honeybee-ph/api/energy_ph/construction/thermal_bridge.md)
 - [construction: window](https://docs.passivehousetools.com/llm/honeybee-ph/api/energy_ph/construction/window.md)
@@ -211,8 +212,10 @@ Carbon & energy analysis for building design. Resilience & embodied-carbon workf
 - [API Reference: national_emissions](https://docs.passivehousetools.com/llm/honeybee-revive/api/national_emissions.md)
 - [cli: graph](https://docs.passivehousetools.com/llm/honeybee-revive/api/cli/graph.md)
 - [output: resilience_hourly_data](https://docs.passivehousetools.com/llm/honeybee-revive/api/output/resilience_hourly_data.md)
+- [output: resilience_set_data](https://docs.passivehousetools.com/llm/honeybee-revive/api/output/resilience_set_data.md)
 - [output: resilience_summer_graphs](https://docs.passivehousetools.com/llm/honeybee-revive/api/output/resilience_summer_graphs.md)
 - [output: resilience_winter_graphs](https://docs.passivehousetools.com/llm/honeybee-revive/api/output/resilience_winter_graphs.md)
+- [output: set_calculator](https://docs.passivehousetools.com/llm/honeybee-revive/api/output/set_calculator.md)
 
 ## PH-ADORB
 Annualized De-carbonization of Retrofits for Buildings. Lifecycle carbon-cost analysis for building retrofit decisions.
