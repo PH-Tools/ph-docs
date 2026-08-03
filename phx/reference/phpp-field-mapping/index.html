@@ -1537,7 +1537,9 @@ Copy URL
 <h3 id="ducts">ducts</h3>
 <ul>
 <li>Header locator: col <code>E</code>, string <code>"Round"</code></li>
-<li>Entry locator: col <code>D</code>, string <code>"1"</code></li>
+<li>Header search range: rows <code>1:300</code> (PHPP 10.6 header: row <code>86</code>)</li>
+<li>First entry row: header + <code>9</code> (PHPP 10.6: row <code>95</code>)</li>
+<li>End locator: col <code>D</code>, string containing <code>"Additional"</code> (PHPP 10.6: row <code>115</code>; last entry row <code>114</code>)</li>
 </ul>
 
 
@@ -1649,7 +1651,12 @@ Copy URL
 
 
 
-<table><thead><tr><th>Field</th><th>Column</th><th>Unit</th></tr></thead><tbody><tr><td><code>quantity</code></td><td>D</td><td></td></tr><tr><td><code>diameter</code></td><td>F</td><td>MM</td></tr><tr><td><code>width</code></td><td>F</td><td>MM</td></tr><tr><td><code>height</code></td><td>G</td><td>MM</td></tr><tr><td><code>insul_thickness</code></td><td>H</td><td>MM</td></tr><tr><td><code>insul_conductivity</code></td><td>I</td><td>W/MK</td></tr><tr><td><code>insul_reflective</code></td><td>J</td><td></td></tr><tr><td><code>sup_air_duct_len</code></td><td>L</td><td>M</td></tr><tr><td><code>oda_air_duct_len</code></td><td>M</td><td>M</td></tr><tr><td><code>exh_air_duct_len</code></td><td>N</td><td>M</td></tr><tr><td><code>duct_assign_1</code></td><td>Q</td><td></td></tr><tr><td><code>duct_assign_2</code></td><td>R</td><td></td></tr><tr><td><code>duct_assign_3</code></td><td>S</td><td></td></tr><tr><td><code>duct_assign_4</code></td><td>T</td><td></td></tr><tr><td><code>duct_assign_5</code></td><td>U</td><td></td></tr><tr><td><code>duct_assign_6</code></td><td>V</td><td></td></tr><tr><td><code>duct_assign_7</code></td><td>W</td><td></td></tr><tr><td><code>duct_assign_8</code></td><td>X</td><td></td></tr><tr><td><code>duct_assign_9</code></td><td>Z</td><td></td></tr><tr><td><code>duct_assign_10</code></td><td>Z</td><td></td></tr></tbody></table>
+<table><thead><tr><th>Field</th><th>Column</th><th>Unit</th></tr></thead><tbody><tr><td><code>quantity</code></td><td>D</td><td></td></tr><tr><td><code>diameter</code></td><td>E</td><td>MM</td></tr><tr><td><code>width</code></td><td>F</td><td>MM</td></tr><tr><td><code>height</code></td><td>G</td><td>MM</td></tr><tr><td><code>insul_thickness</code></td><td>H</td><td>MM</td></tr><tr><td><code>insul_conductivity</code></td><td>I</td><td>W/MK</td></tr><tr><td><code>insul_reflective</code></td><td>J</td><td></td></tr><tr><td><code>duct_length</code></td><td>L</td><td>M</td></tr><tr><td><code>is_supply_flag</code></td><td>M</td><td></td></tr><tr><td><code>is_exhaust_flag</code></td><td>N</td><td></td></tr><tr><td><code>duct_assign_1</code></td><td>Q</td><td></td></tr><tr><td><code>duct_assign_2</code></td><td>R</td><td></td></tr><tr><td><code>duct_assign_3</code></td><td>S</td><td></td></tr><tr><td><code>duct_assign_4</code></td><td>T</td><td></td></tr><tr><td><code>duct_assign_5</code></td><td>U</td><td></td></tr><tr><td><code>duct_assign_6</code></td><td>V</td><td></td></tr><tr><td><code>duct_assign_7</code></td><td>W</td><td></td></tr><tr><td><code>duct_assign_8</code></td><td>X</td><td></td></tr><tr><td><code>duct_assign_9</code></td><td>Y</td><td></td></tr><tr><td><code>duct_assign_10</code></td><td>Z</td><td></td></tr></tbody></table>
+<p>For round rows PHX writes only diameter E; for rectangular rows it writes only F/G. PHX
+writes <code>1</code> to one of the M/N type flags and to the selected Q-Z assignment column for the
+corresponding 1-based ventilation-unit row. Omitted cells are not cleared, so export assumes
+clean input rows. K (conductance), O (duct type), and P (design airflow) are PHPP formulas
+and are never overwritten by PHX.</p>
 <hr>
 <h2 id="heating">Heating</h2>
 <p>Worksheet key: <code>HEATING_DEMAND</code></p>

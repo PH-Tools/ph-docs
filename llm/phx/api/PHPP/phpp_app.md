@@ -152,6 +152,14 @@ Write all of the used Ventilator Units from a PhxProject to the PHPP 'Additional
 |-----|------|-------------|
 | `phx_project` | — | — |
 
+#### write_project_vent_ducting(phx_project)
+
+Write duct sections between ventilation units and the thermal envelope to PHPP.
+
+| Arg | Type | Description |
+|-----|------|-------------|
+| `phx_project` | — | Project containing the ventilation ducting. |
+
 #### write_project_spaces(phx_project)
 
 Write all of the PH-Spaces from a PhxProject to the PHPP 'Additional Vent' worksheet.

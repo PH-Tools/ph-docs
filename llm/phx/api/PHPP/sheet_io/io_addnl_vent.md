@@ -132,7 +132,7 @@ Reads and writes ventilation duct data in the PHPP 'Additional Vent' worksheet.
 
 #### find_section_header_row(_row_start, _row_end)
 
-Return the row number of the 'Rooms' section header.
+Return the row number of the ventilation-duct section header.
 
 | Arg | Type | Description |
 |-----|------|-------------|

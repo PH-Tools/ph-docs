@@ -401,7 +401,7 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
 <p><strong>Localization</strong> (<code>phpp_localization/</code>) provides shape-file JSON that maps logical field names to cell addresses for a given PHPP version. Currently ships with <strong>English-only</strong> shape files for PHPP v9 (9.6A, 9.7IP) and v10 (10.3, 10.4A, 10.4IP, 10.6, 10.6IP). The version detection code recognizes German (DE) and Spanish (ES) worksheet names for navigation, but no DE/ES shape files are provided.</p>
 </li>
 <li>
-<p><strong><code>PHPPConnection</code> exposes 20 <code>write_*</code> methods</strong> — 17 functional write operations plus 3 non-residential stubs (<code>write_non_res_utilization_profiles</code>, <code>write_non_res_space_lighting</code>, <code>write_non_res_IHG</code>).</p>
+<p><strong><code>PHPPConnection</code> exposes 21 <code>write_*</code> methods</strong> — 18 functional write operations plus 3 non-residential stubs (<code>write_non_res_utilization_profiles</code>, <code>write_non_res_space_lighting</code>, <code>write_non_res_IHG</code>). The canonical write sequence writes ventilation units first, then ducts, then rooms; duct assignments use the same project order as the ventilation-unit rows.</p>
 </li>
 </ol>
 <h3 id="usage-2">Usage</h3>
@@ -414,7 +414,11 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
 <span class="line"><span style="color:#E1E4E8">    phpp_conn.write_certification_config(phx_project)</span></span>
 <span class="line"><span style="color:#E1E4E8">    phpp_conn.write_climate_data(phx_project)</span></span>
 <span class="line"><span style="color:#E1E4E8">    phpp_conn.write_project_constructions(phx_project)</span></span>
-<span class="line"><span style="color:#6A737D">    # ... 14 more write operations</span></span></code></pre>
+<span class="line"><span style="color:#6A737D">    # ... envelope and component writes ...</span></span>
+<span class="line"><span style="color:#E1E4E8">    phpp_conn.write_project_ventilators(phx_project)</span></span>
+<span class="line"><span style="color:#E1E4E8">    phpp_conn.write_project_vent_ducting(phx_project)</span></span>
+<span class="line"><span style="color:#E1E4E8">    phpp_conn.write_project_spaces(phx_project)</span></span>
+<span class="line"><span style="color:#6A737D">    # ... remaining project writes ...</span></span></code></pre>
 <p><code>in_silent_mode()</code> is a context manager on <code>XLConnection</code> that disables screen updating, display alerts, and sets calculation to manual on enter; restores all three and triggers recalculation on exit.</p>
 <hr>
 <h2 id="ppp-exporter-to_ppp">PPP Exporter (<code>to_PPP/</code>)</h2>

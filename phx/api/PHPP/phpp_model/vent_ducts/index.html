@@ -163,7 +163,35 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
       </li></ul>
       </li></ul> </aside> <script type="module">document.querySelectorAll(".nav-tree .group > button").forEach(e=>{e.addEventListener("click",()=>{const t=e.parentElement.classList.toggle("is-open");e.setAttribute("aria-expanded",String(t))})});</script>  </div> <div> <!-- Regular content page: simple breadcrumb header -->
         <header class="content-head"> <div class="content-head__crumb">  <span>API Reference</span> <span class="sep">&rsaquo;</span>  <span class="current">vent_ducts</span> </div> </header>  <article class="article" data-pagefind-body data-pagefind-meta="library:PHX"> <h1 id="vent_ducts">vent_ducts</h1>
+<p>Model class for a single PHPP Additional Ventilation duct row.</p>
 <p><strong>Source</strong>: <code>PHX/vent_ducts.py</code></p>
+<hr>
+<h2 id="ventductrow">VentDuctRow</h2>
+<p>A single duct entry in the PHPP Additional Ventilation worksheet.</p>
+<h3 id="methods">Methods</h3>
+<h4 id="create_xl_items_sheet_name-_row_num">create_xl_items(_sheet_name, _row_num)</h4>
+<p>Build the Excel items for one PHPP duct entry row.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_sheet_name</code></td><td>—</td><td>Worksheet name to write.</td></tr><tr><td><code>_row_num</code></td><td>—</td><td>Worksheet row number for the duct entry.</td></tr></tbody></table>
 <hr> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/PHX/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
 (function () {
   // ---------- Modal open / close ----------
