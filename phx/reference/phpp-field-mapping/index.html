@@ -1537,7 +1537,9 @@ Copy URL
 <h3 id="ducts">ducts</h3>
 <ul>
 <li>Header locator: col <code>E</code>, string <code>"Round"</code></li>
-<li>Header search range: rows <code>1:300</code> (PHPP 10.6 header: row <code>86</code>)</li>
+<li>Header search: starts with rows <code>1:300</code>, then continues in 300-row blocks up to row
+<code>10000</code> when inserted room rows push the Ducts section down (PHPP 10.6 default header:
+row <code>86</code>)</li>
 <li>First entry row: header + <code>9</code> (PHPP 10.6: row <code>95</code>)</li>
 <li>End locator: col <code>D</code>, string containing <code>"Additional"</code> (PHPP 10.6: row <code>115</code>; last entry row <code>114</code>)</li>
 </ul>
