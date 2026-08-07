@@ -18,7 +18,7 @@ Lighting utilization schedule defining daily operating hours and annual utilizat
 | `daily_operating_hours` | — | Return the total Daily Operating Hours (end-hour - start-hour). |
 | `annual_operating_hours` | — | Return the total Annual Operating Hours (daily-hours * annual-util-days). |
 | `unique_key` | — | Return a key unique to this 'type' (collection of values) of pattern |
-| `full_load_lighting_hours` | — | Return the annual full-load lighting hours, clamped to 0-8760. |
+| `full_load_lighting_hours` | — | Return the annual equivalent full-load lighting hours (EFLH), clamped 0-8760. |
 
 ### Methods
 

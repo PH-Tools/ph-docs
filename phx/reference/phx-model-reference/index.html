@@ -609,6 +609,46 @@ Copy URL
 </ul>
 <h3 id="program--load--schedule">Program = Load + Schedule</h3>
 <p>Ventilation, occupancy, and lighting each follow: <code>PhxProgram* = PhxLoad* + PhxSchedule*</code>. The load holds numeric values (airflow, people, watts); the schedule holds operating periods and hours.</p>
+<h3 id="occupancy-channels-and-lighting-eflh">Occupancy Channels and Lighting EFLH</h3>
+<p>HBJSON occupancy reaches WUFI XML and METr JSON through two independent channels:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Channel</th><th>PHX field</th><th>WUFI XML</th><th>METr JSON</th></tr></thead><tbody><tr><td>Explicit Passive House occupancy</td><td><code>PhxZone.res_occupant_quantity</code></td><td><code>OccupantQuantityUserDef</code></td><td><code>loadsZ.nOcc</code></td></tr><tr><td>Derived Honeybee People load</td><td><code>PhxSpace.occupancy.load.people_per_m2</code> / <code>peak_occupancy</code></td><td><code>LoadPerson/NumberOccupants</code></td><td><code>loadsZ.lPersZ[].nOcc</code></td></tr></tbody></table>
+<p>The channels are mutually exclusive per dwelling group. If any pre-merge Honeybee Room in a
+dwelling group carries explicit PH occupancy, PHX suppresses the derived Space occupancy for
+every Room in that group. Otherwise it derives occupants from the Honeybee People load. An
+untagged Room is a group of one. The gate is group-level because the upstream <em>Set Occupancy</em>
+workflow normalizes <code>people_per_area</code> across the whole dwelling; a per-Room gate would leak
+derived occupants from the other Rooms and double-count the same people. PHX distributes each
+Room’s derived total among its Spaces by their share of total PH Space floor area, preserving
+the Room total even when the Spaces do not tile the Honeybee Room.</p>
+<p><code>PhxScheduleLighting.full_load_lighting_hours</code> is an equivalent-full-load-hours (EFLH) value:
+the schedule’s annual operating-window hours multiplied by its relative utilization factor,
+clamped to 0-8760. It is not merely the operating window. This follows the Phius non-residential
+loads protocol: the shared occupancy utilization pattern describes when the space is in use,
+while lighting EFLH carries the load-weighted annual lighting operation and overrides the
+lighting pattern in WUFI.</p>
 <h3 id="dict-keyed-vs-list-collections">Dict-Keyed vs List Collections</h3>
 <ul>
 <li><strong>Dict-keyed</strong> (by identifier/key): <code>assembly_types</code>, <code>window_types</code>, <code>shade_types</code>, <code>_devices</code>, <code>_thermal_bridges</code> — O(1) lookup</li>
@@ -695,6 +735,11 @@ Copy URL
 <h3 id="key-structural-differences">Key Structural Differences</h3>
 <p><strong>Libraries vs inline:</strong> Honeybee stores constructions/schedules inline on rooms and faces. PHX extracts them into project-level libraries and components reference by identifier.</p>
 <p><strong>Room → Zone + Space split:</strong> A single HB Room may become one PhxZone with one PhxSpace, or multiple rooms may be grouped into a single zone with multiple spaces (grouped by <code>ph_bldg_segment</code>).</p>
+<p><strong>WUFI load-only Spaces:</strong> A WUFI zone may contain person/lighting utilization-zone records that
+have no matching <code>RoomsVentilation</code> record. The WUFI importer still creates a <code>PhxSpace</code> for each
+person-load record so those loads survive a round-trip. Such a Space has zero ventilation airflow;
+the WUFI exporter includes it in <code>LoadsPersonsPH</code> / <code>LoadsLightingsPH</code> but correctly omits it from
+<code>RoomsVentilation</code>.</p>
 <p><strong>Program composition:</strong> HB stores loads and schedules separately. PHX pairs them: <code>PhxProgramVentilation</code> = <code>PhxLoadVentilation</code> + <code>PhxScheduleVentilation</code>.</p>
 <p><strong>HVAC disaggregation:</strong> HB uses high-level <code>IdealAirSystem</code>. PHX disaggregates into specific device types (ventilators, heaters, heat pumps, hot water tanks, piping) with usage profiles specifying coverage percentages.</p>
 <h3 id="conversion-entry-points">Conversion Entry Points</h3>

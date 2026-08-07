@@ -225,6 +225,26 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
 
 <table><thead><tr><th>Entry point</th><th><code>_group_components</code></th><th><code>_merge_faces</code></th><th><code>_merge_spaces_by_erv</code></th><th><code>_merge_exhaust_vent_devices</code></th></tr></thead><tbody><tr><td><code>hbjson_to_wufi_xml.py</code></td><td>CLI arg</td><td>CLI arg</td><td>CLI arg</td><td>CLI arg</td></tr><tr><td><code>hbjson_to_metr_json.py</code></td><td>CLI arg</td><td>CLI arg</td><td>CLI arg</td><td>CLI arg</td></tr><tr><td><code>hbjson_to_phpp.py</code></td><td><code>True</code> (hardcoded)</td><td><code>False</code> (default)</td><td><code>False</code> (default)</td><td><code>False</code> (default)</td></tr><tr><td><code>hbjson_to_ppp.py</code></td><td><code>False</code> (hardcoded)</td><td><code>False</code> (hardcoded)</td><td><code>True</code> (hardcoded)</td><td><code>False</code> (hardcoded)</td></tr></tbody></table>
 <p>Then each exporter serializes the <code>PhxProject</code> to its target format.</p>
+<h3 id="ph-style-and-honeybee-style-schedule-fallback">PH-style and Honeybee-style schedule fallback</h3>
+<p><code>from_HBJSON/create_schedules.py</code> supports both schedule representations that occur in source
+models. When a schedule has explicit Passive House <code>daily_operating_periods</code>, PHX preserves the
+PH-style start/end windows, operating days, and relative utilization factor. When those periods
+are absent, PHX derives an HB-style fallback from the Honeybee hourly schedule instead of
+exporting an all-zero utilization factor.</p>
+<p>For occupancy and lighting, the fallback is a <code>0 / 24 / 365</code> pattern whose relative utilization
+factor is the annual mean of the hourly Honeybee values. The two representations are equivalent
+at the annual level:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>annual utilization = operating-window hours / 8760 * relative utilization factor</span></span></code></pre>
+<p>Thus a PH-style <code>7-18</code>, 250-day pattern at factor <code>1.0</code> and a <code>0-24</code>, 365-day pattern at factor
+<code>0.313927</code> carry the same annual utilization. Ventilation follows the same PH-style-versus-HB-style
+branching pattern but uses its existing four-part Honeybee fallback because ventilation needs
+daily operating periods rather than a single annual mean.</p>
+<p>Lighting full-load hours are then calculated as the lighting schedule’s annual operating-window
+hours multiplied by its relative utilization factor. This is EFLH (the sum of hourly load
+fractions), not the raw window. The convention comes from the 2021 Phius non-residential loads
+protocol: use one occupancy pattern for the space, then use EFLH for lighting because WUFI treats
+the EFLH input as the governing lighting value. Keeping the fallback and EFLH calculation together
+means <code>8760 * mean(hourly lighting values)</code> reproduces the source schedule’s annual lighting load.</p>
 <hr>
 <h2 id="wufi-xml-exporter-to_wufi_xml">WUFI XML Exporter (<code>to_WUFI_XML/</code>)</h2>
 <p><strong>Pattern:</strong> Schema-based recursive conversion to XML DOM</p>
@@ -537,6 +557,17 @@ schema maps each side explicitly.</p>
 <p><strong>Entry point</strong> (<code>phx_converter.py</code>): <code>convert_WUFI_XML_to_PHX_project(_wufi_xml_project: WUFIplusProject) -> PhxProject</code> — a thin wrapper that calls <code>_PhxProject()</code> from <code>phx_schemas</code>.</p>
 </li>
 </ol>
+<h3 id="wufi-utilization-zones-without-ventilation-rooms">WUFI utilization zones without ventilation rooms</h3>
+<p>WUFI does not require its three per-zone lists to have identical membership. A zone can contain
+<code>LoadsPersonsPH</code> and <code>LoadsLightingsPH</code> records for utilization zones that are absent from
+<code>RoomsVentilation</code> (for example, stairs, corridors, elevator areas, and laundry rooms with no
+mechanical ventilation assignment).</p>
+<p>The importer therefore builds <code>PhxSpace</code> objects in person-load order from the union of person
+loads and ventilation rooms. Matching records are joined by name, duplicate-named ventilation
+rooms remain distinct, and load-only Spaces take their floor area from
+<code>FloorAreaUtilizationZone</code>. On export, <code>LoadsPersonsPH</code> and <code>LoadsLightingsPH</code> include every
+Space, while <code>RoomsVentilation</code> includes only Spaces with nonzero ventilation airflow. This
+preserves WUFI’s asymmetric list membership through a WUFI XML → PHX → WUFI XML round-trip.</p>
 <h3 id="full-pipeline">Full pipeline</h3>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>WUFI XML file (UTF-8)</span></span>
 <span class="line"><span>    |  get_WUFI_XML_file_as_dict()</span></span>
