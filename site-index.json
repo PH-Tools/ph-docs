@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-12T03:53:36Z",
+  "generated": "2026-08-12T21:46:54Z",
   "base_url": "https://docs.passivehousetools.com",
   "llm_nav": {
     "instructions": "/llm-instructions.md",
@@ -239,6 +239,12 @@
           "title": "aisi_s250_21",
           "path": "/honeybee-ph/api/utils/aisi_s250_21/",
           "raw_path": "/llm/honeybee-ph/api/utils/aisi_s250_21.md",
+          "section": "utils"
+        },
+        {
+          "title": "aperture_psi_install",
+          "path": "/honeybee-ph/api/utils/aperture_psi_install/",
+          "raw_path": "/llm/honeybee-ph/api/utils/aperture_psi_install.md",
           "section": "utils"
         },
         {
@@ -906,6 +912,12 @@
           "title": "spaces",
           "path": "/phx/api/model/spaces/",
           "raw_path": "/llm/phx/api/model/spaces.md",
+          "section": "model"
+        },
+        {
+          "title": "transforms",
+          "path": "/phx/api/model/transforms/",
+          "raw_path": "/llm/phx/api/model/transforms.md",
           "section": "model"
         },
         {

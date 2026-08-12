@@ -132,7 +132,7 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
         <ul class="children"><li><a class="" href="/phx/api/from_WUFI_XML/phx_converter/">phx_converter</a></li><li><a class="" href="/phx/api/from_WUFI_XML/phx_schemas/">phx_schemas</a></li><li><a class="" href="/phx/api/from_WUFI_XML/read_WUFI_XML_file/">read_WUFI_XML_file</a></li><li><a class="" href="/phx/api/from_WUFI_XML/wufi_file_schema/">wufi_file_schema</a></li><li><a class="" href="/phx/api/from_WUFI_XML/wufi_file_types/">wufi_file_types</a></li></ul>
       </li><li class="group is-open">
         <button aria-expanded="true">model<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
-        <ul class="children"><li><a class="" href="/phx/api/model/assembly_pathways/">assembly_pathways</a></li><li><a class="" href="/phx/api/model/building/">building</a></li><li><a class="" href="/phx/api/model/certification/">certification</a></li><li><a class="is-active" href="/phx/api/model/components/">components</a></li><li><a class="" href="/phx/api/model/constructions/">constructions</a></li><li><a class="" href="/phx/api/model/elec_equip/">elec_equip</a></li><li><a class="" href="/phx/api/model/geometry/">geometry</a></li><li><a class="" href="/phx/api/model/ground/">ground</a></li><li><a class="" href="/phx/api/model/phx_site/">phx_site</a></li><li><a class="" href="/phx/api/model/project/">project</a></li><li><a class="" href="/phx/api/model/shades/">shades</a></li><li><a class="" href="/phx/api/model/spaces/">spaces</a></li><li><a class="" href="/phx/api/model/utilization_patterns/">utilization_patterns</a></li><li class="group">
+        <ul class="children"><li><a class="" href="/phx/api/model/assembly_pathways/">assembly_pathways</a></li><li><a class="" href="/phx/api/model/building/">building</a></li><li><a class="" href="/phx/api/model/certification/">certification</a></li><li><a class="is-active" href="/phx/api/model/components/">components</a></li><li><a class="" href="/phx/api/model/constructions/">constructions</a></li><li><a class="" href="/phx/api/model/elec_equip/">elec_equip</a></li><li><a class="" href="/phx/api/model/geometry/">geometry</a></li><li><a class="" href="/phx/api/model/ground/">ground</a></li><li><a class="" href="/phx/api/model/phx_site/">phx_site</a></li><li><a class="" href="/phx/api/model/project/">project</a></li><li><a class="" href="/phx/api/model/shades/">shades</a></li><li><a class="" href="/phx/api/model/spaces/">spaces</a></li><li><a class="" href="/phx/api/model/transforms/">transforms</a></li><li><a class="" href="/phx/api/model/utilization_patterns/">utilization_patterns</a></li><li class="group">
         <button aria-expanded="false">enums<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
         <ul class="children"><li><a class="" href="/phx/api/model/enums/building/">building</a></li><li><a class="" href="/phx/api/model/enums/elec_equip/">elec_equip</a></li><li><a class="" href="/phx/api/model/enums/foundations/">foundations</a></li><li><a class="" href="/phx/api/model/enums/hvac/">hvac</a></li><li><a class="" href="/phx/api/model/enums/phi_certification_phpp_10/">phi_certification_phpp_10</a></li><li><a class="" href="/phx/api/model/enums/phi_certification_phpp_9/">phi_certification_phpp_9</a></li><li><a class="" href="/phx/api/model/enums/phius_certification/">phius_certification</a></li><li><a class="" href="/phx/api/model/enums/phx_site/">phx_site</a></li></ul>
       </li><li class="group">
@@ -376,26 +376,8 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
 <p>PHPP old-style shading dimensions for an aperture element.</p>
 <p><strong>Inherits from</strong>: <code>PhxComponentBase</code></p>
 <hr>
-<h2 id="phxapertureelement">PhxApertureElement</h2>
-<p>A single sash or glazing unit within an aperture component.</p>
-<p><strong>Inherits from</strong>: <code>PhxComponentBase</code></p>
-<h3 id="attributes">Attributes</h3>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>shading_dimensions</code></td><td><code>PhxApertureShadingDimensions</code></td><td>PHPP-style horizon, reveal, and overhang dimensions. Default: new PhxApertureShadingDimensions().</td></tr></tbody></table>
+<h2 id="phxapertureelementpsiinstall">PhxApertureElementPsiInstall</h2>
+<p>Resolved per-edge psi-install values (W/mK) for a single aperture element.</p>
 <h3 id="properties-2">Properties</h3>
 
 
@@ -417,6 +399,29 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
 
 
 
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>values</code></td><td>—</td><td>The four edge values in (top, right, bottom, left) order.</td></tr><tr><td><code>unique_key</code></td><td>—</td><td>A stable, content-keyed identity string for grouping / variant synthesis.</td></tr></tbody></table>
+<hr>
+<h2 id="phxapertureelement">PhxApertureElement</h2>
+<p>A single sash or glazing unit within an aperture component.</p>
+<p><strong>Inherits from</strong>: <code>PhxComponentBase</code></p>
+<h3 id="attributes">Attributes</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>shading_dimensions</code></td><td><code>PhxApertureShadingDimensions</code></td><td>PHPP-style horizon, reveal, and overhang dimensions. Default: new PhxApertureShadingDimensions().</td></tr></tbody></table>
+<h3 id="properties-3">Properties</h3>
 
 
 
@@ -447,7 +452,32 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>area</code></td><td>—</td><td>Return the area of the element’s polygon.</td></tr><tr><td><code>width</code></td><td>—</td><td>Width of the element’s polygon, or perimeter/4 as fallback for non-rectangular shapes.</td></tr><tr><td><code>height</code></td><td>—</td><td>Height of the element’s polygon, or perimeter/4 as fallback for non-rectangular shapes.</td></tr><tr><td><code>frame_element_areas</code></td><td>—</td><td>Return the (frame-element, area) pairs for the four sides of the Aperture Element.</td></tr><tr><td><code>frame_area</code></td><td>—</td><td>Return the area of the frame in the Aperture Element.</td></tr><tr><td><code>frame_factor</code></td><td>—</td><td>Return the % of the Aperture Element which is frame (as opposed to glazing).</td></tr><tr><td><code>glazing_area</code></td><td>—</td><td>Return the area of the glazing in the Aperture Element.</td></tr><tr><td><code>glazing_factor</code></td><td>—</td><td>Return the % of the Aperture Element which is glazing (as opposed to frame).</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>resolved_psi_install</code></td><td>—</td><td>The element’s effective per-edge psi-install values (W/mK).</td></tr><tr><td><code>area</code></td><td>—</td><td>Return the area of the element’s polygon.</td></tr><tr><td><code>width</code></td><td>—</td><td>Width of the element’s polygon, or perimeter/4 as fallback for non-rectangular shapes.</td></tr><tr><td><code>height</code></td><td>—</td><td>Height of the element’s polygon, or perimeter/4 as fallback for non-rectangular shapes.</td></tr><tr><td><code>frame_element_areas</code></td><td>—</td><td>Return the (frame-element, area) pairs for the four sides of the Aperture Element.</td></tr><tr><td><code>frame_area</code></td><td>—</td><td>Return the area of the frame in the Aperture Element.</td></tr><tr><td><code>frame_factor</code></td><td>—</td><td>Return the % of the Aperture Element which is frame (as opposed to glazing).</td></tr><tr><td><code>glazing_area</code></td><td>—</td><td>Return the area of the glazing in the Aperture Element.</td></tr><tr><td><code>glazing_factor</code></td><td>—</td><td>Return the % of the Aperture Element which is glazing (as opposed to frame).</td></tr></tbody></table>
 <h3 id="methods-1">Methods</h3>
 <h4 id="is_equivalentother">is_equivalent(other)</h4>
 <p>Return True if the two elements are equivalent.</p>
@@ -524,7 +554,7 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
 
 
 <table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>host</code></td><td>—</td><td>The parent opaque component this aperture is installed in.</td></tr></tbody></table>
-<h3 id="properties-3">Properties</h3>
+<h3 id="properties-4">Properties</h3>
 
 
 
@@ -580,7 +610,12 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
 
 
 
-<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>install_depth</code></td><td>—</td><td>Return the installation depth of the Aperture.</td></tr><tr><td><code>average_shading_d_reveal</code></td><td>—</td><td>The average shading ‘reveal’ distance of the Aperture’s Elements from the glass.</td></tr><tr><td><code>default_monthly_shading_correction_factor</code></td><td>—</td><td>Return the default monthly shading correction factor.</td></tr><tr><td><code>shade_type_id_num</code></td><td>—</td><td>Return the ID-Number of the Component Construction’s Shade-Type, or -1 if None.</td></tr><tr><td><code>window_type_id_num</code></td><td>—</td><td>ID number of the assigned window construction type.</td></tr><tr><td><code>polygons</code></td><td>—</td><td>Collected polygons from all child elements that have geometry assigned.</td></tr><tr><td><code>polygon_ids</code></td><td>—</td><td>Return a Set of all the Polygon-id numbers found in the Component’s Polygon group.</td></tr><tr><td><code>polygon_ids_sorted</code></td><td>—</td><td>Return a Tuple of all the Polygon-id numbers found in the Component’s Polygon group, sorted.</td></tr><tr><td><code>unique_key</code></td><td>—</td><td>Returns a unique text key,. Useful for sorting / grouping / merging components.</td></tr></tbody></table>
+
+
+
+
+
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>install_depth</code></td><td>—</td><td>Return the installation depth of the Aperture.</td></tr><tr><td><code>average_shading_d_reveal</code></td><td>—</td><td>The average shading ‘reveal’ distance of the Aperture’s Elements from the glass.</td></tr><tr><td><code>default_monthly_shading_correction_factor</code></td><td>—</td><td>Return the default monthly shading correction factor.</td></tr><tr><td><code>shade_type_id_num</code></td><td>—</td><td>Return the ID-Number of the Component Construction’s Shade-Type, or -1 if None.</td></tr><tr><td><code>window_type_id_num</code></td><td>—</td><td>ID number of the assigned window construction type.</td></tr><tr><td><code>polygons</code></td><td>—</td><td>Collected polygons from all child elements that have geometry assigned.</td></tr><tr><td><code>polygon_ids</code></td><td>—</td><td>Return a Set of all the Polygon-id numbers found in the Component’s Polygon group.</td></tr><tr><td><code>polygon_ids_sorted</code></td><td>—</td><td>Return a Tuple of all the Polygon-id numbers found in the Component’s Polygon group, sorted.</td></tr><tr><td><code>psi_install_key</code></td><td>—</td><td>A stable key for the elements’ resolved psi-install values.</td></tr><tr><td><code>unique_key</code></td><td>—</td><td>Returns a unique text key,. Useful for sorting / grouping / merging components.</td></tr></tbody></table>
 <h3 id="methods-2">Methods</h3>
 <h4 id="add_elements_elements">add_elements(_elements)</h4>
 <p>Add one or more new ‘Elements’ (Sashes) to the Aperture</p>
@@ -660,7 +695,7 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
 <h2 id="phxcomponentthermalbridge">PhxComponentThermalBridge</h2>
 <p>A linear thermal bridge element in the building envelope.</p>
 <p><strong>Inherits from</strong>: <code>PhxComponentBase</code></p>
-<h3 id="properties-4">Properties</h3>
+<h3 id="properties-5">Properties</h3>
 
 
 

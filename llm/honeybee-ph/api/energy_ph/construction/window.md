@@ -63,3 +63,18 @@ PH-style glazing properties for a window unit.
 | `g_value` | `float` | Solar heat gain coefficient (SHGC). Default: 0.4. |
 
 ---
+
+## PhApertureInstallType
+
+A named window-installation condition ('Install Type') with its psi-install value.
+
+**Inherits from**: `_base._Base`
+
+### Attributes
+
+| Attribute | Type | Description |
+|-----------|------|-------------|
+| `psi_install` | `float` | Installation psi-value (W/mK). Default: 0.0. |
+| `source` | `str` | Optional free-text provenance note (eg. 'Phius mid-wall', 'Flixo calc 2026-08-01'). Default: "". |
+
+---

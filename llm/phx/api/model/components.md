@@ -112,6 +112,19 @@ PHPP old-style shading dimensions for an aperture element.
 
 ---
 
+## PhxApertureElementPsiInstall
+
+Resolved per-edge psi-install values (W/mK) for a single aperture element.
+
+### Properties
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `values` | — | The four edge values in (top, right, bottom, left) order. |
+| `unique_key` | — | A stable, content-keyed identity string for grouping / variant synthesis. |
+
+---
+
 ## PhxApertureElement
 
 A single sash or glazing unit within an aperture component.
@@ -128,6 +141,7 @@ A single sash or glazing unit within an aperture component.
 
 | Property | Type | Description |
 |----------|------|-------------|
+| `resolved_psi_install` | — | The element's effective per-edge psi-install values (W/mK). |
 | `area` | — | Return the area of the element's polygon. |
 | `width` | — | Width of the element's polygon, or perimeter/4 as fallback for non-rectangular shapes. |
 | `height` | — | Height of the element's polygon, or perimeter/4 as fallback for non-rectangular shapes. |
@@ -189,6 +203,7 @@ A transparent building-envelope component (window or door) with one or more sash
 | `polygons` | — | Collected polygons from all child elements that have geometry assigned. |
 | `polygon_ids` | — | Return a Set of all the Polygon-id numbers found in the Component's Polygon group. |
 | `polygon_ids_sorted` | — | Return a Tuple of all the Polygon-id numbers found in the Component's Polygon group, sorted. |
+| `psi_install_key` | — | A stable key for the elements' resolved psi-install values. |
 | `unique_key` | — | Returns a unique text key,. Useful for sorting / grouping / merging components. |
 
 ### Methods
