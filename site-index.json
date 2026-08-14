@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-14T20:25:54Z",
+  "generated": "2026-08-14T22:08:53Z",
   "base_url": "https://docs.passivehousetools.com",
   "llm_nav": {
     "instructions": "/llm-instructions.md",
@@ -912,6 +912,18 @@
           "title": "ground",
           "path": "/phx/api/model/ground/",
           "raw_path": "/llm/phx/api/model/ground.md",
+          "section": "model"
+        },
+        {
+          "title": "identity",
+          "path": "/phx/api/model/identity/",
+          "raw_path": "/llm/phx/api/model/identity.md",
+          "section": "model"
+        },
+        {
+          "title": "identity_validation",
+          "path": "/phx/api/model/identity_validation/",
+          "raw_path": "/llm/phx/api/model/identity_validation.md",
           "section": "model"
         },
         {

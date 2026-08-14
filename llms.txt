@@ -157,6 +157,8 @@ Passive House Exchange data model & file I/O. Convert between WUFI XML, PHPP Exc
 - [model: elec_equip](https://docs.passivehousetools.com/llm/phx/api/model/elec_equip.md)
 - [model: geometry](https://docs.passivehousetools.com/llm/phx/api/model/geometry.md)
 - [model: ground](https://docs.passivehousetools.com/llm/phx/api/model/ground.md)
+- [model: identity](https://docs.passivehousetools.com/llm/phx/api/model/identity.md)
+- [model: identity_validation](https://docs.passivehousetools.com/llm/phx/api/model/identity_validation.md)
 - [model: phx_site](https://docs.passivehousetools.com/llm/phx/api/model/phx_site.md)
 - [model: project](https://docs.passivehousetools.com/llm/phx/api/model/project.md)
 - [model: shades](https://docs.passivehousetools.com/llm/phx/api/model/shades.md)

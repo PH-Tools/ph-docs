@@ -180,6 +180,14 @@ Top-level PHX project container.
 
 ### Methods
 
+#### identity_scope(owner)
+
+Activate this project's allocator, optionally for one variant owner.
+
+| Arg | Type | Description |
+|-----|------|-------------|
+| `owner` | — | — |
+
 #### add_new_variant(_variant)
 
 Adds a new PHX Variant to the Project.

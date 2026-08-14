@@ -8,7 +8,7 @@ PHX Component (Face, Aperture) Classes
 
 ## PhxComponentBase
 
-Base class with auto-incrementing ID counter for all PHX building components.
+Base class providing numeric identity for all PHX building components.
 
 ### Properties
 

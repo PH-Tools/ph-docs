@@ -132,7 +132,7 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
         <ul class="children"><li><a class="" href="/phx/api/from_WUFI_XML/phx_converter/">phx_converter</a></li><li><a class="" href="/phx/api/from_WUFI_XML/phx_schemas/">phx_schemas</a></li><li><a class="" href="/phx/api/from_WUFI_XML/read_WUFI_XML_file/">read_WUFI_XML_file</a></li><li><a class="" href="/phx/api/from_WUFI_XML/wufi_file_schema/">wufi_file_schema</a></li><li><a class="" href="/phx/api/from_WUFI_XML/wufi_file_types/">wufi_file_types</a></li></ul>
       </li><li class="group">
         <button aria-expanded="false">model<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
-        <ul class="children"><li><a class="" href="/phx/api/model/assembly_pathways/">assembly_pathways</a></li><li><a class="" href="/phx/api/model/building/">building</a></li><li><a class="" href="/phx/api/model/certification/">certification</a></li><li><a class="" href="/phx/api/model/components/">components</a></li><li><a class="" href="/phx/api/model/constructions/">constructions</a></li><li><a class="" href="/phx/api/model/elec_equip/">elec_equip</a></li><li><a class="" href="/phx/api/model/geometry/">geometry</a></li><li><a class="" href="/phx/api/model/ground/">ground</a></li><li><a class="" href="/phx/api/model/phx_site/">phx_site</a></li><li><a class="" href="/phx/api/model/project/">project</a></li><li><a class="" href="/phx/api/model/shades/">shades</a></li><li><a class="" href="/phx/api/model/spaces/">spaces</a></li><li><a class="" href="/phx/api/model/transforms/">transforms</a></li><li><a class="" href="/phx/api/model/utilization_patterns/">utilization_patterns</a></li><li class="group">
+        <ul class="children"><li><a class="" href="/phx/api/model/assembly_pathways/">assembly_pathways</a></li><li><a class="" href="/phx/api/model/building/">building</a></li><li><a class="" href="/phx/api/model/certification/">certification</a></li><li><a class="" href="/phx/api/model/components/">components</a></li><li><a class="" href="/phx/api/model/constructions/">constructions</a></li><li><a class="" href="/phx/api/model/elec_equip/">elec_equip</a></li><li><a class="" href="/phx/api/model/geometry/">geometry</a></li><li><a class="" href="/phx/api/model/ground/">ground</a></li><li><a class="" href="/phx/api/model/identity/">identity</a></li><li><a class="" href="/phx/api/model/identity_validation/">identity_validation</a></li><li><a class="" href="/phx/api/model/phx_site/">phx_site</a></li><li><a class="" href="/phx/api/model/project/">project</a></li><li><a class="" href="/phx/api/model/shades/">shades</a></li><li><a class="" href="/phx/api/model/spaces/">spaces</a></li><li><a class="" href="/phx/api/model/transforms/">transforms</a></li><li><a class="" href="/phx/api/model/utilization_patterns/">utilization_patterns</a></li><li class="group">
         <button aria-expanded="false">enums<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
         <ul class="children"><li><a class="" href="/phx/api/model/enums/building/">building</a></li><li><a class="" href="/phx/api/model/enums/elec_equip/">elec_equip</a></li><li><a class="" href="/phx/api/model/enums/foundations/">foundations</a></li><li><a class="" href="/phx/api/model/enums/hvac/">hvac</a></li><li><a class="" href="/phx/api/model/enums/phi_certification_phpp_10/">phi_certification_phpp_10</a></li><li><a class="" href="/phx/api/model/enums/phi_certification_phpp_9/">phi_certification_phpp_9</a></li><li><a class="" href="/phx/api/model/enums/phius_certification/">phius_certification</a></li><li><a class="" href="/phx/api/model/enums/phx_site/">phx_site</a></li></ul>
       </li><li class="group">
@@ -594,8 +594,18 @@ Copy URL
 <table><thead><tr><th>Module</th><th>Key Classes</th></tr></thead><tbody><tr><td><code>_base.py</code></td><td><code>PhxMechanicalDevice</code> (base), <code>PhxMechanicalDeviceParams</code> (base), <code>PhxUsageProfile</code></td></tr><tr><td><code>collection.py</code></td><td><code>PhxMechanicalSystemCollection</code>, <code>PhxExhaustVentilatorCollection</code>, <code>PhxSupportiveDeviceCollection</code>, <code>PhxRenewableDeviceCollection</code>, <code>PhxZoneCoverage</code></td></tr><tr><td><code>ventilation.py</code></td><td><code>PhxDeviceVentilation</code> (base), <code>PhxDeviceVentilator</code>, <code>PhxDeviceVentilatorParams</code>, <code>PhxExhaustVentilatorBase</code>, <code>PhxExhaustVentilatorRangeHood</code>, <code>PhxExhaustVentilatorDryer</code>, <code>PhxExhaustVentilatorUserDefined</code>, <code>PhxExhaustVentilatorParams</code></td></tr><tr><td><code>heating.py</code></td><td><code>PhxHeatingDevice</code> (base), <code>PhxHeaterElectric</code>, <code>PhxHeaterBoilerFossil</code>, <code>PhxHeaterBoilerWood</code>, <code>PhxHeaterDistrictHeat</code>, + corresponding <code>*Params</code> classes</td></tr><tr><td><code>heat_pumps.py</code></td><td><code>PhxHeatPumpDevice</code> (base), <code>PhxHeatPumpAnnual</code>, <code>PhxHeatPumpMonthly</code>, <code>PhxHeatPumpHotWater</code>, <code>PhxHeatPumpCombined</code>, + corresponding <code>*Params</code> classes</td></tr><tr><td><code>water.py</code></td><td><code>PhxHotWaterDevice</code> (base), <code>PhxHotWaterTank</code>, <code>PhxHotWaterTankParams</code></td></tr><tr><td><code>piping.py</code></td><td><code>PhxPipeTrunk</code>, <code>PhxPipeBranch</code>, <code>PhxPipeElement</code>, <code>PhxPipeSegment</code>, <code>PhxRecirculationParameters</code></td></tr><tr><td><code>ducting.py</code></td><td><code>PhxDuctElement</code>, <code>PhxDuctSegment</code></td></tr><tr><td><code>renewable_devices.py</code></td><td><code>PhxDevicePhotovoltaic</code>, <code>PhxDevicePhotovoltaicParams</code></td></tr><tr><td><code>supportive_devices.py</code></td><td><code>PhxSupportiveDevice</code>, <code>PhxSupportiveDeviceParams</code></td></tr><tr><td><code>cooling_params.py</code></td><td><code>PhxCoolingParams</code> (collection), <code>PhxCoolingVentilationParams</code>, <code>PhxCoolingRecirculationParams</code>, <code>PhxCoolingDehumidificationParams</code>, <code>PhxCoolingPanelParams</code></td></tr></tbody></table>
 <hr>
 <h2 id="design-patterns">Design Patterns</h2>
-<h3 id="classvar-counters">ClassVar Counters</h3>
-<p>Every model class has <code>_count: ClassVar[int] = 0</code> auto-incremented in <code>__post_init__</code> or <code>__init__</code>, assigning <code>id_num</code>. Tests must reset these for predictable IDs.</p>
+<h3 id="project-scoped-identities">Project-scoped identities</h3>
+<p>Public Honeybee and WUFI conversions build each <code>PhxProject</code> inside a fresh
+<code>IdentityAllocator</code> scope. Integer IDs are allocated in reference-domain
+namespaces (assemblies, windows, components, variant geometry, HVAC, etc.), so
+sequential and concurrent conversions of independent projects cannot change one
+another’s output. Imported WUFI IDs are explicit claims and are reserved for
+later allocation.</p>
+<p>The completed project retains its allocator. Later model construction that must
+join the project graph uses <code>with phx_project.identity_scope(owner=variant.id_num):</code>
+for variant-owned objects. Concurrent mutation of the same project is not
+supported. Legacy <code>_count</code> ClassVars remain only as a compatibility fallback for
+standalone constructors outside a project identity scope.</p>
 <h3 id="uuid--id_num-dual-identity">UUID + id_num Dual Identity</h3>
 <p>Constructions and devices carry both a <code>uuid.UUID | str</code> identifier and an integer <code>id_num</code>. The UUID is for lookup/deduplication; <code>id_num</code> is for sequential output numbering.</p>
 <h3 id="__add__-merging"><code>__add__</code> Merging</h3>
@@ -788,8 +798,9 @@ for the file-oriented CLI workflows:</p>
 </ul>
 <hr>
 <h2 id="testing-patterns">Testing Patterns</h2>
-<h3 id="class-counter-reset">Class Counter Reset</h3>
-<p>Tests <strong>must</strong> reset <code>_count</code> ClassVars for predictable IDs:</p>
+<h3 id="legacy-class-counter-reset">Legacy class-counter reset</h3>
+<p>Use <code>reset_class_counters</code> only for tests that directly construct standalone
+model objects and explicitly assert compatibility numbering:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#B392F0">@pytest.fixture</span></span>
 <span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> reset_class_counters</span><span style="color:#E1E4E8">():</span></span>
 <span class="line"><span style="color:#E1E4E8">    _reset_phx_class_counters()</span></span>
@@ -797,13 +808,8 @@ for the file-oriented CLI workflows:</p>
 <span class="line"><span style="color:#F97583">        yield</span></span>
 <span class="line"><span style="color:#F97583">    finally</span><span style="color:#E1E4E8">:</span></span>
 <span class="line"><span style="color:#E1E4E8">        _reset_phx_class_counters()</span></span></code></pre>
-<p>When adding a new model class with <code>_count</code>, add it to <code>_reset_phx_class_counters()</code> in <code>conftest.py</code>.</p>
-<h3 id="module-reload-end-to-end-tests">Module Reload (End-to-End Tests)</h3>
-<p>For reference-case tests that compare full XML output, modules must be reloaded (not just counters reset) to guarantee clean state:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E1E4E8">importlib.reload(building)</span></span>
-<span class="line"><span style="color:#E1E4E8">importlib.reload(components)</span></span>
-<span class="line"><span style="color:#6A737D"># ... all model modules</span></span></code></pre>
-<p>Add new modules to <code>_reload_phx_classes()</code> in <code>conftest.py</code> if needed for reference-case tests.</p>
+<p>Public conversion and reference-case tests must not reset counters or reload
+modules. Their determinism is part of the conversion-boundary contract.</p>
 <h3 id="test-organization">Test Organization</h3>
 <p>Tests mirror the source structure under <code>tests/</code>:</p>
 
@@ -843,7 +849,7 @@ for the file-oriented CLI workflows:</p>
 <h3 id="writing-new-tests">Writing New Tests</h3>
 <ol>
 <li>Place tests in the directory that mirrors the source module path</li>
-<li>Use <code>reset_class_counters</code> fixture for any test that creates model objects</li>
+<li>Use <code>reset_class_counters</code> only when asserting standalone fallback numbering</li>
 <li>Test <code>__str__</code>/<code>__repr__</code> to catch serialization issues early</li>
 <li>Test <code>__add__</code> if the class supports merging</li>
 <li>Test <code>unique_key</code> if the class supports grouping</li>
