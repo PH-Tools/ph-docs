@@ -6,6 +6,20 @@ PHX Project Classes
 
 ---
 
+## VentilationAssignmentError
+
+Raised when ventilation references do not resolve within a PHX project graph.
+
+**Inherits from**: `ValueError`
+
+### Attributes
+
+| Attribute | Type | Description |
+|-----------|------|-------------|
+| `issues` | `tuple` | — |
+
+---
+
 ## WufiPlugin
 
 WUFI-Passive plugin configuration for a variant.
@@ -111,6 +125,27 @@ Returns a Mechanical Device from the collections which has a matching id-num.
 |-----|------|-------------|
 | `_id_num` | — | — |
 
+#### get_ventilation_device_by_id(_id_num, _index)
+
+Return the one ventilation device with this variant-scoped ID.
+
+| Arg | Type | Description |
+|-----|------|-------------|
+| `_id_num` | — | — |
+| `_index` | — | — |
+
+#### ventilation_device_index()
+
+Return each variant-scoped ventilation ID's first device and occurrence count.
+
+#### ventilation_assignment_issues()
+
+Return every unresolved or ambiguous Space and duct ventilation reference.
+
+#### assert_ventilation_assignments_ready()
+
+Raise one diagnostic containing every invalid ventilation reference.
+
 ---
 
 ## ProjectData_Agent
@@ -152,6 +187,14 @@ Adds a new PHX Variant to the Project.
 | Arg | Type | Description |
 |-----|------|-------------|
 | `_variant` | — | — |
+
+#### ventilation_assignment_issues()
+
+Return ventilation-reference issues from every project variant.
+
+#### assert_ventilation_assignments_ready()
+
+Raise before export when any variant has invalid ventilation references.
 
 #### add_assembly_type(_assembly_type, _key)
 

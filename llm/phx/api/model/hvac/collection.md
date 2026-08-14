@@ -284,6 +284,18 @@ The top-level collection of all mechanical devices and distribution for a projec
 
 ### Methods
 
+#### iter_ventilation_devices()
+
+Yield ventilation devices without allocating the presentation-order list.
+
+#### ventilation_device_id_counts()
+
+Return occurrence counts for ventilation-device IDs in this collection.
+
+#### ventilation_assignment_issues()
+
+Return unresolved or ambiguous duct references owned by this collection.
+
 #### device_in_collection(_device_key)
 
 Return True if the a Mech device with the matching key is already in the collection.

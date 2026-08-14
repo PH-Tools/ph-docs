@@ -166,6 +166,27 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
 <p>PHX Project Classes</p>
 <p><strong>Source</strong>: <code>PHX/project.py</code></p>
 <hr>
+<h2 id="ventilationassignmenterror">VentilationAssignmentError</h2>
+<p>Raised when ventilation references do not resolve within a PHX project graph.</p>
+<p><strong>Inherits from</strong>: <code>ValueError</code></p>
+<h3 id="attributes">Attributes</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>issues</code></td><td><code>tuple</code></td><td>—</td></tr></tbody></table>
+<hr>
 <h2 id="wufiplugin">WufiPlugin</h2>
 <p>WUFI-Passive plugin configuration for a variant.</p>
 <hr>
@@ -348,6 +369,35 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
 
 
 <table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_id_num</code></td><td>—</td><td>—</td></tr></tbody></table>
+<h4 id="get_ventilation_device_by_id_id_num-_index">get_ventilation_device_by_id(_id_num, _index)</h4>
+<p>Return the one ventilation device with this variant-scoped ID.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_id_num</code></td><td>—</td><td>—</td></tr><tr><td><code>_index</code></td><td>—</td><td>—</td></tr></tbody></table>
+<h4 id="ventilation_device_index">ventilation_device_index()</h4>
+<p>Return each variant-scoped ventilation ID’s first device and occurrence count.</p>
+<h4 id="ventilation_assignment_issues">ventilation_assignment_issues()</h4>
+<p>Return every unresolved or ambiguous Space and duct ventilation reference.</p>
+<h4 id="assert_ventilation_assignments_ready">assert_ventilation_assignments_ready()</h4>
+<p>Raise one diagnostic containing every invalid ventilation reference.</p>
 <hr>
 <h2 id="projectdata_agent">ProjectData_Agent</h2>
 <p>Contact information for a project stakeholder (customer, owner, designer, etc.).</p>
@@ -406,6 +456,10 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
 
 
 <table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_variant</code></td><td>—</td><td>—</td></tr></tbody></table>
+<h4 id="ventilation_assignment_issues-1">ventilation_assignment_issues()</h4>
+<p>Return ventilation-reference issues from every project variant.</p>
+<h4 id="assert_ventilation_assignments_ready-1">assert_ventilation_assignments_ready()</h4>
+<p>Raise before export when any variant has invalid ventilation references.</p>
 <h4 id="add_assembly_type_assembly_type-_key">add_assembly_type(_assembly_type, _key)</h4>
 <p>Adds a new PhxConstructionOpaque to the Project’s collection</p>
 
