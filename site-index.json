@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-14T19:42:50Z",
+  "generated": "2026-08-14T20:17:14Z",
   "base_url": "https://docs.passivehousetools.com",
   "llm_nav": {
     "instructions": "/llm-instructions.md",
@@ -23,6 +23,12 @@
           "title": "EPW preliminary climate",
           "path": "/honeybee-ph/epw-preliminary-climate/",
           "raw_path": "/llm/honeybee-ph/epw-preliminary-climate.md",
+          "section": "Getting Started"
+        },
+        {
+          "title": "Ventilation systems",
+          "path": "/honeybee-ph/ventilation-systems/",
+          "raw_path": "/llm/honeybee-ph/ventilation-systems.md",
           "section": "Getting Started"
         },
         {
@@ -317,6 +323,12 @@
           "title": "sky_matrix",
           "path": "/honeybee-ph/api/utils/sky_matrix/",
           "raw_path": "/llm/honeybee-ph/api/utils/sky_matrix.md",
+          "section": "utils"
+        },
+        {
+          "title": "validation",
+          "path": "/honeybee-ph/api/utils/validation/",
+          "raw_path": "/llm/honeybee-ph/api/utils/validation.md",
           "section": "utils"
         },
         {

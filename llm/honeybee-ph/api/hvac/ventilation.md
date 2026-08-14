@@ -72,6 +72,19 @@ Passive House Fresh-Air Ventilation System.
 
 ### Methods
 
+#### *classmethod* balanced_hrv(ventilator, supply_ducting, exhaust_ducting, display_name)
+
+Create a balanced HRV/ERV system from selected equipment.
+
+| Arg | Type | Description |
+|-----|------|-------------|
+| `ventilator` | `Ventilator` | A selected ventilation unit with finite, valid recovery and electric-efficiency values. |
+| `supply_ducting` | `Optional[List[ducting.PhDuctElement]]` | Supply-air duct elements (duct_type=1). Defaults to no exterior ducts. |
+| `exhaust_ducting` | `Optional[List[ducting.PhDuctElement]]` | Exhaust-air duct elements (duct_type=2). Defaults to no exterior ducts. |
+| `display_name` | `Optional[str]` | User-facing system name. |
+
+**Returns**: `PhVentilationSystem`
+
 #### add_supply_duct_element(_duct_element)
 
 Add a supply-air duct element to the ventilation system.
