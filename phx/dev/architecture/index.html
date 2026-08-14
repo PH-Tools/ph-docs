@@ -112,7 +112,7 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
         <ul class="children"><li><a class="" href="/phx/reference/phx-model-reference/">PHX Model Reference</a></li><li><a class="" href="/phx/reference/wufi-xml-schema/">WUFI XML Schema</a></li><li><a class="" href="/phx/reference/phpp-field-mapping/">PHPP Field Mapping</a></li></ul>
       </li><li class="group">
         <button aria-expanded="false"><span class="num">05</span>API Reference<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
-        <ul class="children"><li><a class="" href="/phx/api/hbjson_to_metr_json/">hbjson_to_metr_json</a></li><li><a class="" href="/phx/api/hbjson_to_phpp/">hbjson_to_phpp</a></li><li><a class="" href="/phx/api/hbjson_to_ppp/">hbjson_to_ppp</a></li><li><a class="" href="/phx/api/hbjson_to_wufi_xml/">hbjson_to_wufi_xml</a></li><li><a class="" href="/phx/api/run/">run</a></li><li class="group">
+        <ul class="children"><li><a class="" href="/phx/api/conversion/">conversion</a></li><li><a class="" href="/phx/api/hbjson_to_metr_json/">hbjson_to_metr_json</a></li><li><a class="" href="/phx/api/hbjson_to_phpp/">hbjson_to_phpp</a></li><li><a class="" href="/phx/api/hbjson_to_ppp/">hbjson_to_ppp</a></li><li><a class="" href="/phx/api/hbjson_to_wufi_xml/">hbjson_to_wufi_xml</a></li><li><a class="" href="/phx/api/run/">run</a></li><li class="group">
         <button aria-expanded="false">PHPP<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
         <ul class="children"><li><a class="" href="/phx/api/PHPP/phpp_app/">phpp_app</a></li><li class="group">
         <button aria-expanded="false">phpp_localization<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
@@ -164,14 +164,24 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
       </li></ul> </aside> <script type="module">document.querySelectorAll(".nav-tree .group > button").forEach(e=>{e.addEventListener("click",()=>{const t=e.parentElement.classList.toggle("is-open");e.setAttribute("aria-expanded",String(t))})});</script>  </div> <div> <!-- Regular content page: simple breadcrumb header -->
         <header class="content-head"> <div class="content-head__crumb">  <span>Developer</span> <span class="sep">&rsaquo;</span>  <span class="current">Architecture</span> </div> </header>  <article class="article" data-pagefind-body data-pagefind-meta="library:PHX"> <h1 id="phx-architecture">PHX Architecture</h1>
 <h2 id="data-flow">Data Flow</h2>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>HBJSON file ──> from_HBJSON ──> PHX Model (in-memory) ──> to_WUFI_XML  ──> .xml file</span></span>
-<span class="line"><span>                                     |                ──> PHPP          ──> Excel (via xlwings)</span></span>
-<span class="line"><span>                                     |                ──> to_PPP        ──> .ppp file</span></span>
-<span class="line"><span>                                     |                ──> to_METr_JSON  ──> .json file</span></span>
-<span class="line"><span>WUFI XML file ──> from_WUFI_XML ─────┘</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>HBJSON file ──> read/parse ──┐</span></span>
+<span class="line"><span>                             ├──> Honeybee + honeybee-ph Model</span></span>
+<span class="line"><span>live Honeybee Model ─────────┘              │</span></span>
+<span class="line"><span>                                            └──> conversion.from_honeybee()</span></span>
+<span class="line"><span>                                                       │</span></span>
+<span class="line"><span>                                                       └──> PHX Model (in-memory)</span></span>
+<span class="line"><span>                                                              ├──> to_WUFI_XML  ──> .xml file</span></span>
+<span class="line"><span>                                                              ├──> PHPP          ──> Excel (via xlwings)</span></span>
+<span class="line"><span>                                                              ├──> to_PPP        ──> .ppp file</span></span>
+<span class="line"><span>                                                              └──> to_METr_JSON  ──> .json file</span></span>
+<span class="line"><span>WUFI XML file ──> from_WUFI_XML ────────────────────────────> PHX Model (in-memory)</span></span></code></pre>
 <p>PHX is an <strong>in-memory-only translator</strong> — PHX models are never serialized directly. They exist as an intermediate representation created from a source (usually HBJSON) and consumed by an output writer.</p>
+<p><code>PHX.conversion.from_honeybee()</code> is the public Honeybee → PHX boundary. It accepts an already
+constructed Honeybee model carrying honeybee-ph extensions. Reading an HBJSON file into that
+Honeybee object is an optional, separate step used by file-oriented workflows.</p>
 <h2 id="package-structure">Package Structure</h2>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>PHX/</span></span>
+<span class="line"><span>├── conversion.py           # Public live Honeybee Model -> PhxProject facade</span></span>
 <span class="line"><span>├── model/                  # Core PHX domain model (dataclasses)</span></span>
 <span class="line"><span>│   ├── project.py          # PhxProject (top-level), PhxVariant, PhxProjectData</span></span>
 <span class="line"><span>│   ├── building.py         # PhxBuilding, PhxZone</span></span>
@@ -203,7 +213,7 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
 <span class="line"><span>│   ├── loads/              # Load definitions (ventilation, occupancy, lighting)</span></span>
 <span class="line"><span>│   └── programs/           # Program types (ventilation, occupancy, lighting)</span></span>
 <span class="line"><span>│</span></span>
-<span class="line"><span>├── from_HBJSON/            # HBJSON -> PHX Model conversion</span></span>
+<span class="line"><span>├── from_HBJSON/            # Honeybee conversion implementation + HBJSON file reader</span></span>
 <span class="line"><span>│   ├── read_HBJSON_file.py # Read and parse HBJSON files</span></span>
 <span class="line"><span>│   ├── create_project.py   # Main entry: convert_hb_model_to_PhxProject()</span></span>
 <span class="line"><span>│   ├── create_variant.py   # Build PhxVariant from HB model</span></span>

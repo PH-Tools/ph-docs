@@ -112,7 +112,7 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
         <ul class="children"><li><a class="is-active" href="/phx/reference/phx-model-reference/">PHX Model Reference</a></li><li><a class="" href="/phx/reference/wufi-xml-schema/">WUFI XML Schema</a></li><li><a class="" href="/phx/reference/phpp-field-mapping/">PHPP Field Mapping</a></li></ul>
       </li><li class="group">
         <button aria-expanded="false"><span class="num">05</span>API Reference<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
-        <ul class="children"><li><a class="" href="/phx/api/hbjson_to_metr_json/">hbjson_to_metr_json</a></li><li><a class="" href="/phx/api/hbjson_to_phpp/">hbjson_to_phpp</a></li><li><a class="" href="/phx/api/hbjson_to_ppp/">hbjson_to_ppp</a></li><li><a class="" href="/phx/api/hbjson_to_wufi_xml/">hbjson_to_wufi_xml</a></li><li><a class="" href="/phx/api/run/">run</a></li><li class="group">
+        <ul class="children"><li><a class="" href="/phx/api/conversion/">conversion</a></li><li><a class="" href="/phx/api/hbjson_to_metr_json/">hbjson_to_metr_json</a></li><li><a class="" href="/phx/api/hbjson_to_phpp/">hbjson_to_phpp</a></li><li><a class="" href="/phx/api/hbjson_to_ppp/">hbjson_to_ppp</a></li><li><a class="" href="/phx/api/hbjson_to_wufi_xml/">hbjson_to_wufi_xml</a></li><li><a class="" href="/phx/api/run/">run</a></li><li class="group">
         <button aria-expanded="false">PHPP<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
         <ul class="children"><li><a class="" href="/phx/api/PHPP/phpp_app/">phpp_app</a></li><li class="group">
         <button aria-expanded="false">phpp_localization<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
@@ -743,9 +743,15 @@ the WUFI exporter includes it in <code>LoadsPersonsPH</code> / <code>LoadsLighti
 <p><strong>Program composition:</strong> HB stores loads and schedules separately. PHX pairs them: <code>PhxProgramVentilation</code> = <code>PhxLoadVentilation</code> + <code>PhxScheduleVentilation</code>.</p>
 <p><strong>HVAC disaggregation:</strong> HB uses high-level <code>IdealAirSystem</code>. PHX disaggregates into specific device types (ventilators, heaters, heat pumps, hot water tanks, piping) with usage profiles specifying coverage percentages.</p>
 <h3 id="conversion-entry-points">Conversion Entry Points</h3>
-<p>The PHX repo’s <code>from_HBJSON/</code> package handles Honeybee → PHX conversion:</p>
+<p>The public live-object entry point is:</p>
 <ul>
-<li><code>create_project.convert_hb_model_to_PhxProject()</code> — main entry point</li>
+<li><code>PHX.conversion.from_honeybee()</code> — convert a live Honeybee + honeybee-ph <code>Model</code> to a transient
+<code>PhxProject</code> without file I/O or serialization</li>
+</ul>
+<p>The established implementation remains under <code>from_HBJSON/</code> for backwards compatibility and
+for the file-oriented CLI workflows:</p>
+<ul>
+<li><code>create_project.convert_hb_model_to_PhxProject()</code> — legacy-compatible conversion implementation</li>
 <li><code>create_variant.py</code> — build PhxVariant from HB model</li>
 <li><code>create_building.py</code>, <code>create_rooms.py</code>, <code>create_geometry.py</code> — geometry conversion</li>
 <li><code>create_assemblies.py</code> — construction/material conversion</li>

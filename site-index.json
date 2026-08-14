@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-14T18:41:59Z",
+  "generated": "2026-08-14T19:42:50Z",
   "base_url": "https://docs.passivehousetools.com",
   "llm_nav": {
     "instructions": "/llm-instructions.md",
@@ -409,6 +409,12 @@
             "/llm/phx/reference/phx-model-reference.md",
             "/llm/phx/dev/exporter-patterns.md"
           ]
+        },
+        {
+          "title": "conversion",
+          "path": "/phx/api/conversion/",
+          "raw_path": "/llm/phx/api/conversion.md",
+          "section": "API Reference"
         },
         {
           "title": "hbjson_to_metr_json",

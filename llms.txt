@@ -73,6 +73,7 @@ Passive House Exchange data model & file I/O. Convert between WUFI XML, PHPP Exc
 - [Reference: PHX Model Reference](https://docs.passivehousetools.com/llm/phx/reference/phx-model-reference.md)
 - [Reference: WUFI XML Schema](https://docs.passivehousetools.com/llm/phx/reference/wufi-xml-schema.md)
 - [Reference: PHPP Field Mapping](https://docs.passivehousetools.com/llm/phx/reference/phpp-field-mapping.md)
+- [API Reference: conversion](https://docs.passivehousetools.com/llm/phx/api/conversion.md)
 - [API Reference: hbjson_to_metr_json](https://docs.passivehousetools.com/llm/phx/api/hbjson_to_metr_json.md)
 - [API Reference: hbjson_to_phpp](https://docs.passivehousetools.com/llm/phx/api/hbjson_to_phpp.md)
 - [API Reference: hbjson_to_ppp](https://docs.passivehousetools.com/llm/phx/api/hbjson_to_ppp.md)
