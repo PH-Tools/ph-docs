@@ -100,7 +100,7 @@ Guides
 </script> <main>  <div class="with-sidebar"> <div class="sidebar-col"> <aside class="sidebar"> <a class="sidebar__label" href="/honeybee-ph/">
 Library · Honeybee-PH </a> <ul class="nav-tree"><li class="group">
         <button aria-expanded="false"><span class="num">01</span>Getting Started<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
-        <ul class="children"><li><a class="" href="/honeybee-ph/getting-started/">Overview</a></li></ul>
+        <ul class="children"><li><a class="" href="/honeybee-ph/getting-started/">Overview</a></li><li><a class="" href="/honeybee-ph/epw-preliminary-climate/">EPW preliminary climate</a></li></ul>
       </li><li class="group">
         <button aria-expanded="false"><span class="num">02</span>Packages<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
         <ul class="children"><li><a class="" href="/honeybee-ph/packages/">Overview</a></li></ul>
@@ -395,8 +395,8 @@ Library · Honeybee-PH </a> <ul class="nav-tree"><li class="group">
 
 <table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>ground_thermal_conductivity</code></td><td><code>int</code></td><td>Thermal conductivity in W/(mK). Default: 2.</td></tr><tr><td><code>ground_heat_capacity</code></td><td><code>int</code></td><td>Specific heat capacity in J/(kgK). Default: 1000.</td></tr><tr><td><code>ground_density</code></td><td><code>int</code></td><td>Density in kg/m3. Default: 2000.</td></tr><tr><td><code>depth_groundwater</code></td><td><code>int</code></td><td>Depth to groundwater table in meters. Default: 3.</td></tr><tr><td><code>flow_rate_groundwater</code></td><td><code>float</code></td><td>Groundwater flow rate in m/day. Default: 0.05.</td></tr></tbody></table>
 <hr>
-<h2 id="climate">Climate</h2>
-<p>Complete climate dataset for PH energy modeling.</p>
+<h2 id="climateprovenance">ClimateProvenance</h2>
+<p>Source identity, conversion method, and availability for climate data.</p>
 <p><strong>Inherits from</strong>: <code>_base._Base</code></p>
 <h3 id="attributes-6">Attributes</h3>
 
@@ -449,10 +449,25 @@ Library · Honeybee-PH </a> <ul class="nav-tree"><li class="group">
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td>—</td><td>—</td></tr><tr><td><code>station_elevation</code></td><td>—</td><td>Weather station elevation in meters.</td></tr><tr><td><code>summer_daily_temperature_swing</code></td><td>—</td><td>Daily temperature swing in K. Default: 8.0.</td></tr><tr><td><code>average_wind_speed</code></td><td>—</td><td>Average wind speed in m/s. Default: 4.0.</td></tr><tr><td><code>ground</code></td><td><code>Climate_Ground</code></td><td>Ground thermal properties.</td></tr><tr><td><code>monthly_temps</code></td><td>—</td><td>Monthly temperature data.</td></tr><tr><td><code>monthly_radiation</code></td><td>—</td><td>Monthly radiation data.</td></tr><tr><td><code>peak_loads</code></td><td>—</td><td>Peak load design conditions.</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>source_type</code></td><td>—</td><td>Source category. One of <code>legacy_unknown</code>, <code>phi_approved</code>, <code>phius_approved</code>, <code>epw_derived</code>, or <code>user_defined</code>.</td></tr><tr><td><code>source_name</code></td><td>—</td><td>Human-readable source name.</td></tr><tr><td><code>source_uri</code></td><td>—</td><td>Source file path or URI.</td></tr><tr><td><code>source_version</code></td><td>—</td><td>Version of the source data.</td></tr><tr><td><code>source_checksum</code></td><td>—</td><td>SHA-256 checksum for a file source.</td></tr><tr><td><code>conversion_method</code></td><td>—</td><td>Algorithm used to convert the source.</td></tr><tr><td><code>conversion_method_version</code></td><td>—</td><td>Version of the conversion method.</td></tr><tr><td><code>is_certification_approved</code></td><td>—</td><td>Whether the source is approved for certification; <code>None</code> means unknown.</td></tr><tr><td><code>monthly_data_available</code></td><td>—</td><td>Whether monthly-demand data is available.</td></tr><tr><td><code>peak_load_data_available</code></td><td>—</td><td>Whether peak-load data is available.</td></tr><tr><td><code>assumptions</code></td><td>—</td><td>JSON-safe conversion assumptions.</td></tr></tbody></table>
 <hr>
-<h2 id="location">Location</h2>
-<p>Geographic location data for the building site.</p>
+<h2 id="climate">Climate</h2>
+<p>Complete climate dataset for PH energy modeling.</p>
 <p><strong>Inherits from</strong>: <code>_base._Base</code></p>
 <h3 id="attributes-7">Attributes</h3>
 
@@ -490,10 +505,59 @@ Library · Honeybee-PH </a> <ul class="nav-tree"><li class="group">
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>latitude</code></td><td>—</td><td>Site latitude in decimal degrees. Default: 40.6.</td></tr><tr><td><code>longitude</code></td><td>—</td><td>Site longitude in decimal degrees. Default: -73.8.</td></tr><tr><td><code>site_elevation</code></td><td>—</td><td>Site elevation in meters above sea level.</td></tr><tr><td><code>climate_zone</code></td><td>—</td><td>ASHRAE climate zone number. Default: 1.</td></tr><tr><td><code>hours_from_UTC</code></td><td>—</td><td>Time zone offset from UTC in hours. Default: -4.</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td>—</td><td>—</td></tr><tr><td><code>station_elevation</code></td><td>—</td><td>Weather station elevation in meters.</td></tr><tr><td><code>summer_daily_temperature_swing</code></td><td>—</td><td>Daily temperature swing in K. Default: 8.0.</td></tr><tr><td><code>average_wind_speed</code></td><td>—</td><td>Average wind speed in m/s. Default: 4.0.</td></tr><tr><td><code>ground</code></td><td><code>Climate_Ground</code></td><td>Ground thermal properties.</td></tr><tr><td><code>monthly_temps</code></td><td>—</td><td>Monthly temperature data.</td></tr><tr><td><code>monthly_radiation</code></td><td>—</td><td>Monthly radiation data.</td></tr><tr><td><code>provenance</code></td><td>—</td><td>Source and availability metadata.</td></tr><tr><td><code>peak_loads</code></td><td>—</td><td>Peak load design conditions.</td></tr></tbody></table>
+<h3 id="properties-1">Properties</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>is_monthly_demand_ready</code></td><td><code>bool</code></td><td>Whether all explicitly available monthly-demand fields are finite.</td></tr><tr><td><code>is_peak_load_ready</code></td><td><code>bool</code></td><td>Whether all explicitly available peak-load fields are finite.</td></tr></tbody></table>
+<h3 id="methods">Methods</h3>
+<h4 id="monthly_demand_readiness_issues">monthly_demand_readiness_issues()</h4>
+<p>Return deterministic issues preventing monthly-demand use.</p>
+<p><strong>Returns</strong>: <code>List[str]</code></p>
+<h4 id="peak_load_readiness_issues">peak_load_readiness_issues()</h4>
+<p>Return deterministic issues preventing peak-load use.</p>
+<p><strong>Returns</strong>: <code>List[str]</code></p>
 <hr>
-<h2 id="phppcodes">PHPPCodes</h2>
-<p>PHPP climate library reference codes.</p>
+<h2 id="location">Location</h2>
+<p>Geographic location data for the building site.</p>
 <p><strong>Inherits from</strong>: <code>_base._Base</code></p>
 <h3 id="attributes-8">Attributes</h3>
 
@@ -521,10 +585,20 @@ Library · Honeybee-PH </a> <ul class="nav-tree"><li class="group">
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>country_code</code></td><td>—</td><td>PHPP country code string. Default: “US-United States of America”.</td></tr><tr><td><code>region_code</code></td><td>—</td><td>PHPP region code string. Default: “New York”.</td></tr><tr><td><code>dataset_name</code></td><td>—</td><td>PHPP dataset identifier. Default: “US0055c-New York”.</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>latitude</code></td><td>—</td><td>Site latitude in decimal degrees. Default: 40.6.</td></tr><tr><td><code>longitude</code></td><td>—</td><td>Site longitude in decimal degrees. Default: -73.8.</td></tr><tr><td><code>site_elevation</code></td><td>—</td><td>Site elevation in meters above sea level.</td></tr><tr><td><code>climate_zone</code></td><td>—</td><td>ASHRAE climate zone number, or None when the source does not supply one. Default: 1.</td></tr><tr><td><code>hours_from_UTC</code></td><td>—</td><td>Time zone offset from UTC in hours. Default: -4.</td></tr></tbody></table>
 <hr>
-<h2 id="site-1">Site</h2>
-<p>Complete site data combining location, climate, and PHPP library codes.</p>
+<h2 id="phppcodes">PHPPCodes</h2>
+<p>PHPP climate library reference codes.</p>
 <p><strong>Inherits from</strong>: <code>_base._Base</code></p>
 <h3 id="attributes-9">Attributes</h3>
 
@@ -552,7 +626,77 @@ Library · Honeybee-PH </a> <ul class="nav-tree"><li class="group">
 
 
 
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>country_code</code></td><td>—</td><td>PHPP country code string. Default: “US-United States of America”.</td></tr><tr><td><code>region_code</code></td><td>—</td><td>PHPP region code string. Default: “New York”.</td></tr><tr><td><code>dataset_name</code></td><td>—</td><td>PHPP dataset identifier. Default: “US0055c-New York”.</td></tr></tbody></table>
+<h3 id="methods-1">Methods</h3>
+<h4 id="classmethod-blank"><em>classmethod</em> blank()</h4>
+<p>Create a record with no PHPP climate-library identity.</p>
+<p><strong>Returns</strong>: <code>PHPPCodes</code></p>
+<hr>
+<h2 id="site-1">Site</h2>
+<p>Complete site data combining location, climate, and PHPP library codes.</p>
+<p><strong>Inherits from</strong>: <code>_base._Base</code></p>
+<h3 id="attributes-10">Attributes</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>location</code></td><td>—</td><td>Geographic location data.</td></tr><tr><td><code>climate</code></td><td>—</td><td>Climate dataset for energy modeling.</td></tr><tr><td><code>phpp_library_codes</code></td><td>—</td><td>PHPP climate library reference codes.</td></tr></tbody></table>
+<h3 id="methods-2">Methods</h3>
+<h4 id="classmethod-from_epwfile_path-ground_temperature_depth-ground_reflectance-diffuse_model"><em>classmethod</em> from_epw(file_path, ground_temperature_depth, ground_reflectance, diffuse_model)</h4>
+<p>Create a preliminary monthly-demand Site from a caller-supplied EPW.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>file_path</code></td><td><code>str</code></td><td>Path to a local annual EPW file.</td></tr><tr><td><code>ground_temperature_depth</code></td><td><code>Optional[float]</code></td><td>EPW ground-series depth in meters. May be omitted only when exactly one series is available.</td></tr><tr><td><code>ground_reflectance</code></td><td><code>float</code></td><td>Finite directional-radiation ground reflectance from 0 through 1. Default: 0.2.</td></tr><tr><td><code>diffuse_model</code></td><td><code>str</code></td><td><code>"isotropic"</code> or <code>"anisotropic"</code>.</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>Site</code></p>
 <hr> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/honeybee_ph">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/honeybee_ph/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
 (function () {
   // ---------- Modal open / close ----------

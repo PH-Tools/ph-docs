@@ -100,7 +100,7 @@ Guides
 </script> <main>  <div class="with-sidebar"> <div class="sidebar-col"> <aside class="sidebar"> <a class="sidebar__label" href="/honeybee-ph/">
 Library · Honeybee-PH </a> <ul class="nav-tree"><li class="group">
         <button aria-expanded="false"><span class="num">01</span>Getting Started<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
-        <ul class="children"><li><a class="" href="/honeybee-ph/getting-started/">Overview</a></li></ul>
+        <ul class="children"><li><a class="" href="/honeybee-ph/getting-started/">Overview</a></li><li><a class="" href="/honeybee-ph/epw-preliminary-climate/">EPW preliminary climate</a></li></ul>
       </li><li class="group">
         <button aria-expanded="false"><span class="num">02</span>Packages<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
         <ul class="children"><li><a class="" href="/honeybee-ph/packages/">Overview</a></li></ul>
@@ -568,7 +568,7 @@ Library · Honeybee-PH </a> <ul class="nav-tree"><li class="group">
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>avg_ceiling_height</code></td><td><code>float</code></td><td>Average clear ceiling height in meters. Default: 2.5.</td></tr><tr><td><code>floor</code></td><td><code>SpaceFloor</code></td><td>The floor level for this volume.</td></tr><tr><td><code>geometry</code></td><td><code>List[LBFace3D]</code></td><td>The enclosing 3D face geometry.</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>avg_ceiling_height</code></td><td><code>float</code></td><td>Average clear ceiling height in the same coordinate units as the Space geometry. Default: 2.5.</td></tr><tr><td><code>floor</code></td><td><code>SpaceFloor</code></td><td>The floor level for this volume.</td></tr><tr><td><code>geometry</code></td><td><code>List[LBFace3D]</code></td><td>The enclosing 3D face geometry.</td></tr></tbody></table>
 <h3 id="properties-2">Properties</h3>
 
 
@@ -874,6 +874,30 @@ Library · Honeybee-PH </a> <ul class="nav-tree"><li class="group">
 
 <table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>display_name</code></td><td><code>str</code></td><td>—</td></tr><tr><td><code>full_name</code></td><td><code>str</code></td><td>—</td></tr><tr><td><code>net_volume</code></td><td><code>float</code></td><td>The total interior net volume of all Volumes in the Space.</td></tr><tr><td><code>avg_clear_height</code></td><td><code>float</code></td><td>Returns the average floor-area-weighted height of all the Volumes in the Space</td></tr><tr><td><code>weighted_floor_area</code></td><td><code>float</code></td><td>The total floor area of all floor segments in the Space, weighted by any reduction factors (iFCA, TFA)</td></tr><tr><td><code>floor_area</code></td><td><code>float</code></td><td>The total floor area of all floor segments in the Space, UN-weighted by any reduction factors (iFCA, TFA)</td></tr><tr><td><code>net_floor_area</code></td><td><code>float</code></td><td>The total net floor area of all floor segments in the Space</td></tr><tr><td><code>weighted_net_floor_area</code></td><td><code>float</code></td><td>The total net floor area of all floor segments in the Space, weighted by any reduction factors (iFCA, TFA)</td></tr><tr><td><code>average_floor_weighting_factor</code></td><td><code>float</code></td><td>Returns the average weighting factor (TFA/iCFA) for the Space’s floor-segments.</td></tr><tr><td><code>average_floor_net_area_factor</code></td><td><code>float</code></td><td>Returns the average net area factor for the Space’s floor-segments.</td></tr><tr><td><code>reference_points</code></td><td><code>list[Point3D]</code></td><td>Returns a list of the Space’s Volume reference Points (center of the floor segments).</td></tr><tr><td><code>volumes</code></td><td><code>List[SpaceVolume]</code></td><td>—</td></tr><tr><td><code>floor_segment_surfaces</code></td><td><code>List[List[Optional[LBFace3D]]]</code></td><td>—</td></tr><tr><td><code>floor_segments</code></td><td><code>List[SpaceFloorSegment]</code></td><td>—</td></tr></tbody></table>
 <h3 id="methods-3">Methods</h3>
+<h4 id="classmethod-from_roomhb_room-avg_ceiling_height"><em>classmethod</em> from_room(hb_room, avg_ceiling_height)</h4>
+<p>Build a default Passive House Space from a Honeybee Room.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>hb_room</code></td><td><code>room.Room</code></td><td>The Honeybee Room whose Floor faces define the generated Space.</td></tr><tr><td><code>avg_ceiling_height</code></td><td><code>float</code></td><td>Required positive, finite extrusion height in the same coordinate units as the Room geometry.</td></tr></tbody></table>
+<p><strong>Returns</strong>: <code>Space</code></p>
 <h4 id="add_new_volumes_new_volumes">add_new_volumes(_new_volumes)</h4>
 <p>Add a new SpaceVolume or list of SpaceVolumes to the Space.</p>
 

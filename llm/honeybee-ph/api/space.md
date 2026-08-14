@@ -201,7 +201,7 @@ A 3D volume within a PH Space, defined by a floor and ceiling height.
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `avg_ceiling_height` | `float` | Average clear ceiling height in meters. Default: 2.5. |
+| `avg_ceiling_height` | `float` | Average clear ceiling height in the same coordinate units as the Space geometry. Default: 2.5. |
 | `floor` | `SpaceFloor` | The floor level for this volume. |
 | `geometry` | `List[LBFace3D]` | The enclosing 3D face geometry. |
 
@@ -320,6 +320,17 @@ A Passive House Space representing an occupiable floor area.
 | `floor_segments` | `List[SpaceFloorSegment]` | — |
 
 ### Methods
+
+#### *classmethod* from_room(hb_room, avg_ceiling_height)
+
+Build a default Passive House Space from a Honeybee Room.
+
+| Arg | Type | Description |
+|-----|------|-------------|
+| `hb_room` | `room.Room` | The Honeybee Room whose Floor faces define the generated Space. |
+| `avg_ceiling_height` | `float` | Required positive, finite extrusion height in the same coordinate units as the Room geometry. |
+
+**Returns**: `Space`
 
 #### add_new_volumes(_new_volumes)
 

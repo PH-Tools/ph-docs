@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-14T03:54:36Z",
+  "generated": "2026-08-14T18:41:59Z",
   "base_url": "https://docs.passivehousetools.com",
   "llm_nav": {
     "instructions": "/llm-instructions.md",
@@ -17,6 +17,12 @@
           "title": "Getting Started",
           "path": "/honeybee-ph/getting-started/",
           "raw_path": "/llm/honeybee-ph/getting-started.md",
+          "section": "Getting Started"
+        },
+        {
+          "title": "EPW preliminary climate",
+          "path": "/honeybee-ph/epw-preliminary-climate/",
+          "raw_path": "/llm/honeybee-ph/epw-preliminary-climate.md",
           "section": "Getting Started"
         },
         {
