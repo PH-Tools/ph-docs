@@ -48,6 +48,20 @@ Raised when a value cannot be read from a PHPP worksheet cell.
 
 ---
 
+## ResolveComponentIDException
+
+Raised when a component's PHPP ID cannot be built because its ID cell is empty.
+
+**Inherits from**: `Exception`
+
+### Attributes
+
+| Attribute | Type | Description |
+|-----------|------|-------------|
+| `msg` | — | — |
+
+---
+
 ## PHPPDataMissingException
 
 Raised when a required PHPP field returns None.

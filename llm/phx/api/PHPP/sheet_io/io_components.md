@@ -112,6 +112,8 @@ Reads and writes frame component data in the PHPP 'Components' worksheet.
 
 #### find_section_header_row(_row_start, _row_end)
 
+Return the row number of the 'Frames' section header.
+
 | Arg | Type | Description |
 |-----|------|-------------|
 | `_row_start` | — | — |
@@ -200,15 +202,16 @@ Return the first row of the Ventilators input section.
 
 Return the first empty row in the Ventilators input section.
 
-#### get_ventilator_phpp_id_by_name(_name, _row_start, _row_end)
+#### get_ventilator_phpp_id_by_name(_name, _row_start, _row_end, _use_cache)
 
-Return the PHPP ID of a Ventilator component by name.
+Return the PHPP ID ("01ud-MyVentilator") of a Ventilator component, by name.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `_name` | — | — |
-| `_row_start` | — | — |
-| `_row_end` | — | — |
+| `_name` | — | (str) The Ventilator display-name to search for. |
+| `_row_start` | — | (int | None) default=None. Overrides the first row searched. Defaults to the first entry row of the section. |
+| `_row_end` | — | (int | None) default=None. Overrides the last row searched. Defaults to the last entry row of the section. |
+| `_use_cache` | — | (bool) default=False. Re-use a previously resolved ID for this name instead of re-reading the worksheet. Safe once the ventilator section has been written, and worth it on the per-space write path, which asks for the same handful of names once per room. |
 
 #### get_ventilator_phpp_id_by_row_num(_row_num)
 

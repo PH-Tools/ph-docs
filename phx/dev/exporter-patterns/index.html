@@ -445,6 +445,41 @@ schema maps each side explicitly.</p>
 <p><strong><code>PHPPConnection</code> exposes 21 <code>write_*</code> methods</strong> — 18 functional write operations plus 3 non-residential stubs (<code>write_non_res_utilization_profiles</code>, <code>write_non_res_space_lighting</code>, <code>write_non_res_IHG</code>). The canonical write sequence writes ventilation units first, then ducts, then rooms; duct assignments use the same project order as the ventilation-unit rows.</p>
 </li>
 </ol>
+<h3 id="section-locators-and-component-id-lookups">Section locators and component-ID lookups</h3>
+<p>Entry-block row positions are <strong>not fixed</strong>, and not a function of the PHPP
+version: a section sits lower in a populated project file than in an empty one.
+Controllers therefore locate a section by searching a column for its marker
+string (<code>locator_string_header</code> / <code>locator_string_entry</code> in the shape files)
+rather than by hard-coding rows. Two rules follow, and both have been violated:</p>
+<ol>
+<li>
+<p><strong>A locator returns a worksheet row number, not an index.</strong> The scan reads a
+block starting at <code>_row_start</code>, so it must <code>enumerate(xl_data, start=_row_start)</code>.
+Enumerating from <code>0</code> — or from a hard-coded <code>1</code> — returns an index that
+happens to be right only when the block starts at row 1.</p>
+</li>
+<li>
+<p><strong>A component-ID lookup must be bounded to the user-defined entry block.</strong> IDs
+are built as <code>"&#x3C;prefix>-&#x3C;name>"</code>, where the prefix is read from the ID cell
+beside the matched name. A search that starts at row 1 can match a header,
+label, or note row whose ID cell is empty, producing <code>"None-&#x3C;name>"</code> — a
+string PHPP cannot resolve. Never format an empty prefix into an ID: raise
+<code>ResolveComponentIDException</code> instead.</p>
+<p>Bounding matters at <em>both</em> ends, because a <code>Components</code> component block holds
+<strong>two</strong> lists: the 99 user-defined slots (rows 13–111, IDs <code>01ud</code>…<code>99ud</code>) that
+PHX writes into, and below them PHI’s certified-component library (IDs like
+<code>2088vs03</code>). PHPP’s own lookups deliberately span both — a user may select
+either — but <strong>PHX’s must not</strong>: PHX writes the component and then resolves
+the name it just wrote, so the target is always in the user block. A wide scan
+that reaches the library resolves a colliding name to a real-but-wrong prefix,
+which is a quieter failure than <code>None-</code> because the ID <em>looks</em> valid.
+<code>section_first_entry_row .. section_last_entry_row</code> is the right span.</p>
+</li>
+</ol>
+<p>Rule 2 matters because the failure is silent end-to-end. PHPP reports <code>#N/A</code> on
+a sheet most users never open, the dependent result cell shows a clean <code>0</code>, and
+the resulting energy demand stays plausible — only a comparison against an
+independently-computed expectation catches it.</p>
 <h3 id="usage-2">Usage</h3>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">from</span><span style="color:#79B8FF"> PHX</span><span style="color:#E1E4E8">.xl </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> xl_app</span></span>
 <span class="line"><span style="color:#F97583">from</span><span style="color:#79B8FF"> PHX</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">PHPP</span><span style="color:#F97583"> import</span><span style="color:#E1E4E8"> phpp_app</span></span>

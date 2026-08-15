@@ -390,6 +390,7 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
 <table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>section_header_row</code></td><td>—</td><td>Return the row number of the ‘Frames’ section header.</td></tr><tr><td><code>section_first_entry_row</code></td><td>—</td><td>Return the row number of the very first user-input entry row in the Frames input section.</td></tr><tr><td><code>section_last_entry_row</code></td><td>—</td><td>Return the row number of the very last user-input entry row in the Frames input section.</td></tr></tbody></table>
 <h3 id="methods-1">Methods</h3>
 <h4 id="find_section_header_row_row_start-_row_end-1">find_section_header_row(_row_start, _row_end)</h4>
+<p>Return the row number of the ‘Frames’ section header.</p>
 
 
 
@@ -582,8 +583,8 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
 <p>Return the first row of the Ventilators input section.</p>
 <h4 id="find_first_empty_row-2">find_first_empty_row()</h4>
 <p>Return the first empty row in the Ventilators input section.</p>
-<h4 id="get_ventilator_phpp_id_by_name_name-_row_start-_row_end">get_ventilator_phpp_id_by_name(_name, _row_start, _row_end)</h4>
-<p>Return the PHPP ID of a Ventilator component by name.</p>
+<h4 id="get_ventilator_phpp_id_by_name_name-_row_start-_row_end-_use_cache">get_ventilator_phpp_id_by_name(_name, _row_start, _row_end, _use_cache)</h4>
+<p>Return the PHPP ID (“01ud-MyVentilator”) of a Ventilator component, by name.</p>
 
 
 
@@ -609,7 +610,12 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
 
 
 
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_name</code></td><td>—</td><td>—</td></tr><tr><td><code>_row_start</code></td><td>—</td><td>—</td></tr><tr><td><code>_row_end</code></td><td>—</td><td>—</td></tr></tbody></table>
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_name</code></td><td>—</td><td>(str) The Ventilator display-name to search for.</td></tr><tr><td><code>_row_start</code></td><td>—</td><td>(int</td></tr><tr><td><code>_row_end</code></td><td>—</td><td>(int</td></tr><tr><td><code>_use_cache</code></td><td>—</td><td>(bool) default=False. Re-use a previously resolved ID for this name instead of re-reading the worksheet. Safe once the ventilator section has been written, and worth it on the per-space write path, which asks for the same handful of names once per room.</td></tr></tbody></table>
 <h4 id="get_ventilator_phpp_id_by_row_num_row_num">get_ventilator_phpp_id_by_row_num(_row_num)</h4>
 <p>Return the PHPP Ventilator ID (“01ud-MyVentilator”, etc..) for the given row number.</p>
 
