@@ -50,6 +50,7 @@ Internal heat gains calculation method for PHI certification (PHPP v9).
 
 | Member | Value | Meaning |
 |--------|-------|---------|
+| `USER_DETERMINED` | `1` | User-specified IHG values. |
 | `STANDARD` | `2` | Standard IHG values per PHI protocol. |
 | `RES_CUSTOM` | `3` | Custom IHG values for residential buildings. |
 | `NONRES_CUSTOM` | `4` | Custom IHG values for non-residential buildings. |
