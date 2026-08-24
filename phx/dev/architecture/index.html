@@ -128,6 +128,9 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
         <button aria-expanded="false">from_HBJSON<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
         <ul class="children"><li><a class="" href="/phx/api/from_HBJSON/cleanup/">cleanup</a></li><li><a class="" href="/phx/api/from_HBJSON/cleanup_merge_faces/">cleanup_merge_faces</a></li><li><a class="" href="/phx/api/from_HBJSON/create_assemblies/">create_assemblies</a></li><li><a class="" href="/phx/api/from_HBJSON/create_building/">create_building</a></li><li><a class="" href="/phx/api/from_HBJSON/create_elec_equip/">create_elec_equip</a></li><li><a class="" href="/phx/api/from_HBJSON/create_foundations/">create_foundations</a></li><li><a class="" href="/phx/api/from_HBJSON/create_geometry/">create_geometry</a></li><li><a class="" href="/phx/api/from_HBJSON/create_hvac/">create_hvac</a></li><li><a class="" href="/phx/api/from_HBJSON/create_project/">create_project</a></li><li><a class="" href="/phx/api/from_HBJSON/create_rooms/">create_rooms</a></li><li><a class="" href="/phx/api/from_HBJSON/create_schedules/">create_schedules</a></li><li><a class="" href="/phx/api/from_HBJSON/create_shades/">create_shades</a></li><li><a class="" href="/phx/api/from_HBJSON/create_shw_devices/">create_shw_devices</a></li><li><a class="" href="/phx/api/from_HBJSON/create_variant/">create_variant</a></li><li><a class="" href="/phx/api/from_HBJSON/read_HBJSON_file/">read_HBJSON_file</a></li></ul>
       </li><li class="group">
+        <button aria-expanded="false">from_PHPP<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
+        <ul class="children"><li><a class="" href="/phx/api/from_PHPP/report/">report</a></li><li><a class="" href="/phx/api/from_PHPP/results/">results</a></li><li><a class="" href="/phx/api/from_PHPP/results_map/">results_map</a></li><li><a class="" href="/phx/api/from_PHPP/sniff/">sniff</a></li><li><a class="" href="/phx/api/from_PHPP/staleness/">staleness</a></li><li><a class="" href="/phx/api/from_PHPP/xl_openpyxl/">xl_openpyxl</a></li></ul>
+      </li><li class="group">
         <button aria-expanded="false">from_WUFI_XML<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
         <ul class="children"><li><a class="" href="/phx/api/from_WUFI_XML/phx_converter/">phx_converter</a></li><li><a class="" href="/phx/api/from_WUFI_XML/phx_schemas/">phx_schemas</a></li><li><a class="" href="/phx/api/from_WUFI_XML/read_WUFI_XML_file/">read_WUFI_XML_file</a></li><li><a class="" href="/phx/api/from_WUFI_XML/wufi_file_schema/">wufi_file_schema</a></li><li><a class="" href="/phx/api/from_WUFI_XML/wufi_file_types/">wufi_file_types</a></li></ul>
       </li><li class="group">
@@ -159,7 +162,7 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
         <ul class="children"><li><a class="" href="/phx/api/to_WUFI_XML/xml_builder/">xml_builder</a></li><li><a class="" href="/phx/api/to_WUFI_XML/xml_converter/">xml_converter</a></li><li><a class="" href="/phx/api/to_WUFI_XML/xml_schemas/">xml_schemas</a></li><li><a class="" href="/phx/api/to_WUFI_XML/xml_txt_to_file/">xml_txt_to_file</a></li><li><a class="" href="/phx/api/to_WUFI_XML/xml_writables/">xml_writables</a></li></ul>
       </li><li class="group">
         <button aria-expanded="false">xl<svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 2 4 3-4 3" /></svg></button>
-        <ul class="children"><li><a class="" href="/phx/api/xl/xl_app/">xl_app</a></li><li><a class="" href="/phx/api/xl/xl_data/">xl_data</a></li><li><a class="" href="/phx/api/xl/xl_typing/">xl_typing</a></li></ul>
+        <ul class="children"><li><a class="" href="/phx/api/xl/xl_app/">xl_app</a></li><li><a class="" href="/phx/api/xl/xl_data/">xl_data</a></li><li><a class="" href="/phx/api/xl/xl_readable/">xl_readable</a></li><li><a class="" href="/phx/api/xl/xl_typing/">xl_typing</a></li></ul>
       </li></ul>
       </li></ul> </aside> <script type="module">document.querySelectorAll(".nav-tree .group > button").forEach(e=>{e.addEventListener("click",()=>{const t=e.parentElement.classList.toggle("is-open");e.setAttribute("aria-expanded",String(t))})});</script>  </div> <div> <!-- Regular content page: simple breadcrumb header -->
         <header class="content-head"> <div class="content-head__crumb">  <span>Developer</span> <span class="sep">&rsaquo;</span>  <span class="current">Architecture</span> </div> </header>  <article class="article" data-pagefind-body data-pagefind-meta="library:PHX"> <h1 id="phx-architecture">PHX Architecture</h1>
@@ -174,7 +177,8 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
 <span class="line"><span>                                                              ├──> PHPP          ──> Excel (via xlwings)</span></span>
 <span class="line"><span>                                                              ├──> to_PPP        ──> .ppp file</span></span>
 <span class="line"><span>                                                              └──> to_METr_JSON  ──> .json file</span></span>
-<span class="line"><span>WUFI XML file ──> from_WUFI_XML ────────────────────────────> PHX Model (in-memory)</span></span></code></pre>
+<span class="line"><span>WUFI XML file ──> from_WUFI_XML ────────────────────────────> PHX Model (in-memory)</span></span>
+<span class="line"><span>PHPP .xlsx ─────> from_PHPP (sniff + headline results, read-only) ──> ResultsRecord (not a PHX Model)</span></span></code></pre>
 <p>PHX is an <strong>in-memory-only translator</strong> — PHX models are never serialized directly. They exist as an intermediate representation created from a source (usually HBJSON) and consumed by an output writer.</p>
 <p><code>PHX.conversion.from_honeybee()</code> is the public Honeybee → PHX boundary. It accepts an already
 constructed Honeybee model carrying honeybee-ph extensions. Reading an HBJSON file into that
@@ -239,6 +243,14 @@ Honeybee object is an optional, separate step used by file-oriented workflows.</
 <span class="line"><span>│   ├── wufi_file_types.py      # Pydantic type definitions</span></span>
 <span class="line"><span>│   ├── phx_schemas.py          # PHX model schema definitions</span></span>
 <span class="line"><span>│   └── phx_converter.py        # WUFI XML data -> PHX model conversion</span></span>
+<span class="line"><span>│</span></span>
+<span class="line"><span>├── from_PHPP/              # Closed PHPP file -> typed results record (openpyxl, read-only)</span></span>
+<span class="line"><span>│   ├── xl_openpyxl.py          # OpenpyxlWorkbook: the closed-file backend for xl.xl_readable.XLReadable</span></span>
+<span class="line"><span>│   ├── sniff.py                # PHPP? version? language? project / blank template / not-a-PHPP</span></span>
+<span class="line"><span>│   ├── results_map.py          # Per-version results cells, each paired with its caption</span></span>
+<span class="line"><span>│   ├── results.py              # read_results() -> ResultsRecord | Refusal, + ReadReport</span></span>
+<span class="line"><span>│   ├── staleness.py            # Stale-cache signals -> fresh / suspect / empty</span></span>
+<span class="line"><span>│   └── report.py               # Refusal, RefusalReason, ReadReport, UnreadItem</span></span>
 <span class="line"><span>│</span></span>
 <span class="line"><span>├── to_WUFI_XML/            # PHX Model -> WUFI XML export</span></span>
 <span class="line"><span>│   ├── xml_builder.py      # Main entry: generate_WUFI_XML_from_object()</span></span>

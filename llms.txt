@@ -144,6 +144,12 @@ Passive House Exchange data model & file I/O. Convert between WUFI XML, PHPP Exc
 - [from_HBJSON: create_shw_devices](https://docs.passivehousetools.com/llm/phx/api/from_HBJSON/create_shw_devices.md)
 - [from_HBJSON: create_variant](https://docs.passivehousetools.com/llm/phx/api/from_HBJSON/create_variant.md)
 - [from_HBJSON: read_HBJSON_file](https://docs.passivehousetools.com/llm/phx/api/from_HBJSON/read_HBJSON_file.md)
+- [from_PHPP: report](https://docs.passivehousetools.com/llm/phx/api/from_PHPP/report.md)
+- [from_PHPP: results](https://docs.passivehousetools.com/llm/phx/api/from_PHPP/results.md)
+- [from_PHPP: results_map](https://docs.passivehousetools.com/llm/phx/api/from_PHPP/results_map.md)
+- [from_PHPP: sniff](https://docs.passivehousetools.com/llm/phx/api/from_PHPP/sniff.md)
+- [from_PHPP: staleness](https://docs.passivehousetools.com/llm/phx/api/from_PHPP/staleness.md)
+- [from_PHPP: xl_openpyxl](https://docs.passivehousetools.com/llm/phx/api/from_PHPP/xl_openpyxl.md)
 - [from_WUFI_XML: phx_converter](https://docs.passivehousetools.com/llm/phx/api/from_WUFI_XML/phx_converter.md)
 - [from_WUFI_XML: phx_schemas](https://docs.passivehousetools.com/llm/phx/api/from_WUFI_XML/phx_schemas.md)
 - [from_WUFI_XML: read_WUFI_XML_file](https://docs.passivehousetools.com/llm/phx/api/from_WUFI_XML/read_WUFI_XML_file.md)
@@ -208,6 +214,7 @@ Passive House Exchange data model & file I/O. Convert between WUFI XML, PHPP Exc
 - [to_WUFI_XML: xml_writables](https://docs.passivehousetools.com/llm/phx/api/to_WUFI_XML/xml_writables.md)
 - [xl: xl_app](https://docs.passivehousetools.com/llm/phx/api/xl/xl_app.md)
 - [xl: xl_data](https://docs.passivehousetools.com/llm/phx/api/xl/xl_data.md)
+- [xl: xl_readable](https://docs.passivehousetools.com/llm/phx/api/xl/xl_readable.md)
 - [xl: xl_typing](https://docs.passivehousetools.com/llm/phx/api/xl/xl_typing.md)
 
 ## Honeybee-REVIVE

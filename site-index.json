@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-24T02:54:16Z",
+  "generated": "2026-08-24T12:05:21Z",
   "base_url": "https://docs.passivehousetools.com",
   "llm_nav": {
     "instructions": "/llm-instructions.md",
@@ -837,6 +837,42 @@
           "section": "from_HBJSON"
         },
         {
+          "title": "report",
+          "path": "/phx/api/from_PHPP/report/",
+          "raw_path": "/llm/phx/api/from_PHPP/report.md",
+          "section": "from_PHPP"
+        },
+        {
+          "title": "results",
+          "path": "/phx/api/from_PHPP/results/",
+          "raw_path": "/llm/phx/api/from_PHPP/results.md",
+          "section": "from_PHPP"
+        },
+        {
+          "title": "results_map",
+          "path": "/phx/api/from_PHPP/results_map/",
+          "raw_path": "/llm/phx/api/from_PHPP/results_map.md",
+          "section": "from_PHPP"
+        },
+        {
+          "title": "sniff",
+          "path": "/phx/api/from_PHPP/sniff/",
+          "raw_path": "/llm/phx/api/from_PHPP/sniff.md",
+          "section": "from_PHPP"
+        },
+        {
+          "title": "staleness",
+          "path": "/phx/api/from_PHPP/staleness/",
+          "raw_path": "/llm/phx/api/from_PHPP/staleness.md",
+          "section": "from_PHPP"
+        },
+        {
+          "title": "xl_openpyxl",
+          "path": "/phx/api/from_PHPP/xl_openpyxl/",
+          "raw_path": "/llm/phx/api/from_PHPP/xl_openpyxl.md",
+          "section": "from_PHPP"
+        },
+        {
           "title": "phx_converter",
           "path": "/phx/api/from_WUFI_XML/phx_converter/",
           "raw_path": "/llm/phx/api/from_WUFI_XML/phx_converter.md",
@@ -1218,6 +1254,12 @@
           "title": "xl_data",
           "path": "/phx/api/xl/xl_data/",
           "raw_path": "/llm/phx/api/xl/xl_data.md",
+          "section": "xl"
+        },
+        {
+          "title": "xl_readable",
+          "path": "/phx/api/xl/xl_readable/",
+          "raw_path": "/llm/phx/api/xl/xl_readable.md",
           "section": "xl"
         },
         {
