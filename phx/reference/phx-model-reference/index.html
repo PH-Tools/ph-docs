@@ -609,6 +609,11 @@ join the project graph uses <code>with phx_project.identity_scope(owner=variant.
 for variant-owned objects. Concurrent mutation of the same project is not
 supported. Legacy <code>_count</code> ClassVars remain only as a compatibility fallback for
 standalone constructors outside a project identity scope.</p>
+<p>A project built from bare constructors has no allocator, and <code>identity_scope()</code>
+is a no-op for it — it yields <code>None</code> and leaves the legacy-counter numbering in
+place, which is that project’s own consistent identity regime. Callers therefore
+enter the scope unconditionally rather than testing whether the project was
+converter-built.</p>
 <h3 id="uuid--id_num-dual-identity">UUID + id_num Dual Identity</h3>
 <p>Constructions and devices carry both a <code>uuid.UUID | str</code> identifier and an integer <code>id_num</code>. The UUID is for lookup/deduplication; <code>id_num</code> is for sequential output numbering.</p>
 <h3 id="__add__-merging"><code>__add__</code> Merging</h3>

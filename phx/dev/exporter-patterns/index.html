@@ -237,7 +237,15 @@ honeybee-ph extensions into a transient PHX project:</p>
 reset class counters in an importer or exporter. Builders allocate through the
 active namespace, WUFI importers claim source IDs, and explicit post-conversion
 mutation enters <code>phx_project.identity_scope()</code> (with the variant ID as <code>owner</code>
-for variant-local objects).</p>
+for variant-local objects). <code>to_WUFI_XML/_bug_fixes.py</code> is the worked example:
+it builds new mechanical collections after the conversion has returned, so it
+re-enters the scope to number them.</p>
+<p>The scope is a <strong>no-op on a project that has no allocator</strong> — one assembled from
+bare constructors rather than by a converter. Those objects were numbered by the
+legacy class counters, which are already unique within that project; attaching a
+fresh allocator there would restart numbering at 1 and collide. This means a
+post-conversion mutation site needs no “was this converter-built?” guard: enter
+the scope unconditionally and both project kinds come out correct.</p>
 <p><code>generate_WUFI_XML_from_object()</code>, <code>generate_metr_json_dict()</code>, and the canonical
 <code>write_phx_project_to_phpp()</code> sequence run target-specific, read-only identity
 validation before serialization or Excel writes. The aggregate diagnostic

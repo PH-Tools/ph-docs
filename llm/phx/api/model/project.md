@@ -182,7 +182,7 @@ Top-level PHX project container.
 
 #### identity_scope(owner)
 
-Activate this project's allocator, optionally for one variant owner.
+Join this project's identity regime for post-conversion mutations.
 
 | Arg | Type | Description |
 |-----|------|-------------|
