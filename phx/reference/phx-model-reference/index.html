@@ -614,6 +614,20 @@ is a no-op for it — it yields <code>None</code> and leaves the legacy-counter 
 place, which is that project’s own consistent identity regime. Callers therefore
 enter the scope unconditionally rather than testing whether the project was
 converter-built.</p>
+<h3 id="copying-a-program-new-load-shared-schedule">Copying a Program: new load, shared schedule</h3>
+<p><code>PhxProgramVentilation</code> / <code>PhxProgramOccupancy</code> / <code>PhxProgramLighting</code> pair a
+per-instance <code>load</code> with a project-registered <code>schedule</code>. When deriving one
+program from another the two halves need opposite treatment:</p>
+<ul>
+<li>the <strong>load</strong> must be a fresh object. Sharing it means a write through one
+reference silently lands in the other - this is what made the ERV space-merge
+corrupt the model it was serializing, compounding airflow on every export.</li>
+<li>the <strong>schedule</strong> must stay the <em>same object</em>. Schedules are project-registered
+utilization patterns referenced from the output by <code>id_num</code> and validated
+against the project’s pattern collections; a copy is unregistered, so the
+exporters would write a dangling pattern reference.</li>
+</ul>
+<p>A <code>deepcopy</code> of a program is therefore wrong on both counts.</p>
 <h3 id="uuid--id_num-dual-identity">UUID + id_num Dual Identity</h3>
 <p>Constructions and devices carry both a <code>uuid.UUID | str</code> identifier and an integer <code>id_num</code>. The UUID is for lookup/deduplication; <code>id_num</code> is for sequential output numbering.</p>
 <h3 id="__add__-merging"><code>__add__</code> Merging</h3>
