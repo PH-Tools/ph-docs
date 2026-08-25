@@ -41,6 +41,25 @@ docs/
 
 See spoke `docs/.instructions.md` files for the full convention reference.
 
+## LLM-ready markdown (`/llm/`) — skills depend on these URLs
+
+`scripts/build_llm_docs.py` mirrors every fetched spoke doc into `public/llm/` as clean
+markdown (HTML blocks and YAML front-matter stripped), published at
+`https://docs.passivehousetools.com/llm/<lib>/<path>.md`. Build order is
+`fetch_spokes.py` → `build_llm_docs.py` → `pnpm build`.
+
+These are a **consumed contract, not a byproduct.** Claude skills fetch them instead of
+reading local files, so they work on a colleague's machine with no checkout:
+
+| URL | Consumer |
+|---|---|
+| `/llm/phx/reference/wufi-xml-schema.md` | `wufi-xml` skill |
+| `/llm/phx/reference/phx-model-reference.md` | `phx-model` skill |
+
+A new reference doc in a spoke gets an `/llm/` copy automatically. Renaming or moving one
+**breaks the skill that fetches it** — grep `~/.claude/skills/` for the old URL before
+changing a path.
+
 ## Critical Design Principles
 
 1. **Graceful degradation**: `fetch_spokes.py` never aborts on a single spoke failure. Log, skip, continue. Always exit 0.
