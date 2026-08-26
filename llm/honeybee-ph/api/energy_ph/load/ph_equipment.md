@@ -20,7 +20,7 @@ Base class for PH appliances with common energy and scheduling attributes.
 | `equipment_type` | — | Class name used for serialization dispatch. |
 | `display_name` | `str` | — |
 | `comment` | `str` | Optional user comment. |
-| `reference_quantity` | `int` | Reference quantity type (2 = zone occupants). |
+| `reference_quantity` | — | WUFI 'Reference Quantity' selector value. Initialized from the subclass's ``DEFAULT_REFERENCE_QUANTITY``. |
 | `quantity` | `int` | Number of this appliance installed. |
 | `in_conditioned_space` | `bool` | Whether the appliance is inside the thermal envelope. Default: True. |
 | `reference_energy_norm` | `int` | Energy normalization period (2 = year). |
@@ -89,13 +89,13 @@ Returns the annual average wattage of the equipment.
 
 #### *classmethod* phius_default()
 
-Return the default instance of the object.
+Return a new PhEquipment with the PHIUS default attribute values.
 
 **Returns**: `'PhEquipment'`
 
 #### *classmethod* phi_default()
 
-Return the default instance of the object.
+Return a new PhEquipment with the PHI default attribute values.
 
 **Returns**: `'PhEquipment'`
 

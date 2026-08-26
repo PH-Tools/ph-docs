@@ -216,7 +216,7 @@ Library · Honeybee-PH </a> <ul class="nav-tree"><li class="group">
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>host</code></td><td>—</td><td>—</td></tr><tr><td><code>equipment_type</code></td><td>—</td><td>Class name used for serialization dispatch.</td></tr><tr><td><code>display_name</code></td><td><code>str</code></td><td>—</td></tr><tr><td><code>comment</code></td><td><code>str</code></td><td>Optional user comment.</td></tr><tr><td><code>reference_quantity</code></td><td><code>int</code></td><td>Reference quantity type (2 = zone occupants).</td></tr><tr><td><code>quantity</code></td><td><code>int</code></td><td>Number of this appliance installed.</td></tr><tr><td><code>in_conditioned_space</code></td><td><code>bool</code></td><td>Whether the appliance is inside the thermal envelope. Default: True.</td></tr><tr><td><code>reference_energy_norm</code></td><td><code>int</code></td><td>Energy normalization period (2 = year).</td></tr><tr><td><code>energy_demand</code></td><td><code>float</code></td><td>Annual energy demand (kWh).</td></tr><tr><td><code>energy_demand_per_use</code></td><td><code>float</code></td><td>Energy per use cycle (kWh/use).</td></tr><tr><td><code>combined_energy_factor</code></td><td><code>float</code></td><td>Combined energy factor (CEF).</td></tr><tr><td><code>ihg_utilization_factor</code></td><td><code>float</code></td><td>Fraction of energy that becomes internal heat gain inside the envelope (0.0-1.0). Default: 1.0.</td></tr></tbody></table>
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>host</code></td><td>—</td><td>—</td></tr><tr><td><code>equipment_type</code></td><td>—</td><td>Class name used for serialization dispatch.</td></tr><tr><td><code>display_name</code></td><td><code>str</code></td><td>—</td></tr><tr><td><code>comment</code></td><td><code>str</code></td><td>Optional user comment.</td></tr><tr><td><code>reference_quantity</code></td><td>—</td><td>WUFI ‘Reference Quantity’ selector value. Initialized from the subclass’s <code>DEFAULT_REFERENCE_QUANTITY</code>.</td></tr><tr><td><code>quantity</code></td><td><code>int</code></td><td>Number of this appliance installed.</td></tr><tr><td><code>in_conditioned_space</code></td><td><code>bool</code></td><td>Whether the appliance is inside the thermal envelope. Default: True.</td></tr><tr><td><code>reference_energy_norm</code></td><td><code>int</code></td><td>Energy normalization period (2 = year).</td></tr><tr><td><code>energy_demand</code></td><td><code>float</code></td><td>Annual energy demand (kWh).</td></tr><tr><td><code>energy_demand_per_use</code></td><td><code>float</code></td><td>Energy per use cycle (kWh/use).</td></tr><tr><td><code>combined_energy_factor</code></td><td><code>float</code></td><td>Combined energy factor (CEF).</td></tr><tr><td><code>ihg_utilization_factor</code></td><td><code>float</code></td><td>Fraction of energy that becomes internal heat gain inside the envelope (0.0-1.0). Default: 1.0.</td></tr></tbody></table>
 <h3 id="methods">Methods</h3>
 <h4 id="apply_default_attr_values_defaults">apply_default_attr_values(_defaults)</h4>
 <p>Sets all the object attributes to default values, as specified in a “defaults” dict.</p>
@@ -344,10 +344,10 @@ Library · Honeybee-PH </a> <ul class="nav-tree"><li class="group">
 <table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_schedule</code></td><td>`ScheduleRuleset</td><td>None`</td></tr><tr><td><code>*args</code></td><td><code>*Any</code></td><td>—</td></tr><tr><td><code>**kwargs</code></td><td><code>**Any</code></td><td>—</td></tr></tbody></table>
 <p><strong>Returns</strong>: <code>float</code></p>
 <h4 id="classmethod-phius_default"><em>classmethod</em> phius_default()</h4>
-<p>Return the default instance of the object.</p>
+<p>Return a new PhEquipment with the PHIUS default attribute values.</p>
 <p><strong>Returns</strong>: <code>'PhEquipment'</code></p>
 <h4 id="classmethod-phi_default"><em>classmethod</em> phi_default()</h4>
-<p>Return the default instance of the object.</p>
+<p>Return a new PhEquipment with the PHI default attribute values.</p>
 <p><strong>Returns</strong>: <code>'PhEquipment'</code></p>
 <hr>
 <h2 id="phdishwasher">PhDishwasher</h2>
