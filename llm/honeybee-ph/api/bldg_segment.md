@@ -94,6 +94,7 @@ Heating and cooling temperature setpoints for a building segment.
 |-----------|------|-------------|
 | `winter` | `float` | Winter heating setpoint in degrees Celsius. Default: 20.0. |
 | `summer` | `float` | Summer cooling setpoint in degrees Celsius. Default: 25.0. |
+| `mechanical_cooling` | `bool` | Whether the building has mechanical cooling. Default: False. |
 
 ---
 
