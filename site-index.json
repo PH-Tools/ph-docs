@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-10T06:48:08Z",
+  "generated": "2026-09-10T16:40:40Z",
   "base_url": "https://docs.passivehousetools.com",
   "llm_nav": {
     "instructions": "/llm-instructions.md",
@@ -293,6 +293,12 @@
           "title": "iso_10077_1",
           "path": "/honeybee-ph/api/utils/iso_10077_1/",
           "raw_path": "/llm/honeybee-ph/api/utils/iso_10077_1.md",
+          "section": "utils"
+        },
+        {
+          "title": "iso_6946",
+          "path": "/honeybee-ph/api/utils/iso_6946/",
+          "raw_path": "/llm/honeybee-ph/api/utils/iso_6946.md",
           "section": "utils"
         },
         {

@@ -57,6 +57,7 @@ Grasshopper-native Passive House modeling. Build PH-compliant models inside Rhin
 - [utils: histogram](https://docs.passivehousetools.com/llm/honeybee-ph/api/utils/histogram.md)
 - [utils: input_tools](https://docs.passivehousetools.com/llm/honeybee-ph/api/utils/input_tools.md)
 - [utils: iso_10077_1](https://docs.passivehousetools.com/llm/honeybee-ph/api/utils/iso_10077_1.md)
+- [utils: iso_6946](https://docs.passivehousetools.com/llm/honeybee-ph/api/utils/iso_6946.md)
 - [utils: occupancy](https://docs.passivehousetools.com/llm/honeybee-ph/api/utils/occupancy.md)
 - [utils: polygon2d_tools](https://docs.passivehousetools.com/llm/honeybee-ph/api/utils/polygon2d_tools.md)
 - [utils: preview](https://docs.passivehousetools.com/llm/honeybee-ph/api/utils/preview.md)
