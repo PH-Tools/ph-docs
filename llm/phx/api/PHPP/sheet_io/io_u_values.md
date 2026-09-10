@@ -174,6 +174,15 @@ Connect all the links to make the 'Variants' page drive the input values.
 |-----|------|-------------|
 | `_assembly_phpp_ids` | — | — |
 
+#### write_surface_resistance_selectors(_row_num, _assembly_name)
+
+Write the Rsi / Rse selectors for a single constructor block.
+
+| Arg | Type | Description |
+|-----|------|-------------|
+| `_row_num` | — | — |
+| `_assembly_name` | — | — |
+
 #### get_all_envelope_assemblies()
 
 ---

@@ -803,6 +803,15 @@ layer thickness and collapses the two shells away, so the assembly shows the sin
 declared. The marker is read for the thickness only; R always comes from the Honeybee material, so
 the U-value is unchanged (the shells account for about 0.0002 m²K/W). An unmarked sandwich, such as
 the one <code>GHCompo_CreateSDConstructions</code> builds, is left alone.</p>
+<p><strong>Surface resistances:</strong> no PHX model class carries one. WUFI-Passive and METr apply the films
+themselves from each component’s exposure, so an assembly reaching them is film-free by design.
+PHPP instead resolves them per assembly block from two selector cells, so the PHPP writer
+(<code>phpp_app.write_project_constructions</code>) derives the selectors from the <code>ComponentFaceType</code> and
+<code>ComponentExposureExterior</code> of the components which reference the assembly: <code>WALL</code>/<code>ROOF_CEILING</code>/
+<code>FLOOR</code> pick the orientation (Rsi), and <code>EXTERIOR</code>/<code>GROUND</code>/adjacent-zone pick the adjacency (Rse).
+The selector strings are written, not numbers, so PHPP keeps the climate dependence of Rsi and the
+<code>Rse = Rsi</code> behavior of “Ventilated”. PHPP allows one selector pair per assembly, so an assembly
+used at more than one exposure takes the pair covering the largest area and warns.</p>
 <p><strong>Program composition:</strong> HB stores loads and schedules separately. PHX pairs them: <code>PhxProgramVentilation</code> = <code>PhxLoadVentilation</code> + <code>PhxScheduleVentilation</code>.</p>
 <p><strong>HVAC disaggregation:</strong> HB uses high-level <code>IdealAirSystem</code>. PHX disaggregates into specific device types (ventilators, heaters, heat pumps, hot water tanks, piping) with usage profiles specifying coverage percentages.</p>
 <p><strong>Ventilation absence:</strong> A Honeybee Room with no PH ventilation system becomes

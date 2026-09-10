@@ -10,6 +10,13 @@ Data-entry constructor for the U-Values Worksheet.
 
 A single U-Value/Constructor entry block.
 
+### Properties
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `r_si_selector` | — | Return the PHPP orientation-selector string (Rsi) for the block's face-type. |
+| `r_se_selector` | — | Return the PHPP adjacency-selector string (Rse) for the block's exterior exposure. |
+
 ### Methods
 
 #### is_mass_material(_layer)

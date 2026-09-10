@@ -164,6 +164,22 @@ No description available.
 
 ---
 
+## UValuesRsiSelectors
+
+The PHPP 'U-values' orientation selector strings which drive the interior surface resistance (Rsi).
+
+**Inherits from**: `BaseModel`
+
+---
+
+## UValuesRseSelectors
+
+The PHPP 'U-values' adjacency selector strings which drive the exterior surface resistance (Rse).
+
+**Inherits from**: `BaseModel`
+
+---
+
 ## UValuesConstructorInputs
 
 No description available.
