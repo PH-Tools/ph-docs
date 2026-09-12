@@ -181,7 +181,69 @@ Library · Honeybee-PH </a> <ul class="nav-tree"><li class="group">
 
 
 
-<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>identifier</code></td><td>—</td><td>Unique text identifier.</td></tr><tr><td><code>zone_id_num</code></td><td><code>int</code></td><td>Numeric ID for the adjacent zone.</td></tr><tr><td><code>zone_name</code></td><td>—</td><td>Name of the adjacent zone.</td></tr><tr><td><code>zone_type</code></td><td>—</td><td>Classification of the adjacent zone.</td></tr><tr><td><code>temperature_reduction_factor</code></td><td>—</td><td>Factor applied to the temperature difference across this boundary. Default: 1.0.</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>identifier</code></td><td>—</td><td>Unique text identifier.</td></tr><tr><td><code>zone_id_num</code></td><td><code>int</code></td><td>Numeric ID for the adjacent zone.</td></tr><tr><td><code>zone_name</code></td><td>—</td><td>Name of the adjacent zone.</td></tr><tr><td><code>zone_type</code></td><td>—</td><td>Classification of the adjacent zone.</td></tr><tr><td><code>temperature_reduction_factor</code></td><td>—</td><td>The heating-demand factor, and the fallback for the four optional factors below. Default: 1.0.</td></tr><tr><td><code>heating_load_reduction_factor</code></td><td>—</td><td>Heating-load factor, or None to use the heating-demand factor. Default: None.</td></tr><tr><td><code>cooling_demand_reduction_factor</code></td><td>—</td><td>Cooling-demand factor, or None to use the heating-demand factor. Default: None.</td></tr><tr><td><code>cooling_load_reduction_factor</code></td><td>—</td><td>Cooling-load factor, or None to use the heating-demand factor. Default: None.</td></tr><tr><td><code>passive_cooling_reduction_factor</code></td><td>—</td><td>Passive-cooling factor, or None to use the heating-demand factor. Default: None.</td></tr><tr><td><code>adjacent_zone_temperature_c</code></td><td>—</td><td>Temperature of the adjacent zone (deg. C). Carried for exporters which derive the factors from it rather than taking them directly. Default: None.</td></tr></tbody></table>
+<h3 id="properties">Properties</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>heating_demand_factor</code></td><td><code>float</code></td><td>The resolved heating-demand temperature reduction factor.</td></tr><tr><td><code>heating_load_factor</code></td><td><code>float</code></td><td>The resolved heating-load temperature reduction factor.</td></tr><tr><td><code>cooling_demand_factor</code></td><td><code>float</code></td><td>The resolved cooling-demand temperature reduction factor.</td></tr><tr><td><code>cooling_load_factor</code></td><td><code>float</code></td><td>The resolved cooling-load temperature reduction factor.</td></tr><tr><td><code>passive_cooling_factor</code></td><td><code>float</code></td><td>The resolved passive-cooling temperature reduction factor.</td></tr></tbody></table>
 <hr> </article> <footer class="site-footer"> <div class="site-footer__left"> <span>PH-TOOLS</span> <span>&middot;</span> <a href="https://github.com/PH-Tools/honeybee_ph">GitHub</a> <span>&middot;</span> <a href="https://github.com/PH-Tools/honeybee_ph/issues">Issues</a> </div> <div class="site-footer__right"> <span>docs.passivehousetools.com</span> </div> </footer> </div> </div>  </main>  <div class="modal-scrim" id="searchScrim" aria-hidden="true"> <div class="search-modal" role="dialog" aria-label="Search all PH-Tools docs" id="searchModal"> <div class="search-input-wrap"> <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"> <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path> </svg> <input class="search-input" id="searchInput" type="text" placeholder="Search all PH-Tools docs..." autocomplete="off" spellcheck="false"> <button class="esc" id="closeSearch">ESC</button> </div> <div class="search-results" id="searchResults"></div> <div class="search-footer" id="searchFooter" style="display:none;"> <div class="search-footer__kbds"> <span><span class="k">&uarr;&darr;</span> Navigate</span> <span><span class="k">&crarr;</span> Open</span> <span><span class="k">&#x2318;K</span> Toggle</span> </div> <div id="searchMeta"></div> </div> </div> </div> <script>
 (function () {
   // ---------- Modal open / close ----------

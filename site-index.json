@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-12T06:39:41Z",
+  "generated": "2026-09-12T20:30:37Z",
   "base_url": "https://docs.passivehousetools.com",
   "llm_nav": {
     "instructions": "/llm-instructions.md",
@@ -537,6 +537,12 @@
           "section": "phpp_model"
         },
         {
+          "title": "ground_data",
+          "path": "/phx/api/PHPP/phpp_model/ground_data/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_model/ground_data.md",
+          "section": "phpp_model"
+        },
+        {
           "title": "hot_water_piping",
           "path": "/phx/api/PHPP/phpp_model/hot_water_piping/",
           "raw_path": "/llm/phx/api/PHPP/phpp_model/hot_water_piping.md",
@@ -603,6 +609,12 @@
           "section": "phpp_model"
         },
         {
+          "title": "xl_checkbox_group",
+          "path": "/phx/api/PHPP/phpp_model/xl_checkbox_group/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_model/xl_checkbox_group.md",
+          "section": "phpp_model"
+        },
+        {
           "title": "io_PER",
           "path": "/phx/api/PHPP/sheet_io/io_PER/",
           "raw_path": "/llm/phx/api/PHPP/sheet_io/io_PER.md",
@@ -666,6 +678,12 @@
           "title": "io_exceptions",
           "path": "/phx/api/PHPP/sheet_io/io_exceptions/",
           "raw_path": "/llm/phx/api/PHPP/sheet_io/io_exceptions.md",
+          "section": "sheet_io"
+        },
+        {
+          "title": "io_ground",
+          "path": "/phx/api/PHPP/sheet_io/io_ground/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_ground.md",
           "section": "sheet_io"
         },
         {

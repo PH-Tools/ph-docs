@@ -268,7 +268,31 @@ No description available.
 
 ---
 
-## ColGround
+## GroundSection
+
+The column letters of one of the three side-by-side 'Ground' building sections.
+
+**Inherits from**: `BaseModel`
+
+---
+
+## GroundInput
+
+One 'Ground' input: its column role within a section, and its row offset from the located header.
+
+**Inherits from**: `BaseModel`
+
+---
+
+## GroundInputs
+
+No description available.
+
+**Inherits from**: `BaseModel`
+
+---
+
+## GroundInputBlock
 
 No description available.
 

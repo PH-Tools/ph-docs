@@ -22,6 +22,7 @@ Interface for a PHPP Excel Document.
 | `u_values` | `UValues` | — |
 | `components` | `Components` | — |
 | `areas` | `Areas` | — |
+| `ground` | `Ground` | — |
 | `windows` | `Windows` | — |
 | `shading` | `Shading` | — |
 | `addnl_vent` | `AddnlVent` | — |
@@ -117,6 +118,14 @@ Write all of the ventilators from a PhxProject to the PHPP 'Components' workshee
 #### write_project_opaque_surfaces(phx_project)
 
 Write all of the opaque surfaces from a PhxProject to the PHPP 'Areas' worksheet.
+
+| Arg | Type | Description |
+|-----|------|-------------|
+| `phx_project` | — | — |
+
+#### write_project_ground(phx_project)
+
+Write the foundation to building section 1 of the PHPP 'Ground' worksheet.
 
 | Arg | Type | Description |
 |-----|------|-------------|

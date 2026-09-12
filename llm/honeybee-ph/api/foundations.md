@@ -107,6 +107,8 @@ Unheated (unconditioned) basement foundation.
 | `floor_slab_u_value` | `float` | Floor slab U-value in W/(m2K). Default: 1.0. |
 | `basement_volume_m3` | `float` | Basement air volume in cubic meters. |
 | `basement_ventilation_ach` | `float` | Basement ventilation rate in ACH. |
+| `interior_wall_to_heated_area_m2` | `float` | Area of the interior wall towards the heated part of the building in m2. PHPP 10 only (Ground!H36). Default: 0.0. |
+| `interior_wall_to_heated_u_value` | `float` | U-value of that interior wall in W/(m2K). PHPP 10 only (Ground!P36). Default: 0.0. |
 
 ---
 
@@ -124,9 +126,11 @@ Slab-on-grade foundation.
 | `floor_slab_area_m2` | `float` | Floor slab area in square meters. |
 | `floor_slab_u_value` | `Union[float, None]` | Floor slab U-value in W/(m2K). None if not set. |
 | `floor_slab_exposed_perimeter_m` | `float` | Exposed perimeter length in meters. |
-| `perim_insulation_width_or_depth_m` | `float` | Insulation width or depth in meters. Default: 0.300. |
-| `perim_insulation_thickness_m` | `float` | Insulation thickness in meters. Default: 0.050. |
-| `perim_insulation_conductivity` | `float` | Insulation thermal conductivity in W/(mK). Default: 0.04. |
+| `perim_insulation_width_or_depth_m` | `float` | Insulation width or depth in meters. Default: 0.0 (no perimeter insulation, matching PHPP). |
+| `perim_insulation_thickness_m` | `float` | Insulation thickness in meters. Default: 0.0 (no perimeter insulation, matching PHPP). |
+| `perim_insulation_conductivity` | `float` | Insulation thermal conductivity in W/(mK). Default: 0.0 (no perimeter insulation, matching PHPP). |
+| `interior_wall_to_heated_area_m2` | `float` | Area of the interior wall towards the heated part of the building in m2. PHPP 10 only (Ground!H28). Default: 0.0. |
+| `interior_wall_to_heated_u_value` | `float` | U-value of that interior wall in W/(m2K). PHPP 10 only (Ground!P28). Default: 0.0. |
 
 ### Properties
 
@@ -149,11 +153,15 @@ Ventilated crawlspace foundation.
 | `foundation_type` | `PhFoundationType` | — |
 | `crawlspace_floor_slab_area_m2` | `float` | Crawlspace floor slab area in m2. |
 | `ceiling_above_crawlspace_u_value` | `float` | Ceiling U-value above crawlspace in W/(m2K). Default: 1.0. |
-| `crawlspace_floor_exposed_perimeter_m` | `float` | Exposed perimeter in meters. Default: 2.5. |
+| `crawlspace_floor_exposed_perimeter_m` | `float` | Exposed perimeter in meters. Default: 0.0. |
 | `crawlspace_wall_height_above_grade_m` | `float` | Crawlspace wall height above grade in meters. |
 | `crawlspace_floor_u_value` | `float` | Crawlspace floor U-value in W/(m2K). Default: 1.0. |
 | `crawlspace_vent_opening_are_m2` | `float` | Ventilation opening area in m2. |
 | `crawlspace_wall_u_value` | `float` | Crawlspace wall U-value in W/(m2K). Default: 1.0. |
+| `wind_velocity_at_10m_m_s` | `float` | Average site wind velocity at 10m height in m/s (Ground!P42). Default: 4.0, the PHPP value. |
+| `wind_shield_factor` | `float` | Wind-shield factor for the crawlspace ventilation openings (Ground!P43). A free float, not an enum: PHPP accepts any number. [[P17]] Table 12 gives guideline values for protected, average and exposed sites. Default: 0.05, the PHPP value. |
+| `interior_wall_to_heated_area_m2` | `float` | Area of the interior wall towards the heated part of the building in m2. PHPP 10 only (Ground!H44). Default: 0.0. |
+| `interior_wall_to_heated_u_value` | `float` | U-value of that interior wall in W/(m2K). PHPP 10 only (Ground!P44). Default: 0.0. |
 
 ---
 
