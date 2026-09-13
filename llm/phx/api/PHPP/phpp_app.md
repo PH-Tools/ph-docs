@@ -31,6 +31,7 @@ Interface for a PHPP Excel Document.
 | `cooling` | `CoolingDemand` | — |
 | `cooling_load` | `CoolingPeakLoad` | — |
 | `ventilation` | `Ventilation` | — |
+| `summ_vent` | `SummVent` | — |
 | `hot_water` | `HotWater` | — |
 | `electricity` | `Electricity` | — |
 | `variants` | `Variants` | — |
@@ -180,6 +181,14 @@ Write all of the PH-Spaces from a PhxProject to the PHPP 'Additional Vent' works
 #### write_project_ventilation_type(phx_project)
 
 Set the Ventilation-Type to the PHPP 'Ventilation' worksheet.
+
+| Arg | Type | Description |
+|-----|------|-------------|
+| `phx_project` | — | — |
+
+#### write_project_summer_ventilation(phx_project)
+
+Write each Variant's summer heat-recovery mode to the PHPP 'SummVent' worksheet.
 
 | Arg | Type | Description |
 |-----|------|-------------|

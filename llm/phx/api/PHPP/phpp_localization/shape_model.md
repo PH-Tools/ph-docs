@@ -556,6 +556,14 @@ No description available.
 
 ---
 
+## SummVentInputItem
+
+No description available.
+
+**Inherits from**: `BaseModel`
+
+---
+
 ## ColSummVent
 
 No description available.

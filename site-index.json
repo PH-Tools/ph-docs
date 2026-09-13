@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-13T06:57:19Z",
+  "generated": "2026-09-13T12:15:15Z",
   "base_url": "https://docs.passivehousetools.com",
   "llm_nav": {
     "instructions": "/llm-instructions.md",
@@ -561,6 +561,12 @@
           "section": "phpp_model"
         },
         {
+          "title": "summ_vent_data",
+          "path": "/phx/api/PHPP/phpp_model/summ_vent_data/",
+          "raw_path": "/llm/phx/api/PHPP/phpp_model/summ_vent_data.md",
+          "section": "phpp_model"
+        },
+        {
           "title": "uvalues_constructor",
           "path": "/phx/api/PHPP/phpp_model/uvalues_constructor/",
           "raw_path": "/llm/phx/api/PHPP/phpp_model/uvalues_constructor.md",
@@ -732,6 +738,12 @@
           "title": "io_solar_pv",
           "path": "/phx/api/PHPP/sheet_io/io_solar_pv/",
           "raw_path": "/llm/phx/api/PHPP/sheet_io/io_solar_pv.md",
+          "section": "sheet_io"
+        },
+        {
+          "title": "io_summ_vent",
+          "path": "/phx/api/PHPP/sheet_io/io_summ_vent/",
+          "raw_path": "/llm/phx/api/PHPP/sheet_io/io_summ_vent.md",
           "section": "sheet_io"
         },
         {

@@ -259,7 +259,7 @@ Type of supportive (auxiliary) mechanical device.
 
 ## PhxSummerBypassMode
 
-Summer bypass mode for the heat recovery ventilator.
+Summer heat-recovery mode for the Ventilator.
 
 **Inherits from**: `Enum`
 
@@ -267,10 +267,10 @@ Summer bypass mode for the heat recovery ventilator.
 
 | Member | Value | Meaning |
 |--------|-------|---------|
-| `NONE` | `1` | No summer bypass. |
-| `TEMP_CONTROLLED` | `2` | Bypass activated by temperature differential. |
-| `ENTHALPY_CONTROLLED` | `3` | Bypass activated by enthalpy differential. |
-| `ALWAYS` | `4` | Bypass always active in summer. |
+| `NONE` | `1` | No summer heat recovery. |
+| `TEMP_CONTROLLED` | `2` | Heat recovery with temperature-controlled bypass. |
+| `ENTHALPY_CONTROLLED` | `3` | Heat recovery with enthalpy-controlled bypass. |
+| `ALWAYS` | `4` | Heat recovery always on in summer. |
 
 ---
 
