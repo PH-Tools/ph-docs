@@ -220,7 +220,7 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
 <h4 id="find_section_first_entry_row">find_section_first_entry_row()</h4>
 <p>Return the row number of the very first user-input entry row in the ‘Rooms’ section.</p>
 <h4 id="find_section_shape">find_section_shape()</h4>
-<h4 id="find_section_last_entry_row_start_row-_read_length">find_section_last_entry_row(_start_row, _read_length)</h4>
+<h4 id="find_section_last_entry_row_read_length">find_section_last_entry_row(_read_length)</h4>
 <p>Return the row number of the last user-input entry row in the ‘Rooms’ section.</p>
 
 
@@ -237,12 +237,7 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
 
 
 
-
-
-
-
-
-<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_start_row</code></td><td>—</td><td>—</td></tr><tr><td><code>_read_length</code></td><td>—</td><td>—</td></tr></tbody></table>
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_read_length</code></td><td>—</td><td>—</td></tr></tbody></table>
 <hr>
 <h2 id="ventilatordeviceusage">VentilatorDeviceUsage</h2>
 <p>Convenience class for organizing and cleaning the data.</p>
@@ -494,6 +489,7 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
 <table><thead><tr><th>Attribute</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>xl</code></td><td>—</td><td>—</td></tr><tr><td><code>shape</code></td><td>—</td><td>—</td></tr><tr><td><code>spaces</code></td><td><code>Spaces</code></td><td>—</td></tr><tr><td><code>vent_units</code></td><td><code>VentUnits</code></td><td>—</td></tr><tr><td><code>vent_ducts</code></td><td><code>VentDucts</code></td><td>—</td></tr></tbody></table>
 <h3 id="methods-4">Methods</h3>
 <h4 id="write_spaces_spaces">write_spaces(_spaces)</h4>
+<p>Write VentSpaceRow objects to the PHPP Additional Vent worksheet.</p>
 
 
 
@@ -511,6 +507,7 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
 
 <table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_spaces</code></td><td>—</td><td>—</td></tr></tbody></table>
 <h4 id="write_vent_units_vent_units">write_vent_units(_vent_units)</h4>
+<p>Write VentUnitRow objects to the PHPP Additional Vent worksheet.</p>
 
 
 
@@ -528,6 +525,7 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
 
 <table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_vent_units</code></td><td>—</td><td>—</td></tr></tbody></table>
 <h4 id="write_vent_ducts_vent_ducts">write_vent_ducts(_vent_ducts)</h4>
+<p>Write VentDuctRow objects to the PHPP Additional Vent worksheet.</p>
 
 
 

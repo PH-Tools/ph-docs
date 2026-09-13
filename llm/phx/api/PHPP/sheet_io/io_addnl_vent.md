@@ -34,13 +34,12 @@ Return the row number of the very first user-input entry row in the 'Rooms' sect
 
 #### find_section_shape()
 
-#### find_section_last_entry_row(_start_row, _read_length)
+#### find_section_last_entry_row(_read_length)
 
 Return the row number of the last user-input entry row in the 'Rooms' section.
 
 | Arg | Type | Description |
 |-----|------|-------------|
-| `_start_row` | — | — |
 | `_read_length` | — | — |
 
 ---
@@ -175,17 +174,23 @@ IO Controller for the PHPP Additional Vent worksheet.
 
 #### write_spaces(_spaces)
 
+Write VentSpaceRow objects to the PHPP Additional Vent worksheet.
+
 | Arg | Type | Description |
 |-----|------|-------------|
 | `_spaces` | — | — |
 
 #### write_vent_units(_vent_units)
 
+Write VentUnitRow objects to the PHPP Additional Vent worksheet.
+
 | Arg | Type | Description |
 |-----|------|-------------|
 | `_vent_units` | — | — |
 
 #### write_vent_ducts(_vent_ducts)
+
+Write VentDuctRow objects to the PHPP Additional Vent worksheet.
 
 | Arg | Type | Description |
 |-----|------|-------------|
