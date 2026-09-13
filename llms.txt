@@ -177,6 +177,7 @@ Passive House Exchange data model & file I/O. Convert between WUFI XML, PHPP Exc
 - [model: spaces](https://docs.passivehousetools.com/llm/phx/api/model/spaces.md)
 - [model: transforms](https://docs.passivehousetools.com/llm/phx/api/model/transforms.md)
 - [model: utilization_patterns](https://docs.passivehousetools.com/llm/phx/api/model/utilization_patterns.md)
+- [model: ventilation_rooms](https://docs.passivehousetools.com/llm/phx/api/model/ventilation_rooms.md)
 - [enums: building](https://docs.passivehousetools.com/llm/phx/api/model/enums/building.md)
 - [enums: elec_equip](https://docs.passivehousetools.com/llm/phx/api/model/enums/elec_equip.md)
 - [enums: foundations](https://docs.passivehousetools.com/llm/phx/api/model/enums/foundations.md)

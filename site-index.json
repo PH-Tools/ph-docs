@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-13T12:20:42Z",
+  "generated": "2026-09-13T13:31:31Z",
   "base_url": "https://docs.passivehousetools.com",
   "llm_nav": {
     "instructions": "/llm-instructions.md",
@@ -1032,6 +1032,12 @@
           "title": "utilization_patterns",
           "path": "/phx/api/model/utilization_patterns/",
           "raw_path": "/llm/phx/api/model/utilization_patterns.md",
+          "section": "model"
+        },
+        {
+          "title": "ventilation_rooms",
+          "path": "/phx/api/model/ventilation_rooms/",
+          "raw_path": "/llm/phx/api/model/ventilation_rooms.md",
           "section": "model"
         },
         {
