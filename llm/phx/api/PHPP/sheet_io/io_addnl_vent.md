@@ -36,6 +36,8 @@ Return the row number of the very first user-input entry row in the 'Rooms' sect
 
 #### find_section_last_entry_row(_start_row, _read_length)
 
+Return the row number of the last user-input entry row in the 'Rooms' section.
+
 | Arg | Type | Description |
 |-----|------|-------------|
 | `_start_row` | — | — |

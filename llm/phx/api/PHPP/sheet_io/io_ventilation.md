@@ -43,8 +43,9 @@ IO Controller for the PHPP Ventilation worksheet.
 | `xl` | — | — |
 | `shape` | — | — |
 | `io_vent_type` | `VentilationInputLocation` | — |
-| `io_wind_coeff_e` | `VentilationInputLocation` | — |
-| `io_wind_coeff_f` | `VentilationInputLocation` | — |
+| `io_wind_protection_class` | `Optional[unknown]` | — |
+| `io_wind_coeff_e` | `Optional[unknown]` | — |
+| `io_wind_coeff_f` | `Optional[unknown]` | — |
 | `io_air_change_rate` | `VentilationInputLocation` | — |
 | `io_net_volume` | `VentilationInputLocation` | — |
 | `io_multi_vent_worksheet_on` | `VentilationInputLocation` | — |
@@ -64,6 +65,12 @@ IO Controller for the PHPP Ventilation worksheet.
 | `_phpp_model_obj` | — | — |
 
 #### write_wind_coeff_f(_phpp_model_obj)
+
+| Arg | Type | Description |
+|-----|------|-------------|
+| `_phpp_model_obj` | — | — |
+
+#### write_wind_protection_class(_phpp_model_obj)
 
 | Arg | Type | Description |
 |-----|------|-------------|

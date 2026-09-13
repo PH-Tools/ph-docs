@@ -56,7 +56,7 @@ PHI certification standard type (PHPP v10).
 | `ENERPHIT_BY_COMPONENT` | `21` | EnerPHit certification via component-level criteria. |
 | `ENERPHIT_BY_DEMAND` | `22` | EnerPHit certification via energy demand criteria. |
 | `LOW_ENERGY_BUILDING` | `30` | PHI Low Energy Building certification. |
-| `OTHER` | `44` | Other certification type. |
+| `OTHER` | `40` | Other certification type. |
 
 ---
 

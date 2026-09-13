@@ -108,6 +108,30 @@ No description available.
 
 ---
 
+## ClimateValidationRange
+
+No description available.
+
+**Inherits from**: `BaseModel`
+
+---
+
+## ClimateLibraryValidationRanges
+
+No description available.
+
+**Inherits from**: `BaseModel`
+
+---
+
+## ClimateUserDefinedSelectors
+
+No description available.
+
+**Inherits from**: `BaseModel`
+
+---
+
 ## ClimateActiveDatasetCol
 
 No description available.

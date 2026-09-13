@@ -49,6 +49,13 @@ Returns a list of the XL Items to write for this Surface Entry
 | `shape` | — | — |
 | `input_data` | — | — |
 
+#### *classmethod* wind_protection_class(shape, input_data)
+
+| Arg | Type | Description |
+|-----|------|-------------|
+| `shape` | — | — |
+| `input_data` | — | — |
+
 #### *classmethod* airtightness_n50(shape, input_data)
 
 | Arg | Type | Description |

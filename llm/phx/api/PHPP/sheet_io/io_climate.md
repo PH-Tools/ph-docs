@@ -27,7 +27,26 @@ IO Controller for the PHPP Climate Worksheet.
 |-----|------|-------------|
 | `_climate_entry` | — | — |
 
-#### write_active_climate(_active_climate)
+#### write_active_climate(_active_climate, _country_code, _region_code, _dataset_name)
+
+| Arg | Type | Description |
+|-----|------|-------------|
+| `_active_climate` | — | — |
+| `_country_code` | — | — |
+| `_region_code` | — | — |
+| `_dataset_name` | — | — |
+
+#### try_library_codes(_active_climate)
+
+Select valid cascading PHPP library codes, or report fallback/unsupported.
+
+| Arg | Type | Description |
+|-----|------|-------------|
+| `_active_climate` | — | — |
+
+#### write_user_defined_active_climate(_active_climate)
+
+Select the first user-defined block using this shape's localized literals.
 
 | Arg | Type | Description |
 |-----|------|-------------|
