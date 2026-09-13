@@ -467,7 +467,7 @@ schema maps each side explicitly.</p>
 version: a section sits lower in a populated project file than in an empty one.
 Controllers therefore locate a section by searching a column for its marker
 string (<code>locator_string_header</code> / <code>locator_string_entry</code> in the shape files)
-rather than by hard-coding rows. Two rules follow, and both have been violated:</p>
+rather than by hard-coding rows. Three rules follow, and all three have been violated:</p>
 <ol>
 <li>
 <p><strong>A locator returns a worksheet row number, not an index.</strong> The scan reads a
@@ -492,7 +492,32 @@ that reaches the library resolves a colliding name to a real-but-wrong prefix,
 which is a quieter failure than <code>None-</code> because the ID <em>looks</em> valid.
 <code>section_first_entry_row .. section_last_entry_row</code> is the right span.</p>
 </li>
+<li>
+<p><strong>A list writer measures its block before writing.</strong> Users extend an entry
+block by inserting rows (PHPP’s Tools workbook), so capacity is
+<code>last_entry_row - first_entry_row + 1</code> on the workbook actually open, never a
+constant. Locate both rows before the first write (a locator run after an
+overflowing write measures the damage), warn through <code>xl.output</code> with the
+section, the count and the capacity, and truncate at the last entry row: rows
+past a block sit outside the workbook’s own <code>SUMIF</code> ranges and overwrite the
+labels below it. <code>AddnlVent._write_section_rows</code> does this for rooms,
+ventilation units and ducts, and every <code>find_section_last_entry_row</code> returns
+the last entry row, not the empty row after it.</p>
+</li>
 </ol>
+<h3 id="climate-library-data-set-or-user-defined-block">Climate: library data set or user-defined block</h3>
+<p>PHPP computes with whatever <code>Climate!D9</code>/<code>D10</code>/<code>D12</code> select; filling the
+user-defined block does nothing until it is selected. <code>write_climate_data</code> first
+tries the model’s <code>PhxPHPPCodes</code>: write the country, recalculate, check it against
+its validation list; then the region; then check the data-set name. Each list is
+recomputed from the selectors above it, so every check needs the recalculation
+before it. A valid triple selects the library data set and writes no user-defined
+block. Any miss writes the block, names it through the <code>Klimadaten_Muster</code> /
+<code>Klimadaten_Muster_Quelle</code> defined names, and selects it with the shape’s
+<code>user_defined_selectors</code> literals and <code>ud---00-&#x3C;display_name></code>. Validation ranges
+and selector literals are per-shape data (<code>library_validation_ranges</code>,
+<code>user_defined_selectors</code>), not Python constants. A blank Site <code>display_name</code> fails
+PHPP export readiness, because <code>ud---00-</code> selects nothing.</p>
 <p>Rule 2 matters because the failure is silent end-to-end. PHPP reports <code>#N/A</code> on
 a sheet most users never open, the dependent result cell shows a clean <code>0</code>, and
 the resulting energy demand stays plausible — only a comparison against an
