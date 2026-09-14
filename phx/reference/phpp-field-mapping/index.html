@@ -1471,6 +1471,11 @@ Copy URL
 
 
 <table><thead><tr><th>Field</th><th>Column</th><th>Unit</th></tr></thead><tbody><tr><td><code>quantity</code></td><td>D</td><td></td></tr><tr><td><code>display_name</code></td><td>E</td><td></td></tr><tr><td><code>vent_unit_assigned</code></td><td>F</td><td></td></tr><tr><td><code>weighted_floor_area</code></td><td>G</td><td>M2</td></tr><tr><td><code>clear_height</code></td><td>H</td><td>M</td></tr><tr><td><code>V_sup</code></td><td>J</td><td>M3/HR</td></tr><tr><td><code>V_eta</code></td><td>K</td><td>M3/HR</td></tr><tr><td><code>V_trans</code></td><td>L</td><td>M3/HR</td></tr><tr><td><code>operating_hours</code></td><td>N</td><td></td></tr><tr><td><code>operating_days</code></td><td>O</td><td></td></tr><tr><td><code>holiday_days</code></td><td>P</td><td></td></tr><tr><td><code>period_high_speed</code></td><td>Q</td><td></td></tr><tr><td><code>period_high_time</code></td><td>R</td><td></td></tr><tr><td><code>period_standard_speed</code></td><td>S</td><td></td></tr><tr><td><code>period_standard_time</code></td><td>T</td><td></td></tr><tr><td><code>period_minimum_speed</code></td><td>U</td><td></td></tr><tr><td><code>period_minimum_time</code></td><td>V</td><td></td></tr></tbody></table>
+<p><code>VentSpaceRow</code> writes <code>PhxSpace.weighted_floor_area</code> (the TFA / iCFA share, falling back to
+<code>floor_area</code> when no weighted area was set) into <code>weighted_floor_area</code>, and
+<code>PhxSpace.ventilation_reference_height</code> (2.5 m by PHI convention) into <code>clear_height</code>: PHPP
+multiplies that column by the area for the ventilated volume Vv, so the room’s actual
+<code>clear_height</code> belongs to the WUFI <code>ClearRoomHeight</code> node, not here.</p>
 <h3 id="units">units</h3>
 <ul>
 <li>Header locator: col <code>C</code>, string <code>"Venti-"</code></li>
