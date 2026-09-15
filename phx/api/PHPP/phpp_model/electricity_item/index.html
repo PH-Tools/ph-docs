@@ -169,9 +169,58 @@ Library · PHX </a> <ul class="nav-tree"><li class="group">
 <p>Model class for a PHPP Electricity / Equipment row input.</p>
 <p><strong>Source</strong>: <code>PHX/electricity_item.py</code></p>
 <hr>
+<h2 id="electricityannualrowxlwriter">ElectricityAnnualRowXLWriter</h2>
+<p>One PHPP ‘Other devices’ annual row holding every device of one category.</p>
+<h3 id="properties">Properties</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>total_kwh</code></td><td>—</td><td>The category’s annual energy, kWh/a.</td></tr></tbody></table>
+<h3 id="methods">Methods</h3>
+<h4 id="create_xl_items_shape-_description_column-_row">create_xl_items(_shape, _description_column, _row)</h4>
+<p>Return the description, quantity, IHG flag and annual energy for one annual row.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Arg</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>_shape</code></td><td>—</td><td>—</td></tr><tr><td><code>_description_column</code></td><td>—</td><td>—</td></tr><tr><td><code>_row</code></td><td>—</td><td>—</td></tr></tbody></table>
+<hr>
 <h2 id="electricityitemxlwriter">ElectricityItemXLWriter</h2>
 <p>Model class for a single Electric-Equipment item entry row.</p>
-<h3 id="methods">Methods</h3>
+<h3 id="methods-1">Methods</h3>
 <h4 id="create_xl_items_shape">create_xl_items(_shape)</h4>
 <p>Returns a list of xl_data.XlItem or raises and Error if equipment type is unrecognized.</p>
 

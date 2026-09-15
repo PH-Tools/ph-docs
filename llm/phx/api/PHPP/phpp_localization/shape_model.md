@@ -756,6 +756,28 @@ No description available.
 
 ---
 
+## ElectricityRowSpan
+
+No description available.
+
+**Inherits from**: `BaseModel`
+
+### Properties
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `rows` | — | Every worksheet row in the span, inclusive of both ends. |
+
+---
+
+## ElectricityOtherDevices
+
+PHPP's 'Other devices' block.
+
+**Inherits from**: `BaseModel`
+
+---
+
 ## Electricity
 
 No description available.

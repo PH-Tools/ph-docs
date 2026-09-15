@@ -508,6 +508,31 @@ ventilation units and ducts, and every <code>find_section_last_entry_row</code> 
 the last entry row, not the empty row after it.</p>
 </li>
 </ol>
+<h3 id="electricity-an-authored-category-replaces-the-template">Electricity: an authored category replaces the template</h3>
+<p>A PHPP starts with PHI’s template appliances switched on. <code>Electricity.write_equipment</code>
+applies one rule: <strong>a device category the model authors replaces PHPP’s template rows
+for that category, and an unauthored category keeps the template.</strong></p>
+<ul>
+<li><code>electricity_item.replaced_template_rows</code> owns the mapping. It is the only place
+that writes quantity 0:
+<ul>
+<li>authored refrigeration zeroes all three refrigeration rows;</li>
+<li>authored interior lighting zeroes the per-occupant lighting row;</li>
+<li>authored MEL or user-defined devices zero the standard small-device rows.</li>
+</ul>
+</li>
+<li>Cooking, dishwashing, washing and drying are one row each, which the device writer
+overwrites.</li>
+<li>The outside-dwelling lighting quantity (<code>E39</code> in PHPP 10.6) is a formula and is never
+written.</li>
+</ul>
+<p>PHPP’s residential lighting and standard-device rows take no annual energy. Devices the
+model carries as annual kWh (lighting, MEL, custom, elevators) are therefore grouped one
+row per category onto the <code>Other devices</code> annual rows, where <code>Y = E·N</code> with <code>N</code> in kWh/a
+(<code>ANNUAL_ROW_CATEGORIES</code>).</p>
+<p>Those rows are the optional <code>other_devices</code> shape block, mapped only where a workbook
+verified them (10.4A and 10.6). On other shapes the annual devices are skipped with a
+warning and their templates are left alone, as for unmapped worksheets.</p>
 <h3 id="climate-library-data-set-or-user-defined-block">Climate: library data set or user-defined block</h3>
 <p>PHPP computes with whatever <code>Climate!D9</code>/<code>D10</code>/<code>D12</code> select; filling the
 user-defined block does nothing until it is selected. <code>write_climate_data</code> first

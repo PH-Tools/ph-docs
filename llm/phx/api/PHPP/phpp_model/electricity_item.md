@@ -6,6 +6,30 @@ Model class for a PHPP Electricity / Equipment row input.
 
 ---
 
+## ElectricityAnnualRowXLWriter
+
+One PHPP 'Other devices' annual row holding every device of one category.
+
+### Properties
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `total_kwh` | — | The category's annual energy, kWh/a. |
+
+### Methods
+
+#### create_xl_items(_shape, _description_column, _row)
+
+Return the description, quantity, IHG flag and annual energy for one annual row.
+
+| Arg | Type | Description |
+|-----|------|-------------|
+| `_shape` | — | — |
+| `_description_column` | — | — |
+| `_row` | — | — |
+
+---
+
 ## ElectricityItemXLWriter
 
 Model class for a single Electric-Equipment item entry row.

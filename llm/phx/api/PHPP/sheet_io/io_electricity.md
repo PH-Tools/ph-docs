@@ -22,7 +22,7 @@ IO Controller for PHPP "Electricity" worksheet.
 
 #### write_equipment(_equipment_inputs)
 
-Write a list of equipment-input objects to the Worksheet.
+Write the model's devices; each category it authors replaces PHPP's template rows for that category.
 
 | Arg | Type | Description |
 |-----|------|-------------|
