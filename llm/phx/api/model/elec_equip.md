@@ -26,7 +26,7 @@ To allow for subclass custom behavior. Cannot use @property since
 
 #### get_quantity()
 
-To allow for subclass custom behavior. Cannot use @property since
+The number of units, with a stored 0 (the legacy honeybee-ph default) counted as one.
 
 ---
 

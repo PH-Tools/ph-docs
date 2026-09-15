@@ -21,10 +21,10 @@ Base class for PH appliances with common energy and scheduling attributes.
 | `display_name` | `str` | — |
 | `comment` | `str` | Optional user comment. |
 | `reference_quantity` | — | WUFI 'Reference Quantity' selector value. Initialized from the subclass's ``DEFAULT_REFERENCE_QUANTITY``. |
-| `quantity` | `int` | Number of this appliance installed. |
+| `quantity` | `int` | Number of this appliance installed. Default: 1. |
 | `in_conditioned_space` | `bool` | Whether the appliance is inside the thermal envelope. Default: True. |
 | `reference_energy_norm` | `int` | Energy normalization period (2 = year). |
-| `energy_demand` | `float` | Annual energy demand (kWh). |
+| `energy_demand` | `float` | Annual energy demand (kWh), per unit. |
 | `energy_demand_per_use` | `float` | Energy per use cycle (kWh/use). |
 | `combined_energy_factor` | `float` | Combined energy factor (CEF). |
 | `ihg_utilization_factor` | `float` | Fraction of energy that becomes internal heat gain inside the envelope (0.0-1.0). Default: 1.0. |
