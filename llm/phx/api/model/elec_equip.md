@@ -94,6 +94,7 @@ A clothes dryer appliance (electric or gas).
 | Property | Type | Description |
 |----------|------|-------------|
 | `dryer_type` | — | The dryer type classification (e.g., 4 = condensation dryer). |
+| `wufi_phpp_dryer_type` | — | The dryer type for WUFI-Passive and PHPP, whose lists stop at 6. |
 | `field_utilization_factor_type` | — | The field utilization factor type (e.g., 1 = timer). |
 
 ---
