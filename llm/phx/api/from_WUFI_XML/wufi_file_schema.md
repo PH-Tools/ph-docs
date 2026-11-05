@@ -196,6 +196,14 @@ No description available.
 
 ---
 
+## WufiProcessLoad
+
+No description available.
+
+**Inherits from**: `WufiBaseModel`
+
+---
+
 ## WufiZone
 
 No description available.

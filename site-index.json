@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-04T08:16:28Z",
+  "generated": "2026-11-05T01:12:03Z",
   "base_url": "https://docs.passivehousetools.com",
   "llm_nav": {
     "instructions": "/llm-instructions.md",
@@ -831,6 +831,12 @@
           "section": "from_HBJSON"
         },
         {
+          "title": "create_process_loads",
+          "path": "/phx/api/from_HBJSON/create_process_loads/",
+          "raw_path": "/llm/phx/api/from_HBJSON/create_process_loads.md",
+          "section": "from_HBJSON"
+        },
+        {
           "title": "create_project",
           "path": "/phx/api/from_HBJSON/create_project/",
           "raw_path": "/llm/phx/api/from_HBJSON/create_project.md",
@@ -1164,6 +1170,12 @@
           "title": "occupancy",
           "path": "/phx/api/model/loads/occupancy/",
           "raw_path": "/llm/phx/api/model/loads/occupancy.md",
+          "section": "loads"
+        },
+        {
+          "title": "process",
+          "path": "/phx/api/model/loads/process/",
+          "raw_path": "/llm/phx/api/model/loads/process.md",
           "section": "loads"
         },
         {
